@@ -322,6 +322,35 @@ $tests = array(
                            'width_bytes' => 24,
                            'height_bytes' => 12
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/P651ps'),
+                     array(
+                           'width' => 96,
+                           'height' => 87,
+                           'color' => false,
+                           'depth' => 4
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/SO213i/c10/TB'),
+                     array(
+                           'width' => 120,
+                           'height' => 112,
+                           'color' => true,
+                           'depth' => 65536
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 F880iES(c100;TB;W20H08)'),
+                     array(
+                           'width' => 240,
+                           'height' => 256,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 20,
+                           'height_bytes' => 8
+                           )
                      )
                );
 
@@ -602,3 +631,26 @@ DoCoMo/2.0 SH900i(c100;TB;W24H12)
 262144
 24
 12
+1
+net_useragent_mobile_display
+DoCoMo/1.0/P651ps
+96
+87
+
+4
+1
+net_useragent_mobile_display
+DoCoMo/1.0/SO213i/c10/TB
+120
+112
+1
+65536
+1
+net_useragent_mobile_display
+DoCoMo/2.0 F880iES(c100;TB;W20H08)
+240
+256
+1
+65536
+20
+8
