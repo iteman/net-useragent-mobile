@@ -128,6 +128,15 @@ $tests = array(
                            'width_bytes' => 21,
                            'height_bytes' => 9
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'Mozilla/3.0(DDIPOCKET;JRC/AH-J3001V,AH-J3002V/1.0/0100/c50)CNF/2.0'),
+                     array(
+                           'width' => 0,
+                           'height' => 0,
+                           'color' => false,
+                           'depth' => 0
+                           )
                      )
                );
 
@@ -238,3 +247,9 @@ net_useragent_mobile_display
 262144
 21
 9
+1
+net_useragent_mobile_display
+0
+0
+
+0
