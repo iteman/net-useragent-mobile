@@ -21,12 +21,15 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.21.0</version>
+    <version>0.22.0</version>
     <state>beta</state>
-    <date>2005-02-01</date>
+    <date>2005-02-03</date>
     <notes>
-- Added support for Vodafone 3G mobile phones (3GC).
-- Added support for DoCoMo's SO213iS, D253i, N253i, P253i, D253iWM, P213i, N900iL, N900iG, SH901iC, F901iC.
+* Mobile/Vodafone.php
+- Added getMsname() method which returns the value of x-jphone-msname header, which is the name of the mobile phone.
+
+* Mobile/NonMobile.php
+- Added makeDisplay() method as a temporary measure since the script would die when the method is called. (Bug #3368)
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -58,6 +61,15 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.21.0</version>
+      <state>beta</state>
+      <date>2005-02-01</date>
+      <notes>
+- Added support for Vodafone 3G mobile phones (3GC).
+- Added support for DoCoMo's SO213iS, D253i, N253i, P253i, D253iWM, P213i, N900iL, N900iG, SH901iC, F901iC.
+      </notes>
+    </release>
     <release>
       <version>0.20.0</version>
       <state>beta</state>
