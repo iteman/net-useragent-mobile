@@ -57,7 +57,9 @@ $tests = array(
                array('DoCoMo/2.0 F2102V(c100;TB)', '2.0', '4.0', 'F2102V', 100, true, 'F', 'FOMA', array('status' => 'TB')),
                array('DoCoMo/2.0 N2102V(c100;TB)', '2.0', '4.0', 'N2102V', 100, true, 'N', 'FOMA', array('status' => 'TB')),
                array('DoCoMo/1.0/F505i/c20/TB/W20H10', '1.0', '5.0', 'F505i', 20, false, 'F', '505i', array('status' => 'TB')),
-               array('DoCoMo/1.0/P505i/c20/TB/W20H10', '1.0', '5.0', 'P505i', 20, false, 'P', '505i', array('status' => 'TB'))
+               array('DoCoMo/1.0/P505i/c20/TB/W20H10', '1.0', '5.0', 'P505i', 20, false, 'P', '505i', array('status' => 'TB')),
+               array('DoCoMo/1.0/F672i/c10/TB', '1.0', '4.0', 'F672i', 10, false, 'F', '672i', array('status' => 'TB')),
+               array('DoCoMo/1.0/SH505i2/c20/TB/W24H12', '1.0', '5.0', 'SH505i', 20, false, 'SH', '505i', array('status' => 'TB'))
                );
 
 $test_error_agents = array(
@@ -839,6 +841,40 @@ P505i
 20
 
 P
+505i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/F672i/c10/TB
+1.0
+4.0
+F672i
+10
+
+F
+672i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/SH505i2/c20/TB/W24H12
+1.0
+5.0
+SH505i
+20
+
+SH
 505i
 Testing status ...
 TB
