@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.5 2003/03/26 16:38:20 kuboa Exp $
+// $Id: EZweb.php,v 1.6 2003/04/14 09:21:33 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -54,7 +54,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.5 $
+ * @version  $Revision: 1.6 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
@@ -160,7 +160,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
             explode(',', $this->getHeader('x-up-devcap-screenpixels'));
         $screen_depth =
             explode(',', $this->getHeader('x-up-devcap-screendepth'));
-        $depth = $screen_depth[0] ? pow(2, $screen_depth[0]) : 0;
+        $depth = $screen_depth[0] ? pow(2, (integer)$screen_depth[0]) : 0;
         $color =
             $this->getHeader('x-up-devcap-iscolor') === '1' ? true : false;
         return new Net_UserAgent_Mobile_Display(array(
