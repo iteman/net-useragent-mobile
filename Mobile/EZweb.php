@@ -16,26 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.4 2003/03/19 15:03:42 kuboa Exp $
-//
-// SYNOPSIS:
-// require_once('Net/UserAgent/Mobile.php');
-//
-// $_SERVER['HTTP_USER_AGENT'] = 'UP.Browser/3.01-HI02 UP.Link/3.2.1.2';
-// $agent = &Net_UserAgent_Mobile::factory();
-//
-// printf("Name: %s\n", $agent->getName()); // 'UP.Browser'
-// printf("Version: %s\n", $agent->getVersion()); // 3.01
-// printf("DeviceID: %s\n", $agent->getDeviceID()); // 'HI02'
-// printf("Server: %s\n", $agent->getServer()); // 'UP.Link/3.2.1.2'
-//
-// e.g.) 'UP.Browser/3.01-HI02 UP.Link/3.2.1.2 (Google WAP Proxy/1.0)'
-// printf("Comment: %s\n", $agent->getComment()); // 'Google WAP Proxy/1.0'
-//
-// e.g.) 'KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1'
-// if ($agent->isXHTMLCompliant()) {
-//     print "XHTML compliant!\n"; // true
-// }
+// $Id: EZweb.php,v 1.5 2003/03/26 16:38:20 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -44,49 +25,78 @@ require_once('Net/UserAgent/Mobile/Display.php');
 /**
  * EZweb implementation
  *
- * Net_UserAgent_Mobile_EZweb is a subclass of Net_UserAgent_Mobile, which
- * implements EZweb (WAP1.0/2.0) user agents.
+ * Net_UserAgent_Mobile_EZweb is a subclass of
+ * {@link Net_UserAgent_Mobile_Common}, which implements EZweb (WAP1.0/2.0)
+ * user agents.
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.4 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
- * @see     Net_UserAgent_Mobile_Common()
- * @see     http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
- * @see     http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
+ * SYNOPSIS:
+ * <code>
+ * require_once('Net/UserAgent/Mobile.php');
+ *
+ * $_SERVER['HTTP_USER_AGENT'] = 'UP.Browser/3.01-HI02 UP.Link/3.2.1.2';
+ * $agent = &Net_UserAgent_Mobile::factory();
+ *
+ * printf("Name: %s\n", $agent->getName()); // 'UP.Browser'
+ * printf("Version: %s\n", $agent->getVersion()); // 3.01
+ * printf("DeviceID: %s\n", $agent->getDeviceID()); // 'HI02'
+ * printf("Server: %s\n", $agent->getServer()); // 'UP.Link/3.2.1.2'
+ *
+ * e.g.) 'UP.Browser/3.01-HI02 UP.Link/3.2.1.2 (Google WAP Proxy/1.0)'
+ * printf("Comment: %s\n", $agent->getComment()); // 'Google WAP Proxy/1.0'
+ *
+ * e.g.) 'KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1'
+ * if ($agent->isXHTMLCompliant()) {
+ *     print "XHTML compliant!\n"; // true
+ * }
+ * </code>
+ *
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.5 $
+ * @see      Net_UserAgent_Mobile_Common
+ * @link     http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
+ * @link     http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
  */
 class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
 {
 
     // {{{ properties
 
+    /**#@+
+     * @access private
+     */
+
     /**
      * device ID like 'TS21'
      * @var string
-     * @access private
      */
     var $_device_id = '';
 
     /**
      * server string like 'UP.Link/3.2.1.2'
      * @var string
-     * @access private
      */
     var $_server_name = '';
 
     /**
      * comment like 'Google WAP Proxy/1.0'
      * @var string
-     * @access private
      */
     var $_comment = null;
 
     /**
      * whether it's XHTML compliant or not
      * @var boolean
-     * @access private
      */
     var $_xhtml_compliant = false;
+
+    /**#@-*/
+
+    /**#@+
+     * @access public
+     */
 
     // }}}
     // {{{ isEZweb()
@@ -95,7 +105,6 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * returns true
      *
      * @return boolean
-     * @access public
      */
     function isEZweb()
     {
@@ -107,8 +116,6 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
 
     /**
      * parse HTTP_USER_AGENT string
-     *
-     * @access public
      */
     function parse()
     {
@@ -141,26 +148,26 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     // {{{ makeDisplay()
 
     /**
-     * create a new Net_UserAgent_Mobile_Display class instance
+     * create a new {@link Net_UserAgent_Mobile_Display} class instance
      *
-     * @return object Net_UserAgent_Mobile_Display
-     * @access public
-     * @see Net_UserAgent_Mobile_Display()
+     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
+     *     object
+     * @see Net_UserAgent_Mobile_Display
      */
     function makeDisplay()
     {
-        list($width, $height) =
+        @list($width, $height) =
             explode(',', $this->getHeader('x-up-devcap-screenpixels'));
         $screen_depth =
             explode(',', $this->getHeader('x-up-devcap-screendepth'));
-        $depth = $screen_depth[0];
+        $depth = $screen_depth[0] ? pow(2, $screen_depth[0]) : 0;
         $color =
             $this->getHeader('x-up-devcap-iscolor') === '1' ? true : false;
         return new Net_UserAgent_Mobile_Display(array(
                                                       'width'  => $width,
                                                       'height' => $height,
                                                       'color'  => $color,
-                                                      'depth'  => pow(2, $depth)
+                                                      'depth'  => $depth
                                                       )
                                                 );
     }
@@ -172,7 +179,6 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * returns device ID like 'TS21'
      *
      * @return string
-     * @access public
      */
     function getDeviceID()
     {
@@ -186,7 +192,6 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * returns device ID like 'TS21'
      *
      * @return string
-     * @access public
      */
     function getServer()
     {
@@ -200,7 +205,6 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * returns comment like 'Google WAP Proxy/1.0'. returns null if nothinng.
      *
      * @return boolean
-     * @access public
      */
     function getComment()
     {
@@ -214,12 +218,13 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * returns whether it's XHTML compliant or not
      *
      * @return boolean
-     * @access public
      */
     function isXHTMLCompliant()
     {
         return $this->_xhtml_compliant;
     }
+
+    /**#@-*/
 }
 
 /*
