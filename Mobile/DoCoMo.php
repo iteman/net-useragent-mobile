@@ -1,9 +1,9 @@
 <?php
-//
+/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
+// | PHP version 4                                                        |
 // +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2003 The PHP Group                                |
+// | Copyright (c) 1997-2004 The PHP Group                                |
 // +----------------------------------------------------------------------+
 // | This source file is subject to version 3.0 of the PHP license,       |
 // | that is bundled with this package in the file LICENSE, and is        |
@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.16 2003/11/14 07:09:49 kuboa Exp $
+// $Id: DoCoMo.php,v 1.17 2004/02/08 12:12:23 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -68,7 +68,7 @@ require_once(dirname(__FILE__) . '/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.16 $
+ * @version  $Revision: 1.17 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -235,7 +235,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                                       '(D210i|SO210i)|503i|211i|SH251i|692i|200[12]|2101V' => '3.0',
                                       '504i|251i|^F671iS$|212i|2051|2102V|^F661i$|2701|^F672i$' => '4.0',
                                       'eggy|P751v' => '3.2',
-                                      '505i|252i' => '5.0'
+                                      '505i|252i|900i' => '5.0'
                                       );
         }
 
@@ -503,6 +503,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                 }
                 if (preg_match('/^icc(\w{20})$/', $value, $matches)) {
                     $this->_card_id = $matches[1];
+                    continue;
+                }
+                if (preg_match('/^W(\d+)H(\d+)$/', $value, $matches)) {
+                    $this->_display_bytes = "{$matches[1]}*{$matches[2]}";
                     continue;
                 }
                 return $this->noMatch();
