@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.3 2003/03/26 15:33:29 kuboa Exp $
+// $Id: Mobile.php,v 1.4 2003/04/06 08:37:41 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.3 $
+ * @version  $Revision: 1.4 $
  */
 class Net_UserAgent_Mobile
 {
@@ -106,11 +106,12 @@ class Net_UserAgent_Mobile
                                                  'mobile_regex'
                                                  );
         if ($mobile_regex === null) {
-            $docomo_regex = '^DoCoMo/\d\.\d[ /]';
-            $jphone_regex = '^J-PHONE/\d\.\d';
-            $ezweb_regex  = '^(?:KDDI-[A-Z]+\d+ )?UP\.Browser\/';
+            $docomo_regex    = '^DoCoMo/\d\.\d[ /]';
+            $jphone_regex    = '^J-PHONE/\d\.\d';
+            $ezweb_regex     = '^(?:KDDI-[A-Z]+\d+ )?UP\.Browser\/';
+            $airhphone_regex = '^Mozilla/3\.0\(DDIPOCKET;';
             $mobile_regex =
-                "(?:($docomo_regex)|($jphone_regex)|($ezweb_regex))";
+                "(?:($docomo_regex)|($jphone_regex)|($ezweb_regex)|($airhphone_regex))";
         }
 
         $request = &Net_UserAgent_Mobile_Request::factory($stuff);
@@ -120,7 +121,8 @@ class Net_UserAgent_Mobile
         $sub = 'NonMobile';
         if (preg_match("!$mobile_regex!", $ua, $matches)) {
             $sub = @$matches[1] ? 'DoCoMo' :
-                (@$matches[2] ? 'JPhone' : 'EZweb');
+                (@$matches[2] ? 'JPhone' :
+                 (@$matches[3] ? 'EZweb' : 'AirHPhone'));
         }
         $class_name = "Net_UserAgent_Mobile_{$sub}";
         $include    = "Net/UserAgent/Mobile/{$sub}.php";
@@ -135,7 +137,8 @@ class Net_UserAgent_Mobile
                                     );
         }
 
-        @$instance = &new $class_name($request);
+        $instance = &new $class_name($request);
+        //        @$instance = &new $class_name($request);
         return $instance;
     }
 
@@ -201,7 +204,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.3 $
+ * @version  $Revision: 1.4 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
