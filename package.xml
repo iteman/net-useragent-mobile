@@ -21,11 +21,15 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.3</version>
+    <version>0.4</version>
     <state>beta</state>
-    <date>2003-02-24</date>
+    <date>2003-03-27</date>
     <notes>
-- Added isNonMobile() method.
+- Changed way to get characteristics for new format of user agent which is
+  used by 'FOMA 2051/2102V'.
+- Added display information about DoCoMo's 'P2102V'.
+- Added PEAR error handling.
+- Updated documentation.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -53,6 +57,14 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.3</version>
+      <state>beta</state>
+      <date>2003-02-24</date>
+      <notes>
+- Added isNonMobile() method.
+      </notes>
+    </release>
     <release>
       <version>0.2</version>
       <state>beta</state>
