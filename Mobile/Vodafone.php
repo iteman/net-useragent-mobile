@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Vodafone.php,v 1.1 2004/09/25 12:17:42 kuboa Exp $
+// $Id: Vodafone.php,v 1.2 2005/02/01 04:46:38 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -58,7 +58,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.1 $
+ * @version  $Revision: 1.2 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://developers.vodafone.jp/dp/tool_dl/web/useragent.php
  * @link     http://developers.vodafone.jp/dp/tool_dl/web/position.php
@@ -108,6 +108,12 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
      */
     var $_javaInfo = array();
 
+    /**
+     * whether the agent is 3G
+     * @var boolean
+     */
+    var $_is3G = true;
+
     /**#@-*/
 
     /**#@+
@@ -151,38 +157,29 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
     function parse()
     {
         $agent = explode(' ', $this->getUserAgent());
-        $count = count($agent);
+        preg_match('!(?:(^Vodafone)|(^J-PHONE)|(^MOT-))!', $agent[0],
+                   $matches
+                   );
+        $class = @$matches[1] ? 'Vodafone' :
+            (@$matches[2] ? 'J-PHONE' : 'Motorola');
+        $result = true;
 
-        if ($count > 1) {
+        switch ($class) {
+        case 'Vodafone':
+            $result = $this->_parseVodafone($agent);
+            break;
+        case 'J-PHONE':
+            $result = $this->_parseJphone($agent);
+            break;
+        case 'Motorola':
+            $result = $this->_parseMotorola($agent);
+            break;
+        default:
+            break;
+        }
 
-            // J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0
-            $this->_packetCompliant = true;
-            @list($this->name, $this->version, $this->_model,
-                 $serialNumber) = explode('/', $agent[0]);
-            if ($serialNumber) {
-                if (!preg_match('/^SN(.+)/', $serialNumber,
-                                $matches)
-                    ) {
-                    return $this->noMatch();
-                }
-                $this->_serialNumber = $matches[1];
-            }
-            list($this->_vendor, $this->_vendorVersion) =
-                explode('/', $agent[1]);
-            for ($i = 2; $i < $count; ++$i) {
-                list($key, $value) = explode('/', $agent[$i]);
-                $this->_javaInfo[$key] = $value;
-            }
-        } else {
-
-            // J-PHONE/2.0/J-DN02
-            @list($this->name, $this->version, $model) =
-                explode('/', $agent[0]);
-            $this->_model  = (string)$model;
-            if ($this->_model) {
-                preg_match('/J-([A-Z]+)/', $this->_model, $matches);
-                $this->_vendor = $matches[1];
-            }
+        if (Net_UserAgent_Mobile::isError($result)) {
+            return $result;
         }
     }
 
@@ -203,7 +200,7 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
         $color = false;
         $depth = 0;
         if ($color_string = $this->getHeader('x-jphone-color')) {
-            preg_match('/^([CG])(\d+)$/', $color_string, $matches);
+            preg_match('!^([CG])(\d+)$!', $color_string, $matches);
             $color = $matches[1] === 'C' ? true : false;
             $depth = $matches[2];
         }
@@ -336,15 +333,11 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
      */
     function isTypeC()
     {
-        if (preg_match('/^3\./', $this->version)) {
-            return true;
+        if ($this->_is3G || !preg_match('!^[32]\.!', $this->version)) {
+            return false;
         }
 
-        if (preg_match('/^2\./', $this->version)) {
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     // }}}
@@ -357,11 +350,11 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
      */
     function isTypeP()
     {
-        if (preg_match('/^4\./', $this->version)) {
-            return true;
+        if ($this->_is3G || !preg_match('!^4\.!', $this->version)) {
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     // }}}
@@ -374,11 +367,141 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
      */
     function isTypeW()
     {
-        if (preg_match('/^5\./', $this->version)) {
-            return true;
+        if ($this->_is3G || !preg_match('!^5\.!', $this->version)) {
+            return false;
         }
 
-        return false;
+        return true;
+    }
+
+    // }}}
+    // {{{ isType3GC()
+
+    /**
+     * returns true if the type is 3GC
+     *
+     * @return boolean
+     */
+    function isType3GC()
+    {
+        return $this->_is3G;
+    }
+
+    /**#@-*/
+
+    /**#@+
+     * @access private
+     */
+
+    // }}}
+    // {{{ _parseVodafone()
+
+    /**
+     * parse HTTP_USER_AGENT string for the Vodafone 3G aegnt
+     *
+     * @param array $agent parts of the User-Agent string
+     * @return mixed void, or a PEAR error object on error
+     */
+    function _parseVodafone(&$agent)
+    {
+        $count = count($agent);
+        $this->_packetCompliant = true;
+
+        // Vodafone/1.0/V702NK/NKJ001 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1
+        // Vodafone/1.0/V702NK/NKJ001/SN123456789012345 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1
+        // Vodafone/1.0/V802SE/SEJ001/SN123456789012345 Browser/SEMC-Browser/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1
+        @list($this->name, $this->version, $this->_model, $modelVersion,
+              $serialNumber) = explode('/', $agent[0]);
+        if ($serialNumber) {
+            if ($serialNumber) {
+                if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
+                    return $this->noMatch();
+                }
+                $this->_serialNumber = $matches[1];
+            }
+        }
+
+        if (!preg_match('!^([a-z]+)([a-z]\d{3})$!i', $modelVersion, $matches)
+            ) {
+            return $this->noMatch();
+        }
+        $this->_vendor = $matches[1];
+        $this->_vendorVersion = $matches[2];
+
+        for ($i = 2; $i < $count; ++$i) {
+            list($key, $value) = explode('/', $agent[$i]);
+            $this->_javaInfo[$key] = $value;
+        }
+    }
+
+    // }}}
+    // {{{ _parseJphone()
+
+    /**
+     * parse HTTP_USER_AGENT string for the ancient agent
+     *
+     * @param array $agent parts of the User-Agent string
+     * @return mixed void, or a PEAR error object on error
+     */
+    function _parseJphone(&$agent)
+    {
+        $count = count($agent);
+        $this->_is3G = false;
+
+        if ($count > 1) {
+
+            // J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0
+            $this->_packetCompliant = true;
+            @list($this->name, $this->version, $this->_model,
+                  $serialNumber) = explode('/', $agent[0]);
+            if ($serialNumber) {
+                if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
+                    return $this->noMatch();
+                }
+                $this->_serialNumber = $matches[1];
+            }
+            list($this->_vendor, $this->_vendorVersion) =
+                explode('/', $agent[1]);
+            for ($i = 2; $i < $count; ++$i) {
+                list($key, $value) = explode('/', $agent[$i]);
+                $this->_javaInfo[$key] = $value;
+            }
+        } else {
+
+            // J-PHONE/2.0/J-DN02
+            @list($this->name, $this->version, $model) =
+                explode('/', $agent[0]);
+            $this->_model  = (string)$model;
+            if ($this->_model) {
+                preg_match('!J-([A-Z]+)!', $this->_model, $matches);
+                $this->_vendor = $matches[1];
+            }
+        }
+    }
+
+    // }}}
+    // {{{ _parseMotorola()
+
+    /**
+     * parse HTTP_USER_AGENT string for the Motorola 3G aegnt
+     *
+     * @param array $agent parts of the User-Agent string
+     * @return mixed void, or a PEAR error object on error
+     */
+    function _parseMotorola(&$agent)
+    {
+        $count = count($agent);
+        $this->_packetCompliant = true;
+        $this->_vendor = 'MOT';
+
+        // MOT-V980/80.2F.2E. MIB/2.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1
+        list($name, $this->_vendorVersion) = explode('/', $agent[0]);
+        $this->_model = substr(strrchr($name, '-'), 1);
+
+        for ($i = 2; $i < $count; ++$i) {
+            list($key, $value) = explode('/', $agent[$i]);
+            $this->_javaInfo[$key] = $value;
+        }
     }
 
     /**#@-*/
