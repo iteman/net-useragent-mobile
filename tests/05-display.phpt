@@ -107,6 +107,13 @@ $tests = array(
                            'depth' => 65536
                            )
                      ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/D505i/c20/TC/W20H10'),
+                     array(
+                           'width_bytes' => 20,
+                           'height_bytes' => 10
+                           )
+                     )
                );
 
 $line = 0;
@@ -140,6 +147,14 @@ foreach ($tests as $value1) {
         case 'depth':
             ++$line;
             print "$line: " . $display->getDepth() . "\n";
+            break;
+        case 'width_bytes':
+            ++$line;
+            print "$line: " . $display->getWidthBytes() . "\n";
+            break;
+        case 'height_bytes':
+            ++$line;
+            print "$line: " . $display->getHeightBytes() . "\n";
             break;
         }
     }
@@ -203,3 +218,7 @@ foreach ($tests as $value1) {
 53: 136
 54: 1
 55: 65536
+56: 1
+57: net_useragent_mobile_display
+58: 20
+59: 10
