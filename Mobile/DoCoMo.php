@@ -16,39 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.3 2003/03/19 15:03:42 kuboa Exp $
-//
-// SYNOPSIS:
-// require_once('Net/UserAgent/Mobile.php');
-//
-// $_SERVER['HTTP_USER_AGENT'] = 'DoCoMo/1.0/P502i/c10';
-// $agent = &Net_UserAgent_Mobile::factory();
-//
-// printf("Name: %s\n", $agent->getName()); // 'DoCoMo'
-// printf("Version: %s\n", $agent->getVersion()); // 1.0
-// printf("HTML version: %s\n", $agent->getHTMLVersion()); // 2.0
-// printf("Model: %s\n", $agent->getModel()); // 'P502i'
-// printf("Cache: %dk\n", $agent->getCacheSize()); // 10
-// if ($agent->isFOMA()) {
-//     print "FOMA\n";             // false
-// }
-// printf("Vendor: %s\n", $agent->getVendor()); // 'P'
-// printf("Series: %s\n", $agent->getSeries()); // '502i'
-//
-// // only available with <form utn>
-// // e.g.) 'DoCoMo/1.0/P503i/c10/serNMABH200331';
-// printf("Serial: %s\n", $agent->getSerialNumber()); // 'NMABH200331'
-//
-// // e.g.) 'DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)';
-// printf("Serial: %s\n", $agent->getSerialNumber()); // '0123456789abcde'
-// printf("Card ID: %s\n", $agent->getCardID()); // '01234567890123456789'
-//
-// // e.g.) 'DoCoMo/1.0/P502i (Google CHTML Proxy/1.0)'
-// printf("Comment: %s\n", $agent->getComment()); // 'Google CHTML Proxy/1.0'
-//
-// // only available in eggy/M-stage
-// // e.g.) 'DoCoMo/1.0/eggy/c300/s32/kPHS-K'
-// printf("Bandwidth: %dkbps\n", $agent->getBandwidth()); // 32
+// $Id: DoCoMo.php,v 1.4 2003/03/26 16:13:03 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -58,79 +26,117 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
 /**
  * NTT DoCoMo implementation
  *
- * Net_UserAgent_Mobile_DoCoMo is a subclass of Net_UserAgent_Mobile_Common,
- * which implements NTT docomo i-mode user agents.
+ * Net_UserAgent_Mobile_DoCoMo is a subclass of
+ * {@link Net_UserAgent_Mobile_Common}, which implements NTT docomo i-mode
+ * user agents.
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.3 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
- * @see     Net_UserAgent_Mobile_Common()
- * @see     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
- * @see     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
- * @see     http://www.nttdocomo.co.jp/p_s/imode/tag/utn.html
- * @see     http://www.nttdocomo.co.jp/p_s/mstage/visual/contents/cnt_mpage.html
+ * SYNOPSIS:
+ * <code>
+ * require_once('Net/UserAgent/Mobile.php');
+ *
+ * $_SERVER['HTTP_USER_AGENT'] = 'DoCoMo/1.0/P502i/c10';
+ * $agent = &Net_UserAgent_Mobile::factory();
+ *
+ * printf("Name: %s\n", $agent->getName()); // 'DoCoMo'
+ * printf("Version: %s\n", $agent->getVersion()); // 1.0
+ * printf("HTML version: %s\n", $agent->getHTMLVersion()); // 2.0
+ * printf("Model: %s\n", $agent->getModel()); // 'P502i'
+ * printf("Cache: %dk\n", $agent->getCacheSize()); // 10
+ * if ($agent->isFOMA()) {
+ *     print "FOMA\n";             // false
+ * }
+ * printf("Vendor: %s\n", $agent->getVendor()); // 'P'
+ * printf("Series: %s\n", $agent->getSeries()); // '502i'
+ *
+ * // only available with <form utn>
+ * // e.g.) 'DoCoMo/1.0/P503i/c10/serNMABH200331';
+ * printf("Serial: %s\n", $agent->getSerialNumber()); // 'NMABH200331'
+ *
+ * // e.g.) 'DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)';
+ * printf("Serial: %s\n", $agent->getSerialNumber()); // '0123456789abcde'
+ * printf("Card ID: %s\n", $agent->getCardID()); // '01234567890123456789'
+ *
+ * // e.g.) 'DoCoMo/1.0/P502i (Google CHTML Proxy/1.0)'
+ * printf("Comment: %s\n", $agent->getComment()); // 'Google CHTML Proxy/1.0'
+ *
+ * // only available in eggy/M-stage
+ * // e.g.) 'DoCoMo/1.0/eggy/c300/s32/kPHS-K'
+ * printf("Bandwidth: %dkbps\n", $agent->getBandwidth()); // 32
+ * </code>
+ *
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.4 $
+ * @see      Net_UserAgent_Mobile_Common
+ * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
+ * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
+ * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/utn.html
+ * @link     http://www.nttdocomo.co.jp/p_s/mstage/visual/contents/cnt_mpage.html
  */
 class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
 {
 
     // {{{ properties
 
+    /**#@+
+     * @access private
+     */
+
     /**
      * name of the model like 'P502i'
      * @var string
-     * @access private
      */
     var $_model = '';
 
     /**
      * status of the cache (TB, TD, TJ)
      * @var string
-     * @access private
      */
     var $_status = '';
 
     /**
      * bandwidth like 32 as killobytes unit
      * @var integer
-     * @access private
      */
     var $_bandwidth = null;
 
     /**
      * hardware unique serial number
      * @var string
-     * @access private
      */
     var $_serial_number = null;
 
     /**
      * whether it's FOMA or not
      * @var boolean
-     * @access private
      */
     var $_is_foma = false;
 
     /**
      * FOMA Card ID (20 digit alphanumeric)
      * @var string
-     * @access private
      */
     var $_card_id = null;
 
     /**
      * comment on user agent string like 'Google Proxy'
      * @var string
-     * @access private
      */
     var $_comment = null;
 
     /**
      * cache size as killobytes unit
      * @var integer
-     * @access private
      */
     var $_cache_size;
+
+    /**#@-*/
+
+    /**#@+
+     * @access public
+     */
 
     // }}}
     // {{{ isDoCoMo()
@@ -139,7 +145,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * returns true
      *
      * @return boolean
-     * @access public
      */
     function isDoCoMo()
     {
@@ -152,7 +157,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     /**
      * parse HTTP_USER_AGENT string
      *
-     * @access public
+     * @return mixed void, or a PEAR error object on error
      */
     function parse()
     {
@@ -165,17 +170,21 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
 
             // DoCoMo/1.0/P209is (Google CHTML Proxy/1.0)
             $this->_comment = $matches[1];
-            $this->_parseMain($main);
+            $result = $this->_parseMain($main);
         } elseif ($foma_or_comment) {
 
             // DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)
             $this->_is_foma = true;
             list($this->name, $this->version) = explode('/', $main);
-            $this->_parseFOMA($foma_or_comment);
+            $result = $this->_parseFOMA($foma_or_comment);
         } else {
 
             // DoCoMo/1.0/R692i/c10
-            $this->_parseMain($main);
+            $result = $this->_parseMain($main);
+        }
+
+        if (Net_UserAgent_Mobile::isError($result)) {
+            return $result;
         }
     }
 
@@ -183,17 +192,18 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ makeDisplay()
 
     /**
-     * create a new Net_UserAgent_Mobile_Display class instance
+     * create a new {@link Net_UserAgent_Mobile_Display} class instance
      *
-     * @return object Net_UserAgent_Mobile_Display
-     * @access public
-     * @see Net_UserAgent_Mobile_Display()
+     * @return mixed a newly created {@link Net_UserAgent_Mobile_Display}
+     *     object, or a PEAR error object on error
+     * @see Net_UserAgent_Mobile_Display
      * @see Net_UserAgent_Mobile_DoCoMoDisplayMap::get()
      */
     function makeDisplay()
     {
         $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->_model);
-        return new Net_UserAgent_Mobile_Display($display);
+        return $display !== null ?
+            new Net_UserAgent_Mobile_Display($display) : $this->noMatch();
     }
 
     // }}}
@@ -202,21 +212,34 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     /**
      * returns supported HTML version like '3.0'. retuns null if unknown.
      *
-     * @return mixed
-     * @access public
+     * @return string
      */
     function getHTMLVersion()
     {
         if ($this->isFOMA()) {
-            $foma_html_version =
+            $html_version_map_foma =
                 &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
-                                         'foma_html_version'
+                                         'html_version_map_foma'
                                          );
-            if ($foma_html_version === null) {
-                $foma_html_version = '3.0';
+            if ($html_version_map_foma === null) {
+
+                // http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
+                $html_version_map_foma = array(
+                                               // FOMA 2001/2002/2101V
+                                               '200[12]|2101V' => '3.0',
+
+                                               // FOMA 2051/2102V
+                                               '2051|2102V' => '4.0'
+                                               );
             }
-            return $foma_html_version;
+            foreach ($html_version_map_foma as $key => $value) {
+                if (preg_match("/$key/", $this->_model)) {
+                    return $value;
+                }
+            }
+            return null;
         }
+
         $html_version_map = &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
                                                      'html_version_map'
                                                      );
@@ -247,7 +270,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * returns cache size as killobytes unit. returns 5 if unknown.
      *
      * @return integer
-     * @access public
      */
     function getCacheSize()
     {
@@ -270,8 +292,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     /**
      * returns series name like '502i'. returns null if unknown.
      *
-     * @return mixed
-     * @access public
+     * @return string
      */
     function getSeries()
     {
@@ -290,8 +311,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     /**
      * returns vender code like 'SO' for Sony. returns null if unknown.
      *
-     * @return mixed
-     * @access public
+     * @return string
      */
     function getVendor()
     {
@@ -308,7 +328,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * returns name of the model like 'P502i'
      *
      * @return string
-     * @access public
      */
     function getModel()
     {
@@ -322,7 +341,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * returns status of the cache (TB, TD, TJ)
      *
      * @return string
-     * @access public
      */
     function getStatus()
     {
@@ -333,10 +351,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getBandwidth()
 
     /**
-     * returns bandwidth like 32 as killobytes unit. Only vailable in eggy, returns null otherwise.
+     * returns bandwidth like 32 as killobytes unit. Only vailable in eggy,
+     * returns null otherwise.
      *
-     * @return mixed
-     * @access public
+     * @return integer
      */
     function getBandwidth()
     {
@@ -347,10 +365,11 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getSerialNumber()
 
     /**
-     * returns hardware unique serial number (15 digit in FOMA, 11 digit otherwise alphanumeric). Only available with form utn attribute. returns null otherwise.
+     * returns hardware unique serial number (15 digit in FOMA, 11 digit
+     * otherwise alphanumeric). Only available with form utn attribute.
+     * returns null otherwise.
      *
-     * @return mixed
-     * @access public
+     * @return string
      */
     function getSerialNumber()
     {
@@ -364,7 +383,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * retuns whether it's FOMA or not
      *
      * @return boolean
-     * @access public
      */
     function isFOMA()
     {
@@ -375,10 +393,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getComment()
 
     /**
-     * returns comment on user agent string like 'Google Proxy'. returns null otherwise.
+     * returns comment on user agent string like 'Google Proxy'. returns null
+     * otherwise.
      *
-     * @return mixed
-     * @access public
+     * @return string
      */
     function getComment()
     {
@@ -389,15 +407,17 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getCardID()
 
     /**
-     * returns FOMA Card ID (20 digit alphanumeric). Only available in FOMA with E<lt>form utnE<gt> attribute. returns null otherwise.
+     * returns FOMA Card ID (20 digit alphanumeric). Only available in FOMA
+     * with <form utn> attribute. returns null otherwise.
      *
-     * @return mixed
-     * @access public
+     * @return string
      */ 
     function getCardID()
     {
         return $this->_card_id;
     }
+
+    /**#@-*/
 
     // }}}
     // {{{ _parseMain()
@@ -406,6 +426,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * parse main part of HTTP_USER_AGENT string (not FOMA)
      *
      * @param string $main main part of HTTP_USER_AGENT string
+     * @return mixed void, or a PEAR error object on error
      * @access private
      */ 
     function _parseMain($main)
@@ -450,11 +471,12 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * parse main part of HTTP_USER_AGENT string (FOMA)
      *
      * @param string $foma main part of HTTP_USER_AGENT string
+     * @return mixed void, or a PEAR error object on error
      * @access private
      */ 
     function _parseFOMA($foma)
     {
-        if (!preg_match('/^([^\(]+)/', $foma, $matches)) {
+        if (!preg_match('/^([^(]+)/', $foma, $matches)) {
             return $this->noMatch();
         }
         $this->_model = $matches[1];
@@ -462,20 +484,26 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
             $this->_model = 'SH2101V';
         }
 
-        if (preg_match('/^[^\(]+\((.*?)\)$/', $foma, $matches)) {
-            @list($cache, $serial, $icc) = explode(';', $matches[1]);
-            $this->_cache_size = (integer)substr($cache, 1);
-            if ($serial) {
-                if (!preg_match('/^ser(\w{15})$/', $serial, $matches)) {
-                    return $this->noMatch();
+        if (preg_match('/^[^(]+\((.*?)\)$/', $foma, $matches)) {
+            $rest = explode(';', $matches[1]);
+            foreach ($rest as $value) {
+                if (preg_match('/^c(\d+)/', $value, $matches)) {
+                    $this->_cache_size = (integer)$matches[1];
+                    continue;
                 }
-                $this->_serial_number = $matches[1];
-            }
-            if ($icc) {
-                if (!preg_match('/^icc(\w{20})$/', $icc, $matches)) {
-                    return $this->noMatch();
+                if (preg_match('/^ser(\w{15})$/', $value, $matches)) {
+                    $this->_serial_number = $matches[1];
+                    continue;
                 }
-                $this->_card_id = $matches[1];
+                if (preg_match('/^(T[DBJ])$/', $value, $matches)) {
+                    $this->_status = $matches[1];
+                    continue;
+                }
+                if (preg_match('/^icc(\w{20})$/', $value, $matches)) {
+                    $this->_card_id = $matches[1];
+                    continue;
+                }
+                return $this->noMatch();
             }
         }
     }
