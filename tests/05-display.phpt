@@ -168,6 +168,28 @@ $tests = array(
                            'color' => true,
                            'depth' => 65536
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/D252i/c10/TB/W25H12'),
+                     array(
+                           'width' => 176,
+                           'height' => 198,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 25,
+                           'height_bytes' => 12
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/SH252i/c20/TB/W24H12'),
+                     array(
+                           'width' => 240,
+                           'height' => 252,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 24,
+                           'height_bytes' => 12
+                           )
                      )
                );
 
@@ -180,6 +202,7 @@ foreach ($tests as $value1) {
     $display = $agent->getDisplay();
     print is_object($display) . "\n";
     print get_class($display) . "\n";
+    print $agent->getUserAgent() . "\n";
     foreach ($values as $key => $value) {
         switch ($key) {
         case 'width':
@@ -210,60 +233,70 @@ foreach ($tests as $value1) {
 Testing Display ...
 1
 net_useragent_mobile_display
+J-PHONE/2.0/J-DN02
 120
 117
 1
 256
 1
 net_useragent_mobile_display
+KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
 90
 70
 1
 65536
 1
 net_useragent_mobile_display
+KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
 90
 70
 
 2
 1
 net_useragent_mobile_display
+DoCoMo/1.0/D501i
 96
 72
 
 2
 1
 net_useragent_mobile_display
+DoCoMo/1.0/D502i
 96
 90
 1
 256
 1
 net_useragent_mobile_display
+DoCoMo/1.0/N502i
 118
 128
 
 4
 1
 net_useragent_mobile_display
+DoCoMo/2.0 P2102V(c100;TB)
 176
 198
 1
 262144
 1
 net_useragent_mobile_display
+DoCoMo/1.0/N251iS/c10/TB
 132
 140
 1
 65536
 1
 net_useragent_mobile_display
+DoCoMo/1.0/F661i/c10/TB
 132
 136
 1
 65536
 1
 net_useragent_mobile_display
+DoCoMo/1.0/D505i/c20/TC/W20H10
 240
 270
 1
@@ -272,6 +305,7 @@ net_useragent_mobile_display
 10
 1
 net_useragent_mobile_display
+DoCoMo/1.0/SO505i/c20/TB/W21H09
 256
 240
 1
@@ -280,12 +314,14 @@ net_useragent_mobile_display
 9
 1
 net_useragent_mobile_display
+Mozilla/3.0(DDIPOCKET;JRC/AH-J3001V,AH-J3002V/1.0/0100/c50)CNF/2.0
 0
 0
 
 0
 1
 net_useragent_mobile_display
+DoCoMo/1.0/P505i/c20/TB/W20H10
 240
 266
 1
@@ -294,6 +330,7 @@ net_useragent_mobile_display
 10
 1
 net_useragent_mobile_display
+DoCoMo/1.0/SH505i2/c20/TB/W24H12
 240
 252
 1
@@ -302,7 +339,26 @@ net_useragent_mobile_display
 12
 1
 net_useragent_mobile_display
+DoCoMo/1.0/F672i/c10/TB
 160
 120
 1
 65536
+1
+net_useragent_mobile_display
+DoCoMo/1.0/D252i/c10/TB/W25H12
+176
+198
+1
+262144
+25
+12
+1
+net_useragent_mobile_display
+DoCoMo/1.0/SH252i/c20/TB/W24H12
+240
+252
+1
+262144
+24
+12
