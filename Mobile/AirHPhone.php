@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: AirHPhone.php,v 1.5 2004/02/08 11:58:38 kuboa Exp $
+// $Id: AirHPhone.php,v 1.6 2004/09/25 08:01:41 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -49,7 +49,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.5 $
+ * @version  $Revision: 1.6 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.ddipocket.co.jp/airh_phone/i_hp.html
  */
@@ -220,6 +220,32 @@ class Net_UserAgent_Mobile_AirHPhone extends Net_UserAgent_Mobile_Common
     function getCacheSize()
     {
         return $this->_cache_size;
+    }
+
+    // }}}
+    // {{{ getCarrierShortName()
+
+    /**
+     * returns the short name of the carrier
+     *
+     * @return string
+     */
+    function getCarrierShortName()
+    {
+        return 'H';
+    }
+
+    // }}}
+    // {{{ getCarrierLongName()
+
+    /**
+     * returns the long name of the carrier
+     *
+     * @return string
+     */
+    function getCarrierLongName()
+    {
+        return 'AirH';
     }
 
     /**#@-*/
