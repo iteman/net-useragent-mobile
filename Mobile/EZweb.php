@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.11 2004/03/20 13:26:32 kuboa Exp $
+// $Id: EZweb.php,v 1.12 2004/05/27 07:24:56 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -54,7 +54,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.11 $
+ * @version  $Revision: 1.12 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
@@ -78,13 +78,13 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * device ID like 'TS21'
      * @var string
      */
-    var $_device_id = '';
+    var $_deviceID = '';
 
     /**
      * server string like 'UP.Link/3.2.1.2'
      * @var string
      */
-    var $_server_name = '';
+    var $_serverName = '';
 
     /**
      * comment like 'Google WAP Proxy/1.0'
@@ -96,7 +96,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * whether it's XHTML compliant or not
      * @var boolean
      */
-    var $_xhtml_compliant = false;
+    var $_xhtmlCompliant = false;
 
     /**#@-*/
 
@@ -130,18 +130,18 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
         if (preg_match('/^KDDI-(.*)/', $agent, $matches)) {
 
             // KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
-            $this->_xhtml_compliant = true;
-            list($this->_device_id, $browser, $opt, $this->_server_name) =
+            $this->_xhtmlCompliant = true;
+            list($this->_deviceID, $browser, $opt, $this->_serverName) =
                 explode(' ', $matches[1], 4);
             list($this->name, $version) = explode('/', $browser);
             $this->version = "$version $opt";
         } else {
 
             // UP.Browser/3.01-HI01 UP.Link/3.4.5.2
-            @list($browser, $this->_server_name, $comment) =
+            @list($browser, $this->_serverName, $comment) =
                 explode(' ', $agent, 3);
             list($this->name, $software) = explode('/', $browser);
-            list($this->version, $this->_device_id) =
+            list($this->version, $this->_deviceID) =
                 explode('-', $software);
             if ($comment) {
                 $this->_comment =
@@ -164,9 +164,9 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     {
         @list($width, $height) =
             explode(',', $this->getHeader('x-up-devcap-screenpixels'));
-        $screen_depth =
+        $screenDepth =
             explode(',', $this->getHeader('x-up-devcap-screendepth'));
-        $depth = $screen_depth[0] ? pow(2, (integer)$screen_depth[0]) : 0;
+        $depth = $screenDepth[0] ? pow(2, (integer)$screenDepth[0]) : 0;
         $color =
             $this->getHeader('x-up-devcap-iscolor') === '1' ? true : false;
         return new Net_UserAgent_Mobile_Display(array(
@@ -188,15 +188,17 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      */
     function getModel()
     {
-        static $device_id_to_model;
-        if (!isset($device_id_to_model)) {
-            $device_id_to_model = array(
+        static $deviceIdToModel;
+        if (!isset($deviceIdToModel)) {
+            $deviceIdToModel = array(
                                         // W (excluding W01K)
+                                        'HI32' => 'W21H',
                                         'KC31' => 'W11K',
                                         'HI31' => 'W11H',
 
                                         // INFOBAR, A5000/C5000
                                         'ST22' => 'INFOBAR',
+                                        'TS27' => 'A5504T',
                                         'SA26' => 'A5503SA',
                                         'KC25' => 'A5502K',
                                         'KC24' => 'A5502K',
@@ -277,6 +279,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         'HI02' => 'C201H',
 
                                         // Tu-Ka
+                                        'KCU1' => 'TK41',
                                         'SYT5' => 'TS41',
                                         'KCTD' => 'TK40',
                                         'TST8' => 'TT32',
@@ -310,7 +313,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         );
         }
 
-        return @$device_id_to_model[$this->_device_id];
+        return @$deviceIdToModel[$this->_deviceID];
     }
 
     // }}}
@@ -323,7 +326,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      */
     function getDeviceID()
     {
-        return $this->_device_id;
+        return $this->_deviceID;
     }
 
     // }}}
@@ -336,7 +339,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      */
     function getServer()
     {
-        return $this->_server_name;
+        return $this->_serverName;
     }
 
     // }}}
@@ -362,7 +365,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      */
     function isXHTMLCompliant()
     {
-        return $this->_xhtml_compliant;
+        return $this->_xhtmlCompliant;
     }
 
     /**#@-*/
