@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Common.php,v 1.6 2003/07/07 02:10:24 kuboa Exp $
+// $Id: Common.php,v 1.7 2003/08/11 04:03:43 kuboa Exp $
 //
 
 /**
@@ -30,7 +30,7 @@
  * @abstract
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.6 $
+ * @version  $Revision: 1.7 $
  */
 class Net_UserAgent_Mobile_Common extends PEAR
 {
@@ -107,16 +107,16 @@ class Net_UserAgent_Mobile_Common extends PEAR
      *     other parameters are ignored if this parameter is an object
      * @param int $mode error mode, see PEAR_Error docs
      * @param mixed $options If error mode is PEAR_ERROR_TRIGGER, this is the
-     *     error level (E_USER_NOTICE etc).  If error mode is
+     *     error level (E_USER_NOTICE etc). If error mode is
      *     PEAR_ERROR_CALLBACK, this is the callback function, either as a
      *     function name, or as an array of an object and method name. For
      *     other error modes this parameter is ignored.
-     * @param string $userinfo Extra debug information.  Defaults to the last
-     *      query and native error code.
+     * @param string $userinfo Extra debug information. Defaults to the last
+     *     query and native error code.
      * @return object a PEAR error object
      * @see PEAR_Error
      */
-    function &raiseError($code = Net_UserAgent_Mobile_Error, $mode = null,
+    function &raiseError($code = NET_USERAGENT_MOBILE_ERROR, $mode = null,
                          $options = null, $userinfo = null
                          )
     {
