@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.14 2003/09/04 08:43:13 kuboa Exp $
+// $Id: DoCoMo.php,v 1.15 2003/10/12 15:03:09 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -68,7 +68,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.14 $
+ * @version  $Revision: 1.15 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -235,7 +235,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                                       '(D210i|SO210i)|503i|211i|SH251i|692i|200[12]|2101V' => '3.0',
                                       '504i|251i|^F671iS$|212i|2051|2102V|^F661i$|2701|^F672i$' => '4.0',
                                       'eggy|P751v' => '3.2',
-                                      '505i' => '5.0'
+                                      '505i|252i' => '5.0'
                                       );
         }
 
