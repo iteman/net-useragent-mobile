@@ -5,10 +5,10 @@
 // +----------------------------------------------------------------------+
 // | Copyright (c) 1997-2003 The PHP Group                                |
 // +----------------------------------------------------------------------+
-// | This source file is subject to version 2.0 of the PHP license,       |
+// | This source file is subject to version 3.0 of the PHP license,       |
 // | that is bundled with this package in the file LICENSE, and is        |
-// | available at through the world-wide-web at                           |
-// | http://www.php.net/license/2_02.txt.                                 |
+// | available through the world-wide-web at the following url:           |
+// | http://www.php.net/license/3_0.txt.                                  |
 // | If you did not receive a copy of the PHP license and are unable to   |
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.8 2003/06/05 13:51:38 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.9 2003/07/07 02:22:40 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.8 $
+ * @version  $Revision: 1.9 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -530,7 +530,7 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                   ),
 
                                  // i-mode compliant HTML 4.0
-                                 // (FOMA 2051/2102V)
+                                 // (FOMA 2051/2102V/2701)
                                  'F2051' => array(
                                                   'width'  => 176,
                                                   'height' => 182,
@@ -549,6 +549,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                    'depth'  => 262144,
                                                    'color'  => true
                                                    ),
+                                 'N2701' => array(
+                                                  'width'  => 176,
+                                                  'height' => 198,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
 
                                  // i-mode compliant HTML 5.0 (505i etc.)
                                  'D505i' => array(
@@ -562,7 +568,19 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                    'height' => 240,
                                                    'depth'  => 262144,
                                                    'color'  => true
-                                                   )
+                                                   ),
+                                 'SH505i' => array(
+                                                   'width'  => 240,
+                                                   'height' => 252,
+                                                   'depth'  => 262144,
+                                                   'color'  => true
+                                                   ),
+                                 'N505i' => array(
+                                                  'width'  => 240,
+                                                  'height' => 270,
+                                                  'depth'  => 262144,
+                                                  'color'  => true
+                                                  )
                                  );
         }
 
