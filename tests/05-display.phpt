@@ -88,7 +88,25 @@ $tests = array(
                            'color' => true,
                            'depth' => 262144
                            )
-                     )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/N251iS/c10/TB'),
+                     array(
+                           'width' => 132,
+                           'height' => 140,
+                           'color' => true,
+                           'depth' => 65536
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/F661i/c10/TB'),
+                     array(
+                           'width' => 132,
+                           'height' => 136,
+                           'color' => true,
+                           'depth' => 65536
+                           )
+                     ),
                );
 
 $line = 0;
@@ -173,3 +191,15 @@ foreach ($tests as $value1) {
 41: 198
 42: 1
 43: 262144
+44: 1
+45: net_useragent_mobile_display
+46: 132
+47: 140
+48: 1
+49: 65536
+50: 1
+51: net_useragent_mobile_display
+52: 132
+53: 136
+54: 1
+55: 65536
