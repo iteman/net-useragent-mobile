@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Common.php,v 1.8 2004/02/08 11:58:38 kuboa Exp $
+// $Id: Common.php,v 1.9 2004/08/12 05:32:12 kuboa Exp $
 //
 
 /**
@@ -30,7 +30,7 @@
  * @abstract
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.8 $
+ * @version  $Revision: 1.9 $
  */
 class Net_UserAgent_Mobile_Common extends PEAR
 {
@@ -71,6 +71,13 @@ class Net_UserAgent_Mobile_Common extends PEAR
      */
     var $_request;
 
+    /**
+     * {@link Net_UserAgent_Mobile_Error} object for error handling in the
+     *     constructor
+     * @var object
+     **/
+    var $_error = null;
+
     /**#@-*/
 
     // }}}
@@ -87,13 +94,32 @@ class Net_UserAgent_Mobile_Common extends PEAR
         parent::PEAR('Net_UserAgent_Mobile_Error');
         $this->_request = $request;
         if (Net_UserAgent_Mobile::isError($result = $this->parse())) {
-            $this = $result;
+            $this->isError($result);
         }
     }
 
     /**#@+
      * @access public
      */
+
+    // }}}
+    // {{{ isError
+
+    /**
+     * Returns/set an error when the instance couldn't initialize properly
+     *
+     * @param object {@link Net_UserAgent_Mobile_Error} object when setting
+     *     an error
+     * @return object {@link Net_UserAgent_Mobile_Error} object
+     */
+    function &isError($error = null)
+    {
+        if ($error !== null) {
+            $this->_error = &$error;
+        }
+
+        return $this->_error;
+    }
 
     // }}}
     // {{{ raiseError()
