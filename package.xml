@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "../package.dtd">
+<package version="1.0">
+  <name>Net_UserAgent_Mobile</name>
+  <summary>HTTP mobile user agent string parser</summary>
+  <description>
+Net_UserAgent_Mobile parses HTTP_USER_AGENT strings of (mainly Japanese)
+mobile HTTP user agents. It'll be useful in page dispatching by user agents.
+This package was ported from Perl's HTTP::MobileAgent.
+See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent
+The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
+&lt;miyagawa@bulknews.net&gt;
+  </description>
+  <license>PHP License</license>
+  <maintainers>
+    <maintainer>
+      <user>kuboa</user>
+      <role>lead</role>
+      <name>KUBO Atsuhiro</name>
+      <email>kubo@isite.co.jp</email>
+    </maintainer>
+  </maintainers>
+  <release>
+    <version>0.1</version>
+    <state>beta</state>
+    <date>2003-02-19</date>
+    <notes>
+- initial release
+    </notes>
+    <filelist>
+      <dir name="/" baseinstalldir="Net/UserAgent">
+        <file role="php">Mobile.php</file>
+        <dir name="Mobile">
+          <file role="php">Common.php</file>
+          <file role="php">Display.php</file>
+          <file role="php">DoCoMo.php</file>
+          <file role="php">DoCoMoDisplayMap.php</file>
+          <file role="php">EZweb.php</file>
+          <file role="php">JPhone.php</file>
+          <file role="php">NonMobile.php</file>
+          <file role="php">Request.php</file>
+        </dir>
+      </dir>
+      <dir name="tests">
+        <file role="test">00-compile.phpt</file>
+        <file role="test">01-request.phpt</file>
+        <file role="test">02-docomo.phpt</file>
+        <file role="test">03-jphone.phpt</file>
+        <file role="test">04-ezweb.phpt</file>
+        <file role="test">05-display.phpt</file>
+        <file role="test">06-nonmobile.phpt</file>
+      </dir>
+    </filelist>
+  </release>
+</package>
