@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.15 2004/08/12 06:12:14 kuboa Exp $
+// $Id: Mobile.php,v 1.16 2004/09/25 07:45:07 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -53,9 +53,9 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  *     // or if (strtolower(get_class($agent)) == 'http_mobileagent_docomo')
  *     // it's NTT DoCoMo i-mode
  *     // see what's available in Net_UserAgent_Mobile_DoCoMo
- * } elseif ($agent->isJPhone()) {
- *     // it's J-PHONE J-Sky
- *     // see what's available in Net_UserAgent_Mobile_JPhone
+ * } elseif ($agent->isVodafone()) {
+ *     // it's Vodafone(J-PHONE)
+ *     // see what's available in Net_UserAgent_Mobile_Vodafone
  * } elseif ($agent->isEZweb()) {
  *     // it's KDDI/EZWeb
  *     // see what's available in Net_UserAgent_Mobile_EZweb
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.15 $
+ * @version  $Revision: 1.16 $
  */
 class Net_UserAgent_Mobile
 {
@@ -224,7 +224,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.15 $
+ * @version  $Revision: 1.16 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
