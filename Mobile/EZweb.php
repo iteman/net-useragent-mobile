@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.1 2003/02/19 16:28:42 kuboa Exp $
+// $Id: EZweb.php,v 1.2 2003/02/20 14:52:28 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -48,7 +48,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * implements EZweb (WAP1.0/2.0) user agents.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  * @see     Net_UserAgent_Mobile_Common()
@@ -120,7 +120,8 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
             $this->_xhtml_compliant = TRUE;
             list($this->_device_id, $browser, $opt, $this->_server_name) =
                 explode(' ', $matches[1], 4);
-            list($this->name, $this->version) = explode('/', $browser);
+            list($this->name, $version) = explode('/', $browser);
+            $this->version = "$version $opt";
         } else {
 
             // UP.Browser/3.01-HI01 UP.Link/3.4.5.2
