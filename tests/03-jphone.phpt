@@ -84,6 +84,10 @@ $test_agents = array(
                      'J-PHONE/4.0/J-T51/SNJTSA3001961 TS/1.00 Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0'
                      );
 
+$test_error_agents = array(
+                           'J-PHONE/4.0/J-SH51_a/ZNJSHA5081372 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0'
+                           );
+
 $line = 0;
 
 ++$line;
@@ -161,6 +165,19 @@ foreach ($test_agents as $value) {
     print "$line: " . $agent->isJPhone() . "\n";
     ++$line;
     print "$line: " . $agent->isEZweb() . "\n";
+}
+
+foreach ($test_error_agents as $value) {
+    $_SERVER['HTTP_USER_AGENT'] = $value;
+    $agent = &Net_UserAgent_Mobile::factory();
+    ++$line;
+    print "$line: " . is_object($agent) . "\n";
+    ++$line;
+    print "$line: " . get_class($agent) . "\n";
+    if (Net_UserAgent_Mobile::isError($agent)) {
+        ++$line;
+        print "$line: " . $agent->getMessage() . "\n";
+    }
 }
 ?>
 --POST--
@@ -656,3 +673,6 @@ foreach ($test_agents as $value) {
 488: 
 489: 1
 490: 
+491: 1
+492: net_useragent_mobile_error
+493: Net_UserAgent_Mobile Error: no match
