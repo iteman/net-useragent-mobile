@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.12 2003/07/20 12:33:19 kuboa Exp $
+// $Id: DoCoMo.php,v 1.13 2003/08/11 03:53:08 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -68,7 +68,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.12 $
+ * @version  $Revision: 1.13 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -97,7 +97,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     var $_status = '';
 
     /**
-     * bandwidth like 32 as killobytes unit
+     * bandwidth like 32 as kilobytes unit
      * @var integer
      */
     var $_bandwidth = null;
@@ -227,10 +227,8 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function getHTMLVersion()
     {
-        $html_version_map = &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
-                                                     'html_version_map'
-                                                     );
-        if ($html_version_map === null) {
+        static $html_version_map;
+        if (!isset($html_version_map)) {
             $html_version_map = array(
                                       '[DFNP]501i' => '1.0',
                                       '502i|821i|209i|691i|(F|N|P|KO)210i|^F671i$' => '2.0',
@@ -240,6 +238,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                                       '505i' => '5.0'
                                       );
         }
+
         foreach ($html_version_map as $key => $value) {
             if (preg_match("/$key/", $this->_model)) {
                 return $value;
@@ -261,11 +260,9 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if ($this->_cache_size) {
             return $this->_cache_size;
         }
-        $default_cache_size =
-            &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
-                                     'default_cache_size'
-                                     );
-        if ($default_cache_size === null) {
+
+        static $default_cache_size;
+        if (!isset($default_cache_size)) {
             $default_cache_size = 5;
         }
         return $default_cache_size;
@@ -410,13 +407,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */ 
     function isGPS()
     {
-        $gps_models = &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
-                                               'gps_models'
-                                               );
-        if ($gps_models === null) {
+        static $gps_models;
+        if (!isset($gps_models)) {
             $gps_models = array('F661i');
         }
-
         return in_array($this->_model, $gps_models);
     }
 

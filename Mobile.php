@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.6 2003/07/07 02:10:24 kuboa Exp $
+// $Id: Mobile.php,v 1.7 2003/08/11 03:53:08 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.6 $
+ * @version  $Revision: 1.7 $
  */
 class Net_UserAgent_Mobile
 {
@@ -102,10 +102,8 @@ class Net_UserAgent_Mobile
      */
     function &factory($stuff = null)
     {
-        $mobile_regex = &PEAR::getStaticProperty('Net_UserAgent_Mobile',
-                                                 'mobile_regex'
-                                                 );
-        if ($mobile_regex === null) {
+        static $mobile_regex;
+        if (!isset($mobile_regex)) {
             $docomo_regex    = '^DoCoMo/\d\.\d[ /]';
             $jphone_regex    = '^J-PHONE/\d\.\d';
             $ezweb_regex     = '^(?:KDDI-[A-Z]+\d+ )?UP\.Browser\/';
@@ -162,19 +160,16 @@ class Net_UserAgent_Mobile
     // {{{ errorMessage()
 
     /**
-     * return a textual error message for a Net_UserAgent_Mobile error
-     * code
+     * return a textual error message for a Net_UserAgent_Mobile error code
      *
      * @param integer $value error code
      * @return string error message, or false if the error code was not
-     *                recognized
+     *     recognized
      */
     function errorMessage($value)
     {
-        $errorMessages = &PEAR::getStaticProperty('Net_UserAgent_Mobile',
-                                                  'errorMessages'
-                                                  );
-        if ($errorMessages === null) {
+        static $errorMessages;
+        if (!isset($errorMessages)) {
             $errorMessages = array(
                                    NET_USERAGENT_MOBILE_ERROR           => 'unknown error',
                                    NET_USERAGENT_MOBILE_ERROR_NOMATCH   => 'no match',
@@ -203,7 +198,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.6 $
+ * @version  $Revision: 1.7 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
@@ -214,12 +209,12 @@ class Net_UserAgent_Mobile_Error extends PEAR_Error
     /**
      * constructor
      *
-     * @param mixed   $code      Net_UserAgent_Mobile error code, or
-     *     string with error message.
-     * @param integer $mode      what 'error mode' to operate in
-     * @param integer $level     what error level to use for $mode and
+     * @param mixed   $code     Net_UserAgent_Mobile error code, or string
+     *     with error message.
+     * @param integer $mode     what 'error mode' to operate in
+     * @param integer $level    what error level to use for $mode and
      *     PEAR_ERROR_TRIGGER
-     * @param mixed   $userinfo  additional user/debug info
+     * @param mixed   $userinfo additional user/debug info
      * @access public
      */
     function Net_UserAgent_Mobile_Error($code = NET_USERAGENT_MOBILE_ERROR,
