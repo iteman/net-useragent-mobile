@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.17 2004/09/25 12:33:17 kuboa Exp $
+// $Id: Mobile.php,v 1.18 2005/02/01 04:40:32 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.17 $
+ * @version  $Revision: 1.18 $
  */
 class Net_UserAgent_Mobile
 {
@@ -105,11 +105,11 @@ class Net_UserAgent_Mobile
         static $mobileRegex;
         if (!isset($mobileRegex)) {
             $docomoRegex    = '^DoCoMo/\d\.\d[ /]';
-            $jphoneRegex    = '^J-PHONE/\d\.\d';
+            $vodafoneRegex  = '^(?:(?:Vodafone|J-PHONE)/\d\.\d|MOT-)';
             $ezwebRegex     = '^(?:KDDI-[A-Z]+\d+ )?UP\.Browser\/';
             $airhphoneRegex = '^Mozilla/3\.0\(DDIPOCKET;';
             $mobileRegex =
-                "(?:($docomoRegex)|($jphoneRegex)|($ezwebRegex)|($airhphoneRegex))";
+                "(?:($docomoRegex)|($vodafoneRegex)|($ezwebRegex)|($airhphoneRegex))";
         }
 
         $request = &Net_UserAgent_Mobile_Request::factory($stuff);
@@ -224,7 +224,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.17 $
+ * @version  $Revision: 1.18 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
