@@ -65,7 +65,10 @@ $tests = array(
                array('DoCoMo/1.0/D505iS/c20/TB/W20H10', '1.0', '5.0', 'D505iS', 20, false, 'D', '505i', array('status' => 'TB')),
                array('DoCoMo/1.0/P505iS/c20/TB/W20H10', '1.0', '5.0', 'P505iS', 20, false, 'P', '505i', array('status' => 'TB')),
                array('DoCoMo/1.0/P252i/c10/TB/W22H10', '1.0', '5.0', 'P252i', 10, false, 'P', '252i', array('status' => 'TB')),
-               array('DoCoMo/1.0/N252i/c10/TB/W22H10', '1.0', '5.0', 'N252i', 10, false, 'N', '252i', array('status' => 'TB'))
+               array('DoCoMo/1.0/N252i/c10/TB/W22H10', '1.0', '5.0', 'N252i', 10, false, 'N', '252i', array('status' => 'TB')),
+               array('DoCoMo/1.0/N505iS/c20/TB/W20H10', '1.0', '5.0', 'N505iS', 20, false, 'N', '505i', array('status' => 'TB')),
+               array('DoCoMo/1.0/SO505iS/c20/TB/W20H10', '1.0', '5.0', 'SO505iS', 20, false, 'SO', '505i', array('status' => 'TB')),
+               array('DoCoMo/1.0/SH505iS/c20/TB/W24H12', '1.0', '5.0', 'SH505iS', 20, false, 'SH', '505i', array('status' => 'TB'))
                );
 
 $test_error_agents = array(
@@ -984,6 +987,57 @@ N252i
 
 N
 252i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/N505iS/c20/TB/W20H10
+1.0
+5.0
+N505iS
+20
+
+N
+505i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/SO505iS/c20/TB/W20H10
+1.0
+5.0
+SO505iS
+20
+
+SO
+505i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/SH505iS/c20/TB/W24H12
+1.0
+5.0
+SH505iS
+20
+
+SH
+505i
 Testing status ...
 TB
 1
