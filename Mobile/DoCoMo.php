@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.11 2003/07/07 02:13:19 kuboa Exp $
+// $Id: DoCoMo.php,v 1.12 2003/07/20 12:33:19 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -68,7 +68,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.11 $
+ * @version  $Revision: 1.12 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -500,7 +500,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                     $this->_serial_number = $matches[1];
                     continue;
                 }
-                if (preg_match('/^(T[DBJ])$/', $value, $matches)) {
+                if (preg_match('/^(T[CDBJ])$/', $value, $matches)) {
                     $this->_status = $matches[1];
                     continue;
                 }
