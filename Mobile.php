@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.11 2004/02/08 11:56:27 kuboa Exp $
+// $Id: Mobile.php,v 1.12 2004/03/02 06:38:27 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -49,8 +49,8 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * // or $agent = &Net_UserAgent_Mobile::factory(); // to get from $_SERVER
  *
  * if ($agent->isDoCoMo()) {
- *     // or if ($agent->getName() === 'DoCoMo')
- *     // or if (get_class($agent) === 'http_mobileagent_docomo')
+ *     // or if ($agent->getName() == 'DoCoMo')
+ *     // or if (strtolower(get_class($agent)) == 'http_mobileagent_docomo')
  *     // it's NTT DoCoMo i-mode
  *     // see what's available in Net_UserAgent_Mobile_DoCoMo
  * } elseif ($agent->isJPhone()) {
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.11 $
+ * @version  $Revision: 1.12 $
  */
 class Net_UserAgent_Mobile
 {
@@ -175,7 +175,7 @@ class Net_UserAgent_Mobile
     function isError($value)
     {
         return is_object($value)
-            && (get_class($value) == 'net_useragent_mobile_error'
+            && (strtolower(get_class($value)) == 'net_useragent_mobile_error'
                 || is_subclass_of($value, 'net_useragent_mobile_error'));
     }
 
@@ -221,7 +221,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.11 $
+ * @version  $Revision: 1.12 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
