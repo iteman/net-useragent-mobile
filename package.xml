@@ -21,19 +21,12 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.20.0</version>
+    <version>0.21.0</version>
     <state>beta</state>
-    <date>2004-09-25</date>
+    <date>2005-02-01</date>
     <notes>
-- Fixed Bug #827 without BC break. This package currently works properly on PHP5.
-- Added getCarrierShortName() and getCarrierLongName() methods.
-- Added isVodafone() method.
-- Added isTUKa() method.
-- Changed the way to get a series of FOMA in DoCoMo.php.
-- Added support for DoCoMo's P651ps, SO213i, N506i, P506iC, SH506iC, SO506iC, F900iT, P900iV, N900iS, D900i, F900iC, F880iES.
-- Changed treatment of the name of the model in EZweb.php. getModel() method currently returns the device ID.
-- Renamed from JPhone.php to Vodafone.php.
-- Added getModel() and getDeviceID() methods in NonMobile.php. These methods always return ''.
+- Added support for Vodafone 3G mobile phones (3GC).
+- Added support for DoCoMo's SO213iS, D253i, N253i, P253i, D253iWM, P213i, N900iL, N900iG, SH901iC, F901iC.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -65,6 +58,22 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.20.0</version>
+      <state>beta</state>
+      <date>2004-09-25</date>
+      <notes>
+- Fixed Bug #827 without BC break. This package currently works properly on PHP5.
+- Added getCarrierShortName() and getCarrierLongName() methods.
+- Added isVodafone() method.
+- Added isTUKa() method.
+- Changed the way to get a series of FOMA in DoCoMo.php.
+- Added support for DoCoMo's P651ps, SO213i, N506i, P506iC, SH506iC, SO506iC, F900iT, P900iV, N900iS, D900i, F900iC, F880iES.
+- Changed treatment of the name of the model in EZweb.php. getModel() method currently returns the device ID.
+- Renamed from JPhone.php to Vodafone.php.
+- Added getModel() and getDeviceID() methods in NonMobile.php. These methods always return ''.
+      </notes>
+    </release>
     <release>
       <version>0.19</version>
       <state>beta</state>
