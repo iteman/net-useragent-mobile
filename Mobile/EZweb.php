@@ -1,9 +1,9 @@
 <?php
-//
+/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
+// | PHP version 4                                                        |
 // +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2003 The PHP Group                                |
+// | Copyright (c) 1997-2004 The PHP Group                                |
 // +----------------------------------------------------------------------+
 // | This source file is subject to version 3.0 of the PHP license,       |
 // | that is bundled with this package in the file LICENSE, and is        |
@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.9 2003/12/15 06:21:44 kuboa Exp $
+// $Id: EZweb.php,v 1.10 2004/02/08 12:17:17 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -54,7 +54,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.9 $
+ * @version  $Revision: 1.10 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
@@ -198,6 +198,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         // INFOBAR, A5000/C5000
                                         'ST22' => 'INFOBAR',
                                         'SA26' => 'A5503SA',
+                                        'KC24' => 'A5502K',
                                         'TS26' => 'A5501T',
                                         'SN25' => 'A5404S',
                                         'CA24' => 'A5403CA',
@@ -214,13 +215,13 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
 
                                         // A1400/A1300/A1100
                                         'KC23' => 'A1401K',
-                                        'TS25' => 'A1304T',
+                                        'TS25' => 'A1304T', // including A1304T II
                                         'SA25' => 'A1303SA',
                                         'SA24' => 'A1302SA',
                                         'SN23' => 'A1301S',
                                         'SN22' => 'A1101S',
 
-                                        // A1000/C1000/C400/C300/C200
+                                        // A3000/C3000
                                         'SA22' => 'A3015SA',
                                         'SN21' => 'A3014S',
                                         'TS22' => 'A3013T',
@@ -229,6 +230,8 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         'MA21' => 'C3003P',
                                         'KC21' => 'C3002K',
                                         'HI21' => 'C3001H',
+
+                                        // A1000/C1000/C400/C300/C200
                                         'ST14' => 'A1014ST',
                                         'KC15' => 'A1013K',
                                         'KC14' => 'A1012K',
@@ -271,7 +274,8 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         'HI02' => 'C201H',
 
                                         // Tu-Ka
-                                        'KCTD' => 'TS40',
+                                        'SYT5' => 'TS41',
+                                        'KCTD' => 'TK40',
                                         'TST8' => 'TT32',
                                         'TST7' => 'TT31',
                                         'KCTC' => 'TK31',
