@@ -289,6 +289,39 @@ $tests = array(
                            'width_bytes' => 22,
                            'height_bytes' => 12
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 N900i(c100;TB;W24H12)'),
+                     array(
+                           'width' => 240,
+                           'height' => 269,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 24,
+                           'height_bytes' => 12
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 P900i(c100;TB;W24H11)'),
+                     array(
+                           'width' => 240,
+                           'height' => 266,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 24,
+                           'height_bytes' => 11
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 SH900i(c100;TB;W24H12)'),
+                     array(
+                           'width' => 240,
+                           'height' => 252,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 24,
+                           'height_bytes' => 12
+                           )
                      )
                );
 
@@ -300,7 +333,7 @@ foreach ($tests as $value1) {
     $agent = &Net_UserAgent_Mobile::factory();
     $display = $agent->getDisplay();
     print is_object($display) . "\n";
-    print get_class($display) . "\n";
+    print strtolower(get_class($display)) . "\n";
     print $agent->getUserAgent() . "\n";
     foreach ($values as $key => $value) {
         switch ($key) {
@@ -541,4 +574,31 @@ DoCoMo/2.0 F900i(c100;TB;W22H12)
 1
 262144
 22
+12
+1
+net_useragent_mobile_display
+DoCoMo/2.0 N900i(c100;TB;W24H12)
+240
+269
+1
+65536
+24
+12
+1
+net_useragent_mobile_display
+DoCoMo/2.0 P900i(c100;TB;W24H11)
+240
+266
+1
+65536
+24
+11
+1
+net_useragent_mobile_display
+DoCoMo/2.0 SH900i(c100;TB;W24H12)
+240
+252
+1
+262144
+24
 12
