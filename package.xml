@@ -21,7 +21,7 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.20</version>
+    <version>0.20.0</version>
     <state>beta</state>
     <date>2004-09-25</date>
     <notes>
