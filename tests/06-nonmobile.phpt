@@ -146,8 +146,7 @@ $test_agents = array(
                      'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90; Q312461; T312461)',
                      'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90; T312461)',
                      'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90; T312461; .NET CLR 1.0.3705)',
-                     'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90; T312461; Lunascape 0',
-                     '.99c)',
+                     'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90; T312461; Lunascape 0.99c)',
                      'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90; Unithink)',
                      'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; Win 9x 4.90; telus.net_v5.0.1; Hotbar 4.0)',
                      'Mozilla/4.0 (compatible; MSIE 5.5; Windows 98; telus.net_v5.0.1)',
@@ -1359,10 +1358,3 @@ foreach ($test_agents as $value) {
 1147: 
 1148: 
 1149: 1
-1150: 1
-1151: net_useragent_mobile_common
-1152: net_useragent_mobile_nonmobile
-1153: 
-1154: 
-1155: 
-1156: 1
