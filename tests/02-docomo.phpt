@@ -70,10 +70,10 @@ $tests = array(
                array('DoCoMo/1.0/SO505iS/c20/TB/W20H10', '1.0', '5.0', 'SO505iS', 20, false, 'SO', '505i', array('status' => 'TB')),
                array('DoCoMo/1.0/SH505iS/c20/TB/W24H12', '1.0', '5.0', 'SH505iS', 20, false, 'SH', '505i', array('status' => 'TB')),
                array('DoCoMo/1.0/F505iGPS/c20/TB/W20H10', '1.0', '5.0', 'F505iGPS', 20, false, 'F', '505i', array('status' => 'TB')),
-               array('DoCoMo/2.0 F900i(c100;TB;W22H12)', '2.0', '5.0', 'F900i', 100, true, 'F', 'FOMA', array('status' => 'TB')),
-               array('DoCoMo/2.0 N900i(c100;TB;W24H12)', '2.0', '5.0', 'N900i', 100, true, 'N', 'FOMA', array('status' => 'TB')),
-               array('DoCoMo/2.0 P900i(c100;TB;W24H11)', '2.0', '5.0', 'P900i', 100, true, 'P', 'FOMA', array('status' => 'TB')),
-               array('DoCoMo/2.0 SH900i(c100;TB;W24H12)', '2.0', '5.0', 'SH900i', 100, true, 'SH', 'FOMA', array('status' => 'TB')),
+               array('DoCoMo/2.0 F900i(c100;TB;W22H12)', '2.0', '5.0', 'F900i', 100, true, 'F', '900i', array('status' => 'TB')),
+               array('DoCoMo/2.0 N900i(c100;TB;W24H12)', '2.0', '5.0', 'N900i', 100, true, 'N', '900i', array('status' => 'TB')),
+               array('DoCoMo/2.0 P900i(c100;TB;W24H11)', '2.0', '5.0', 'P900i', 100, true, 'P', '900i', array('status' => 'TB')),
+               array('DoCoMo/2.0 SH900i(c100;TB;W24H12)', '2.0', '5.0', 'SH900i', 100, true, 'SH', '900i', array('status' => 'TB')),
                array('DoCoMo/1.0/D506i/c20/TB/W20H10', '1.0', '5.0', 'D506i', 20, false, 'D', '506i', array('status' => 'TB'))
                );
 
@@ -93,6 +93,7 @@ foreach ($tests as $value1) {
     print strtolower(get_parent_class($agent)) . "\n";
     print strtolower(get_class($agent)) . "\n";
     print $agent->isDoCoMo() . "\n";
+    print $agent->isVodafone() . "\n";
     print $agent->isJPhone() . "\n";
     print $agent->isEZweb() . "\n";
     print $agent->getName() . "\n";
@@ -129,6 +130,12 @@ foreach ($tests as $value1) {
             }
         }
     }
+    if ($agent->getCarrierShortName() != 'I') {
+        print "Carrier short name isn't I\n";
+    }
+    if ($agent->getCarrierLongName() != 'DoCoMo') {
+        print "Carrier long name isn't DoCoMo\n";
+    }
 }
 
 foreach ($test_error_agents as $value) {
@@ -151,6 +158,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/D501i
 1.0
@@ -164,6 +172,7 @@ D
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -181,6 +190,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/D502i/c10
 1.0
@@ -194,6 +204,7 @@ D
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -211,6 +222,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/SO503i/c10
 1.0
@@ -224,6 +236,7 @@ SO
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -241,6 +254,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/SH251i/c10
 1.0
@@ -254,6 +268,7 @@ SH
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -271,6 +286,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 P2101V(c100)
 2.0
@@ -284,6 +300,7 @@ FOMA
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -301,6 +318,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 N2002(c100)
 2.0
@@ -314,6 +332,7 @@ FOMA
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -331,6 +350,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 P2002(c100)
 2.0
@@ -344,6 +364,7 @@ FOMA
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -361,6 +382,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 T2101V(c100)
 2.0
@@ -376,6 +398,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/D504i/c10
 1.0
@@ -389,6 +412,7 @@ D
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -408,6 +432,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/D504i/c10/TJ
 1.0
@@ -423,6 +448,7 @@ TJ
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -442,6 +468,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/D251i/c10
 1.0
@@ -455,6 +482,7 @@ D
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -474,6 +502,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/F671iS/c10/TB
 1.0
@@ -491,6 +520,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/P503i/c10/serNMABH200331
 1.0
@@ -506,6 +536,7 @@ NMABH200331
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -527,6 +558,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/eggy/c300/s32/kPHS-K
 1.0
@@ -542,6 +574,7 @@ Testing bandwidth ...
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -561,6 +594,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/P209is (Google CHTML Proxy/1.0)
 1.0
@@ -576,6 +610,7 @@ Google CHTML Proxy/1.0
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -595,6 +630,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 F2051(c100;TB)
 2.0
@@ -610,6 +646,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -629,6 +666,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 P2102V(c100;TB)
 2.0
@@ -646,6 +684,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/N211iS/c10
 1.0
@@ -659,6 +698,7 @@ N
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -676,6 +716,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/N251iS/c10/TB
 1.0
@@ -691,6 +732,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -712,6 +754,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/D505i/c20/TC/W20H10
 1.0
@@ -727,6 +770,7 @@ TC
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -746,6 +790,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 N2701(c100;TB)
 2.0
@@ -761,6 +806,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -780,6 +826,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/N505i/c20/TB/W20H10
 1.0
@@ -795,6 +842,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -814,6 +862,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 N2102V(c100;TB)
 2.0
@@ -829,6 +878,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -848,6 +898,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/P505i/c20/TB/W20H10
 1.0
@@ -863,6 +914,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -882,6 +934,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/SH505i2/c20/TB/W24H12
 1.0
@@ -897,6 +950,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -916,6 +970,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/SH252i/c20/TB/W24H12
 1.0
@@ -931,6 +986,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -950,6 +1006,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/P505iS/c20/TB/W20H10
 1.0
@@ -965,6 +1022,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -984,6 +1042,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/N252i/c10/TB/W22H10
 1.0
@@ -999,6 +1058,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -1018,6 +1078,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/SO505iS/c20/TB/W20H10
 1.0
@@ -1033,6 +1094,7 @@ TB
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -1052,6 +1114,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/1.0/F505iGPS/c20/TB/W20H10
 1.0
@@ -1069,6 +1132,7 @@ net_useragent_mobile_docomo
 1
 
 
+
 DoCoMo
 DoCoMo/2.0 F900i(c100;TB;W22H12)
 2.0
@@ -1077,13 +1141,14 @@ F900i
 100
 1
 F
-FOMA
+900i
 Testing status ...
 TB
 1
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -1094,13 +1159,14 @@ N900i
 100
 1
 N
-FOMA
+900i
 Testing status ...
 TB
 1
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -1111,13 +1177,14 @@ P900i
 100
 1
 P
-FOMA
+900i
 Testing status ...
 TB
 1
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
@@ -1128,13 +1195,14 @@ SH900i
 100
 1
 SH
-FOMA
+900i
 Testing status ...
 TB
 1
 net_useragent_mobile_common
 net_useragent_mobile_docomo
 1
+
 
 
 DoCoMo
