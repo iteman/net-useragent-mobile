@@ -131,45 +131,34 @@ $tests = array(
                      )
                );
 
-$line = 0;
-
-++$line;
-print "$line: " . "Testing Display ...\n";
+print "Testing Display ...\n";
 
 foreach ($tests as $value1) {
     $_SERVER = $value1[0];
     $values = $value1[1];
     $agent = &Net_UserAgent_Mobile::factory();
     $display = $agent->getDisplay();
-    ++$line;
-    print "$line: " . is_object($display) . "\n";
-    ++$line;
-    print "$line: " . get_class($display) . "\n";
+    print is_object($display) . "\n";
+    print get_class($display) . "\n";
     foreach ($values as $key => $value) {
         switch ($key) {
         case 'width':
-            ++$line;
-            print "$line: " . $display->getWidth() . "\n";
+            print $display->getWidth() . "\n";
             break;
         case 'height':
-            ++$line;
-            print "$line: " . $display->getHeight() . "\n";
+            print $display->getHeight() . "\n";
             break;
         case 'color':
-            ++$line;
-            print "$line: " . $display->isColor() . "\n";
+            print $display->isColor() . "\n";
             break;
         case 'depth':
-            ++$line;
-            print "$line: " . $display->getDepth() . "\n";
+            print $display->getDepth() . "\n";
             break;
         case 'width_bytes':
-            ++$line;
-            print "$line: " . $display->getWidthBytes() . "\n";
+            print $display->getWidthBytes() . "\n";
             break;
         case 'height_bytes':
-            ++$line;
-            print "$line: " . $display->getHeightBytes() . "\n";
+            print $display->getHeightBytes() . "\n";
             break;
         }
     }
@@ -178,74 +167,74 @@ foreach ($tests as $value1) {
 --POST--
 --GET--
 --EXPECT--
-1: Testing Display ...
-2: 1
-3: net_useragent_mobile_display
-4: 120
-5: 117
-6: 1
-7: 256
-8: 1
-9: net_useragent_mobile_display
-10: 90
-11: 70
-12: 1
-13: 65536
-14: 1
-15: net_useragent_mobile_display
-16: 90
-17: 70
-18: 
-19: 2
-20: 1
-21: net_useragent_mobile_display
-22: 96
-23: 72
-24: 
-25: 2
-26: 1
-27: net_useragent_mobile_display
-28: 96
-29: 90
-30: 1
-31: 256
-32: 1
-33: net_useragent_mobile_display
-34: 118
-35: 128
-36: 
-37: 4
-38: 1
-39: net_useragent_mobile_display
-40: 176
-41: 198
-42: 1
-43: 262144
-44: 1
-45: net_useragent_mobile_display
-46: 132
-47: 140
-48: 1
-49: 65536
-50: 1
-51: net_useragent_mobile_display
-52: 132
-53: 136
-54: 1
-55: 65536
-56: 1
-57: net_useragent_mobile_display
-58: 240
-59: 270
-60: 1
-61: 262144
-62: 20
-63: 10
-64: 1
-65: net_useragent_mobile_display
-66: 256
-67: 240
-68: 1
-69: 262144
-70: 21
-71: 9
+Testing Display ...
+1
+net_useragent_mobile_display
+120
+117
+1
+256
+1
+net_useragent_mobile_display
+90
+70
+1
+65536
+1
+net_useragent_mobile_display
+90
+70
+
+2
+1
+net_useragent_mobile_display
+96
+72
+
+2
+1
+net_useragent_mobile_display
+96
+90
+1
+256
+1
+net_useragent_mobile_display
+118
+128
+
+4
+1
+net_useragent_mobile_display
+176
+198
+1
+262144
+1
+net_useragent_mobile_display
+132
+140
+1
+65536
+1
+net_useragent_mobile_display
+132
+136
+1
+65536
+1
+net_useragent_mobile_display
+240
+270
+1
+262144
+20
+10
+1
+net_useragent_mobile_display
+256
+240
+1
+262144
+21
+9

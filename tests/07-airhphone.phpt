@@ -21,65 +21,48 @@ $test_agents = array(
                      'Mozilla/3.0(DDIPOCKET;JRC/AH-J3001V,AH-J3002V/1.0/0100/c50)CNF/2.0'
                      );
 
-$line = 0;
-
-++$line;
-print "$line: " . "Testing AirH\"PHONE ...\n";
+print "Testing AirH\"PHONE ...\n";
 
 foreach ($tests as $value) {
     $ua = array_shift($value);
     $data = $value;
     $agent = &Net_UserAgent_Mobile::factory($ua);
-    ++$line;
-    print "$line: " . is_object($agent) . "\n";
-    ++$line;
-    print "$line: " . get_parent_class($agent) . "\n";
-    ++$line;
-    print "$line: " . get_class($agent) . "\n";
-    ++$line;
-    print "$line: " . $agent->isAirHPhone() . "\n";
-    ++$line;
-    print "$line: " . $agent->getName() . "\n";
-    ++$line;
-    print "$line: " . $agent->getVendor() . "\n";
-    ++$line;
-    print "$line: " . $agent->getModel() . "\n";
-    ++$line;
-    print "$line: " . $agent->getModelVersion() . "\n";
-    ++$line;
-    print "$line: " . $agent->getBrowserVersion() . "\n";
-    ++$line;
-    print "$line: " . $agent->getCacheSize() . "\n";
+    print is_object($agent) . "\n";
+    print get_parent_class($agent) . "\n";
+    print get_class($agent) . "\n";
+    print $agent->isAirHPhone() . "\n";
+    print $agent->getName() . "\n";
+    print $agent->getVendor() . "\n";
+    print $agent->getModel() . "\n";
+    print $agent->getModelVersion() . "\n";
+    print $agent->getBrowserVersion() . "\n";
+    print $agent->getCacheSize() . "\n";
 }
 
 foreach ($test_agents as $value) {
     $_SERVER['HTTP_USER_AGENT'] = $value;
     $agent = &Net_UserAgent_Mobile::factory();
-    ++$line;
-    print "$line: " . is_object($agent) . "\n";
-    ++$line;
-    print "$line: " . get_parent_class($agent) . "\n";
-    ++$line;
-    print "$line: " . get_class($agent) . "\n";
-    ++$line;
-    print "$line: " . $agent->isAirHPhone() . "\n";
+    print is_object($agent) . "\n";
+    print get_parent_class($agent) . "\n";
+    print get_class($agent) . "\n";
+    print $agent->isAirHPhone() . "\n";
 }
 ?>
 --POST--
 --GET--
 --EXPECT--
-1: Testing AirH"PHONE ...
-2: 1
-3: net_useragent_mobile_common
-4: net_useragent_mobile_airhphone
-5: 1
-6: DDIPOCKET
-7: JRC
-8: AH-J3001V,AH-J3002V
-9: 1.0
-10: 0100
-11: 50
-12: 1
-13: net_useragent_mobile_common
-14: net_useragent_mobile_airhphone
-15: 1
+Testing AirH"PHONE ...
+1
+net_useragent_mobile_common
+net_useragent_mobile_airhphone
+1
+DDIPOCKET
+JRC
+AH-J3001V,AH-J3002V
+1.0
+0100
+50
+1
+net_useragent_mobile_common
+net_useragent_mobile_airhphone
+1
