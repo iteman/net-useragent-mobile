@@ -16,10 +16,11 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: NonMobile.php,v 1.8 2004/09/25 11:18:05 kuboa Exp $
+// $Id: NonMobile.php,v 1.9 2005/02/03 08:56:04 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
+require_once(dirname(__FILE__) . '/Display.php');
 
 /**
  * Non-Mobile Agent implementation
@@ -40,7 +41,7 @@ require_once(dirname(__FILE__) . '/Common.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.8 $
+ * @version  $Revision: 1.9 $
  * @see      Net_UserAgent_Mobile_Common
  */
 class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
@@ -73,6 +74,21 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
     {
         @list($this->name, $this->version) =
             explode('/', $this->getUserAgent());
+    }
+
+    // }}}
+    // {{{ makeDisplay()
+
+    /**
+     * create a new {@link Net_UserAgent_Mobile_Display} class instance
+     *
+     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
+     *     object
+     * @see Net_UserAgent_Mobile_Display
+     */
+    function makeDisplay()
+    {
+        return new Net_UserAgent_Mobile_Display(null);
     }
 
     // }}}
