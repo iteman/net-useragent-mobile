@@ -1,9 +1,9 @@
 <?php
-//
+/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
+// | PHP version 4                                                        |
 // +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2003 The PHP Group                                |
+// | Copyright (c) 1997-2004 The PHP Group                                |
 // +----------------------------------------------------------------------+
 // | This source file is subject to version 3.0 of the PHP license,       |
 // | that is bundled with this package in the file LICENSE, and is        |
@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.15 2003/12/15 05:32:47 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.16 2004/02/08 12:02:31 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.15 $
+ * @version  $Revision: 1.16 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -644,6 +644,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                     'depth'  => 262144,
                                                     'color'  => true
                                                     ),
+                                 'F505iGPS' => array(
+                                                     'width'  => 240,
+                                                     'height' => 268,
+                                                     'depth'  => 262144,
+                                                     'color'  => true
+                                                     ),
                                  'D252i' => array(
                                                   'width'  => 176,
                                                   'height' => 198,
@@ -666,6 +672,15 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                   'width'  => 132,
                                                   'height' => 140,
                                                   'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+
+                                 // i-mode compliant HTML 5.0
+                                 // (FOMA 900i)
+                                 'F900i' => array(
+                                                  'width'  => 230,
+                                                  'height' => 240,
+                                                  'depth'  => 262144,
                                                   'color'  => true
                                                   )
                                  );
