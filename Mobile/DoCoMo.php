@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.9 2003/05/23 10:45:57 kuboa Exp $
+// $Id: DoCoMo.php,v 1.10 2003/06/05 15:03:38 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -68,7 +68,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.9 $
+ * @version  $Revision: 1.10 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -207,14 +207,12 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function makeDisplay()
     {
-        if ($this->_display_bytes === '') {
-            $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->_model);
-        } else {
+        $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->_model);
+        if ($this->_display_bytes !== '') {
             list($width_bytes, $height_bytes) =
                 explode('*', $this->_display_bytes);
-            $display = array('width_bytes'  => $width_bytes,
-                             'height_bytes' => $height_bytes
-                             );
+            $display['width_bytes']  = $width_bytes;
+            $display['height_bytes'] = $height_bytes;
         }
         return new Net_UserAgent_Mobile_Display($display);
     }
