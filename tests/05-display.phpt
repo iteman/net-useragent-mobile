@@ -1,7 +1,7 @@
 --TEST--
 Net_UserAgent_Mobile: Display
 --SKIPIF--
-<?php if (!@include('Net/UserAgent/Mobile.php')) print 'skip'; ?>
+<?php if (!@include('../Mobile.php')) print 'skip'; ?>
 --FILE--
 <?php
 //
@@ -10,7 +10,7 @@ Net_UserAgent_Mobile: Display
 //
 
 error_reporting(E_ALL);
-require_once('Net/UserAgent/Mobile.php');
+require_once('../Mobile.php');
 
 $tests = array(
                array(
@@ -190,6 +190,50 @@ $tests = array(
                            'width_bytes' => 24,
                            'height_bytes' => 12
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/D505iS/c20/TB/W20H10'),
+                     array(
+                           'width' => 240,
+                           'height' => 270,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 20,
+                           'height_bytes' => 10
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/P505iS/c20/TB/W20H10'),
+                     array(
+                           'width' => 240,
+                           'height' => 266,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 20,
+                           'height_bytes' => 10
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/P252i/c10/TB/W22H10'),
+                     array(
+                           'width' => 132,
+                           'height' => 144,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 22,
+                           'height_bytes' => 10
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/N252i/c10/TB/W22H10'),
+                     array(
+                           'width' => 132,
+                           'height' => 140,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 22,
+                           'height_bytes' => 10
+                           )
                      )
                );
 
@@ -362,3 +406,39 @@ DoCoMo/1.0/SH252i/c20/TB/W24H12
 262144
 24
 12
+1
+net_useragent_mobile_display
+DoCoMo/1.0/D505iS/c20/TB/W20H10
+240
+270
+1
+262144
+20
+10
+1
+net_useragent_mobile_display
+DoCoMo/1.0/P505iS/c20/TB/W20H10
+240
+266
+1
+65536
+20
+10
+1
+net_useragent_mobile_display
+DoCoMo/1.0/P252i/c10/TB/W22H10
+132
+144
+1
+65536
+22
+10
+1
+net_useragent_mobile_display
+DoCoMo/1.0/N252i/c10/TB/W22H10
+132
+140
+1
+65536
+22
+10
