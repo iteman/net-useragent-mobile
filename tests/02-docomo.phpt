@@ -53,7 +53,10 @@ $tests = array(
                array('DoCoMo/1.0/SO505i/c20/TB/W21H09', '1.0', '5.0', 'SO505i', 20, false, 'SO', '505i', array('status' => 'TB')),
                array('DoCoMo/2.0 N2701(c100;TB)', '2.0', '4.0', 'N2701', 100, true, 'N', 'FOMA', array('status' => 'TB')),
                array('DoCoMo/1.0/SH505i/c20/TB/W24H12', '1.0', '5.0', 'SH505i', 20, false, 'SH', '505i', array('status' => 'TB')),
-               array('DoCoMo/1.0/N505i/c20/TB/W20H10', '1.0', '5.0', 'N505i', 20, false, 'N', '505i', array('status' => 'TB'))
+               array('DoCoMo/1.0/N505i/c20/TB/W20H10', '1.0', '5.0', 'N505i', 20, false, 'N', '505i', array('status' => 'TB')),
+               array('DoCoMo/2.0 F2102V(c100;TB)', '2.0', '4.0', 'F2102V', 100, true, 'F', 'FOMA', array('status' => 'TB')),
+               array('DoCoMo/2.0 N2102V(c100;TB)', '2.0', '4.0', 'N2102V', 100, true, 'N', 'FOMA', array('status' => 'TB')),
+               array('DoCoMo/1.0/F505i/c20/TB/W20H10', '1.0', '5.0', 'F505i', 20, false, 'F', '505i', array('status' => 'TB'))
                );
 
 $test_error_agents = array(
@@ -767,6 +770,57 @@ N505i
 20
 
 N
+505i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/2.0 F2102V(c100;TB)
+2.0
+4.0
+F2102V
+100
+1
+F
+FOMA
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/2.0 N2102V(c100;TB)
+2.0
+4.0
+N2102V
+100
+1
+N
+FOMA
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/F505i/c20/TB/W20H10
+1.0
+5.0
+F505i
+20
+
+F
 505i
 Testing status ...
 TB
