@@ -70,7 +70,10 @@ $tests = array(
                array('DoCoMo/1.0/SO505iS/c20/TB/W20H10', '1.0', '5.0', 'SO505iS', 20, false, 'SO', '505i', array('status' => 'TB')),
                array('DoCoMo/1.0/SH505iS/c20/TB/W24H12', '1.0', '5.0', 'SH505iS', 20, false, 'SH', '505i', array('status' => 'TB')),
                array('DoCoMo/1.0/F505iGPS/c20/TB/W20H10', '1.0', '5.0', 'F505iGPS', 20, false, 'F', '505i', array('status' => 'TB')),
-               array('DoCoMo/2.0 F900i(c100;TB;W22H12)', '2.0', '5.0', 'F900i', 100, true, 'F', 'FOMA', array('status' => 'TB'))
+               array('DoCoMo/2.0 F900i(c100;TB;W22H12)', '2.0', '5.0', 'F900i', 100, true, 'F', 'FOMA', array('status' => 'TB')),
+               array('DoCoMo/2.0 N900i(c100;TB;W24H12)', '2.0', '5.0', 'N900i', 100, true, 'N', 'FOMA', array('status' => 'TB')),
+               array('DoCoMo/2.0 P900i(c100;TB;W24H11)', '2.0', '5.0', 'P900i', 100, true, 'P', 'FOMA', array('status' => 'TB')),
+               array('DoCoMo/2.0 SH900i(c100;TB;W24H12)', '2.0', '5.0', 'SH900i', 100, true, 'SH', 'FOMA', array('status' => 'TB'))
                );
 
 $test_error_agents = array(
@@ -86,8 +89,8 @@ foreach ($tests as $value1) {
     $data = $value1;
     $agent = &Net_UserAgent_Mobile::factory($ua);
     print is_object($agent) . "\n";
-    print get_parent_class($agent) . "\n";
-    print get_class($agent) . "\n";
+    print strtolower(get_parent_class($agent)) . "\n";
+    print strtolower(get_class($agent)) . "\n";
     print $agent->isDoCoMo() . "\n";
     print $agent->isJPhone() . "\n";
     print $agent->isEZweb() . "\n";
@@ -131,7 +134,7 @@ foreach ($test_error_agents as $value) {
     $_SERVER['HTTP_USER_AGENT'] = $value;
     $agent = &Net_UserAgent_Mobile::factory();
     print is_object($agent) . "\n";
-    print get_class($agent) . "\n";
+    print strtolower(get_class($agent)) . "\n";
     if (Net_UserAgent_Mobile::isError($agent)) {
         print $agent->getMessage() . "\n";
     }
@@ -1073,6 +1076,57 @@ F900i
 100
 1
 F
+FOMA
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/2.0 N900i(c100;TB;W24H12)
+2.0
+5.0
+N900i
+100
+1
+N
+FOMA
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/2.0 P900i(c100;TB;W24H11)
+2.0
+5.0
+P900i
+100
+1
+P
+FOMA
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/2.0 SH900i(c100;TB;W24H12)
+2.0
+5.0
+SH900i
+100
+1
+SH
 FOMA
 Testing status ...
 TB
