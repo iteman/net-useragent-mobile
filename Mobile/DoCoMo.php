@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.18 2004/05/27 07:27:55 kuboa Exp $
+// $Id: DoCoMo.php,v 1.19 2004/09/25 08:54:23 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -59,6 +59,9 @@ require_once(dirname(__FILE__) . '/DoCoMoDisplayMap.php');
  * // e.g.) 'DoCoMo/1.0/P502i (Google CHTML Proxy/1.0)'
  * printf("Comment: %s\n", $agent->getComment()); // 'Google CHTML Proxy/1.0'
  *
+ * // e.g.) 'DoCoMo/1.0/D505i/c20/TB/W20H10'
+ * printf("Status: %s\n", $agent->getStatus()); // 'TB'
+ *
  * // only available in eggy/M-stage
  * // e.g.) 'DoCoMo/1.0/eggy/c300/s32/kPHS-K'
  * printf("Bandwidth: %dkbps\n", $agent->getBandwidth()); // 32
@@ -68,7 +71,7 @@ require_once(dirname(__FILE__) . '/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.18 $
+ * @version  $Revision: 1.19 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -278,12 +281,14 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function getSeries()
     {
-        if ($this->isFOMA()) {
+        if ($this->isFOMA() && preg_match('/(\d{4})/', $this->_model)) {
             return 'FOMA';
         }
+
         if (preg_match('/(\d{3}i)/', $this->_model, $matches)) {
             return $matches[1];
         }
+
         return null;
     }
 
@@ -320,7 +325,12 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getStatus()
 
     /**
-     * returns status of the cache (TB, TD, TJ)
+     * returns status like "TB", "TC", "TD" or "TJ", which means:
+     * 
+     * TB | Browsers
+     * TC | Browsers with image off (only Available in HTML 5.0)
+     * TD | Fetching JAR
+     * TJ | i-Appli
      *
      * @return string
      */
@@ -412,6 +422,32 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
             $gpsModels = array('F661i');
         }
         return in_array($this->_model, $gpsModels);
+    }
+
+    // }}}
+    // {{{ getCarrierShortName()
+
+    /**
+     * returns the short name of the carrier
+     *
+     * @return string
+     */
+    function getCarrierShortName()
+    {
+        return 'I';
+    }
+
+    // }}}
+    // {{{ getCarrierLongName()
+
+    /**
+     * returns the long name of the carrier
+     *
+     * @return string
+     */
+    function getCarrierLongName()
+    {
+        return 'DoCoMo';
     }
 
     /**#@-*/
