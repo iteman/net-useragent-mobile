@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Display.php,v 1.6 2004/02/08 11:58:38 kuboa Exp $
+// $Id: Display.php,v 1.7 2004/05/27 08:33:10 kuboa Exp $
 //
 
 /**
@@ -45,11 +45,18 @@
  * $height_bytes = $display->getHeightBytes();
  * </code>
  *
+ * USING EXTERNAL MAP FILE:
+ * If the environment variable DOCOMO_MAP exists, the specified XML data will
+ * be used for DoCoMo display information.
+ *
+ * ex) Please add the following code.
+ * $_SERVER['DOCOMO_MAP'] = '/path/to/DoCoMoMap.xml';
+ *
  * @package  Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.6 $
+ * @version  $Revision: 1.7 $
  */
 class Net_UserAgent_Mobile_Display
 {
