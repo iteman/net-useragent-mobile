@@ -16,82 +16,91 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Display.php,v 1.2 2003/02/24 15:56:33 kuboa Exp $
-//
-// SYNOPSIS:
-// require_once('Net/UserAgent/Mobile.php');
-//
-// $agent = &Net_UserAgent_Mobile::factory();
-// $display = $agent->getDisplay();
-//
-// $width  = $display->getWidth();
-// $height = $display->getHeight();
-// list($width, $height) = $display->getSize();
-//
-// if ($display->isColor()) {
-//     $depth = $display->getDepth();
-// }
+// $Id: Display.php,v 1.3 2003/03/26 15:52:58 kuboa Exp $
 //
 
 /**
  * Display information for Net_UserAgent_Mobile
  *
  * Net_UserAgent_Mobile_Display is a class for display information on
- * Net_UserAgent_Mobile. Handy for image resizing or dispatching.
+ * {@link Net_UserAgent_Mobile}. Handy for image resizing or dispatching.
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.2 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
+ * SYNOPSIS:
+ * <code>
+ * require_once('Net/UserAgent/Mobile.php');
+ *
+ * $agent = &Net_UserAgent_Mobile::factory();
+ * $display = $agent->getDisplay();
+ *
+ * $width  = $display->getWidth();
+ * $height = $display->getHeight();
+ * list($width, $height) = $display->getSize();
+ *
+ * if ($display->isColor()) {
+ *     $depth = $display->getDepth();
+ * }
+ * </code>
+ *
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.3 $
  */
 class Net_UserAgent_Mobile_Display
 {
 
     // {{{ properties
 
+    /**#@+
+     * @access private
+     */
+
     /**
      * width of the display
      * @var integer
-     * @access private
      */
     var $_width;
 
     /**
      * height of the display
      * @var integer
-     * @access private
      */
     var $_height;
 
     /**
      * depth of the display
      * @var integer
-     * @access public
      */
     var $_depth;
 
     /**
      * color capability of the display
      * @var boolean
-     * @access private
      */
     var $_color;
+
+    /**#@-*/
 
     // }}}
     // {{{ constructor
 
     /**
-     * Constructor
+     * constructor
      *
      * @param array $data display infomation
      */
     function Net_UserAgent_Mobile_Display($data)
     {
-        $this->_width  = $data['width'];
-        $this->_height = $data['height'];
-        $this->_depth  = $data['depth'];
-        $this->_color  = $data['color'];
+        $this->_width  = (integer)@$data['width'];
+        $this->_height = (integer)@$data['height'];
+        $this->_depth  = (integer)@$data['depth'];
+        $this->_color  = (boolean)@$data['color'];
     }
+
+    /**#@+
+     * @access public
+     */
 
     // }}}
     // {{{ calcSize()
@@ -100,7 +109,6 @@ class Net_UserAgent_Mobile_Display
      * returns width * height of the display
      *
      * @return integer
-     * @access public
      */
     function calcSize()
     {
@@ -114,7 +122,6 @@ class Net_UserAgent_Mobile_Display
      * returns width with height of the display
      *
      * @return array
-     * @access public
      */
     function getSize()
     {
@@ -128,7 +135,6 @@ class Net_UserAgent_Mobile_Display
      * returns width of the display
      *
      * @return integer
-     * @access public
      */
     function getWidth()
     {
@@ -142,7 +148,6 @@ class Net_UserAgent_Mobile_Display
      * returns height of the display
      *
      * @return integer
-     * @access public
      */
     function getHeight()
     {
@@ -156,7 +161,6 @@ class Net_UserAgent_Mobile_Display
      * returns depth of the display
      *
      * @return integer
-     * @access public
      */
     function getDepth()
     {
@@ -170,12 +174,13 @@ class Net_UserAgent_Mobile_Display
      * returns true if the display has color capability
      *
      * @return boolean
-     * @access public
      */
     function isColor()
     {
         return $this->_color;
     }
+
+    /**#@-*/
 }
 
 /*
