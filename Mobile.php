@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.7 2003/08/11 03:53:08 kuboa Exp $
+// $Id: Mobile.php,v 1.8 2003/10/12 15:07:09 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.7 $
+ * @version  $Revision: 1.8 $
  */
 class Net_UserAgent_Mobile
 {
@@ -140,6 +140,30 @@ class Net_UserAgent_Mobile
     }
 
     // }}}
+    // {{{ singleton()
+
+    /**
+     * creates a new {@link Net_UserAgent_Mobile_Common} subclass instance or
+     * returns a instance from existent ones
+     *
+     * @param mixed $stuff User-Agent string or object that works with
+     *     HTTP_Request (not implemented)
+     * @return mixed a newly created or a existent Net_UserAgent_Mobile
+     *     object, or a PEAR error object on error
+     * @see Net_UserAgent_Mobile::factory()
+     */
+     function &singleton($stuff = null)
+     {
+         static $instance;
+         if (!isset($instance)) {
+             print "created a new one\n";
+             $instance = Net_UserAgent_Mobile::factory($stuff);
+         }
+
+         return $instance;
+     }
+
+    // }}}
     // {{{ isError()
 
     /**
@@ -198,7 +222,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.7 $
+ * @version  $Revision: 1.8 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
