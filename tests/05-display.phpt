@@ -148,6 +148,26 @@ $tests = array(
                            'width_bytes' => 20,
                            'height_bytes' => 10
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/SH505i2/c20/TB/W24H12'),
+                     array(
+                           'width' => 240,
+                           'height' => 252,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 24,
+                           'height_bytes' => 12
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/F672i/c10/TB'),
+                     array(
+                           'width' => 160,
+                           'height' => 120,
+                           'color' => true,
+                           'depth' => 65536
+                           )
                      )
                );
 
@@ -272,3 +292,17 @@ net_useragent_mobile_display
 65536
 20
 10
+1
+net_useragent_mobile_display
+240
+252
+1
+262144
+24
+12
+1
+net_useragent_mobile_display
+160
+120
+1
+65536
