@@ -26,8 +26,8 @@ foreach ($tests as $value1) {
     $data = $value1;
     $agent = &Net_UserAgent_Mobile::factory($ua);
     print is_object($agent) . "\n";
-    print get_parent_class($agent) . "\n";
-    print get_class($agent) . "\n";
+    print strtolower(get_parent_class($agent)) . "\n";
+    print strtolower(get_class($agent)) . "\n";
     print $agent->isDoCoMo() . "\n";
     print $agent->isJPhone() . "\n";
     print $agent->isEZweb() . "\n";

@@ -30,8 +30,8 @@ foreach ($tests as $value1) {
     $data = $value1;
     $agent = &Net_UserAgent_Mobile::factory($ua);
     print is_object($agent) . "\n";
-    print get_parent_class($agent) . "\n";
-    print get_class($agent) . "\n";
+    print strtolower(get_parent_class($agent)) . "\n";
+    print strtolower(get_class($agent)) . "\n";
     print $agent->isDoCoMo() . "\n";
     print $agent->isJPhone() . "\n";
     print $agent->isEZweb() . "\n";
@@ -66,7 +66,7 @@ foreach ($test_error_agents as $value) {
     $_SERVER['HTTP_USER_AGENT'] = $value;
     $agent = &Net_UserAgent_Mobile::factory();
     print is_object($agent) . "\n";
-    print get_class($agent) . "\n";
+    print strtolower(get_class($agent)) . "\n";
     if (Net_UserAgent_Mobile::isError($agent)) {
         print $agent->getMessage() . "\n";
     }

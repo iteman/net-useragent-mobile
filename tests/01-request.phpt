@@ -18,14 +18,14 @@ $ua = 'Mozilla/1.0';
 $agent = &Net_UserAgent_Mobile::factory($ua);
 
 print is_object($agent) . "\n";
-print get_parent_class($agent) . "\n";
+print strtolower(get_parent_class($agent)) . "\n";
 print $agent->getUserAgent() . "\n";
 
 $_SERVER['HTTP_USER_AGENT'] = $ua;
 $agent = &Net_UserAgent_Mobile::factory();
 
 print is_object($agent) . "\n";
-print get_parent_class($agent) . "\n";
+print strtolower(get_parent_class($agent)) . "\n";
 print $agent->getUserAgent() . "\n";
 ?>
 --POST--

@@ -28,8 +28,8 @@ foreach ($tests as $value) {
     $data = $value;
     $agent = &Net_UserAgent_Mobile::factory($ua);
     print is_object($agent) . "\n";
-    print get_parent_class($agent) . "\n";
-    print get_class($agent) . "\n";
+    print strtolower(get_parent_class($agent)) . "\n";
+    print strtolower(get_class($agent)) . "\n";
     print $agent->isAirHPhone() . "\n";
     print $agent->getName() . "\n";
     print $agent->getVendor() . "\n";
@@ -43,8 +43,8 @@ foreach ($test_agents as $value) {
     $_SERVER['HTTP_USER_AGENT'] = $value;
     $agent = &Net_UserAgent_Mobile::factory();
     print is_object($agent) . "\n";
-    print get_parent_class($agent) . "\n";
-    print get_class($agent) . "\n";
+    print strtolower(get_parent_class($agent)) . "\n";
+    print strtolower(get_class($agent)) . "\n";
     print $agent->isAirHPhone() . "\n";
 }
 ?>
