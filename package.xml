@@ -21,12 +21,13 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.15</version>
+    <version>0.16</version>
     <state>beta</state>
-    <date>2003-11-17</date>
+    <date>2003-12-15</date>
     <notes>
-- Added support for DoCoMo's D505iS, P505iS, P252i, N252i.
-- EZweb.php: Added getModel() method using a static table.
+- Added support for DoCoMo's N505iS, SO505iS, SH505iS.
+- Added support for EZweb's W11K, W11H, A5503SA, A5404S, A5403CA, TS40, TT32
+  in getModel() method.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -56,6 +57,15 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.15</version>
+      <state>beta</state>
+      <date>2003-11-17</date>
+      <notes>
+- Added support for DoCoMo's D505iS, P505iS, P252i, N252i.
+- EZweb.php: Added getModel() method using a static table.
+      </notes>
+    </release>
     <release>
       <version>0.14.1</version>
       <state>beta</state>
