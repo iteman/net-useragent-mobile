@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.16 2004/02/08 12:02:31 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.17 2004/03/20 13:29:09 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.16 $
+ * @version  $Revision: 1.17 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -682,7 +682,25 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                   'height' => 240,
                                                   'depth'  => 262144,
                                                   'color'  => true
-                                                  )
+                                                  ),
+                                 'N900i' => array(
+                                                  'width'  => 240,
+                                                  'height' => 269,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                 'P900i' => array(
+                                                  'width'  => 240,
+                                                  'height' => 266,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                 'SH900i' => array(
+                                                   'width'  => 240,
+                                                   'height' => 252,
+                                                   'depth'  => 262144,
+                                                   'color'  => true
+                                                   )
                                  );
         }
 
