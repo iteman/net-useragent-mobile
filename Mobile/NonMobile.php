@@ -16,10 +16,10 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: NonMobile.php,v 1.5 2003/07/07 02:10:24 kuboa Exp $
+// $Id: NonMobile.php,v 1.6 2003/11/14 07:09:49 kuboa Exp $
 //
 
-require_once('Net/UserAgent/Mobile/Common.php');
+require_once(dirname(__FILE__) . '/Common.php');
 
 /**
  * Non-Mobile Agent implementation
@@ -40,7 +40,7 @@ require_once('Net/UserAgent/Mobile/Common.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.5 $
+ * @version  $Revision: 1.6 $
  * @see      Net_UserAgent_Mobile_Common
  */
 class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common

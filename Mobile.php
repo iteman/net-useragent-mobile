@@ -16,11 +16,11 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.9 2003/10/12 15:44:12 kuboa Exp $
+// $Id: Mobile.php,v 1.10 2003/11/14 07:10:00 kuboa Exp $
 //
 
 require_once('PEAR.php');
-require_once('Net/UserAgent/Mobile/Request.php');
+require_once(dirname(__FILE__) . '/Mobile/Request.php');
 
 /**
  * constants for error handling
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.9 $
+ * @version  $Revision: 1.10 $
  */
 class Net_UserAgent_Mobile
 {
@@ -123,7 +123,7 @@ class Net_UserAgent_Mobile
                  (@$matches[3] ? 'EZweb' : 'AirHPhone'));
         }
         $class_name = "Net_UserAgent_Mobile_{$sub}";
-        $include    = "Net/UserAgent/Mobile/{$sub}.php";
+        $include    = dirname(__FILE__) . "/Mobile/{$sub}.php";
         @include_once($include);
 
         if (!class_exists($class_name)) {
@@ -221,7 +221,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.9 $
+ * @version  $Revision: 1.10 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {

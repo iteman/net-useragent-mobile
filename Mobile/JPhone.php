@@ -16,11 +16,11 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: JPhone.php,v 1.5 2003/07/07 02:10:24 kuboa Exp $
+// $Id: JPhone.php,v 1.6 2003/11/14 07:09:49 kuboa Exp $
 //
 
-require_once('Net/UserAgent/Mobile/Common.php');
-require_once('Net/UserAgent/Mobile/Display.php');
+require_once(dirname(__FILE__) . '/Common.php');
+require_once(dirname(__FILE__) . '/Display.php');
 
 /**
  * J-PHONE implementation
@@ -58,7 +58,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.5 $
+ * @version  $Revision: 1.6 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.dp.j-phone.com/jsky/user.html
  * @link     http://www.dp.j-phone.com/jsky/position.html

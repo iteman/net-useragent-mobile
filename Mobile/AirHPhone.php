@@ -16,11 +16,11 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: AirHPhone.php,v 1.3 2003/07/29 11:34:06 kuboa Exp $
+// $Id: AirHPhone.php,v 1.4 2003/11/14 07:09:49 kuboa Exp $
 //
 
-require_once('Net/UserAgent/Mobile/Common.php');
-require_once('Net/UserAgent/Mobile/Display.php');
+require_once(dirname(__FILE__) . '/Common.php');
+require_once(dirname(__FILE__) . '/Display.php');
 
 /**
  * AirH"PHONE implementation
@@ -49,7 +49,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.3 $
+ * @version  $Revision: 1.4 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.ddipocket.co.jp/airh_phone/i_hp.html
  */

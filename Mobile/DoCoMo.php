@@ -16,12 +16,12 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.15 2003/10/12 15:03:09 kuboa Exp $
+// $Id: DoCoMo.php,v 1.16 2003/11/14 07:09:49 kuboa Exp $
 //
 
-require_once('Net/UserAgent/Mobile/Common.php');
-require_once('Net/UserAgent/Mobile/Display.php');
-require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
+require_once(dirname(__FILE__) . '/Common.php');
+require_once(dirname(__FILE__) . '/Display.php');
+require_once(dirname(__FILE__) . '/DoCoMoDisplayMap.php');
 
 /**
  * NTT DoCoMo implementation
@@ -68,7 +68,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.15 $
+ * @version  $Revision: 1.16 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
