@@ -21,11 +21,11 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.2</version>
+    <version>0.3</version>
     <state>beta</state>
-    <date>2003-02-20</date>
+    <date>2003-02-24</date>
     <notes>
-- Added the code which had forgotten by the port.
+- Added isNonMobile() method.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -53,6 +53,14 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.2</version>
+      <state>beta</state>
+      <date>2003-02-20</date>
+      <notes>
+- Added code which had forgotten by the port.
+      </notes>
+    </release>
     <release>
       <version>0.1</version>
       <state>beta</state>
