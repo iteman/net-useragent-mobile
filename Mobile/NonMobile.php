@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: NonMobile.php,v 1.7 2004/02/08 11:58:38 kuboa Exp $
+// $Id: NonMobile.php,v 1.8 2004/09/25 11:18:05 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -40,7 +40,7 @@ require_once(dirname(__FILE__) . '/Common.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.7 $
+ * @version  $Revision: 1.8 $
  * @see      Net_UserAgent_Mobile_Common
  */
 class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
@@ -73,6 +73,58 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
     {
         @list($this->name, $this->version) =
             explode('/', $this->getUserAgent());
+    }
+
+    // }}}
+    // {{{ getModel()
+
+    /**
+     * returns name of the model
+     *
+     * @return string
+     */
+    function getModel()
+    {
+        return '';
+    }
+
+    // }}}
+    // {{{ getDeviceID()
+
+    /**
+     * returns device ID
+     *
+     * @return string
+     */
+    function getDeviceID()
+    {
+        return '';
+    }
+
+    // }}}
+    // {{{ getCarrierShortName()
+
+    /**
+     * returns the short name of the carrier
+     *
+     * @return string
+     */
+    function getCarrierShortName()
+    {
+        return 'N';
+    }
+
+    // }}}
+    // {{{ getCarrierLongName()
+
+    /**
+     * returns the long name of the carrier
+     *
+     * @return string
+     */
+    function getCarrierLongName()
+    {
+        return 'NonMobile';
     }
 
     /**#@-*/
