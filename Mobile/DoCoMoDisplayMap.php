@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.13 2003/10/12 15:01:41 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.14 2003/11/14 07:12:10 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.13 $
+ * @version  $Revision: 1.14 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -614,6 +614,18 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                   'depth'  => 65536,
                                                   'color'  => true
                                                   ),
+                                 'D505iS' => array(
+                                                   'width'  => 240,
+                                                   'height' => 270,
+                                                   'depth'  => 262144,
+                                                   'color'  => true
+                                                   ),
+                                 'P505iS' => array(
+                                                   'width'  => 240,
+                                                   'height' => 266,
+                                                   'depth'  => 65536,
+                                                   'color'  => true
+                                                   ),
                                  'D252i' => array(
                                                   'width'  => 176,
                                                   'height' => 198,
@@ -625,7 +637,19 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                    'height' => 252,
                                                    'depth'  => 262144,
                                                    'color'  => true
-                                                   )
+                                                   ),
+                                 'P252i' => array(
+                                                  'width'  => 132,
+                                                  'height' => 144,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                 'N252i' => array(
+                                                  'width'  => 132,
+                                                  'height' => 140,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  )
                                  );
         }
 
