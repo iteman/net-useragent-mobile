@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.10 2004/02/08 12:17:17 kuboa Exp $
+// $Id: EZweb.php,v 1.11 2004/03/20 13:26:32 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -54,7 +54,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.10 $
+ * @version  $Revision: 1.11 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
@@ -198,8 +198,10 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         // INFOBAR, A5000/C5000
                                         'ST22' => 'INFOBAR',
                                         'SA26' => 'A5503SA',
+                                        'KC25' => 'A5502K',
                                         'KC24' => 'A5502K',
                                         'TS26' => 'A5501T',
+                                        'ST23' => 'A5405SA',
                                         'SN25' => 'A5404S',
                                         'CA24' => 'A5403CA',
                                         'SN24' => 'A5402S',
@@ -214,6 +216,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         'TS21' => 'C5001T',
 
                                         // A1400/A1300/A1100
+                                        'SN26' => 'A1402S',
                                         'KC23' => 'A1401K',
                                         'TS25' => 'A1304T', // including A1304T II
                                         'SA25' => 'A1303SA',
@@ -327,7 +330,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     // {{{ getServer()
 
     /**
-     * returns device ID like 'TS21'
+     * returns server string like 'UP.Link/3.2.1.2'
      *
      * @return string
      */
