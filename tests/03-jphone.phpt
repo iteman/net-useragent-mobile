@@ -110,6 +110,12 @@ foreach ($test_error_agents as $value) {
         print $agent->getMessage() . "\n";
     }
 }
+
+print "Testing getMsname() method ...\n";
+$_SERVER['HTTP_USER_AGENT'] = 'Vodafone/1.0/V702NK/NKJ001 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1';
+$_SERVER['HTTP_X_JPHONE_MSNAME'] = 'V702NK';
+$agent = &Net_UserAgent_Mobile::factory();
+print $agent->getMsname() . "\n";
 ?>
 --POST--
 --GET--
@@ -310,3 +316,5 @@ CLDC-1.1
 1
 net_useragent_mobile_error
 Net_UserAgent_Mobile Error: no match
+Testing getMsname() method ...
+V702NK
