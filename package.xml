@@ -21,40 +21,52 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.11</version>
+    <version>0.12</version>
     <state>beta</state>
-    <date>2003-07-20</date>
+    <date>2003-08-11</date>
     <notes>
-- Added display information for DoCoMo's P2102V, F2102V, F505i.
+- Changed way to handle static variables from the PEAR::getStaticProperty
+  method to the static statement.
+- AirHPhone.php: Added makeDisplay() method as a temporary measure since the
+  script would die when the method is called.
+- Added display information for DoCoMo's N2102V, P505i.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
         <file role="php">Mobile.php</file>
-        <dir name="Mobile">
-          <file role="php">AirHPhone.php</file>
-          <file role="php">Common.php</file>
-          <file role="php">Display.php</file>
-          <file role="php">DoCoMo.php</file>
-          <file role="php">DoCoMoDisplayMap.php</file>
-          <file role="php">EZweb.php</file>
-          <file role="php">JPhone.php</file>
-          <file role="php">NonMobile.php</file>
-          <file role="php">Request.php</file>
+        <dir name="Mobile" role="php">
+          <file>AirHPhone.php</file>
+          <file>Common.php</file>
+          <file>Display.php</file>
+          <file>DoCoMo.php</file>
+          <file>DoCoMoDisplayMap.php</file>
+          <file>EZweb.php</file>
+          <file>JPhone.php</file>
+          <file>NonMobile.php</file>
+          <file>Request.php</file>
         </dir>
       </dir>
-      <dir name="tests">
-        <file role="test">00-compile.phpt</file>
-        <file role="test">01-request.phpt</file>
-        <file role="test">02-docomo.phpt</file>
-        <file role="test">03-jphone.phpt</file>
-        <file role="test">04-ezweb.phpt</file>
-        <file role="test">05-display.phpt</file>
-        <file role="test">06-nonmobile.phpt</file>
-        <file role="test">07-airhphone.phpt</file>
+      <dir name="tests" role="test">
+        <file>00-compile.phpt</file>
+        <file>01-request.phpt</file>
+        <file>02-docomo.phpt</file>
+        <file>03-jphone.phpt</file>
+        <file>04-ezweb.phpt</file>
+        <file>05-display.phpt</file>
+        <file>06-nonmobile.phpt</file>
+        <file>07-airhphone.phpt</file>
       </dir>
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.11</version>
+      <state>beta</state>
+      <date>2003-07-20</date>
+      <notes>
+- Added display information for DoCoMo's P2102V, F2102V, F505i.
+      </notes>
+    </release>
     <release>
       <version>0.10</version>
       <state>beta</state>
