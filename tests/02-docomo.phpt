@@ -48,7 +48,7 @@ $tests = array(
                array('DoCoMo/1.0/N211iS/c10', '1.0', '3.0', 'N211iS', 10, false, 'N', '211i'),
                array('DoCoMo/1.0/P211iS/c10', '1.0', '3.0', 'P211iS', 10, false, 'P', '211i'),
                array('DoCoMo/1.0/N251iS/c10/TB', '1.0', '4.0', 'N251iS', 10, false, 'N', '251i', array('status' => 'TB')),
-               array('DoCoMo/1.0/F661i/c10/TB', '1.0', '4.0', 'F661i', 10, false, 'F', '661i', array('status' => 'TB')),
+               array('DoCoMo/1.0/F661i/c10/TB', '1.0', '4.0', 'F661i', 10, false, 'F', '661i', array('status' => 'TB', 'is_gps' => true)),
                array('DoCoMo/1.0/D505i/c20/TC/W20H10', '1.0', '5.0', 'D505i', 20, false, 'D', '505i', array('status' => 'TC'))
                );
 
@@ -270,6 +270,10 @@ foreach ($tests as $value1) {
             case 'comment':
                 ++$line;
                 print "$line: " . $agent->getComment() . "\n";
+                break;
+            case 'is_gps':
+                ++$line;
+                print "$line: " . $agent->isGPS() . "\n";
                 break;
             }
         }
@@ -871,1051 +875,1053 @@ foreach ($test_error_agents as $value) {
 558: 661i
 559: Testing status ...
 560: TB
-561: 1
-562: net_useragent_mobile_common
-563: net_useragent_mobile_docomo
-564: 1
-565: 
-566: 
-567: DoCoMo
-568: DoCoMo/1.0/D505i/c20/TC/W20H10
-569: 1.0
-570: 5.0
-571: D505i
-572: 20
-573: 
-574: D
-575: 505i
-576: Testing status ...
-577: TC
-578: 1
-579: net_useragent_mobile_common
-580: net_useragent_mobile_docomo
-581: DoCoMo
-582: 1
-583: 
-584: 
-585: 1
-586: net_useragent_mobile_common
-587: net_useragent_mobile_docomo
-588: DoCoMo
-589: 1
-590: 
-591: 
-592: 1
-593: net_useragent_mobile_common
-594: net_useragent_mobile_docomo
-595: DoCoMo
-596: 1
-597: 
-598: 
-599: 1
-600: net_useragent_mobile_common
-601: net_useragent_mobile_docomo
-602: DoCoMo
-603: 1
-604: 
-605: 
-606: 1
-607: net_useragent_mobile_common
-608: net_useragent_mobile_docomo
-609: DoCoMo
-610: 1
-611: 
-612: 
-613: 1
-614: net_useragent_mobile_common
-615: net_useragent_mobile_docomo
-616: DoCoMo
-617: 1
-618: 
-619: 
-620: 1
-621: net_useragent_mobile_common
-622: net_useragent_mobile_docomo
-623: DoCoMo
-624: 1
-625: 
-626: 
-627: 1
-628: net_useragent_mobile_common
-629: net_useragent_mobile_docomo
-630: DoCoMo
-631: 1
-632: 
-633: 
-634: 1
-635: net_useragent_mobile_common
-636: net_useragent_mobile_docomo
-637: DoCoMo
-638: 1
-639: 
-640: 
-641: 1
-642: net_useragent_mobile_common
-643: net_useragent_mobile_docomo
-644: DoCoMo
-645: 1
-646: 
-647: 
-648: 1
-649: net_useragent_mobile_common
-650: net_useragent_mobile_docomo
-651: DoCoMo
-652: 1
-653: 
-654: 
-655: 1
-656: net_useragent_mobile_common
-657: net_useragent_mobile_docomo
-658: DoCoMo
-659: 1
-660: 
-661: 
-662: 1
-663: net_useragent_mobile_common
-664: net_useragent_mobile_docomo
-665: DoCoMo
-666: 1
-667: 
-668: 
-669: 1
-670: net_useragent_mobile_common
-671: net_useragent_mobile_docomo
-672: DoCoMo
-673: 1
-674: 
-675: 
-676: 1
-677: net_useragent_mobile_common
-678: net_useragent_mobile_docomo
-679: DoCoMo
-680: 1
-681: 
-682: 
-683: 1
-684: net_useragent_mobile_common
-685: net_useragent_mobile_docomo
-686: DoCoMo
-687: 1
-688: 
-689: 
-690: 1
-691: net_useragent_mobile_common
-692: net_useragent_mobile_docomo
-693: DoCoMo
-694: 1
-695: 
-696: 
-697: 1
-698: net_useragent_mobile_common
-699: net_useragent_mobile_docomo
-700: DoCoMo
-701: 1
-702: 
-703: 
-704: 1
-705: net_useragent_mobile_common
-706: net_useragent_mobile_docomo
-707: DoCoMo
-708: 1
-709: 
-710: 
-711: 1
-712: net_useragent_mobile_common
-713: net_useragent_mobile_docomo
-714: DoCoMo
-715: 1
-716: 
-717: 
-718: 1
-719: net_useragent_mobile_common
-720: net_useragent_mobile_docomo
-721: DoCoMo
-722: 1
-723: 
-724: 
-725: 1
-726: net_useragent_mobile_common
-727: net_useragent_mobile_docomo
-728: DoCoMo
-729: 1
-730: 
-731: 
-732: 1
-733: net_useragent_mobile_common
-734: net_useragent_mobile_docomo
-735: DoCoMo
-736: 1
-737: 
-738: 
-739: 1
-740: net_useragent_mobile_common
-741: net_useragent_mobile_docomo
-742: DoCoMo
-743: 1
-744: 
-745: 
-746: 1
-747: net_useragent_mobile_common
-748: net_useragent_mobile_docomo
-749: DoCoMo
-750: 1
-751: 
-752: 
-753: 1
-754: net_useragent_mobile_common
-755: net_useragent_mobile_docomo
-756: DoCoMo
-757: 1
-758: 
-759: 
-760: 1
-761: net_useragent_mobile_common
-762: net_useragent_mobile_docomo
-763: DoCoMo
-764: 1
-765: 
-766: 
-767: 1
-768: net_useragent_mobile_common
-769: net_useragent_mobile_docomo
-770: DoCoMo
-771: 1
-772: 
-773: 
-774: 1
-775: net_useragent_mobile_common
-776: net_useragent_mobile_docomo
-777: DoCoMo
-778: 1
-779: 
-780: 
-781: 1
-782: net_useragent_mobile_common
-783: net_useragent_mobile_docomo
-784: DoCoMo
-785: 1
-786: 
-787: 
-788: 1
-789: net_useragent_mobile_common
-790: net_useragent_mobile_docomo
-791: DoCoMo
-792: 1
-793: 
-794: 
-795: 1
-796: net_useragent_mobile_common
-797: net_useragent_mobile_docomo
-798: DoCoMo
-799: 1
-800: 
-801: 
-802: 1
-803: net_useragent_mobile_common
-804: net_useragent_mobile_docomo
-805: DoCoMo
-806: 1
-807: 
-808: 
-809: 1
-810: net_useragent_mobile_common
-811: net_useragent_mobile_docomo
-812: DoCoMo
-813: 1
-814: 
-815: 
-816: 1
-817: net_useragent_mobile_common
-818: net_useragent_mobile_docomo
-819: DoCoMo
-820: 1
-821: 
-822: 
-823: 1
-824: net_useragent_mobile_common
-825: net_useragent_mobile_docomo
-826: DoCoMo
-827: 1
-828: 
-829: 
-830: 1
-831: net_useragent_mobile_common
-832: net_useragent_mobile_docomo
-833: DoCoMo
-834: 1
-835: 
-836: 
-837: 1
-838: net_useragent_mobile_common
-839: net_useragent_mobile_docomo
-840: DoCoMo
-841: 1
-842: 
-843: 
-844: 1
-845: net_useragent_mobile_common
-846: net_useragent_mobile_docomo
-847: DoCoMo
-848: 1
-849: 
-850: 
-851: 1
-852: net_useragent_mobile_common
-853: net_useragent_mobile_docomo
-854: DoCoMo
-855: 1
-856: 
-857: 
-858: 1
-859: net_useragent_mobile_common
-860: net_useragent_mobile_docomo
-861: DoCoMo
-862: 1
-863: 
-864: 
-865: 1
-866: net_useragent_mobile_common
-867: net_useragent_mobile_docomo
-868: DoCoMo
-869: 1
-870: 
-871: 
-872: 1
-873: net_useragent_mobile_common
-874: net_useragent_mobile_docomo
-875: DoCoMo
-876: 1
-877: 
-878: 
-879: 1
-880: net_useragent_mobile_common
-881: net_useragent_mobile_docomo
-882: DoCoMo
-883: 1
-884: 
-885: 
-886: 1
-887: net_useragent_mobile_common
-888: net_useragent_mobile_docomo
-889: DoCoMo
-890: 1
-891: 
-892: 
-893: 1
-894: net_useragent_mobile_common
-895: net_useragent_mobile_docomo
-896: DoCoMo
-897: 1
-898: 
-899: 
-900: 1
-901: net_useragent_mobile_common
-902: net_useragent_mobile_docomo
-903: DoCoMo
-904: 1
-905: 
-906: 
-907: 1
-908: net_useragent_mobile_common
-909: net_useragent_mobile_docomo
-910: DoCoMo
-911: 1
-912: 
-913: 
-914: 1
-915: net_useragent_mobile_common
-916: net_useragent_mobile_docomo
-917: DoCoMo
-918: 1
-919: 
-920: 
-921: 1
-922: net_useragent_mobile_common
-923: net_useragent_mobile_docomo
-924: DoCoMo
-925: 1
-926: 
-927: 
-928: 1
-929: net_useragent_mobile_common
-930: net_useragent_mobile_docomo
-931: DoCoMo
-932: 1
-933: 
-934: 
-935: 1
-936: net_useragent_mobile_common
-937: net_useragent_mobile_docomo
-938: DoCoMo
-939: 1
-940: 
-941: 
-942: 1
-943: net_useragent_mobile_common
-944: net_useragent_mobile_docomo
-945: DoCoMo
-946: 1
-947: 
-948: 
-949: 1
-950: net_useragent_mobile_common
-951: net_useragent_mobile_docomo
-952: DoCoMo
-953: 1
-954: 
-955: 
-956: 1
-957: net_useragent_mobile_common
-958: net_useragent_mobile_docomo
-959: DoCoMo
-960: 1
-961: 
-962: 
-963: 1
-964: net_useragent_mobile_common
-965: net_useragent_mobile_docomo
-966: DoCoMo
-967: 1
-968: 
-969: 
-970: 1
-971: net_useragent_mobile_common
-972: net_useragent_mobile_docomo
-973: DoCoMo
-974: 1
-975: 
-976: 
-977: 1
-978: net_useragent_mobile_common
-979: net_useragent_mobile_docomo
-980: DoCoMo
-981: 1
-982: 
-983: 
-984: 1
-985: net_useragent_mobile_common
-986: net_useragent_mobile_docomo
-987: DoCoMo
-988: 1
-989: 
-990: 
-991: 1
-992: net_useragent_mobile_common
-993: net_useragent_mobile_docomo
-994: DoCoMo
-995: 1
-996: 
-997: 
-998: 1
-999: net_useragent_mobile_common
-1000: net_useragent_mobile_docomo
-1001: DoCoMo
-1002: 1
-1003: 
-1004: 
-1005: 1
-1006: net_useragent_mobile_common
-1007: net_useragent_mobile_docomo
-1008: DoCoMo
-1009: 1
-1010: 
-1011: 
-1012: 1
-1013: net_useragent_mobile_common
-1014: net_useragent_mobile_docomo
-1015: DoCoMo
-1016: 1
-1017: 
-1018: 
-1019: 1
-1020: net_useragent_mobile_common
-1021: net_useragent_mobile_docomo
-1022: DoCoMo
-1023: 1
-1024: 
-1025: 
-1026: 1
-1027: net_useragent_mobile_common
-1028: net_useragent_mobile_docomo
-1029: DoCoMo
-1030: 1
-1031: 
-1032: 
-1033: 1
-1034: net_useragent_mobile_common
-1035: net_useragent_mobile_docomo
-1036: DoCoMo
-1037: 1
-1038: 
-1039: 
-1040: 1
-1041: net_useragent_mobile_common
-1042: net_useragent_mobile_docomo
-1043: DoCoMo
-1044: 1
-1045: 
-1046: 
-1047: 1
-1048: net_useragent_mobile_common
-1049: net_useragent_mobile_docomo
-1050: DoCoMo
-1051: 1
-1052: 
-1053: 
-1054: 1
-1055: net_useragent_mobile_common
-1056: net_useragent_mobile_docomo
-1057: DoCoMo
-1058: 1
-1059: 
-1060: 
-1061: 1
-1062: net_useragent_mobile_common
-1063: net_useragent_mobile_docomo
-1064: DoCoMo
-1065: 1
-1066: 
-1067: 
-1068: 1
-1069: net_useragent_mobile_common
-1070: net_useragent_mobile_docomo
-1071: DoCoMo
-1072: 1
-1073: 
-1074: 
-1075: 1
-1076: net_useragent_mobile_common
-1077: net_useragent_mobile_docomo
-1078: DoCoMo
-1079: 1
-1080: 
-1081: 
-1082: 1
-1083: net_useragent_mobile_common
-1084: net_useragent_mobile_docomo
-1085: DoCoMo
-1086: 1
-1087: 
-1088: 
-1089: 1
-1090: net_useragent_mobile_common
-1091: net_useragent_mobile_docomo
-1092: DoCoMo
-1093: 1
-1094: 
-1095: 
-1096: 1
-1097: net_useragent_mobile_common
-1098: net_useragent_mobile_docomo
-1099: DoCoMo
-1100: 1
-1101: 
-1102: 
-1103: 1
-1104: net_useragent_mobile_common
-1105: net_useragent_mobile_docomo
-1106: DoCoMo
-1107: 1
-1108: 
-1109: 
-1110: 1
-1111: net_useragent_mobile_common
-1112: net_useragent_mobile_docomo
-1113: DoCoMo
-1114: 1
-1115: 
-1116: 
-1117: 1
-1118: net_useragent_mobile_common
-1119: net_useragent_mobile_docomo
-1120: DoCoMo
-1121: 1
-1122: 
-1123: 
-1124: 1
-1125: net_useragent_mobile_common
-1126: net_useragent_mobile_docomo
-1127: DoCoMo
-1128: 1
-1129: 
-1130: 
-1131: 1
-1132: net_useragent_mobile_common
-1133: net_useragent_mobile_docomo
-1134: DoCoMo
-1135: 1
-1136: 
-1137: 
-1138: 1
-1139: net_useragent_mobile_common
-1140: net_useragent_mobile_docomo
-1141: DoCoMo
-1142: 1
-1143: 
-1144: 
-1145: 1
-1146: net_useragent_mobile_common
-1147: net_useragent_mobile_docomo
-1148: DoCoMo
-1149: 1
-1150: 
-1151: 
-1152: 1
-1153: net_useragent_mobile_common
-1154: net_useragent_mobile_docomo
-1155: DoCoMo
-1156: 1
-1157: 
-1158: 
-1159: 1
-1160: net_useragent_mobile_common
-1161: net_useragent_mobile_docomo
-1162: DoCoMo
-1163: 1
-1164: 
-1165: 
-1166: 1
-1167: net_useragent_mobile_common
-1168: net_useragent_mobile_docomo
-1169: DoCoMo
-1170: 1
-1171: 
-1172: 
-1173: 1
-1174: net_useragent_mobile_common
-1175: net_useragent_mobile_docomo
-1176: DoCoMo
-1177: 1
-1178: 
-1179: 
-1180: 1
-1181: net_useragent_mobile_common
-1182: net_useragent_mobile_docomo
-1183: DoCoMo
-1184: 1
-1185: 
-1186: 
-1187: 1
-1188: net_useragent_mobile_common
-1189: net_useragent_mobile_docomo
-1190: DoCoMo
-1191: 1
-1192: 
-1193: 
-1194: 1
-1195: net_useragent_mobile_common
-1196: net_useragent_mobile_docomo
-1197: DoCoMo
-1198: 1
-1199: 
-1200: 
-1201: 1
-1202: net_useragent_mobile_common
-1203: net_useragent_mobile_docomo
-1204: DoCoMo
-1205: 1
-1206: 
-1207: 
-1208: 1
-1209: net_useragent_mobile_common
-1210: net_useragent_mobile_docomo
-1211: DoCoMo
-1212: 1
-1213: 
-1214: 
-1215: 1
-1216: net_useragent_mobile_common
-1217: net_useragent_mobile_docomo
-1218: DoCoMo
-1219: 1
-1220: 
-1221: 
-1222: 1
-1223: net_useragent_mobile_common
-1224: net_useragent_mobile_docomo
-1225: DoCoMo
-1226: 1
-1227: 
-1228: 
-1229: 1
-1230: net_useragent_mobile_common
-1231: net_useragent_mobile_docomo
-1232: DoCoMo
-1233: 1
-1234: 
-1235: 
-1236: 1
-1237: net_useragent_mobile_common
-1238: net_useragent_mobile_docomo
-1239: DoCoMo
-1240: 1
-1241: 
-1242: 
-1243: 1
-1244: net_useragent_mobile_common
-1245: net_useragent_mobile_docomo
-1246: DoCoMo
-1247: 1
-1248: 
-1249: 
-1250: 1
-1251: net_useragent_mobile_common
-1252: net_useragent_mobile_docomo
-1253: DoCoMo
-1254: 1
-1255: 
-1256: 
-1257: 1
-1258: net_useragent_mobile_common
-1259: net_useragent_mobile_docomo
-1260: DoCoMo
-1261: 1
-1262: 
-1263: 
-1264: 1
-1265: net_useragent_mobile_common
-1266: net_useragent_mobile_docomo
-1267: DoCoMo
-1268: 1
-1269: 
-1270: 
-1271: 1
-1272: net_useragent_mobile_common
-1273: net_useragent_mobile_docomo
-1274: DoCoMo
-1275: 1
-1276: 
-1277: 
-1278: 1
-1279: net_useragent_mobile_common
-1280: net_useragent_mobile_docomo
-1281: DoCoMo
-1282: 1
-1283: 
-1284: 
-1285: 1
-1286: net_useragent_mobile_common
-1287: net_useragent_mobile_docomo
-1288: DoCoMo
-1289: 1
-1290: 
-1291: 
-1292: 1
-1293: net_useragent_mobile_common
-1294: net_useragent_mobile_docomo
-1295: DoCoMo
-1296: 1
-1297: 
-1298: 
-1299: 1
-1300: net_useragent_mobile_common
-1301: net_useragent_mobile_docomo
-1302: DoCoMo
-1303: 1
-1304: 
-1305: 
-1306: 1
-1307: net_useragent_mobile_common
-1308: net_useragent_mobile_docomo
-1309: DoCoMo
-1310: 1
-1311: 
-1312: 
-1313: 1
-1314: net_useragent_mobile_common
-1315: net_useragent_mobile_docomo
-1316: DoCoMo
-1317: 1
-1318: 
-1319: 
-1320: 1
-1321: net_useragent_mobile_common
-1322: net_useragent_mobile_docomo
-1323: DoCoMo
-1324: 1
-1325: 
-1326: 
-1327: 1
-1328: net_useragent_mobile_common
-1329: net_useragent_mobile_docomo
-1330: DoCoMo
-1331: 1
-1332: 
-1333: 
-1334: 1
-1335: net_useragent_mobile_common
-1336: net_useragent_mobile_docomo
-1337: DoCoMo
-1338: 1
-1339: 
-1340: 
-1341: 1
-1342: net_useragent_mobile_common
-1343: net_useragent_mobile_docomo
-1344: DoCoMo
-1345: 1
-1346: 
-1347: 
-1348: 1
-1349: net_useragent_mobile_common
-1350: net_useragent_mobile_docomo
-1351: DoCoMo
-1352: 1
-1353: 
-1354: 
-1355: 1
-1356: net_useragent_mobile_common
-1357: net_useragent_mobile_docomo
-1358: DoCoMo
-1359: 1
-1360: 
-1361: 
-1362: 1
-1363: net_useragent_mobile_common
-1364: net_useragent_mobile_docomo
-1365: DoCoMo
-1366: 1
-1367: 
-1368: 
-1369: 1
-1370: net_useragent_mobile_common
-1371: net_useragent_mobile_docomo
-1372: DoCoMo
-1373: 1
-1374: 
-1375: 
-1376: 1
-1377: net_useragent_mobile_common
-1378: net_useragent_mobile_docomo
-1379: DoCoMo
-1380: 1
-1381: 
-1382: 
-1383: 1
-1384: net_useragent_mobile_common
-1385: net_useragent_mobile_docomo
-1386: DoCoMo
-1387: 1
-1388: 
-1389: 
-1390: 1
-1391: net_useragent_mobile_common
-1392: net_useragent_mobile_docomo
-1393: DoCoMo
-1394: 1
-1395: 
-1396: 
-1397: 1
-1398: net_useragent_mobile_common
-1399: net_useragent_mobile_docomo
-1400: DoCoMo
-1401: 1
-1402: 
-1403: 
-1404: 1
-1405: net_useragent_mobile_common
-1406: net_useragent_mobile_docomo
-1407: DoCoMo
-1408: 1
-1409: 
-1410: 
-1411: 1
-1412: net_useragent_mobile_common
-1413: net_useragent_mobile_docomo
-1414: DoCoMo
-1415: 1
-1416: 
-1417: 
-1418: 1
-1419: net_useragent_mobile_common
-1420: net_useragent_mobile_docomo
-1421: DoCoMo
-1422: 1
-1423: 
-1424: 
-1425: 1
-1426: net_useragent_mobile_common
-1427: net_useragent_mobile_docomo
-1428: DoCoMo
-1429: 1
-1430: 
-1431: 
-1432: 1
-1433: net_useragent_mobile_common
-1434: net_useragent_mobile_docomo
-1435: DoCoMo
-1436: 1
-1437: 
-1438: 
-1439: 1
-1440: net_useragent_mobile_common
-1441: net_useragent_mobile_docomo
-1442: DoCoMo
-1443: 1
-1444: 
-1445: 
-1446: 1
-1447: net_useragent_mobile_common
-1448: net_useragent_mobile_docomo
-1449: DoCoMo
-1450: 1
-1451: 
-1452: 
-1453: 1
-1454: net_useragent_mobile_common
-1455: net_useragent_mobile_docomo
-1456: DoCoMo
-1457: 1
-1458: 
-1459: 
-1460: 1
-1461: net_useragent_mobile_common
-1462: net_useragent_mobile_docomo
-1463: DoCoMo
-1464: 1
-1465: 
-1466: 
-1467: 1
-1468: net_useragent_mobile_common
-1469: net_useragent_mobile_docomo
-1470: DoCoMo
-1471: 1
-1472: 
-1473: 
-1474: 1
-1475: net_useragent_mobile_common
-1476: net_useragent_mobile_docomo
-1477: DoCoMo
-1478: 1
-1479: 
-1480: 
-1481: 1
-1482: net_useragent_mobile_common
-1483: net_useragent_mobile_docomo
-1484: DoCoMo
-1485: 1
-1486: 
-1487: 
-1488: 1
-1489: net_useragent_mobile_common
-1490: net_useragent_mobile_docomo
-1491: DoCoMo
-1492: 1
-1493: 
-1494: 
-1495: 1
-1496: net_useragent_mobile_common
-1497: net_useragent_mobile_docomo
-1498: DoCoMo
-1499: 1
-1500: 
-1501: 
-1502: 1
-1503: net_useragent_mobile_common
-1504: net_useragent_mobile_docomo
-1505: DoCoMo
-1506: 1
-1507: 
-1508: 
-1509: 1
-1510: net_useragent_mobile_common
-1511: net_useragent_mobile_docomo
-1512: DoCoMo
-1513: 1
-1514: 
-1515: 
-1516: 1
-1517: net_useragent_mobile_common
-1518: net_useragent_mobile_docomo
-1519: DoCoMo
-1520: 1
-1521: 
-1522: 
-1523: 1
-1524: net_useragent_mobile_common
-1525: net_useragent_mobile_docomo
-1526: DoCoMo
-1527: 1
-1528: 
-1529: 
-1530: 1
-1531: net_useragent_mobile_common
-1532: net_useragent_mobile_docomo
-1533: DoCoMo
-1534: 1
-1535: 
-1536: 
-1537: 1
-1538: net_useragent_mobile_common
-1539: net_useragent_mobile_docomo
-1540: DoCoMo
-1541: 1
-1542: 
-1543: 
-1544: 1
-1545: net_useragent_mobile_common
-1546: net_useragent_mobile_docomo
-1547: DoCoMo
-1548: 1
-1549: 
-1550: 
-1551: 1
-1552: net_useragent_mobile_common
-1553: net_useragent_mobile_docomo
-1554: DoCoMo
-1555: 1
-1556: 
-1557: 
-1558: 1
-1559: net_useragent_mobile_common
-1560: net_useragent_mobile_docomo
-1561: DoCoMo
-1562: 1
-1563: 
-1564: 
-1565: 1
-1566: net_useragent_mobile_common
-1567: net_useragent_mobile_docomo
-1568: DoCoMo
-1569: 1
-1570: 
-1571: 
-1572: 1
-1573: net_useragent_mobile_common
-1574: net_useragent_mobile_docomo
-1575: DoCoMo
-1576: 1
-1577: 
-1578: 
-1579: 1
-1580: net_useragent_mobile_common
-1581: net_useragent_mobile_docomo
-1582: DoCoMo
-1583: 1
-1584: 
-1585: 
-1586: 1
-1587: net_useragent_mobile_common
-1588: net_useragent_mobile_docomo
-1589: DoCoMo
-1590: 1
-1591: 
-1592: 
-1593: 1
-1594: net_useragent_mobile_common
-1595: net_useragent_mobile_docomo
-1596: DoCoMo
-1597: 1
-1598: 
-1599: 
-1600: 1
-1601: net_useragent_mobile_error
-1602: Net_UserAgent_Mobile Error: no match
-1603: 1
-1604: net_useragent_mobile_error
-1605: Net_UserAgent_Mobile Error: no match
-1606: 1
-1607: net_useragent_mobile_error
-1608: Net_UserAgent_Mobile Error: no match
+561: Testing is_gps ...
+562: 1
+563: 1
+564: net_useragent_mobile_common
+565: net_useragent_mobile_docomo
+566: 1
+567: 
+568: 
+569: DoCoMo
+570: DoCoMo/1.0/D505i/c20/TC/W20H10
+571: 1.0
+572: 5.0
+573: D505i
+574: 20
+575: 
+576: D
+577: 505i
+578: Testing status ...
+579: TC
+580: 1
+581: net_useragent_mobile_common
+582: net_useragent_mobile_docomo
+583: DoCoMo
+584: 1
+585: 
+586: 
+587: 1
+588: net_useragent_mobile_common
+589: net_useragent_mobile_docomo
+590: DoCoMo
+591: 1
+592: 
+593: 
+594: 1
+595: net_useragent_mobile_common
+596: net_useragent_mobile_docomo
+597: DoCoMo
+598: 1
+599: 
+600: 
+601: 1
+602: net_useragent_mobile_common
+603: net_useragent_mobile_docomo
+604: DoCoMo
+605: 1
+606: 
+607: 
+608: 1
+609: net_useragent_mobile_common
+610: net_useragent_mobile_docomo
+611: DoCoMo
+612: 1
+613: 
+614: 
+615: 1
+616: net_useragent_mobile_common
+617: net_useragent_mobile_docomo
+618: DoCoMo
+619: 1
+620: 
+621: 
+622: 1
+623: net_useragent_mobile_common
+624: net_useragent_mobile_docomo
+625: DoCoMo
+626: 1
+627: 
+628: 
+629: 1
+630: net_useragent_mobile_common
+631: net_useragent_mobile_docomo
+632: DoCoMo
+633: 1
+634: 
+635: 
+636: 1
+637: net_useragent_mobile_common
+638: net_useragent_mobile_docomo
+639: DoCoMo
+640: 1
+641: 
+642: 
+643: 1
+644: net_useragent_mobile_common
+645: net_useragent_mobile_docomo
+646: DoCoMo
+647: 1
+648: 
+649: 
+650: 1
+651: net_useragent_mobile_common
+652: net_useragent_mobile_docomo
+653: DoCoMo
+654: 1
+655: 
+656: 
+657: 1
+658: net_useragent_mobile_common
+659: net_useragent_mobile_docomo
+660: DoCoMo
+661: 1
+662: 
+663: 
+664: 1
+665: net_useragent_mobile_common
+666: net_useragent_mobile_docomo
+667: DoCoMo
+668: 1
+669: 
+670: 
+671: 1
+672: net_useragent_mobile_common
+673: net_useragent_mobile_docomo
+674: DoCoMo
+675: 1
+676: 
+677: 
+678: 1
+679: net_useragent_mobile_common
+680: net_useragent_mobile_docomo
+681: DoCoMo
+682: 1
+683: 
+684: 
+685: 1
+686: net_useragent_mobile_common
+687: net_useragent_mobile_docomo
+688: DoCoMo
+689: 1
+690: 
+691: 
+692: 1
+693: net_useragent_mobile_common
+694: net_useragent_mobile_docomo
+695: DoCoMo
+696: 1
+697: 
+698: 
+699: 1
+700: net_useragent_mobile_common
+701: net_useragent_mobile_docomo
+702: DoCoMo
+703: 1
+704: 
+705: 
+706: 1
+707: net_useragent_mobile_common
+708: net_useragent_mobile_docomo
+709: DoCoMo
+710: 1
+711: 
+712: 
+713: 1
+714: net_useragent_mobile_common
+715: net_useragent_mobile_docomo
+716: DoCoMo
+717: 1
+718: 
+719: 
+720: 1
+721: net_useragent_mobile_common
+722: net_useragent_mobile_docomo
+723: DoCoMo
+724: 1
+725: 
+726: 
+727: 1
+728: net_useragent_mobile_common
+729: net_useragent_mobile_docomo
+730: DoCoMo
+731: 1
+732: 
+733: 
+734: 1
+735: net_useragent_mobile_common
+736: net_useragent_mobile_docomo
+737: DoCoMo
+738: 1
+739: 
+740: 
+741: 1
+742: net_useragent_mobile_common
+743: net_useragent_mobile_docomo
+744: DoCoMo
+745: 1
+746: 
+747: 
+748: 1
+749: net_useragent_mobile_common
+750: net_useragent_mobile_docomo
+751: DoCoMo
+752: 1
+753: 
+754: 
+755: 1
+756: net_useragent_mobile_common
+757: net_useragent_mobile_docomo
+758: DoCoMo
+759: 1
+760: 
+761: 
+762: 1
+763: net_useragent_mobile_common
+764: net_useragent_mobile_docomo
+765: DoCoMo
+766: 1
+767: 
+768: 
+769: 1
+770: net_useragent_mobile_common
+771: net_useragent_mobile_docomo
+772: DoCoMo
+773: 1
+774: 
+775: 
+776: 1
+777: net_useragent_mobile_common
+778: net_useragent_mobile_docomo
+779: DoCoMo
+780: 1
+781: 
+782: 
+783: 1
+784: net_useragent_mobile_common
+785: net_useragent_mobile_docomo
+786: DoCoMo
+787: 1
+788: 
+789: 
+790: 1
+791: net_useragent_mobile_common
+792: net_useragent_mobile_docomo
+793: DoCoMo
+794: 1
+795: 
+796: 
+797: 1
+798: net_useragent_mobile_common
+799: net_useragent_mobile_docomo
+800: DoCoMo
+801: 1
+802: 
+803: 
+804: 1
+805: net_useragent_mobile_common
+806: net_useragent_mobile_docomo
+807: DoCoMo
+808: 1
+809: 
+810: 
+811: 1
+812: net_useragent_mobile_common
+813: net_useragent_mobile_docomo
+814: DoCoMo
+815: 1
+816: 
+817: 
+818: 1
+819: net_useragent_mobile_common
+820: net_useragent_mobile_docomo
+821: DoCoMo
+822: 1
+823: 
+824: 
+825: 1
+826: net_useragent_mobile_common
+827: net_useragent_mobile_docomo
+828: DoCoMo
+829: 1
+830: 
+831: 
+832: 1
+833: net_useragent_mobile_common
+834: net_useragent_mobile_docomo
+835: DoCoMo
+836: 1
+837: 
+838: 
+839: 1
+840: net_useragent_mobile_common
+841: net_useragent_mobile_docomo
+842: DoCoMo
+843: 1
+844: 
+845: 
+846: 1
+847: net_useragent_mobile_common
+848: net_useragent_mobile_docomo
+849: DoCoMo
+850: 1
+851: 
+852: 
+853: 1
+854: net_useragent_mobile_common
+855: net_useragent_mobile_docomo
+856: DoCoMo
+857: 1
+858: 
+859: 
+860: 1
+861: net_useragent_mobile_common
+862: net_useragent_mobile_docomo
+863: DoCoMo
+864: 1
+865: 
+866: 
+867: 1
+868: net_useragent_mobile_common
+869: net_useragent_mobile_docomo
+870: DoCoMo
+871: 1
+872: 
+873: 
+874: 1
+875: net_useragent_mobile_common
+876: net_useragent_mobile_docomo
+877: DoCoMo
+878: 1
+879: 
+880: 
+881: 1
+882: net_useragent_mobile_common
+883: net_useragent_mobile_docomo
+884: DoCoMo
+885: 1
+886: 
+887: 
+888: 1
+889: net_useragent_mobile_common
+890: net_useragent_mobile_docomo
+891: DoCoMo
+892: 1
+893: 
+894: 
+895: 1
+896: net_useragent_mobile_common
+897: net_useragent_mobile_docomo
+898: DoCoMo
+899: 1
+900: 
+901: 
+902: 1
+903: net_useragent_mobile_common
+904: net_useragent_mobile_docomo
+905: DoCoMo
+906: 1
+907: 
+908: 
+909: 1
+910: net_useragent_mobile_common
+911: net_useragent_mobile_docomo
+912: DoCoMo
+913: 1
+914: 
+915: 
+916: 1
+917: net_useragent_mobile_common
+918: net_useragent_mobile_docomo
+919: DoCoMo
+920: 1
+921: 
+922: 
+923: 1
+924: net_useragent_mobile_common
+925: net_useragent_mobile_docomo
+926: DoCoMo
+927: 1
+928: 
+929: 
+930: 1
+931: net_useragent_mobile_common
+932: net_useragent_mobile_docomo
+933: DoCoMo
+934: 1
+935: 
+936: 
+937: 1
+938: net_useragent_mobile_common
+939: net_useragent_mobile_docomo
+940: DoCoMo
+941: 1
+942: 
+943: 
+944: 1
+945: net_useragent_mobile_common
+946: net_useragent_mobile_docomo
+947: DoCoMo
+948: 1
+949: 
+950: 
+951: 1
+952: net_useragent_mobile_common
+953: net_useragent_mobile_docomo
+954: DoCoMo
+955: 1
+956: 
+957: 
+958: 1
+959: net_useragent_mobile_common
+960: net_useragent_mobile_docomo
+961: DoCoMo
+962: 1
+963: 
+964: 
+965: 1
+966: net_useragent_mobile_common
+967: net_useragent_mobile_docomo
+968: DoCoMo
+969: 1
+970: 
+971: 
+972: 1
+973: net_useragent_mobile_common
+974: net_useragent_mobile_docomo
+975: DoCoMo
+976: 1
+977: 
+978: 
+979: 1
+980: net_useragent_mobile_common
+981: net_useragent_mobile_docomo
+982: DoCoMo
+983: 1
+984: 
+985: 
+986: 1
+987: net_useragent_mobile_common
+988: net_useragent_mobile_docomo
+989: DoCoMo
+990: 1
+991: 
+992: 
+993: 1
+994: net_useragent_mobile_common
+995: net_useragent_mobile_docomo
+996: DoCoMo
+997: 1
+998: 
+999: 
+1000: 1
+1001: net_useragent_mobile_common
+1002: net_useragent_mobile_docomo
+1003: DoCoMo
+1004: 1
+1005: 
+1006: 
+1007: 1
+1008: net_useragent_mobile_common
+1009: net_useragent_mobile_docomo
+1010: DoCoMo
+1011: 1
+1012: 
+1013: 
+1014: 1
+1015: net_useragent_mobile_common
+1016: net_useragent_mobile_docomo
+1017: DoCoMo
+1018: 1
+1019: 
+1020: 
+1021: 1
+1022: net_useragent_mobile_common
+1023: net_useragent_mobile_docomo
+1024: DoCoMo
+1025: 1
+1026: 
+1027: 
+1028: 1
+1029: net_useragent_mobile_common
+1030: net_useragent_mobile_docomo
+1031: DoCoMo
+1032: 1
+1033: 
+1034: 
+1035: 1
+1036: net_useragent_mobile_common
+1037: net_useragent_mobile_docomo
+1038: DoCoMo
+1039: 1
+1040: 
+1041: 
+1042: 1
+1043: net_useragent_mobile_common
+1044: net_useragent_mobile_docomo
+1045: DoCoMo
+1046: 1
+1047: 
+1048: 
+1049: 1
+1050: net_useragent_mobile_common
+1051: net_useragent_mobile_docomo
+1052: DoCoMo
+1053: 1
+1054: 
+1055: 
+1056: 1
+1057: net_useragent_mobile_common
+1058: net_useragent_mobile_docomo
+1059: DoCoMo
+1060: 1
+1061: 
+1062: 
+1063: 1
+1064: net_useragent_mobile_common
+1065: net_useragent_mobile_docomo
+1066: DoCoMo
+1067: 1
+1068: 
+1069: 
+1070: 1
+1071: net_useragent_mobile_common
+1072: net_useragent_mobile_docomo
+1073: DoCoMo
+1074: 1
+1075: 
+1076: 
+1077: 1
+1078: net_useragent_mobile_common
+1079: net_useragent_mobile_docomo
+1080: DoCoMo
+1081: 1
+1082: 
+1083: 
+1084: 1
+1085: net_useragent_mobile_common
+1086: net_useragent_mobile_docomo
+1087: DoCoMo
+1088: 1
+1089: 
+1090: 
+1091: 1
+1092: net_useragent_mobile_common
+1093: net_useragent_mobile_docomo
+1094: DoCoMo
+1095: 1
+1096: 
+1097: 
+1098: 1
+1099: net_useragent_mobile_common
+1100: net_useragent_mobile_docomo
+1101: DoCoMo
+1102: 1
+1103: 
+1104: 
+1105: 1
+1106: net_useragent_mobile_common
+1107: net_useragent_mobile_docomo
+1108: DoCoMo
+1109: 1
+1110: 
+1111: 
+1112: 1
+1113: net_useragent_mobile_common
+1114: net_useragent_mobile_docomo
+1115: DoCoMo
+1116: 1
+1117: 
+1118: 
+1119: 1
+1120: net_useragent_mobile_common
+1121: net_useragent_mobile_docomo
+1122: DoCoMo
+1123: 1
+1124: 
+1125: 
+1126: 1
+1127: net_useragent_mobile_common
+1128: net_useragent_mobile_docomo
+1129: DoCoMo
+1130: 1
+1131: 
+1132: 
+1133: 1
+1134: net_useragent_mobile_common
+1135: net_useragent_mobile_docomo
+1136: DoCoMo
+1137: 1
+1138: 
+1139: 
+1140: 1
+1141: net_useragent_mobile_common
+1142: net_useragent_mobile_docomo
+1143: DoCoMo
+1144: 1
+1145: 
+1146: 
+1147: 1
+1148: net_useragent_mobile_common
+1149: net_useragent_mobile_docomo
+1150: DoCoMo
+1151: 1
+1152: 
+1153: 
+1154: 1
+1155: net_useragent_mobile_common
+1156: net_useragent_mobile_docomo
+1157: DoCoMo
+1158: 1
+1159: 
+1160: 
+1161: 1
+1162: net_useragent_mobile_common
+1163: net_useragent_mobile_docomo
+1164: DoCoMo
+1165: 1
+1166: 
+1167: 
+1168: 1
+1169: net_useragent_mobile_common
+1170: net_useragent_mobile_docomo
+1171: DoCoMo
+1172: 1
+1173: 
+1174: 
+1175: 1
+1176: net_useragent_mobile_common
+1177: net_useragent_mobile_docomo
+1178: DoCoMo
+1179: 1
+1180: 
+1181: 
+1182: 1
+1183: net_useragent_mobile_common
+1184: net_useragent_mobile_docomo
+1185: DoCoMo
+1186: 1
+1187: 
+1188: 
+1189: 1
+1190: net_useragent_mobile_common
+1191: net_useragent_mobile_docomo
+1192: DoCoMo
+1193: 1
+1194: 
+1195: 
+1196: 1
+1197: net_useragent_mobile_common
+1198: net_useragent_mobile_docomo
+1199: DoCoMo
+1200: 1
+1201: 
+1202: 
+1203: 1
+1204: net_useragent_mobile_common
+1205: net_useragent_mobile_docomo
+1206: DoCoMo
+1207: 1
+1208: 
+1209: 
+1210: 1
+1211: net_useragent_mobile_common
+1212: net_useragent_mobile_docomo
+1213: DoCoMo
+1214: 1
+1215: 
+1216: 
+1217: 1
+1218: net_useragent_mobile_common
+1219: net_useragent_mobile_docomo
+1220: DoCoMo
+1221: 1
+1222: 
+1223: 
+1224: 1
+1225: net_useragent_mobile_common
+1226: net_useragent_mobile_docomo
+1227: DoCoMo
+1228: 1
+1229: 
+1230: 
+1231: 1
+1232: net_useragent_mobile_common
+1233: net_useragent_mobile_docomo
+1234: DoCoMo
+1235: 1
+1236: 
+1237: 
+1238: 1
+1239: net_useragent_mobile_common
+1240: net_useragent_mobile_docomo
+1241: DoCoMo
+1242: 1
+1243: 
+1244: 
+1245: 1
+1246: net_useragent_mobile_common
+1247: net_useragent_mobile_docomo
+1248: DoCoMo
+1249: 1
+1250: 
+1251: 
+1252: 1
+1253: net_useragent_mobile_common
+1254: net_useragent_mobile_docomo
+1255: DoCoMo
+1256: 1
+1257: 
+1258: 
+1259: 1
+1260: net_useragent_mobile_common
+1261: net_useragent_mobile_docomo
+1262: DoCoMo
+1263: 1
+1264: 
+1265: 
+1266: 1
+1267: net_useragent_mobile_common
+1268: net_useragent_mobile_docomo
+1269: DoCoMo
+1270: 1
+1271: 
+1272: 
+1273: 1
+1274: net_useragent_mobile_common
+1275: net_useragent_mobile_docomo
+1276: DoCoMo
+1277: 1
+1278: 
+1279: 
+1280: 1
+1281: net_useragent_mobile_common
+1282: net_useragent_mobile_docomo
+1283: DoCoMo
+1284: 1
+1285: 
+1286: 
+1287: 1
+1288: net_useragent_mobile_common
+1289: net_useragent_mobile_docomo
+1290: DoCoMo
+1291: 1
+1292: 
+1293: 
+1294: 1
+1295: net_useragent_mobile_common
+1296: net_useragent_mobile_docomo
+1297: DoCoMo
+1298: 1
+1299: 
+1300: 
+1301: 1
+1302: net_useragent_mobile_common
+1303: net_useragent_mobile_docomo
+1304: DoCoMo
+1305: 1
+1306: 
+1307: 
+1308: 1
+1309: net_useragent_mobile_common
+1310: net_useragent_mobile_docomo
+1311: DoCoMo
+1312: 1
+1313: 
+1314: 
+1315: 1
+1316: net_useragent_mobile_common
+1317: net_useragent_mobile_docomo
+1318: DoCoMo
+1319: 1
+1320: 
+1321: 
+1322: 1
+1323: net_useragent_mobile_common
+1324: net_useragent_mobile_docomo
+1325: DoCoMo
+1326: 1
+1327: 
+1328: 
+1329: 1
+1330: net_useragent_mobile_common
+1331: net_useragent_mobile_docomo
+1332: DoCoMo
+1333: 1
+1334: 
+1335: 
+1336: 1
+1337: net_useragent_mobile_common
+1338: net_useragent_mobile_docomo
+1339: DoCoMo
+1340: 1
+1341: 
+1342: 
+1343: 1
+1344: net_useragent_mobile_common
+1345: net_useragent_mobile_docomo
+1346: DoCoMo
+1347: 1
+1348: 
+1349: 
+1350: 1
+1351: net_useragent_mobile_common
+1352: net_useragent_mobile_docomo
+1353: DoCoMo
+1354: 1
+1355: 
+1356: 
+1357: 1
+1358: net_useragent_mobile_common
+1359: net_useragent_mobile_docomo
+1360: DoCoMo
+1361: 1
+1362: 
+1363: 
+1364: 1
+1365: net_useragent_mobile_common
+1366: net_useragent_mobile_docomo
+1367: DoCoMo
+1368: 1
+1369: 
+1370: 
+1371: 1
+1372: net_useragent_mobile_common
+1373: net_useragent_mobile_docomo
+1374: DoCoMo
+1375: 1
+1376: 
+1377: 
+1378: 1
+1379: net_useragent_mobile_common
+1380: net_useragent_mobile_docomo
+1381: DoCoMo
+1382: 1
+1383: 
+1384: 
+1385: 1
+1386: net_useragent_mobile_common
+1387: net_useragent_mobile_docomo
+1388: DoCoMo
+1389: 1
+1390: 
+1391: 
+1392: 1
+1393: net_useragent_mobile_common
+1394: net_useragent_mobile_docomo
+1395: DoCoMo
+1396: 1
+1397: 
+1398: 
+1399: 1
+1400: net_useragent_mobile_common
+1401: net_useragent_mobile_docomo
+1402: DoCoMo
+1403: 1
+1404: 
+1405: 
+1406: 1
+1407: net_useragent_mobile_common
+1408: net_useragent_mobile_docomo
+1409: DoCoMo
+1410: 1
+1411: 
+1412: 
+1413: 1
+1414: net_useragent_mobile_common
+1415: net_useragent_mobile_docomo
+1416: DoCoMo
+1417: 1
+1418: 
+1419: 
+1420: 1
+1421: net_useragent_mobile_common
+1422: net_useragent_mobile_docomo
+1423: DoCoMo
+1424: 1
+1425: 
+1426: 
+1427: 1
+1428: net_useragent_mobile_common
+1429: net_useragent_mobile_docomo
+1430: DoCoMo
+1431: 1
+1432: 
+1433: 
+1434: 1
+1435: net_useragent_mobile_common
+1436: net_useragent_mobile_docomo
+1437: DoCoMo
+1438: 1
+1439: 
+1440: 
+1441: 1
+1442: net_useragent_mobile_common
+1443: net_useragent_mobile_docomo
+1444: DoCoMo
+1445: 1
+1446: 
+1447: 
+1448: 1
+1449: net_useragent_mobile_common
+1450: net_useragent_mobile_docomo
+1451: DoCoMo
+1452: 1
+1453: 
+1454: 
+1455: 1
+1456: net_useragent_mobile_common
+1457: net_useragent_mobile_docomo
+1458: DoCoMo
+1459: 1
+1460: 
+1461: 
+1462: 1
+1463: net_useragent_mobile_common
+1464: net_useragent_mobile_docomo
+1465: DoCoMo
+1466: 1
+1467: 
+1468: 
+1469: 1
+1470: net_useragent_mobile_common
+1471: net_useragent_mobile_docomo
+1472: DoCoMo
+1473: 1
+1474: 
+1475: 
+1476: 1
+1477: net_useragent_mobile_common
+1478: net_useragent_mobile_docomo
+1479: DoCoMo
+1480: 1
+1481: 
+1482: 
+1483: 1
+1484: net_useragent_mobile_common
+1485: net_useragent_mobile_docomo
+1486: DoCoMo
+1487: 1
+1488: 
+1489: 
+1490: 1
+1491: net_useragent_mobile_common
+1492: net_useragent_mobile_docomo
+1493: DoCoMo
+1494: 1
+1495: 
+1496: 
+1497: 1
+1498: net_useragent_mobile_common
+1499: net_useragent_mobile_docomo
+1500: DoCoMo
+1501: 1
+1502: 
+1503: 
+1504: 1
+1505: net_useragent_mobile_common
+1506: net_useragent_mobile_docomo
+1507: DoCoMo
+1508: 1
+1509: 
+1510: 
+1511: 1
+1512: net_useragent_mobile_common
+1513: net_useragent_mobile_docomo
+1514: DoCoMo
+1515: 1
+1516: 
+1517: 
+1518: 1
+1519: net_useragent_mobile_common
+1520: net_useragent_mobile_docomo
+1521: DoCoMo
+1522: 1
+1523: 
+1524: 
+1525: 1
+1526: net_useragent_mobile_common
+1527: net_useragent_mobile_docomo
+1528: DoCoMo
+1529: 1
+1530: 
+1531: 
+1532: 1
+1533: net_useragent_mobile_common
+1534: net_useragent_mobile_docomo
+1535: DoCoMo
+1536: 1
+1537: 
+1538: 
+1539: 1
+1540: net_useragent_mobile_common
+1541: net_useragent_mobile_docomo
+1542: DoCoMo
+1543: 1
+1544: 
+1545: 
+1546: 1
+1547: net_useragent_mobile_common
+1548: net_useragent_mobile_docomo
+1549: DoCoMo
+1550: 1
+1551: 
+1552: 
+1553: 1
+1554: net_useragent_mobile_common
+1555: net_useragent_mobile_docomo
+1556: DoCoMo
+1557: 1
+1558: 
+1559: 
+1560: 1
+1561: net_useragent_mobile_common
+1562: net_useragent_mobile_docomo
+1563: DoCoMo
+1564: 1
+1565: 
+1566: 
+1567: 1
+1568: net_useragent_mobile_common
+1569: net_useragent_mobile_docomo
+1570: DoCoMo
+1571: 1
+1572: 
+1573: 
+1574: 1
+1575: net_useragent_mobile_common
+1576: net_useragent_mobile_docomo
+1577: DoCoMo
+1578: 1
+1579: 
+1580: 
+1581: 1
+1582: net_useragent_mobile_common
+1583: net_useragent_mobile_docomo
+1584: DoCoMo
+1585: 1
+1586: 
+1587: 
+1588: 1
+1589: net_useragent_mobile_common
+1590: net_useragent_mobile_docomo
+1591: DoCoMo
+1592: 1
+1593: 
+1594: 
+1595: 1
+1596: net_useragent_mobile_common
+1597: net_useragent_mobile_docomo
+1598: DoCoMo
+1599: 1
+1600: 
+1601: 
+1602: 1
+1603: net_useragent_mobile_error
+1604: Net_UserAgent_Mobile Error: no match
+1605: 1
+1606: net_useragent_mobile_error
+1607: Net_UserAgent_Mobile Error: no match
+1608: 1
+1609: net_useragent_mobile_error
+1610: Net_UserAgent_Mobile Error: no match
