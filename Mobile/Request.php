@@ -1,9 +1,9 @@
 <?php
-//
+/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
+// | PHP version 4                                                        |
 // +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2003 The PHP Group                                |
+// | Copyright (c) 1997-2004 The PHP Group                                |
 // +----------------------------------------------------------------------+
 // | This source file is subject to version 3.0 of the PHP license,       |
 // | that is bundled with this package in the file LICENSE, and is        |
@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Request.php,v 1.3 2003/07/07 02:10:24 kuboa Exp $
+// $Id: Request.php,v 1.4 2004/02/08 11:58:38 kuboa Exp $
 //
 
 /**
@@ -27,7 +27,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.3 $
+ * @version  $Revision: 1.4 $
  */
 class Net_UserAgent_Mobile_Request
 {
@@ -74,7 +74,7 @@ class Net_UserAgent_Mobile_Request
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.3 $
+ * @version  $Revision: 1.4 $
  */
 class Net_UserAgent_Mobile_Request_Env
 {

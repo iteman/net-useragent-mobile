@@ -1,9 +1,9 @@
 <?php
-//
+/* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------+
-// | PHP Version 4                                                        |
+// | PHP version 4                                                        |
 // +----------------------------------------------------------------------+
-// | Copyright (c) 1997-2003 The PHP Group                                |
+// | Copyright (c) 1997-2004 The PHP Group                                |
 // +----------------------------------------------------------------------+
 // | This source file is subject to version 3.0 of the PHP license,       |
 // | that is bundled with this package in the file LICENSE, and is        |
@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: AirHPhone.php,v 1.4 2003/11/14 07:09:49 kuboa Exp $
+// $Id: AirHPhone.php,v 1.5 2004/02/08 11:58:38 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -49,7 +49,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.4 $
+ * @version  $Revision: 1.5 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.ddipocket.co.jp/airh_phone/i_hp.html
  */
