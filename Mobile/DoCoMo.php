@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.19 2004/09/25 08:54:23 kuboa Exp $
+// $Id: DoCoMo.php,v 1.20 2004/09/25 10:10:36 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -71,7 +71,7 @@ require_once(dirname(__FILE__) . '/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.19 $
+ * @version  $Revision: 1.20 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -234,11 +234,11 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if (!isset($htmlVersionMap)) {
             $htmlVersionMap = array(
                                     '[DFNP]501i' => '1.0',
-                                    '502i|821i|209i|691i|(F|N|P|KO)210i|^F671i$' => '2.0',
+                                    '502i|821i|209i|651|691i|(F|N|P|KO)210i|^F671i$' => '2.0',
                                     '(D210i|SO210i)|503i|211i|SH251i|692i|200[12]|2101V' => '3.0',
-                                    '504i|251i|^F671iS$|212i|2051|2102V|^F661i$|2701|^F672i$' => '4.0',
+                                    '504i|251i|^F671iS$|212i|2051|2102V|661i|2701|672i|213i' => '4.0',
                                     'eggy|P751v' => '3.2',
-                                    '505i|252i|900i|506i' => '5.0'
+                                    '505i|252i|900i|506i|880i' => '5.0'
                                     );
         }
 
@@ -287,6 +287,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
 
         if (preg_match('/(\d{3}i)/', $this->_model, $matches)) {
             return $matches[1];
+        }
+
+        if ($this->_model == 'P651ps') {
+            return '651';
         }
 
         return null;
