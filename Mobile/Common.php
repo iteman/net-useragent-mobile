@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Common.php,v 1.1 2003/02/19 16:28:41 kuboa Exp $
+// $Id: Common.php,v 1.2 2003/02/24 10:50:04 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * abstraction layer on Net_UserAgent_Mobile.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  */
@@ -264,6 +264,20 @@ class Net_UserAgent_Mobile_Common
     function isWAP2()
     {
         return $this->isEZweb() && $this->isXHTMLCompliant();
+    }
+
+    // }}}
+    // {{{ isNonMobile()
+
+    /**
+     * returns TRUE if the agent is NonMobile
+     *
+     * @return boolean
+     * @access public
+     */
+    function isNonMobile()
+    {
+        return FALSE;
     }
 }
 
