@@ -16,31 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: JPhone.php,v 1.3 2003/03/19 15:03:42 kuboa Exp $
-//
-// SYNOPSIS:
-// require_once('Net/UserAgent/Mobile.php');
-//
-// $_SERVER['HTTP_USER_AGENT'] = 'J-PHONE/2.0/J-DN02';
-// $agent = &Net_UserAgent_Mobile::factory();
-//
-// printf("Name: %s\n", $agent->getName()); // 'J-PHONE'
-// printf("Version: %s\n", $agent->getVersion()); // 2.0
-// printf("Model: %s\n", $agent->getModel()); // 'J-DN02'
-// if ($agent->isPacketCompliant()) {
-//     print "Packet is compliant.\n"; // false
-// }
-//
-// // only availabe in Java compliant
-// // e.g.) 'J-PHONE/4.0/J-SH51/SNXXXXXXXXX SH/0001a Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0'
-// printf("Serial: %s\n", $agent->getSerialNumber()); // XXXXXXXXX
-// printf("Vendor: %s\n", $agent->getVendor()); // 'SH'
-// printf("Vendor Version: %s\n", $agent->getVendorVersion()); // '0001a'
-//
-// $info = $agent->getJavaInfo();  // array
-// foreach ($info as $key => $value) {
-//     print "$key: $value\n";
-// }
+// $Id: JPhone.php,v 1.4 2003/03/26 16:39:50 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -49,63 +25,94 @@ require_once('Net/UserAgent/Mobile/Display.php');
 /**
  * J-PHONE implementation
  *
- * Net_UserAgent_Mobile_JPhone is a subclass of Net_UserAgent_Mobile, which
- * implements J-PHONE user agents.
+ * Net_UserAgent_Mobile_JPhone is a subclass of
+ * {@link Net_UserAgent_Mobile_Common}, which implements J-PHONE user agents.
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.3 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
- * @see     Net_UserAgent_Mobile_Common()
- * @see     http://www.dp.j-phone.com/jsky/user.html
- * @see     http://www.dp.j-phone.com/jsky/position.html
+ * SYNOPSIS:
+ * <code>
+ * require_once('Net/UserAgent/Mobile.php');
+ *
+ * $_SERVER['HTTP_USER_AGENT'] = 'J-PHONE/2.0/J-DN02';
+ * $agent = &Net_UserAgent_Mobile::factory();
+ *
+ * printf("Name: %s\n", $agent->getName()); // 'J-PHONE'
+ * printf("Version: %s\n", $agent->getVersion()); // 2.0
+ * printf("Model: %s\n", $agent->getModel()); // 'J-DN02'
+ * if ($agent->isPacketCompliant()) {
+ *     print "Packet is compliant.\n"; // false
+ * }
+ *
+ * // only availabe in Java compliant
+ * // e.g.) 'J-PHONE/4.0/J-SH51/SNXXXXXXXXX SH/0001a Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0'
+ * printf("Serial: %s\n", $agent->getSerialNumber()); // XXXXXXXXX
+ * printf("Vendor: %s\n", $agent->getVendor()); // 'SH'
+ * printf("Vendor Version: %s\n", $agent->getVendorVersion()); // '0001a'
+ *
+ * $info = $agent->getJavaInfo();  // array
+ * foreach ($info as $key => $value) {
+ *     print "$key: $value\n";
+ * }
+ * </code>
+ *
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.4 $
+ * @see      Net_UserAgent_Mobile_Common
+ * @link     http://www.dp.j-phone.com/jsky/user.html
+ * @link     http://www.dp.j-phone.com/jsky/position.html
  */
 class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
 {
 
     // {{{ properties
 
+    /**#@+
+     * @access private
+     */
+
     /**
      * name of the model like 'J-DN02'
      * @var string
-     * @access private
      */
     var $_model = '';
 
     /**
      * whether the agent is packet connection complicant or not
      * @var boolean
-     * @access private
      */
     var $_packet_compliant = false;
 
     /**
      * terminal unique serial number
      * @var string
-     * @access private
      */
     var $_serial_number = null;
 
     /**
      * vendor code like 'SH'
      * @var string
-     * @access private
      */
     var $_vendor = '';
 
     /**
      * vendor version like '0001a'
      * @var string
-     * @access private
      */
     var $_vendor_version = null;
 
     /**
-     *
+     * Java profiles
      * @var array
-     * @access private
      */
     var $_java_info = array();
+
+    /**#@-*/
+
+    /**#@+
+     * @access public
+     */
 
     // }}}
     // {{{ isJPhone()
@@ -114,7 +121,6 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * returns true
      *
      * @return boolean
-     * @access public
      */
     function isJPhone()
     {
@@ -127,7 +133,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
     /**
      * parse HTTP_USER_AGENT string
      *
-     * @access public
+     * @return mixed void, or a PEAR error object on error
      */
     function parse()
     {
@@ -138,7 +144,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
 
             // J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0
             $this->_packet_compliant = true;
-            list($this->name, $this->version, $this->_model,
+            @list($this->name, $this->version, $this->_model,
                  $serial_number) = explode('/', $agent[0]);
             if ($serial_number) {
                 if (!preg_match('/^SN(.+)/', $serial_number,
@@ -157,8 +163,9 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
         } else {
 
             // J-PHONE/2.0/J-DN02
-            list($this->name, $this->version, $this->_model) =
+            @list($this->name, $this->version, $model) =
                 explode('/', $agent[0]);
+            $this->_model  = (string)$model;
             if ($this->_model) {
                 preg_match('/J-([A-Z]+)/', $this->_model, $matches);
                 $this->_vendor = $matches[1];
@@ -170,18 +177,18 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
     // {{{ makeDisplay()
 
     /**
-     * create a new Net_UserAgent_Mobile_Display class instance
+     * create a new {@link Net_UserAgent_Mobile_Display} class instance
      *
-     * @return object Net_UserAgent_Mobile_Display
-     * @access public
-     * @see Net_UserAgent_Mobile_Display()
+     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
+     *     object
+     * @see Net_UserAgent_Mobile_Display
      */
     function makeDisplay() 
     {
-        list($width, $height) =
+        @list($width, $height) =
             explode('*', $this->getHeader('x-jphone-display'));
         $color = false;
-        $depth = null;
+        $depth = 0;
         if ($color_string = $this->getHeader('x-jphone-color')) {
             preg_match('/^([CG])(\d+)$/', $color_string, $matches);
             $color = $matches[1] === 'C' ? true : false;
@@ -202,7 +209,6 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * returns name of the model like 'J-DN02'
      *
      * @return string
-     * @access public
      */
     function getModel()
     {
@@ -216,7 +222,6 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * returns whether the agent is packet connection complicant or not
      *
      * @return boolean
-     * @access public
      */
     function isPacketCompliant()
     {
@@ -227,10 +232,10 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
     // {{{ getSerialNumber()
 
     /**
-     * return terminal unique serial number. returns null if user forbids to send his/her serial number.
+     * return terminal unique serial number. returns null if user forbids to
+     * send his/her serial number.
      *
      * @return string
-     * @access public
      */
     function getSerialNumber()
     {
@@ -244,7 +249,6 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * returns vendor code like 'SH'
      *
      * @return string
-     * @access public
      */
     function getVendor()
     {
@@ -258,7 +262,6 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * returns vendor version like '0001a'. returns null if unknown.
      *
      * @return string
-     * @access public
      */
     function getVendorVersion()
     {
@@ -273,17 +276,18 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      *
      * Array structure is something like:
      *
-     * 'Profile'       => 'MIDP-1.0',
-     * 'Configuration' => 'CLDC-1.0',
-     * 'Ext-Profile'   => 'JSCL-1.1.0'
+     * - 'Profile'       => 'MIDP-1.0',
+     * - 'Configuration' => 'CLDC-1.0',
+     * - 'Ext-Profile'   => 'JSCL-1.1.0'
      *
      * @return array
-     * @access public
      */
     function getJavaInfo()
     {
         return $this->_java_info;
     }
+
+    /**#@-*/
 }
 
 /*
