@@ -16,13 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: NonMobile.php,v 1.3 2003/02/24 15:56:34 kuboa Exp $
-//
-// SYNOPSIS:
-// require_once('Net/UserAgent/Mobile.php');
-//
-// $_SERVER['HTTP_USER_AGENT'] = 'Mozilla/4.0';
-// $agent = &Net_UserAgent_Mobile::factory();
+// $Id: NonMobile.php,v 1.4 2003/03/26 16:41:02 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -30,17 +24,31 @@ require_once('Net/UserAgent/Mobile/Common.php');
 /**
  * Non-Mobile Agent implementation
  *
- * Net_UserAgent_Mobile_NonMobile is a subclass of Net_UserAgent_Mobile,
- * whichimplements non-mobile or unimplemented user agents.
+ * Net_UserAgent_Mobile_NonMobile is a subclass of
+ * {@link Net_UserAgent_Mobile_Common}, which implements non-mobile or
+ * unimplemented user agents.
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.3 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
- * @see     Net_UserAgent_Mobile_Common()
+ * SYNOPSIS:
+ * <code>
+ * require_once('Net/UserAgent/Mobile.php');
+ *
+ * $_SERVER['HTTP_USER_AGENT'] = 'Mozilla/4.0';
+ * $agent = &Net_UserAgent_Mobile::factory();
+ * </code>
+ *
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.4 $
+ * @see      Net_UserAgent_Mobile_Common
  */
 class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
 {
+
+    /**#@+
+     * @access public
+     */
 
     // }}}
     // {{{ isNonMobile()
@@ -49,7 +57,6 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      * returns true
      *
      * @return boolean
-     * @access public
      */
     function isNonMobile()
     {
@@ -61,14 +68,14 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
 
     /**
      * parse HTTP_USER_AGENT string
-     *
-     * @access public
      */
     function parse()
     {
-        list($this->name, $this->version) =
+        @list($this->name, $this->version) =
             explode('/', $this->getUserAgent());
     }
+
+    /**#@-*/
 }
 
 /*
