@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Common.php,v 1.2 2003/02/24 10:50:04 kuboa Exp $
+// $Id: Common.php,v 1.3 2003/02/24 15:56:33 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * abstraction layer on Net_UserAgent_Mobile.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  */
@@ -200,49 +200,49 @@ class Net_UserAgent_Mobile_Common
     // {{{ isDoCoMo()
 
     /**
-     * returns TRUE if the agent is DoCoMo
+     * returns true if the agent is DoCoMo
      *
      * @return boolean
      * @access public
      */
     function isDoCoMo()
     {
-        return FALSE;
+        return false;
     }
 
     // }}}
     // {{{ isJPhone()
 
     /**
-     * returns TRUE if the agent is J-PHONE
+     * returns true if the agent is J-PHONE
      *
      * @return boolean
      * @access public
      */
     function isJPhone()
     {
-        return FALSE;
+        return false;
     }
 
     // }}}
     // {{{ isEZweb()
 
     /**
-     * returns TRUE if the agent is EZweb
+     * returns true if the agent is EZweb
      *
      * @return boolean
      * @access public
      */
     function isEZweb()
     {
-        return FALSE;
+        return false;
     }
 
     // }}}
     // {{{ isWAP1()
 
     /**
-     * returns TRUE if the agent can speak WAP1 protocol
+     * returns true if the agent can speak WAP1 protocol
      *
      * @return boolean
      * @access public
@@ -256,7 +256,7 @@ class Net_UserAgent_Mobile_Common
     // {{{ isWAP2()
 
     /**
-     * returns TRUE if the agent can speak WAP2 protocol
+     * returns true if the agent can speak WAP2 protocol
      *
      * @return boolean
      * @access public
@@ -270,14 +270,14 @@ class Net_UserAgent_Mobile_Common
     // {{{ isNonMobile()
 
     /**
-     * returns TRUE if the agent is NonMobile
+     * returns true if the agent is NonMobile
      *
      * @return boolean
      * @access public
      */
     function isNonMobile()
     {
-        return FALSE;
+        return false;
     }
 }
 

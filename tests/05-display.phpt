@@ -21,7 +21,7 @@ $tests = array(
                            ),
                      array('width' => 120,
                            'height' => 117,
-                           'color' => TRUE,
+                           'color' => true,
                            'depth' => 256.
                            )
                      ),
@@ -35,7 +35,7 @@ $tests = array(
                      array(
                            'width' => 90,
                            'height' => 70,
-                           'color' => TRUE,
+                           'color' => true,
                            'depth' => pow(2, 16)
                            )
                      ),
@@ -49,7 +49,7 @@ $tests = array(
                      array(
                            'width' => 90,
                            'height' => 70,
-                           'color' => FALSE,
+                           'color' => false,
                            'depth' => 2
                            )
                      ),
@@ -58,7 +58,7 @@ $tests = array(
                      array(
                            'width' => 96,
                            'height' => 72,
-                           'color' => FALSE,
+                           'color' => false,
                            'depth' => 2
                            )
                      ),
@@ -67,7 +67,7 @@ $tests = array(
                      array(
                            'width' => 96,
                            'height' => 90,
-                           'color' => TRUE,
+                           'color' => true,
                            'depth' => 256
                            )
                      ),
@@ -76,7 +76,7 @@ $tests = array(
                      array(
                            'width' => 118,
                            'height' => 128,
-                           'color' => FALSE,
+                           'color' => false,
                            'depth' => 4
                            )
                      )

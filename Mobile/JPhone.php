@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: JPhone.php,v 1.1 2003/02/19 16:28:42 kuboa Exp $
+// $Id: JPhone.php,v 1.2 2003/02/24 15:56:34 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -28,7 +28,7 @@
 // printf("Version: %s\n", $agent->getVersion()); // 2.0
 // printf("Model: %s\n", $agent->getModel()); // 'J-DN02'
 // if ($agent->isPacketCompliant()) {
-//     print "Packet is compliant.\n"; // FALSE
+//     print "Packet is compliant.\n"; // false
 // }
 //
 // // only availabe in Java compliant
@@ -53,7 +53,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * implements J-PHONE user agents.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  * @see     Net_UserAgent_Mobile_Common()
@@ -77,7 +77,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * @var boolean
      * @access private
      */
-    var $_packet_compliant = FALSE;
+    var $_packet_compliant = false;
 
     /**
      * terminal unique serial number
@@ -111,14 +111,14 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
     // {{{ isJPhone()
 
     /**
-     * returns TRUE
+     * returns true
      *
      * @return boolean
      * @access public
      */
     function isJPhone()
     {
-        return TRUE;
+        return true;
     }
 
     // }}}
@@ -137,7 +137,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
         if ($count > 1) {
 
             // J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0
-            $this->_packet_compliant = TRUE;
+            $this->_packet_compliant = true;
             list($this->name, $this->version, $this->_model,
                  $serial_number) = explode('/', $agent[0]);
             if ($serial_number) {
@@ -180,11 +180,11 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
     {
         list($width, $height) =
             explode('*', $this->getHeader('x-jphone-display'));
-        $color = FALSE;
+        $color = false;
         $depth = NULL;
         if ($color_string = $this->getHeader('x-jphone-color')) {
             preg_match('/^([CG])(\d+)$/', $color_string, $matches);
-            $color = $matches[1] === 'C' ? TRUE : FALSE;
+            $color = $matches[1] === 'C' ? true : false;
             $depth = $matches[2];
         }
         return new Net_UserAgent_Mobile_Display(array(

@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: NonMobile.php,v 1.2 2003/02/24 10:50:04 kuboa Exp $
+// $Id: NonMobile.php,v 1.3 2003/02/24 15:56:34 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -34,7 +34,7 @@ require_once('Net/UserAgent/Mobile/Common.php');
  * whichimplements non-mobile or unimplemented user agents.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  * @see     Net_UserAgent_Mobile_Common()
@@ -46,14 +46,14 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
     // {{{ isNonMobile()
 
     /**
-     * returns TRUE
+     * returns true
      *
      * @return boolean
      * @access public
      */
     function isNonMobile()
     {
-        return TRUE;
+        return true;
     }
 
     // }}}

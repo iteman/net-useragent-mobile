@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Display.php,v 1.1 2003/02/19 16:28:41 kuboa Exp $
+// $Id: Display.php,v 1.2 2003/02/24 15:56:33 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -40,7 +40,7 @@
  * Net_UserAgent_Mobile. Handy for image resizing or dispatching.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  */
@@ -167,7 +167,7 @@ class Net_UserAgent_Mobile_Display
     // {{{ isColor()
 
     /**
-     * returns TRUE if the display has color capability
+     * returns true if the display has color capability
      *
      * @return boolean
      * @access public
