@@ -12,9 +12,12 @@ Net_UserAgent_Mobile: compile
 error_reporting(E_ALL);
 require_once('Net/UserAgent/Mobile.php');
 
-print "Testing compile ...\n";
+$line = 0;
+
+++$line;
+print "$line: " . "Testing compile ...\n";
 ?>
 --POST--
 --GET--
 --EXPECT--
-Testing compile ...
+1: Testing compile ...

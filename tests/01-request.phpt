@@ -15,27 +15,27 @@ require_once('Net/UserAgent/Mobile.php');
 $line = 0;
 
 ++$line;
-print "$line: " ."Testing various way to make request ...\n";
+print "$line: " . "Testing various way to make request ...\n";
 
 $ua = 'Mozilla/1.0';
 $agent = &Net_UserAgent_Mobile::factory($ua);
 
 ++$line;
-print "$line: " .is_object($agent) . "\n";
+print "$line: " . is_object($agent) . "\n";
 ++$line;
-print "$line: ". get_parent_class($agent) . "\n";
+print "$line: " . get_parent_class($agent) . "\n";
 ++$line;
-print "$line: ". $agent->getUserAgent() . "\n";
+print "$line: " . $agent->getUserAgent() . "\n";
 
 $_SERVER['HTTP_USER_AGENT'] = $ua;
 $agent = &Net_UserAgent_Mobile::factory();
 
 ++$line;
-print  "$line: " .is_object($agent) . "\n";
+print  "$line: " . is_object($agent) . "\n";
 ++$line;
-print  "$line: " .get_parent_class($agent) . "\n";
+print  "$line: " . get_parent_class($agent) . "\n";
 ++$line;
-print  "$line: " .$agent->getUserAgent() . "\n";
+print  "$line: " . $agent->getUserAgent() . "\n";
 ?>
 --POST--
 --GET--
