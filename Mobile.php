@@ -16,45 +16,19 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.2 2003/03/19 15:03:43 kuboa Exp $
-//
-// SYNOPSIS:
-// require_once('Net/UserAgent/Mobile.php');
-//
-// $agent = &Net_UserAgent_Mobile::factory($agent_string);
-// // or $agent = &Net_UserAgent_Mobile::factory(); to get from $_SERVER
-//
-// if ($agent->isDoCoMo()) {
-//     // or if ($agent->getName() === 'DoCoMo')
-//     // or if (get_class($agent) === 'http_mobileagent_docomo')
-//     // it's NTT DoCoMo i-mode
-//     // see what's available in Net_UserAgent_Mobile_DoCoMo
-// } elseif ($agent->isJPhone()) {
-//     // it's J-PHONE J-Sky
-//     // see what's available in Net_UserAgent_Mobile_JPhone
-// } elseif ($agent->isEZweb()) {
-//     // it's KDDI/EZWeb
-//     // see what's available in Net_UserAgent_Mobile_EZweb
-// } else {
-//     // may be PC
-//     // $agent is Net_UserAgent_Mobile_NonMobile
-// }
-//
-// $display = $agent->getDisplay();    // Net_UserAgent_Mobile_Display
-// if ($display->isColor()) {
-//    ...
-// }
+// $Id: Mobile.php,v 1.3 2003/03/26 15:33:29 kuboa Exp $
 //
 
 require_once('PEAR.php');
 require_once('Net/UserAgent/Mobile/Request.php');
 
-// package dependent error codes
-
 /**
- * @const NET_USERAGENT_MOBILE_ERROR_NOMATCH
+ * constants for error handling
  */
-define('NET_USERAGENT_MOBILE_ERROR_NOMATCH', -1); // no match
+define('NET_USERAGENT_MOBILE_OK',               1);
+define('NET_USERAGENT_MOBILE_ERROR',           -1);
+define('NET_USERAGENT_MOBILE_ERROR_NOMATCH',   -2);
+define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
 
 /**
  * HTTP mobile user agent string parser
@@ -63,35 +37,68 @@ define('NET_USERAGENT_MOBILE_ERROR_NOMATCH', -1); // no match
  * mobile HTTP user agents. It'll be useful in page dispatching by user
  * agents.
  * This package was ported from Perl's HTTP::MobileAgent.
- * See http://search.cpan.org/search?mode=module&query=HTTP-MobileAgent
+ * See {@link http://search.cpan.org/search?mode=module&query=HTTP-MobileAgent}
  * The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
  * <miyagawa@bulknews.net>
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.2 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
+ * SYNOPSIS:
+ * <code>
+ * require_once('Net/UserAgent/Mobile.php');
+ *
+ * $agent = &Net_UserAgent_Mobile::factory($agent_string);
+ * // or $agent = &Net_UserAgent_Mobile::factory(); // to get from $_SERVER
+ *
+ * if ($agent->isDoCoMo()) {
+ *     // or if ($agent->getName() === 'DoCoMo')
+ *     // or if (get_class($agent) === 'http_mobileagent_docomo')
+ *     // it's NTT DoCoMo i-mode
+ *     // see what's available in Net_UserAgent_Mobile_DoCoMo
+ * } elseif ($agent->isJPhone()) {
+ *     // it's J-PHONE J-Sky
+ *     // see what's available in Net_UserAgent_Mobile_JPhone
+ * } elseif ($agent->isEZweb()) {
+ *     // it's KDDI/EZWeb
+ *     // see what's available in Net_UserAgent_Mobile_EZweb
+ * } else {
+ *     // may be PC
+ *     // $agent is Net_UserAgent_Mobile_NonMobile
+ * }
+ *
+ * $display = $agent->getDisplay();    // Net_UserAgent_Mobile_Display
+ * if ($display->isColor()) {
+ *    ...
+ * }
+ * </code>
+ *
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.3 $
  */
 class Net_UserAgent_Mobile
 {
+
+    /**#@+
+     * @access public
+     * @static
+     */
 
     // }}}
     // {{{ factory()
 
     /**
-     * create a new Net_UserAgent_Mobile_Common concrete class instance
+     * create a new {@link Net_UserAgent_Mobile_Common} subclass instance
      *
-     * parses HTTP headers and constructs Net_UserAgent_Mobile_Common
+     * parses HTTP headers and constructs {@link Net_UserAgent_Mobile_Common}
      * subclass instance.
      * If no argument is supplied, $_SERVER{'HTTP_*'} is used.
      *
-     * @param mixed $stuff User-Agent string or object that works with HTTP
-     *                     Request (not implemented)
-     * @return object Net_UserAgent_Mobile_Common subclass instance
-     * @access public
-     * @static
+     * @param mixed $stuff User-Agent string or object that works with
+     *     HTTP_Request (not implemented)
+     * @return mixed a newly created Net_UserAgent_Mobile object, or a PEAR
+     *     error object on error
      * @see Net_UserAgent_Mobile_Request::factory()
-     * @see PEAR::getStaticProperty()
      */
     function &factory($stuff = null)
     {
@@ -108,17 +115,128 @@ class Net_UserAgent_Mobile
 
         $request = &Net_UserAgent_Mobile_Request::factory($stuff);
 
-        // parse UA string
+        // parse User-Agent string
         $ua = $request->get('User-Agent');
         $sub = 'NonMobile';
         if (preg_match("!$mobile_regex!", $ua, $matches)) {
             $sub = @$matches[1] ? 'DoCoMo' :
                 (@$matches[2] ? 'JPhone' : 'EZweb');
         }
-        $classname = "Net_UserAgent_Mobile_{$sub}";
-        @include_once("Net/UserAgent/Mobile/{$sub}.php");
-        @$instance = &new $classname($request);
+        $class_name = "Net_UserAgent_Mobile_{$sub}";
+        $include    = "Net/UserAgent/Mobile/{$sub}.php";
+        @include_once($include);
+
+        if (!class_exists($class_name)) {
+            return PEAR::raiseError(null,
+                                    NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
+                                    null, null,
+                                    "Unable to include the $include file",
+                                    'Net_UserAgent_Mobile_Error', true
+                                    );
+        }
+
+        @$instance = &new $class_name($request);
         return $instance;
+    }
+
+    // }}}
+    // {{{ isError()
+
+    /**
+     * tell whether a result code from a Net_UserAgent_Mobile method
+     * is an error
+     *
+     * @param integer $value result code
+     * @return boolean whether $value is an {@link Net_UserAgent_Mobile_Error}
+     */
+    function isError($value)
+    {
+        return is_object($value)
+            && (get_class($value) == 'net_useragent_mobile_error'
+                || is_subclass_of($value, 'net_useragent_mobile_error'));
+    }
+
+    // }}}
+    // {{{ errorMessage()
+
+    /**
+     * return a textual error message for a Net_UserAgent_Mobile error
+     * code
+     *
+     * @param integer $value error code
+     * @return string error message, or false if the error code was not
+     *                recognized
+     */
+    function errorMessage($value)
+    {
+        $errorMessages = &PEAR::getStaticProperty('Net_UserAgent_Mobile',
+                                                  'errorMessages'
+                                                  );
+        if ($errorMessages === null) {
+            $errorMessages = array(
+                                   NET_USERAGENT_MOBILE_ERROR           => 'unknown error',
+                                   NET_USERAGENT_MOBILE_ERROR_NOMATCH   => 'no match',
+                                   NET_USERAGENT_MOBILE_ERROR_NOT_FOUND => 'not found',
+                                   NET_USERAGENT_MOBILE_OK              => 'no error'
+                                   );
+        }
+
+        if (Net_UserAgent_Mobile::isError($value)) {
+            $value = $value->getCode();
+        }
+
+        return isset($errorMessages[$value]) ?
+            $errorMessages[$value] :
+            $errorMessages[NET_USERAGENT_MOBILE_ERROR];
+    }
+
+    /**#@-*/
+}
+
+/**
+ * Net_UserAgent_Mobile_Error implements a class for reporting user
+ * agent error messages
+ *
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.3 $
+ */
+class Net_UserAgent_Mobile_Error extends PEAR_Error
+{
+
+    // }}}
+    // {{{ constructor
+
+    /**
+     * constructor
+     *
+     * @param mixed   $code      Net_UserAgent_Mobile error code, or
+     *     string with error message.
+     * @param integer $mode      what 'error mode' to operate in
+     * @param integer $level     what error level to use for $mode and
+     *     PEAR_ERROR_TRIGGER
+     * @param mixed   $userinfo  additional user/debug info
+     * @access public
+     */
+    function Net_UserAgent_Mobile_Error($code = NET_USERAGENT_MOBILE_ERROR,
+                                        $mode = PEAR_ERROR_RETURN,
+                                        $level = E_USER_NOTICE,
+                                        $userinfo = null
+                                        )
+    {
+        if (is_int($code)) {
+            $this->PEAR_Error('Net_UserAgent_Mobile Error: ' .
+                              Net_UserAgent_Mobile::errorMessage($code),
+                              $code, $mode, $level, $userinfo
+                              );
+        } else {
+            $this->PEAR_Error("Net_UserAgent_Mobile Error: $code",
+                              NET_USERAGENT_MOBILE_ERROR, $mode, $level,
+                              $userinfo
+                              );
+        }
     }
 }
 
