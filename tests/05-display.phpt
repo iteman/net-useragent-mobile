@@ -137,6 +137,17 @@ $tests = array(
                            'color' => false,
                            'depth' => 0
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/P505i/c20/TB/W20H10'),
+                     array(
+                           'width' => 240,
+                           'height' => 266,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 20,
+                           'height_bytes' => 10
+                           )
                      )
                );
 
@@ -253,3 +264,11 @@ net_useragent_mobile_display
 0
 
 0
+1
+net_useragent_mobile_display
+240
+266
+1
+65536
+20
+10
