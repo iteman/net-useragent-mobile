@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.12 2004/03/02 06:38:27 kuboa Exp $
+// $Id: Mobile.php,v 1.13 2004/03/20 13:43:04 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.12 $
+ * @version  $Revision: 1.13 $
  */
 class Net_UserAgent_Mobile
 {
@@ -174,9 +174,7 @@ class Net_UserAgent_Mobile
      */
     function isError($value)
     {
-        return is_object($value)
-            && (strtolower(get_class($value)) == 'net_useragent_mobile_error'
-                || is_subclass_of($value, 'net_useragent_mobile_error'));
+        return is_a($value, 'Net_UserAgent_Mobile_Error');
     }
 
     // }}}
@@ -221,7 +219,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.12 $
+ * @version  $Revision: 1.13 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
