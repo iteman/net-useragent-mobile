@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Common.php,v 1.3 2003/02/24 15:56:33 kuboa Exp $
+// $Id: Common.php,v 1.4 2003/03/26 15:39:38 kuboa Exp $
 //
 
 /**
@@ -25,56 +25,112 @@
  * Net_UserAgent_Mobile_Common is a class for mobile user agent
  * abstraction layer on Net_UserAgent_Mobile.
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.3 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @abstract
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.4 $
  */
-class Net_UserAgent_Mobile_Common
+class Net_UserAgent_Mobile_Common extends PEAR
 {
 
     // {{{ properties
 
+    /**#@+
+     * @access public
+     */
+
     /**
      * User-Agent name like 'DoCoMo'
      * @var string
-     * @access public
      */
     var $name = '';
 
     /**
      * User-Agent version number like '1.0'
      * @var string
-     * @access public
      */
     var $version = '';
 
-    /**
-     * Net_UserAgent_Mobile_Display object
-     * @var object Net_UserAgent_Mobile_Display
+    /**#@-*/
+
+    /**#@+
      * @access private
+     */
+
+    /**
+     * {@link Net_UserAgent_Mobile_Display} object
+     * @var object {@link Net_UserAgent_Mobile_Display}
      */
     var $_display = '';
 
     /**
      * Net_UserAgent_Mobile_Request_XXX object
-     * @var object Net_UserAgent_Mobile_Request_XXX
-     * @access private
+     * @var object {@link Net_UserAgent_Mobile_Request_Env}
      */
     var $_request;
+
+    /**#@-*/
 
     // }}}
     // {{{ constructor
 
     /**
-     * Constructor
+     * constructor
      *
-     * @param object Net_UserAgent_Mobile_Request_XXX $request
+     * @param object $request a {@link Net_UserAgent_Mobile_Request_Env}
+     *     object
      */
     function Net_UserAgent_Mobile_Common($request)
     {
+        parent::PEAR('Net_UserAgent_Mobile_Error');
         $this->_request = $request;
-        $this->parse();
+        if (Net_UserAgent_Mobile::isError($result = $this->parse())) {
+            $this = $result;
+        }
+    }
+
+    /**#@+
+     * @access public
+     */
+
+    // }}}
+    // {{{ raiseError()
+
+    /**
+     * This method is used to communicate an error and invoke error
+     * callbacks etc. Basically a wrapper for PEAR::raiseError without
+     * the message string.
+     *
+     * @param mixed $code integer error code, or a PEAR error object (all
+     *     other parameters are ignored if this parameter is an object
+     * @param int $mode error mode, see PEAR_Error docs
+     * @param mixed $options If error mode is PEAR_ERROR_TRIGGER, this is the
+     *     error level (E_USER_NOTICE etc).  If error mode is
+     *     PEAR_ERROR_CALLBACK, this is the callback function, either as a
+     *     function name, or as an array of an object and method name. For
+     *     other error modes this parameter is ignored.
+     * @param string $userinfo Extra debug information.  Defaults to the last
+     *      query and native error code.
+     * @return object a PEAR error object
+     * @see PEAR_Error
+     */
+    function &raiseError($code = Net_UserAgent_Mobile_Error, $mode = null,
+                         $options = null, $userinfo = null
+                         )
+    {
+
+        // The error is yet a Net_UserAgent_Mobile error object
+        if (is_object($code)) {
+            return PEAR::raiseError($code, null, null, null, null, null,
+                                    true
+                                    );
+        }
+
+        return PEAR::raiseError(null, $code, $mode, $options, $userinfo,
+                                'Net_UserAgent_Mobile_Error', true
+                                );
     }
 
     // }}}
@@ -84,7 +140,6 @@ class Net_UserAgent_Mobile_Common
      * returns User-Agent string
      *
      * @return string
-     * @access public
      */
     function getUserAgent()
     {
@@ -99,7 +154,6 @@ class Net_UserAgent_Mobile_Common
      *
      * @param string $header
      * @return string
-     * @access public
      */
     function getHeader($header)
     {
@@ -113,7 +167,6 @@ class Net_UserAgent_Mobile_Common
      * returns User-Agent name like 'DoCoMo'
      *
      * @return string
-     * @access public
      */
     function getName()
     {
@@ -124,10 +177,10 @@ class Net_UserAgent_Mobile_Common
     // {{{ getDisplay()
 
     /**
-     * returns Net_UserAgent_Mobile_Disply object
+     * returns {@link Net_UserAgent_Mobile_Disply} object
      *
-     * @return object Net_UserAgent_Mobile_Display
-     * @access public
+     * @return object a {@link Net_UserAgent_Mobile_Display} object, or a
+     *     PEAR error object on error
      * @see Net_UserAgent_Mobile_Display
      */
     function getDisplay()
@@ -145,7 +198,6 @@ class Net_UserAgent_Mobile_Common
      * returns User-Agent version number like '1.0'
      *
      * @return string
-     * @access public
      */
     function getVersion()
     {
@@ -158,16 +210,14 @@ class Net_UserAgent_Mobile_Common
     /**
      * generates a warning message for new variants
      *
-     * @return object PEAR_Error
-     * @access public
+     * @return object a PEAR error object
      */
     function noMatch()
     {
-        return PEAR::raiseError($this->getUserAgent() .
-                                ': no match. Might be new variants. ' .
-                                'please contact the author of Net_UserAgent_Mobile!',
-                                NET_USERAGENT_MOBILE_ERROR_NOMATCH
-                                );
+        return $this->raiseError(NET_USERAGENT_MOBILE_ERROR_NOMATCH, null,
+                                 null, $this->getUserAgent() .
+                                 ': might be new variants. Please contact the author of Net_UserAgent_Mobile!'
+                                 );
     }
 
     // }}}
@@ -176,7 +226,7 @@ class Net_UserAgent_Mobile_Common
     /**
      * parse HTTP_USER_AGENT string (should be implemented in subclasses)
      *
-     * @access public
+     * @abstract
      */
     function parse()
     {
@@ -187,9 +237,10 @@ class Net_UserAgent_Mobile_Common
     // {{{ makeDisplay()
 
     /**
-     * create a new Net_UserAgent_Mobile_Display class instance (should be implemented in subclasses)
+     * create a new Net_UserAgent_Mobile_Display class instance (should be
+     * implemented in subclasses)
      *
-     * @access public
+     * @abstract
      */
     function makeDisplay()
     {
@@ -203,7 +254,6 @@ class Net_UserAgent_Mobile_Common
      * returns true if the agent is DoCoMo
      *
      * @return boolean
-     * @access public
      */
     function isDoCoMo()
     {
@@ -217,7 +267,6 @@ class Net_UserAgent_Mobile_Common
      * returns true if the agent is J-PHONE
      *
      * @return boolean
-     * @access public
      */
     function isJPhone()
     {
@@ -231,7 +280,6 @@ class Net_UserAgent_Mobile_Common
      * returns true if the agent is EZweb
      *
      * @return boolean
-     * @access public
      */
     function isEZweb()
     {
@@ -245,7 +293,6 @@ class Net_UserAgent_Mobile_Common
      * returns true if the agent can speak WAP1 protocol
      *
      * @return boolean
-     * @access public
      */
     function isWAP1()
     {
@@ -259,7 +306,6 @@ class Net_UserAgent_Mobile_Common
      * returns true if the agent can speak WAP2 protocol
      *
      * @return boolean
-     * @access public
      */
     function isWAP2()
     {
@@ -273,12 +319,13 @@ class Net_UserAgent_Mobile_Common
      * returns true if the agent is NonMobile
      *
      * @return boolean
-     * @access public
      */
     function isNonMobile()
     {
         return false;
     }
+
+    /**#@-*/
 }
 
 /*
