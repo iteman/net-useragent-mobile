@@ -27,7 +27,7 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     <notes>
 - Added support for DoCoMo's F505iGPS, F900i.
 - Added support for EZweb's A5502K, TS41.
-- EZweb.php: Fixed the module name for KCTD.
+- EZweb.php: Fixed the model name for KCTD.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
