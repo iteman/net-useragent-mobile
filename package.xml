@@ -21,12 +21,12 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.8</version>
+    <version>0.9</version>
     <state>beta</state>
-    <date>2003-05-23</date>
+    <date>2003-06-05</date>
     <notes>
-- Added isGPS() method in DoCoMo.
-- Added display information about DoCoMo's 'D505i'.
+- Added display information about DoCoMo's 'SO505i'.
+- DoCoMo.php: Fixed the logic error which entered at the time of 505i support.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -56,6 +56,15 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.8</version>
+      <state>beta</state>
+      <date>2003-05-23</date>
+      <notes>
+- Added isGPS() method in DoCoMo.
+- Added display information about DoCoMo's 'D505i'.
+      </notes>
+    </release>
     <release>
       <version>0.7</version>
       <state>beta</state>
