@@ -16,17 +16,19 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.2 2003/02/24 15:56:34 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.3 2003/03/26 16:16:20 kuboa Exp $
 //
 
 /**
  * Display infomation mapping for DoCoMo
  *
- * @package Net_UserAgent_Mobile
- * @version $Revision: 1.2 $
- * @author  KUBO Atsuhiro <kubo@isite.co.jp>
- * @access  public
- * @see     Net_UserAgent_Mobile_Display()
+ * @package  Net_UserAgent_Mobile
+ * @category Networking
+ * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @access   public
+ * @version  $Revision: 1.3 $
+ * @see      Net_UserAgent_Mobile_Display
+ * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
 class Net_UserAgent_Mobile_DoCoMoDisplayMap
 {
@@ -47,227 +49,18 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                      );
         if ($display_map === null) {
             $display_map = array(
-                                'N504iS' => array(
-                                                  'width'  => 160,
-                                                  'height' => 180,
-                                                  'depth'  => 65536,
-                                                  'color'  => true
-                                                 ),
-                                'F212i' => array(
-                                                 'width'  => 132,
-                                                 'height' => 136,
-                                                 'depth'  => 65536,
-                                                 'color'  => true
-                                                 ),
-                                'P503iS' => array(
-                                                  'width'  => 120,
-                                                  'height' => 130,
-                                                  'depth'  => 256,
-                                                  'color'  => true
-                                                  ),
-                                'D503i' => array(
-                                                 'width'  => 132,
-                                                 'height' => 126,
-                                                 'depth'  => 4096,
-                                                 'color'  => true
-                                                 ),
-                                'F503i' => array(
-                                                 'width'  => 120,
-                                                 'height' => 130,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'P209iS' => array(
-                                                  'width'  => 96,
-                                                  'height' => 87,
-                                                  'depth'  => 256,
-                                                  'color'  => true
-                                                  ),
-                                'N503i' => array(
-                                                 'width'  => 118,
-                                                 'height' => 128,
-                                                 'depth'  => 4096,
-                                                 'color'  => true
-                                                 ),
-                                'P503i' => array(
-                                                 'width'  => 120,
-                                                 'height' => 130,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'F502it' => array(
-                                                  'width'  => 96,
-                                                  'height' => 91,
-                                                  'depth'  => 256,
-                                                  'color'  => true
-                                                  ),
-                                'ER209i' => array(
-                                                  'width'  => 120,
-                                                  'height' => 72,
-                                                  'depth'  => 2,
-                                                  'color'  => false
-                                                  ),
-                                'R692i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 98,
-                                                 'depth'  => 4096,
-                                                 'color'  => true
-                                                 ),
-                                'SH251i' => array(
-                                                  'width'  => 120,
-                                                  'height' => 130,
-                                                  'depth'  => 65536,
-                                                  'color'  => true
-                                                  ),
-                                'SO211i' => array(
-                                                  'width'  => 120,
-                                                  'height' => 112,
-                                                  'depth'  => 4096,
-                                                  'color'  => true
-                                                  ),
-                                'SH821i' => array(
-                                                  'width'  => 96,
-                                                  'height' => 78,
-                                                  'depth'  => 256,
-                                                  'color'  => true
-                                                  ),
-                                'SO502i' => array(
-                                                  'width'  => 120,
-                                                  'height' => 120,
-                                                  'depth'  => 4,
-                                                  'color'  => false
-                                                  ),
-                                'N502it' => array(
-                                                  'width'  => 118,
-                                                  'height' => 128,
-                                                  'depth ' => 256,
-                                                  'color'  => true
-                                                  ),
-                                'D504i' => array(
-                                                 'width'  => 132,
-                                                 'height' => 144,
-                                                 'depth'  => 262144,
-                                                 'color'  => true
-                                                 ),
-                                'SO502iWM' => array(
-                                                    'width'  => 120,
-                                                    'height' => 113,
-                                                    'depth'  => 256,
-                                                    'color'  => true
-                                                    ),
-                                'F504i' => array(
-                                                 'width'  => 132,
-                                                 'height' => 136,
-                                                 'depth'  => 65536,
-                                                 'color'  => true
-                                                 ),
-                                'D209i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 90,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'F209i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 91,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'N504i' => array(
-                                                 'width'  => 160,
-                                                 'height' => 180,
-                                                 'depth'  => 65536,
-                                                 'color'  => true
-                                                 ),
-                                'P504i' => array(
-                                                 'width'  => 132,
-                                                 'height' => 144,
-                                                 'depth'  => 65536,
-                                                 'color'  => true
-                                                 ),
-                                'N209i' => array(
-                                                 'width'  => 108,
-                                                 'height' => 82,
-                                                 'depth'  => 4,
-                                                 'color'  => false
-                                                 ),
-                                'P209i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 87,
-                                                 'depth'  => 4,
-                                                 'color'  => false
-                                                 ),
-                                'R209i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 72,
-                                                 'depth'  => 4,
-                                                 'color'  => false
-                                                 ),
-                                'F503iS' => array(
-                                                  'width'  => 120,
-                                                  'height' => 130,
-                                                  'depth'  => 4096,
-                                                  'color'  => true
-                                                  ),
-                                'SO212i' => array(
-                                                  'width'  => 120,
-                                                  'height' => 112,
-                                                  'depth'  => 65536,
-                                                  'color'  => true
-                                                  ),
-                                'D210i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 91,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'F210i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 113,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'N503iS' => array(
-                                                  'width'  => 118,
-                                                  'height' => 128,
-                                                  'depth'  => 4096,
-                                                  'color'  => true
-                                                  ),
+                                 // i-mode compliant HTML 1.0
                                 'D501i' => array(
                                                  'width'  => 96,
                                                  'height' => 72,
                                                  'depth'  => 2,
                                                  'color'  => false
                                                  ),
-                                'SO503i' => array(
-                                                  'width'  => 120,
-                                                  'height' => 113,
-                                                  'depth'  => 65536,
-                                                  'color'  => true
-                                                  ),
                                 'F501i' => array(
                                                  'width'  => 112,
                                                  'height' => 84,
                                                  'depth'  => 2,
                                                  'color'  => false
-                                                 ),
-                                'P504iS' => array(
-                                                  'width'  => 132,
-                                                  'height' => 144,
-                                                  'depth'  => 65536,
-                                                  'color'  => true
-                                                  ),
-                                'N210i' => array(
-                                                 'width'  => 118,
-                                                 'height' => 113,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'P210i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 91,
-                                                 'depth'  => 256,
-                                                 'color'  => true
                                                  ),
                                 'N501i' => array(
                                                  'width'  => 118,
@@ -281,6 +74,295 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                  'depth'  => 2,
                                                  'color'  => false
                                                  ),
+
+                                // i-mode compliant HTML 2.0
+                                'D502i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 90,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'F502i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 91,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'N502i' => array(
+                                                 'width'  => 118,
+                                                 'height' => 128,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'P502i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 117,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'NM502i' => array(
+                                                  'width'  => 111,
+                                                  'height' => 106,
+                                                  'depth'  => 2,
+                                                  'color'  => false
+                                                  ),
+                                'SO502i' => array(
+                                                  'width'  => 120,
+                                                  'height' => 120,
+                                                  'depth'  => 4,
+                                                  'color'  => false
+                                                  ),
+                                'F502it' => array(
+                                                  'width'  => 96,
+                                                  'height' => 91,
+                                                  'depth'  => 256,
+                                                  'color'  => true
+                                                  ),
+                                'N502it' => array(
+                                                  'width'  => 118,
+                                                  'height' => 128,
+                                                  'depth ' => 256,
+                                                  'color'  => true
+                                                  ),
+                                'SO502iWM' => array(
+                                                    'width'  => 120,
+                                                    'height' => 113,
+                                                    'depth'  => 256,
+                                                    'color'  => true
+                                                    ),
+                                'SH821i' => array(
+                                                  'width'  => 96,
+                                                  'height' => 78,
+                                                  'depth'  => 256,
+                                                  'color'  => true
+                                                  ),
+                                'N821i' => array(
+                                                 'width'  => 118,
+                                                 'height' => 128,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'P821i' => array(
+                                                 'width'  => 118,
+                                                 'height' => 128,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'D209i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 90,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'ER209i' => array(
+                                                  'width'  => 120,
+                                                  'height' => 72,
+                                                  'depth'  => 2,
+                                                  'color'  => false
+                                                  ),
+                                'F209i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 91,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'KO209i' => array(
+                                                  'width'  => 96,
+                                                  'height' => 96,
+                                                  'depth'  => 256,
+                                                  'color'  => true
+                                                  ),
+                                'N209i' => array(
+                                                 'width'  => 108,
+                                                 'height' => 82,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'P209i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 87,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'P209iS' => array(
+                                                  'width'  => 96,
+                                                  'height' => 87,
+                                                  'depth'  => 256,
+                                                  'color'  => true
+                                                  ),
+                                'R209i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 72,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'R691i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 72,
+                                                 'depth'  => 4,
+                                                 'color'  => false
+                                                 ),
+                                'F671i' => array(
+                                                 'width'  => 120,
+                                                 'height' => 126,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'F210i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 113,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'N210i' => array(
+                                                 'width'  => 118,
+                                                 'height' => 113,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'P210i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 91,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'KO210i' => array(
+                                                  'width'  => 96,
+                                                  'height' => 96,
+                                                  'depth'  => 256,
+                                                  'color'  => true
+                                                  ),
+
+                                // i-mode compliant HTML 3.0
+                                'F503i' => array(
+                                                 'width'  => 120,
+                                                 'height' => 130,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'F503iS' => array(
+                                                  'width'  => 120,
+                                                  'height' => 130,
+                                                  'depth'  => 4096,
+                                                  'color'  => true
+                                                  ),
+                                'P503i' => array(
+                                                 'width'  => 120,
+                                                 'height' => 130,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'P503iS' => array(
+                                                  'width'  => 120,
+                                                  'height' => 130,
+                                                  'depth'  => 256,
+                                                  'color'  => true
+                                                  ),
+                                'N503i' => array(
+                                                 'width'  => 118,
+                                                 'height' => 128,
+                                                 'depth'  => 4096,
+                                                 'color'  => true
+                                                 ),
+                                'N503iS' => array(
+                                                  'width'  => 118,
+                                                  'height' => 128,
+                                                  'depth'  => 4096,
+                                                  'color'  => true
+                                                  ),
+                                'SO503i' => array(
+                                                  'width'  => 120,
+                                                  'height' => 113,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                'SO503iS' => array(
+                                                   'width'  => 120,
+                                                   'height' => 113,
+                                                   'depth'  => 65536,
+                                                   'color'  => true
+                                                   ),
+                                'D503i' => array(
+                                                 'width'  => 132,
+                                                 'height' => 126,
+                                                 'depth'  => 4096,
+                                                 'color'  => true
+                                                 ),
+                                'D503iS' => array(
+                                                  'width'  => 132,
+                                                  'height' => 126,
+                                                  'depth'  => 4096,
+                                                  'color'  => true
+                                                  ),
+                                'D210i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 91,
+                                                 'depth'  => 256,
+                                                 'color'  => true
+                                                 ),
+                                'SO210i' => array(
+                                                  'width'  => 120,
+                                                  'height' => 113,
+                                                  'depth'  => 256,
+                                                  'color'  => true
+                                                  ),
+                                'F211i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 113,
+                                                 'depth'  => 4096,
+                                                 'color'  => true
+                                                 ),
+                                'D211i' => array(
+                                                 'width'  => 100,
+                                                 'height' => 91,
+                                                 'depth'  => 4096,
+                                                 'color'  => true
+                                                 ),
+                                'N211i' => array(
+                                                 'width'  => 118,
+                                                 'height' => 128,
+                                                 'depth'  => 4096,
+                                                 'color'  => true
+                                                 ),
+                                'P211i' => array(
+                                                 'width'  => 120,
+                                                 'height' => 130,
+                                                 'depth'  => 65536,
+                                                 'color'  => true
+                                                 ),
+                                'SO211i' => array(
+                                                  'width'  => 120,
+                                                  'height' => 112,
+                                                  'depth'  => 4096,
+                                                  'color'  => true
+                                                  ),
+                                'R211i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 98,
+                                                 'depth'  => 4096,
+                                                 'color'  => true
+                                                 ),
+                                'SH251i' => array(
+                                                  'width'  => 120,
+                                                  'height' => 130,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                'SH251iS' => array(
+                                                   'width'  => 176,
+                                                   'height' => 187,
+                                                   'depth'  => 65536,
+                                                   'color'  => true
+                                                   ),
+                                'R692i' => array(
+                                                 'width'  => 96,
+                                                 'height' => 98,
+                                                 'depth'  => 4096,
+                                                 'color'  => true
+                                                 ),
+
+                                // i-mode compliant HTML 3.0
+                                // (FOMA 2001/2002/2101V)
                                 'N2001' => array(
                                                  'width'  => 118,
                                                  'height' => 128,
@@ -299,57 +381,77 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                  'depth'  => 65536,
                                                  'color'  => true
                                                  ),
-                                'D251iS' => array(
-                                                  'width'  => 132,
-                                                  'height' => 144,
-                                                  'depth'  => 262144,
-                                                  'color'  => true
-                                                  ),
-                                'KO209i' => array(
-                                                  'width'  => 96,
-                                                  'height' => 96,
-                                                  'depth'  => 256,
-                                                  'color'  => true
-                                                  ),
                                 'D2101V' => array(
                                                   'width'  => 120,
                                                   'height' => 130,
                                                   'depth'  => 262144,
                                                   'color'  => true
                                                   ),
-                                'F671iS' => array(
-                                                  'width'  => 160,
-                                                  'height' => 120,
-                                                  'depth'  => 65536,
+                                'P2101V' => array(
+                                                  'width'  => 163,
+                                                  'height' => 182,
+                                                  'depth'  => 262144,
                                                   'color'  => true
                                                   ),
-                                'D211i' => array(
-                                                 'width'  => 100,
-                                                 'height' => 91,
-                                                 'depth'  => 4096,
-                                                 'color'  => true
-                                                 ),
-                                'F211i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 113,
-                                                 'depth'  => 4096,
-                                                 'color'  => true
-                                                 ),
-                                'P251iS' => array(
-                                                  'width'  => 132,
+                                'SH2101V' => array(
+                                                   'width'  => 800,
+                                                   'height' => 600,
+                                                   'depth'  => 65536,
+                                                   'color'  => true
+                                                   ),
+                                'T2101V' => array(
+                                                  'width'  => 176,
                                                   'height' => 144,
+                                                  'depth'  => 262144,
+                                                  'color'  => true
+                                                  ),
+
+                                // i-mode compliant HTML 4.0
+                                'D504i' => array(
+                                                 'width'  => 132,
+                                                 'height' => 144,
+                                                 'depth'  => 262144,
+                                                 'color'  => true
+                                                 ),
+                                'F504i' => array(
+                                                 'width'  => 132,
+                                                 'height' => 136,
+                                                 'depth'  => 65536,
+                                                 'color'  => true
+                                                 ),
+                                'F504iS' => array(
+                                                  'width'  => 132,
+                                                  'height' => 136,
                                                   'depth'  => 65536,
                                                   'color'  => true
                                                   ),
-                                'D502i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 90,
-                                                 'depth'  => 256,
+                                'N504i' => array(
+                                                 'width'  => 160,
+                                                 'height' => 180,
+                                                 'depth'  => 65536,
                                                  'color'  => true
+                                                 ),
+                                'N504iS' => array(
+                                                  'width'  => 160,
+                                                  'height' => 180,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
                                                  ),
                                 'SO504i' => array(
                                                   'width'  => 120,
                                                   'height' => 112,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                'P504i' => array(
+                                                 'width'  => 132,
+                                                 'height' => 144,
+                                                 'depth'  => 65536,
+                                                 'color'  => true
+                                                 ),
+                                'P504iS' => array(
+                                                  'width'  => 132,
+                                                  'height' => 144,
                                                   'depth'  => 65536,
                                                   'color'  => true
                                                   ),
@@ -359,154 +461,73 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                  'depth'  => 262144,
                                                  'color'  => true
                                                  ),
-                                'F502i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 91,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
+                                'D251iS' => array(
+                                                  'width'  => 132,
+                                                  'height' => 144,
+                                                  'depth'  => 262144,
+                                                  'color'  => true
+                                                  ),
                                 'F251i' => array(
                                                  'width'  => 132,
                                                  'height' => 140,
                                                  'depth'  => 65536,
                                                  'color'  => true
                                                  ),
-                                'P2101V' => array(
-                                                  'width'  => 163,
-                                                  'height' => 182,
-                                                  'depth'  => 262144,
-                                                  'color'  => true
-                                                  ),
-                                'N211i' => array(
-                                                 'width'  => 118,
-                                                 'height' => 128,
-                                                 'depth'  => 4096,
-                                                 'color'  => true
-                                                 ),
-                                'F671i' => array(
-                                                 'width'  => 120,
-                                                 'height' => 126,
-                                                 'depth'  => 256,
-                                                 'color'  => true
-                                                 ),
-                                'P211i' => array(
-                                                 'width'  => 120,
-                                                 'height' => 130,
-                                                 'depth'  => 65536,
-                                                 'color'  => true
-                                                 ),
-                                'F2051' => array(
-                                                 'width'  => 176,
-                                                 'height' => 182,
-                                                 'depth'  => 65536,
-                                                 'color'  => true
-                                                 ),
-                                'N502i' => array(
-                                                 'width'  => 118,
-                                                 'height' => 128,
-                                                 'depth'  => 4,
-                                                 'color'  => false
-                                                 ),
-                                'T2101V' => array(
-                                                  'width'  => 176,
-                                                  'height' => 144,
-                                                  'depth'  => 262144,
-                                                  'color'  => true
-                                                  ),
                                 'N251i' => array(
                                                  'width'  => 132,
                                                  'height' => 140,
                                                  'depth'  => 65536,
                                                  'color'  => true
                                                  ),
-                                'R211i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 98,
-                                                 'depth'  => 4096,
+                                'P251iS' => array(
+                                                  'width'  => 132,
+                                                  'height' => 144,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                'F671iS' => array(
+                                                  'width'  => 160,
+                                                  'height' => 120,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                'F212i' => array(
+                                                 'width'  => 132,
+                                                 'height' => 136,
+                                                 'depth'  => 65536,
                                                  'color'  => true
                                                  ),
-                                'SH251iS' => array(
-                                                   'width'  => 176,
-                                                   'height' => 187,
-                                                   'depth'  => 65536,
-                                                   'color'  => true
-                                                   ),
-                                'P502i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 117,
-                                                 'depth'  => 4,
-                                                 'color'  => false
+                                'SO212i' => array(
+                                                  'width'  => 120,
+                                                  'height' => 112,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+
+                                // i-mode compliant HTML 4.0
+                                // (FOMA 2051/2102V)
+                                'F2051' => array(
+                                                 'width'  => 176,
+                                                 'height' => 182,
+                                                 'depth'  => 65536,
+                                                 'color'  => true
                                                  ),
-                                'N821i' => array(
-                                                 'width'  => 118,
-                                                 'height' => 128,
-                                                 'depth'  => 4,
-                                                 'color'  => false
-                                                 ),
-                                'P821i' => array(
-                                                 'width'  => 118,
-                                                 'height' => 128,
-                                                 'depth'  => 4,
-                                                 'color'  => false
-                                                 ),
-                                'SH2101V' => array(
-                                                   'width'  => 800,
-                                                   'height' => 600,
-                                                   'depth'  => 65536,
-                                                   'color'  => true
-                                                   ),
                                 'N2051' => array(
                                                  'width'  => 176,
                                                  'height' => 198,
                                                  'depth'  => 65536,
                                                  'color'  => true
                                                  ),
-                                'KO210i' => array(
-                                                  'width'  => 96,
-                                                  'height' => 96,
-                                                  'depth'  => 256,
-                                                  'color'  => true
-                                                  ),
-                                'SO503iS' => array(
-                                                   'width'  => 120,
-                                                   'height' => 113,
-                                                   'depth'  => 65536,
-                                                   'color'  => true
-                                                   ),
-                                'D503iS' => array(
-                                                  'width'   => 132,
-                                                  'height' => 126,
-                                                  'depth'  => 4096,
-                                                  'color'  => true
-                                                  ),
-                                'R691i' => array(
-                                                 'width'  => 96,
-                                                 'height' => 72,
-                                                 'depth'  => 4,
-                                                 'color'  => false
-                                                 ),
-                                'NM502i' => array(
-                                                  'width'  => 111,
-                                                  'height' => 106,
-                                                  'depth'  => 2,
-                                                  'color'  => false
-                                                  ),
-                                'F504iS' => array(
-                                                  'width'  => 132,
-                                                  'height' => 136,
-                                                  'depth'  => 65536,
-                                                  'color'  => true
-                                                  ),
-                                'SO210i' => array(
-                                                  'width'  => 120,
-                                                  'height' => 113,
-                                                  'depth'  => 256,
+                                'P2102V' => array(
+                                                  'width'  => 176,
+                                                  'height' => 198,
+                                                  'depth'  => 262144,
                                                   'color'  => true
                                                   )
                                 );
         }
 
-        return $display_map[$model];
+        return @$display_map[$model];
     }
 }
 
