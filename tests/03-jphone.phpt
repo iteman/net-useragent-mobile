@@ -18,6 +18,7 @@ $tests = array(
                array('J-PHONE/3.0/J-PE03_a', '3.0', 'J-PE03_a', false),
                array('J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0', '4.0', 'J-SH51', true, 'JSHA3029293', 'SH', '0001aa', array('Profile' => 'MIDP-1.0', 'Configuration' => 'CLDC-1.0', 'Ext-Profile' => 'JSCL-1.1.0')),
                array('J-PHONE/4.0/J-SH51/SNXXXXXXXXX SH/0001a Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0', '4.0', 'J-SH51', true, 'XXXXXXXXX', 'SH', '0001a', array('Profile' => 'MIDP-1.0', 'Configuration' => 'CLDC-1.0', 'Ext-Profile' => 'JSCL-1.1.0')),
+               array('J-PHONE/5.0/V801SA', '5.0', 'V801SA', true)
                );
 
 $test_error_agents = array(
@@ -33,6 +34,7 @@ foreach ($tests as $value1) {
     print strtolower(get_parent_class($agent)) . "\n";
     print strtolower(get_class($agent)) . "\n";
     print $agent->isDoCoMo() . "\n";
+    print $agent->isVodafone() . "\n";
     print $agent->isJPhone() . "\n";
     print $agent->isEZweb() . "\n";
     print $agent->getName() . "\n";
@@ -60,6 +62,32 @@ foreach ($tests as $value1) {
             }
         }
     }
+    if ($agent->getCarrierShortName() != 'V') {
+        print "Carrier short name isn't V\n";
+    }
+    if ($agent->getCarrierLongName() != 'Vodafone') {
+        print "Carrier long name isn't Vodafone\n";
+    }
+    if ($ua == 'J-PHONE/2.0/J-DN02') {
+        if (!$agent->isTypeC() || $agent->isTypeP() || $agent->isTypeW()) {
+            print "Invalid Type\n";
+        }
+    }
+    if ($ua == 'J-PHONE/3.0/J-PE03_a') {
+        if (!$agent->isTypeC() || $agent->isTypeP() || $agent->isTypeW()) {
+            print "Invalid Type\n";
+        }
+    }
+    if ($ua == 'J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0') {
+        if (!$agent->isTypeP() || $agent->isTypeC() || $agent->isTypeW()) {
+            print "Invalid Type\n";
+        }
+    }
+    if ($ua == 'J-PHONE/5.0/V801SA') {
+        if (!$agent->isTypeW() || $agent->isTypeC() || $agent->isTypeP()) {
+            print "Invalid Type\n";
+        }
+    }
 }
 
 foreach ($test_error_agents as $value) {
@@ -78,8 +106,9 @@ foreach ($test_error_agents as $value) {
 Testing J-PHONE ...
 1
 net_useragent_mobile_common
-net_useragent_mobile_jphone
+net_useragent_mobile_vodafone
 
+1
 1
 
 J-PHONE
@@ -89,8 +118,9 @@ J-DN02
 
 1
 net_useragent_mobile_common
-net_useragent_mobile_jphone
+net_useragent_mobile_vodafone
 
+1
 1
 
 J-PHONE
@@ -100,8 +130,9 @@ J-PE03_a
 
 1
 net_useragent_mobile_common
-net_useragent_mobile_jphone
+net_useragent_mobile_vodafone
 
+1
 1
 
 J-PHONE
@@ -120,8 +151,9 @@ Testing Ext-Profile ...
 JSCL-1.1.0
 1
 net_useragent_mobile_common
-net_useragent_mobile_jphone
+net_useragent_mobile_vodafone
 
+1
 1
 
 J-PHONE
@@ -138,6 +170,18 @@ Testing Configuration ...
 CLDC-1.0
 Testing Ext-Profile ...
 JSCL-1.1.0
+1
+net_useragent_mobile_common
+net_useragent_mobile_vodafone
+
+1
+1
+
+J-PHONE
+J-PHONE/5.0/V801SA
+5.0
+V801SA
+
 1
 net_useragent_mobile_error
 Net_UserAgent_Mobile Error: no match
