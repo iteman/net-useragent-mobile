@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.7 2003/04/22 08:49:39 kuboa Exp $
+// $Id: DoCoMo.php,v 1.8 2003/05/12 15:00:28 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -68,7 +68,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.7 $
+ * @version  $Revision: 1.8 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -91,7 +91,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     var $_model = '';
 
     /**
-     * status of the cache (TB, TD, TJ)
+     * status of the cache (TC, TB, TD, TJ)
      * @var string
      */
     var $_status = '';
@@ -132,6 +132,12 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     var $_cache_size;
 
+    /**
+     * width and height of the display
+     * @var string
+     */
+    var $_display_bytes = '';
+
     /**#@-*/
 
     /**#@+
@@ -168,24 +174,18 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
             && preg_match('/^\((.*)\)$/', $foma_or_comment, $matches)
             ) {
 
-            /**
-             * DoCoMo/1.0/P209is (Google CHTML Proxy/1.0)
-             */
+            // DoCoMo/1.0/P209is (Google CHTML Proxy/1.0)
             $this->_comment = $matches[1];
             $result = $this->_parseMain($main);
         } elseif ($foma_or_comment) {
 
-            /**
-             * DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)
-             */
+            // DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)
             $this->_is_foma = true;
             list($this->name, $this->version) = explode('/', $main);
             $result = $this->_parseFOMA($foma_or_comment);
         } else {
 
-            /**
-             * DoCoMo/1.0/R692i/c10
-             */
+            // DoCoMo/1.0/R692i/c10
             $result = $this->_parseMain($main);
         }
 
@@ -200,16 +200,23 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     /**
      * create a new {@link Net_UserAgent_Mobile_Display} class instance
      *
-     * @return mixed a newly created {@link Net_UserAgent_Mobile_Display}
-     *     object, or a PEAR error object on error
+     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
+     *     object
      * @see Net_UserAgent_Mobile_Display
      * @see Net_UserAgent_Mobile_DoCoMoDisplayMap::get()
      */
     function makeDisplay()
     {
-        $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->_model);
-        return $display !== null ?
-            new Net_UserAgent_Mobile_Display($display) : $this->noMatch();
+        if ($this->_display_bytes === '') {
+            $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->_model);
+        } else {
+            list($width_bytes, $height_bytes) =
+                explode('*', $this->_display_bytes);
+            $display = array('width_bytes'  => $width_bytes,
+                             'height_bytes' => $height_bytes
+                             );
+        }
+        return new Net_UserAgent_Mobile_Display($display);
     }
 
     // }}}
@@ -231,7 +238,8 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                                       '502i|821i|209i|691i|(F|N|P|KO)210i|^F671i$' => '2.0',
                                       '(D210i|SO210i)|503i|211i|SH251i|692i|200[12]|2101V' => '3.0',
                                       '504i|251i|^F671iS$|212i|2051|2102V|661i' => '4.0',
-                                      'eggy|P751v' => '3.2'
+                                      'eggy|P751v' => '3.2',
+                                      '505i' => '5.0'
                                       );
         }
         foreach ($html_version_map as $key => $value) {
@@ -430,12 +438,16 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                     $this->_serial_number = $matches[1];
                     continue;
                 }
-                if (preg_match('/^(T[DBJ])$/', $value, $matches)) {
+                if (preg_match('/^(T[CDBJ])$/', $value, $matches)) {
                     $this->_status = $matches[1];
                     continue;
                 }
                 if (preg_match('/^s(\d+)$/', $value, $matches)) {
                     $this->_bandwidth = (integer)$matches[1];
+                    continue;
+                }
+                if (preg_match('/^W(\d+)H(\d+)$/', $value, $matches)) {
+                    $this->_display_bytes = "{$matches[1]}*{$matches[2]}";
                     continue;
                 }
             }
