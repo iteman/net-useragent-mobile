@@ -79,6 +79,15 @@ $tests = array(
                            'color' => false,
                            'depth' => 4
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 P2102V(c100;TB)'),
+                     array(
+                           'width' => 176,
+                           'height' => 198,
+                           'color' => true,
+                           'depth' => 262144
+                           )
                      )
                );
 
@@ -158,4 +167,9 @@ foreach ($tests as $value1) {
 35: 128
 36: 
 37: 4
-
+38: 1
+39: net_useragent_mobile_display
+40: 176
+41: 198
+42: 1
+43: 262144
