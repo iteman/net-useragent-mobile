@@ -194,6 +194,12 @@ foreach ($test_agents as $value) {
     print $agent->isJPhone() . "\n";
     print $agent->isEZweb() . "\n";
     print $agent->isNonMobile() . "\n";
+    if ($agent->getCarrierShortName() != 'N') {
+        print "Carrier short name isn't N\n";
+    }
+    if ($agent->getCarrierLongName() != 'NonMobile') {
+        print "Carrier long name isn't NonMobile\n";
+    }
 }
 ?>
 --POST--

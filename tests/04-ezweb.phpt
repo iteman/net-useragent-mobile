@@ -45,6 +45,12 @@ foreach ($tests as $value1) {
     print $agent->getComment() . "\n";
     print $agent->isWAP1() . "\n";
     print $agent->isWAP2() . "\n";
+    if ($agent->getCarrierShortName() != 'E') {
+        print "Carrier short name isn't E\n";
+    }
+    if ($agent->getCarrierLongName() != 'EZweb') {
+        print "Carrier long name isn't EZweb\n";
+    }
 }
 ?>
 --POST--
