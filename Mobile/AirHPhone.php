@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: AirHPhone.php,v 1.2 2003/07/07 02:10:24 kuboa Exp $
+// $Id: AirHPhone.php,v 1.3 2003/07/29 11:34:06 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -49,7 +49,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.2 $
+ * @version  $Revision: 1.3 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.ddipocket.co.jp/airh_phone/i_hp.html
  */
@@ -140,6 +140,21 @@ class Net_UserAgent_Mobile_AirHPhone extends Net_UserAgent_Mobile_Common
         } else {
             $this->noMatch();
         }
+    }
+
+    // }}}
+    // {{{ makeDisplay()
+
+    /**
+     * create a new {@link Net_UserAgent_Mobile_Display} class instance
+     *
+     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
+     *     object
+     * @see Net_UserAgent_Mobile_Display
+     */
+    function makeDisplay()
+    {
+        return new Net_UserAgent_Mobile_Display(null);
     }
 
     // }}}
