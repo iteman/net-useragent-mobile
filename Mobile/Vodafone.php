@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Vodafone.php,v 1.2 2005/02/01 04:46:38 kuboa Exp $
+// $Id: Vodafone.php,v 1.3 2005/02/03 08:21:02 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -58,7 +58,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.2 $
+ * @version  $Revision: 1.3 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://developers.vodafone.jp/dp/tool_dl/web/useragent.php
  * @link     http://developers.vodafone.jp/dp/tool_dl/web/position.php
@@ -113,6 +113,12 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
      * @var boolean
      */
     var $_is3G = true;
+
+    /**
+     * the name of the mobile phone
+     * @var string
+     */
+    var $_msname = '';
 
     /**#@-*/
 
@@ -181,6 +187,9 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
         if (Net_UserAgent_Mobile::isError($result)) {
             return $result;
         }
+
+
+        $this->_msname = $this->getHeader('x-jphone-msname');
     }
 
     // }}}
@@ -385,6 +394,19 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
     function isType3GC()
     {
         return $this->_is3G;
+    }
+
+    // }}}
+    // {{{ getMsname()
+
+    /**
+     * returns the name of the mobile phone
+     *
+     * @return string the name of the mobile phone
+     */
+    function getMsname()
+    {
+        return $this->_msname;
     }
 
     /**#@-*/
