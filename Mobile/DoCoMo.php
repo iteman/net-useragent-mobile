@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.2 2003/02/24 15:56:33 kuboa Exp $
+// $Id: DoCoMo.php,v 1.3 2003/03/19 15:03:42 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -62,7 +62,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * which implements NTT docomo i-mode user agents.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  * @see     Net_UserAgent_Mobile_Common()
@@ -95,14 +95,14 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * @var integer
      * @access private
      */
-    var $_bandwidth = NULL;
+    var $_bandwidth = null;
 
     /**
      * hardware unique serial number
      * @var string
      * @access private
      */
-    var $_serial_number = NULL;
+    var $_serial_number = null;
 
     /**
      * whether it's FOMA or not
@@ -116,14 +116,14 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * @var string
      * @access private
      */
-    var $_card_id = NULL;
+    var $_card_id = null;
 
     /**
      * comment on user agent string like 'Google Proxy'
      * @var string
      * @access private
      */
-    var $_comment = NULL;
+    var $_comment = null;
 
     /**
      * cache size as killobytes unit
@@ -200,7 +200,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getHTMLVersion()
 
     /**
-     * returns supported HTML version like '3.0'. retuns NULL if unknown.
+     * returns supported HTML version like '3.0'. retuns null if unknown.
      *
      * @return mixed
      * @access public
@@ -212,7 +212,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                 &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
                                          'foma_html_version'
                                          );
-            if ($foma_html_version === NULL) {
+            if ($foma_html_version === null) {
                 $foma_html_version = '3.0';
             }
             return $foma_html_version;
@@ -220,7 +220,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         $html_version_map = &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
                                                      'html_version_map'
                                                      );
-        if ($html_version_map === NULL) {
+        if ($html_version_map === null) {
 
             // http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
             $html_version_map = array(
@@ -237,7 +237,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                 return $value;
             }
         }
-        return NULL;
+        return null;
     }
 
     // }}}
@@ -258,7 +258,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
             &PEAR::getStaticProperty('Net_UserAgent_Mobile_DoCoMo',
                                      'default_cache_size'
                                      );
-        if ($default_cache_size === NULL) {
+        if ($default_cache_size === null) {
             $default_cache_size = 5;
         }
         return $default_cache_size;
@@ -268,7 +268,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getSeries()
 
     /**
-     * returns series name like '502i'. returns NULL if unknown.
+     * returns series name like '502i'. returns null if unknown.
      *
      * @return mixed
      * @access public
@@ -281,14 +281,14 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if (preg_match('/(\d{3}i)/', $this->_model, $matches)) {
             return $matches[1];
         }
-        return NULL;
+        return null;
     }
 
     // }}}
     // {{{ getVendor()
 
     /**
-     * returns vender code like 'SO' for Sony. returns NULL if unknown.
+     * returns vender code like 'SO' for Sony. returns null if unknown.
      *
      * @return mixed
      * @access public
@@ -298,7 +298,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if (preg_match('/([A-Z]+)\d/', $this->_model, $matches)) {
             return $matches[1];
         }
-        return NULL;
+        return null;
     }
 
     // }}}
@@ -333,7 +333,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getBandwidth()
 
     /**
-     * returns bandwidth like 32 as killobytes unit. Only vailable in eggy, returns NULL otherwise.
+     * returns bandwidth like 32 as killobytes unit. Only vailable in eggy, returns null otherwise.
      *
      * @return mixed
      * @access public
@@ -347,7 +347,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getSerialNumber()
 
     /**
-     * returns hardware unique serial number (15 digit in FOMA, 11 digit otherwise alphanumeric). Only available with form utn attribute. returns NULL otherwise.
+     * returns hardware unique serial number (15 digit in FOMA, 11 digit otherwise alphanumeric). Only available with form utn attribute. returns null otherwise.
      *
      * @return mixed
      * @access public
@@ -375,7 +375,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getComment()
 
     /**
-     * returns comment on user agent string like 'Google Proxy'. returns NULL otherwise.
+     * returns comment on user agent string like 'Google Proxy'. returns null otherwise.
      *
      * @return mixed
      * @access public
@@ -389,7 +389,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ getCardID()
 
     /**
-     * returns FOMA Card ID (20 digit alphanumeric). Only available in FOMA with E<lt>form utnE<gt> attribute. returns NULL otherwise.
+     * returns FOMA Card ID (20 digit alphanumeric). Only available in FOMA with E<lt>form utnE<gt> attribute. returns null otherwise.
      *
      * @return mixed
      * @access public

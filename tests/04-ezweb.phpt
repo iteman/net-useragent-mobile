@@ -14,8 +14,8 @@ require_once('Net/UserAgent/Mobile.php');
 
 $tests = array(
                // ua, version, device_id, server, xhtml_compliant, comment, is_wap1, is_wap2
-               array('UP.Browser/3.01-HI01 UP.Link/3.4.5.2', '3.01', 'HI01', 'UP.Link/3.4.5.2', false, NULL, true, false),
-               array('KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1', '6.0.2.276 (GUI)', 'TS21', 'MMP/1.1', true, NULL, false, true),
+               array('UP.Browser/3.01-HI01 UP.Link/3.4.5.2', '3.01', 'HI01', 'UP.Link/3.4.5.2', false, null, true, false),
+               array('KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1', '6.0.2.276 (GUI)', 'TS21', 'MMP/1.1', true, null, false, true),
                array('UP.Browser/3.04-TS14 UP.Link/3.4.4 (Google WAP Proxy/1.0)', '3.04', 'TS14', 'UP.Link/3.4.4', false, 'Google WAP Proxy/1.0', true, false)
                );
 

@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: JPhone.php,v 1.2 2003/02/24 15:56:34 kuboa Exp $
+// $Id: JPhone.php,v 1.3 2003/03/19 15:03:42 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -53,7 +53,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * implements J-PHONE user agents.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  * @see     Net_UserAgent_Mobile_Common()
@@ -84,7 +84,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * @var string
      * @access private
      */
-    var $_serial_number = NULL;
+    var $_serial_number = null;
 
     /**
      * vendor code like 'SH'
@@ -98,7 +98,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
      * @var string
      * @access private
      */
-    var $_vendor_version = NULL;
+    var $_vendor_version = null;
 
     /**
      *
@@ -181,7 +181,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
         list($width, $height) =
             explode('*', $this->getHeader('x-jphone-display'));
         $color = false;
-        $depth = NULL;
+        $depth = null;
         if ($color_string = $this->getHeader('x-jphone-color')) {
             preg_match('/^([CG])(\d+)$/', $color_string, $matches);
             $color = $matches[1] === 'C' ? true : false;
@@ -227,7 +227,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
     // {{{ getSerialNumber()
 
     /**
-     * return terminal unique serial number. returns NULL if user forbids to send his/her serial number.
+     * return terminal unique serial number. returns null if user forbids to send his/her serial number.
      *
      * @return string
      * @access public
@@ -255,7 +255,7 @@ class Net_UserAgent_Mobile_JPhone extends Net_UserAgent_Mobile_Common
     // {{{ getVendorVersion()
 
     /**
-     * returns vendor version like '0001a'. returns NULL if unknown.
+     * returns vendor version like '0001a'. returns null if unknown.
      *
      * @return string
      * @access public

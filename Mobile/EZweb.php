@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.3 2003/02/24 15:56:34 kuboa Exp $
+// $Id: EZweb.php,v 1.4 2003/03/19 15:03:42 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -48,7 +48,7 @@ require_once('Net/UserAgent/Mobile/Display.php');
  * implements EZweb (WAP1.0/2.0) user agents.
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  * @see     Net_UserAgent_Mobile_Common()
@@ -79,7 +79,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * @var string
      * @access private
      */
-    var $_comment = NULL;
+    var $_comment = null;
 
     /**
      * whether it's XHTML compliant or not
@@ -197,7 +197,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     // {{{ getComment()
 
     /**
-     * returns comment like 'Google WAP Proxy/1.0'. returns NULL if nothinng.
+     * returns comment like 'Google WAP Proxy/1.0'. returns null if nothinng.
      *
      * @return boolean
      * @access public

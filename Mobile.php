@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.1 2003/02/19 16:28:41 kuboa Exp $
+// $Id: Mobile.php,v 1.2 2003/03/19 15:03:43 kuboa Exp $
 //
 // SYNOPSIS:
 // require_once('Net/UserAgent/Mobile.php');
@@ -68,7 +68,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOMATCH', -1); // no match
  * <miyagawa@bulknews.net>
  *
  * @package Net_UserAgent_Mobile
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  * @author  KUBO Atsuhiro <kubo@isite.co.jp>
  * @access  public
  */
@@ -93,12 +93,12 @@ class Net_UserAgent_Mobile
      * @see Net_UserAgent_Mobile_Request::factory()
      * @see PEAR::getStaticProperty()
      */
-    function &factory($stuff = NULL)
+    function &factory($stuff = null)
     {
         $mobile_regex = &PEAR::getStaticProperty('Net_UserAgent_Mobile',
                                                  'mobile_regex'
                                                  );
-        if ($mobile_regex === NULL) {
+        if ($mobile_regex === null) {
             $docomo_regex = '^DoCoMo/\d\.\d[ /]';
             $jphone_regex = '^J-PHONE/\d\.\d';
             $ezweb_regex  = '^(?:KDDI-[A-Z]+\d+ )?UP\.Browser\/';
