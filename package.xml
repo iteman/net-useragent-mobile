@@ -21,20 +21,18 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.4</version>
+    <version>0.5</version>
     <state>beta</state>
-    <date>2003-03-27</date>
+    <date>2003-04-06</date>
     <notes>
-- Changed way to get characteristics for new format of user agent which is
-  used by 'FOMA 2051/2102V'.
-- Added display information about DoCoMo's 'P2102V'.
-- Added PEAR error handling.
-- Updated documentation.
+- Added AirH"PHONE support.
+- Added display information about DoCoMo's 'N211iS', 'P211iS'.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
         <file role="php">Mobile.php</file>
         <dir name="Mobile">
+          <file role="php">AirHPhone.php</file>
           <file role="php">Common.php</file>
           <file role="php">Display.php</file>
           <file role="php">DoCoMo.php</file>
@@ -53,10 +51,23 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
         <file role="test">04-ezweb.phpt</file>
         <file role="test">05-display.phpt</file>
         <file role="test">06-nonmobile.phpt</file>
+        <file role="test">07-airhphone.phpt</file>
       </dir>
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.4</version>
+      <state>beta</state>
+      <date>2003-03-27</date>
+      <notes>
+- Changed way to get characteristics for new format of user agent which is
+  used by 'FOMA 2051/2102V'.
+- Added display information about DoCoMo's 'P2102V'.
+- Added PEAR error handling.
+- Updated documentation.
+      </notes>
+    </release>
     <release>
       <version>0.3</version>
       <state>beta</state>
