@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.3 2003/03/26 16:16:20 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.4 2003/04/03 13:21:52 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.3 $
+ * @version  $Revision: 1.4 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -324,12 +324,24 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                  'depth'  => 4096,
                                                  'color'  => true
                                                  ),
+                                'N211iS' => array(
+                                                  'width'  => 118,
+                                                  'height' => 128,
+                                                  'depth'  => 4096,
+                                                  'color'  => true
+                                                  ),
                                 'P211i' => array(
                                                  'width'  => 120,
                                                  'height' => 130,
                                                  'depth'  => 65536,
                                                  'color'  => true
                                                  ),
+                                'P211iS' => array(
+                                                  'width'  => 120,
+                                                  'height' => 130,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
                                 'SO211i' => array(
                                                   'width'  => 120,
                                                   'height' => 112,
