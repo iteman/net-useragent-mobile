@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: EZweb.php,v 1.8 2003/11/14 07:13:56 kuboa Exp $
+// $Id: EZweb.php,v 1.9 2003/12/15 06:21:44 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -54,7 +54,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.8 $
+ * @version  $Revision: 1.9 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link     http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
@@ -191,10 +191,18 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
         static $device_id_to_model;
         if (!isset($device_id_to_model)) {
             $device_id_to_model = array(
+                                        // W (excluding W01K)
+                                        'KC31' => 'W11K',
+                                        'HI31' => 'W11H',
+
+                                        // INFOBAR, A5000/C5000
                                         'ST22' => 'INFOBAR',
+                                        'SA26' => 'A5503SA',
                                         'TS26' => 'A5501T',
+                                        'SN25' => 'A5404S',
+                                        'CA24' => 'A5403CA',
                                         'SN24' => 'A5402S',
-                                        'CA23' => 'A5401CA',
+                                        'CA23' => 'A5401CA', // including A5401CA II
                                         'ST21' => 'A5306ST',
                                         'KC22' => 'A5305K',
                                         'TS24' => 'A5304T',
@@ -203,12 +211,16 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         'CA22' => 'A5302CA',
                                         'TS23' => 'A5301T',
                                         'TS21' => 'C5001T',
+
+                                        // A1400/A1300/A1100
                                         'KC23' => 'A1401K',
                                         'TS25' => 'A1304T',
                                         'SA25' => 'A1303SA',
                                         'SA24' => 'A1302SA',
                                         'SN23' => 'A1301S',
                                         'SN22' => 'A1101S',
+
+                                        // A1000/C1000/C400/C300/C200
                                         'SA22' => 'A3015SA',
                                         'SN21' => 'A3014S',
                                         'TS22' => 'A3013T',
@@ -257,6 +269,10 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
                                         'DN01' => 'C202DE',
                                         'HI01' => 'C201H',
                                         'HI02' => 'C201H',
+
+                                        // Tu-Ka
+                                        'KCTD' => 'TS40',
+                                        'TST8' => 'TT32',
                                         'TST7' => 'TT31',
                                         'KCTC' => 'TK31',
                                         'SYT4' => 'TS31',
