@@ -23,7 +23,7 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
   <release>
     <version>0.5</version>
     <state>beta</state>
-    <date>2003-04-06</date>
+    <date>2003-04-07</date>
     <notes>
 - Added AirH"PHONE support.
 - Added display information about DoCoMo's 'N211iS', 'P211iS'.
