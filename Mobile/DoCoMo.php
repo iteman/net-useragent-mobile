@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.5 2003/04/03 13:19:35 kuboa Exp $
+// $Id: DoCoMo.php,v 1.6 2003/04/06 08:36:29 kuboa Exp $
 //
 
 require_once('Net/UserAgent/Mobile/Common.php');
@@ -68,7 +68,7 @@ require_once('Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.5 $
+ * @version  $Revision: 1.6 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -395,6 +395,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
 
     /**#@-*/
 
+    /**#@+
+     * @access private
+     */
+
     // }}}
     // {{{ _parseMain()
 
@@ -403,16 +407,11 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      *
      * @param string $main main part of HTTP_USER_AGENT string
      * @return mixed void, or a PEAR error object on error
-     * @access private
      */ 
     function _parseMain($main)
     {
-        @list($name, $version, $model, $cache, $rest) = explode('/', $main,
-                                                                5
-                                                                );
-        $this->name    = $name;
-        $this->version = $version;
-        $this->_model  = $model;
+        @list($this->name, $this->version, $this->_model, $cache, $rest) =
+            explode('/', $main, 5);
 
         if ($cache) {
             if (!preg_match('/^c(\d+)/', $cache, $matches)) {
@@ -448,7 +447,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      *
      * @param string $foma main part of HTTP_USER_AGENT string
      * @return mixed void, or a PEAR error object on error
-     * @access private
      */ 
     function _parseFOMA($foma)
     {
@@ -483,6 +481,8 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
             }
         }
     }
+
+    /**#@-*/
 }
 
 /*
