@@ -251,7 +251,7 @@ foreach ($test_agents as $value) {
 22: 1
 23: UP.Browser
 24: KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
-25: 6.0.2.276
+25: 6.0.2.276 (GUI)
 26: TS21
 27: MMP/1.1
 28: 1
