@@ -1,7 +1,7 @@
 --TEST--
 Net_UserAgent_Mobile: DoCoMo
 --SKIPIF--
-<?php if (!@include('Net/UserAgent/Mobile.php')) print 'skip'; ?>
+<?php if (!@include('../Mobile.php')) print 'skip'; ?>
 --FILE--
 <?php
 //
@@ -10,7 +10,7 @@ Net_UserAgent_Mobile: DoCoMo
 //
 
 error_reporting(E_ALL);
-require_once('Net/UserAgent/Mobile.php');
+require_once('../Mobile.php');
 
 $tests = array(
                // ua, version, html_version, model, cache_size, is_foma, vendor, series, options
@@ -61,7 +61,11 @@ $tests = array(
                array('DoCoMo/1.0/F672i/c10/TB', '1.0', '4.0', 'F672i', 10, false, 'F', '672i', array('status' => 'TB')),
                array('DoCoMo/1.0/SH505i2/c20/TB/W24H12', '1.0', '5.0', 'SH505i', 20, false, 'SH', '505i', array('status' => 'TB')),
                array('DoCoMo/1.0/D252i/c10/TB/W25H12', '1.0', '5.0', 'D252i', 10, false, 'D', '252i', array('status' => 'TB')),
-               array('DoCoMo/1.0/SH252i/c20/TB/W24H12', '1.0', '5.0', 'SH252i', 20, false, 'SH', '252i', array('status' => 'TB'))
+               array('DoCoMo/1.0/SH252i/c20/TB/W24H12', '1.0', '5.0', 'SH252i', 20, false, 'SH', '252i', array('status' => 'TB')),
+               array('DoCoMo/1.0/D505iS/c20/TB/W20H10', '1.0', '5.0', 'D505iS', 20, false, 'D', '505i', array('status' => 'TB')),
+               array('DoCoMo/1.0/P505iS/c20/TB/W20H10', '1.0', '5.0', 'P505iS', 20, false, 'P', '505i', array('status' => 'TB')),
+               array('DoCoMo/1.0/P252i/c10/TB/W22H10', '1.0', '5.0', 'P252i', 10, false, 'P', '252i', array('status' => 'TB')),
+               array('DoCoMo/1.0/N252i/c10/TB/W22H10', '1.0', '5.0', 'N252i', 10, false, 'N', '252i', array('status' => 'TB'))
                );
 
 $test_error_agents = array(
@@ -911,6 +915,74 @@ SH252i
 20
 
 SH
+252i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/D505iS/c20/TB/W20H10
+1.0
+5.0
+D505iS
+20
+
+D
+505i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/P505iS/c20/TB/W20H10
+1.0
+5.0
+P505iS
+20
+
+P
+505i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/P252i/c10/TB/W22H10
+1.0
+5.0
+P252i
+10
+
+P
+252i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+DoCoMo
+DoCoMo/1.0/N252i/c10/TB/W22H10
+1.0
+5.0
+N252i
+10
+
+N
 252i
 Testing status ...
 TB
