@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.11 2003/08/11 03:54:42 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.12 2003/09/04 08:43:48 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.11 $
+ * @version  $Revision: 1.12 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -522,6 +522,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                  'F661i' => array(
                                                   'width'  => 132,
                                                   'height' => 136,
+                                                  'depth'  => 65536,
+                                                  'color'  => true
+                                                  ),
+                                 'F672i' => array(
+                                                  'width'  => 160,
+                                                  'height' => 120,
                                                   'depth'  => 65536,
                                                   'color'  => true
                                                   ),
