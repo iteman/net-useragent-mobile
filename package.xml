@@ -21,11 +21,12 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.13</version>
+    <version>0.14</version>
     <state>beta</state>
-    <date>2003-09-04</date>
+    <date>2003-10-12</date>
     <notes>
-- Added support for DoCoMo's SH505i2, F672i.
+- Added singleton() method.
+- Added support for DoCoMo's D252i, SH252i.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -55,6 +56,14 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.13</version>
+      <state>beta</state>
+      <date>2003-09-04</date>
+      <notes>
+- Added support for DoCoMo's SH505i2, F672i.
+      </notes>
+    </release>
     <release>
       <version>0.12</version>
       <state>beta</state>
