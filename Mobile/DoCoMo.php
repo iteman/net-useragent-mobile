@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMo.php,v 1.22 2005/03/23 08:40:17 kuboa Exp $
+// $Id: DoCoMo.php,v 1.23 2005/07/27 05:59:49 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -71,7 +71,7 @@ require_once(dirname(__FILE__) . '/DoCoMoDisplayMap.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.22 $
+ * @version  $Revision: 1.23 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/useragent.html
  * @link     http://www.nttdocomo.co.jp/p_s/imode/tag/imodetag.html
@@ -423,7 +423,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     {
         static $gpsModels;
         if (!isset($gpsModels)) {
-            $gpsModels = array('F661i');
+            $gpsModels = array('F661i', 'F505iGPS');
         }
         return in_array($this->_model, $gpsModels);
     }
