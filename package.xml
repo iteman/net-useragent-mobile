@@ -21,12 +21,16 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.23.0</version>
+    <version>0.24.0</version>
     <state>beta</state>
-    <date>2005-03-23</date>
+    <date>2005-07-27</date>
     <notes>
-- Added support for DoCoMo's N506iS, SO506i, P253iS.
-- Added support for DoCoMo's N901iC, D901i, P901i, F700i, SH700i, N700i, P700i. (by Christopher Kobayashi &lt;chriskk at gmail dot com&gt;)
+- Added fallback mode on no match using $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'].
+- Changed the EZweb regex pattern to be able to match au's A5511T.
+- Added support for DoCoMo's SO506iS, SH901iS, F901iS, D901iS, P901iS, N901iS.
+
+** NOTE **
+If you want to use fallback mode on no match, please set true to $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] before calling factory().
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -53,11 +57,21 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
         <file>06-nonmobile.phpt</file>
         <file>07-airhphone.phpt</file>
         <file>08-display-xmlmap.phpt</file>
+        <file>09-fallback-on-nomatch.phpt</file>
         <file>DoCoMoMap.xml</file>
       </dir>
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.23.0</version>
+      <state>beta</state>
+      <date>2005-03-23</date>
+      <notes>
+- Added support for DoCoMo's N506iS, SO506i, P253iS.
+- Added support for DoCoMo's N901iC, D901i, P901i, F700i, SH700i, N700i, P700i. (by Christopher Kobayashi &lt;chriskk at gmail dot com&gt;)
+      </notes>
+    </release>
     <release>
       <version>0.22.0</version>
       <state>beta</state>
