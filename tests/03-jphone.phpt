@@ -18,7 +18,7 @@ $tests = array(
                array('J-PHONE/3.0/J-PE03_a', '3.0', 'J-PE03_a', false),
                array('J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0', '4.0', 'J-SH51', true, 'JSHA3029293', 'SH', '0001aa', array('Profile' => 'MIDP-1.0', 'Configuration' => 'CLDC-1.0', 'Ext-Profile' => 'JSCL-1.1.0')),
                array('J-PHONE/4.0/J-SH51/SNXXXXXXXXX SH/0001a Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0', '4.0', 'J-SH51', true, 'XXXXXXXXX', 'SH', '0001a', array('Profile' => 'MIDP-1.0', 'Configuration' => 'CLDC-1.0', 'Ext-Profile' => 'JSCL-1.1.0')),
-               array('J-PHONE/5.0/V801SA', '5.0', 'V801SA', true),
+               array('J-PHONE/5.0/V801SA SA/0001JP Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0', '5.0', 'V801SA', true),
                array('Vodafone/1.0/V702NK/NKJ001 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1', '1.0', 'V702NK', true, null, 'NK', 'NKJ001', array('Profile' => 'MIDP-1.0', 'Configuration' => 'CLDC-1.0')),
                array('Vodafone/1.0/V702NK/NKJ001/SN123456789012345 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1', '1.0', 'V702NK', true, 'SN123456789012345', 'NK', 'J001', array('Profile' => 'MIDP-1.0', 'Configuration' => 'CLDC-1.0')),
                array('Vodafone/1.0/V802SE/SEJ001/SN123456789012345 Browser/SEMC-Browser/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1', '1.0', 'V802SE', true, 'SN123456789012345', 'SE', 'J001', array('Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1')),
@@ -195,10 +195,10 @@ net_useragent_mobile_vodafone
 1
 
 J-PHONE
-J-PHONE/5.0/V801SA
+J-PHONE/5.0/V801SA SA/0001JP Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0
 5.0
 V801SA
-
+1
 1
 net_useragent_mobile_common
 net_useragent_mobile_vodafone
