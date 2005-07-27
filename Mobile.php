@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.19 2005/07/27 05:56:51 kuboa Exp $
+// $Id: Mobile.php,v 1.20 2005/07/27 07:14:52 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -74,7 +74,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.19 $
+ * @version  $Revision: 1.20 $
  */
 class Net_UserAgent_Mobile
 {
@@ -124,18 +124,27 @@ class Net_UserAgent_Mobile
         }
         $className = "Net_UserAgent_Mobile_{$sub}";
         $include    = dirname(__FILE__) . "/Mobile/{$sub}.php";
-        @include_once($include);
 
         if (!class_exists($className)) {
-            return PEAR::raiseError(null,
-                                    NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
-                                    null, null,
-                                    "Unable to include the $include file",
-                                    'Net_UserAgent_Mobile_Error', true
-                                    );
+            if (!is_readable($include)) {
+                return PEAR::raiseError(null,
+                                        NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
+                                        null, null,
+                                        "Unable to read the $include file",
+                                        'Net_UserAgent_Mobile_Error', true
+                                        );
+            }
+            if (!include_once($include)) {
+                return PEAR::raiseError(null,
+                                        NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
+                                        null, null,
+                                        "Unable to include the $include file",
+                                        'Net_UserAgent_Mobile_Error', true
+                                        );
+            }
         }
 
-        @$instance = &new $className($request);
+        $instance = &new $className($request);
         $error = &$instance->isError();
         if (Net_UserAgent_Mobile::isError($error)) {
             $instance = &$error;
@@ -224,7 +233,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.19 $
+ * @version  $Revision: 1.20 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
