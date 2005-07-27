@@ -82,7 +82,14 @@ $tests = array(
                array('DoCoMo/1.0/P253i/c10/TB/W22H10', '1.0', '5.0', 'P253i', 10, false, 'P', '253i', array('status' => 'TB')),
                array('DoCoMo/1.0/P213i/c10/TB/W22H10', '1.0', '5.0', 'P213i', 10, false, 'P', '213i', array('status' => 'TB')),
                array('DoCoMo/2.0 N900iG(c100;TB;W24H12)', '2.0', '5.0', 'N900iG', 100, true, 'N', '900i', array('status' => 'TB')),
-               array('DoCoMo/2.0 F901iC(c100;TB;W23H12)', '2.0', '5.0', 'F901iC', 100, true, 'F', '901i', array('status' => 'TB'))
+               array('DoCoMo/2.0 F901iC(c100;TB;W23H12)', '2.0', '5.0', 'F901iC', 100, true, 'F', '901i', array('status' => 'TB')),
+
+               array('DoCoMo/1.0/SO506iS/c20/TB/W20H10', '1.0', '5.0', 'SO506iS', 20, false, 'SO', '506i', array('status' => 'TB')),
+               array('DoCoMo/2.0 SH901iS(c100;TB;W24H12)', '2.0', '5.0', 'SH901iS', 100, true, 'SH', '901i', array('status' => 'TB')),
+               array('DoCoMo/2.0 F901iS(c100;TB;W23H12)', '2.0', '5.0', 'F901iS', 100, true, 'F', '901i', array('status' => 'TB')),
+               array('DoCoMo/2.0 D901iS(c100;TB;W23H12)', '2.0', '5.0', 'D901iS', 100, true, 'D', '901i', array('status' => 'TB')),
+               array('DoCoMo/2.0 P901iS(c100;TB;W24H12)', '2.0', '5.0', 'P901iS', 100, true, 'P', '901i', array('status' => 'TB')),
+               array('DoCoMo/2.0 N901iS(c100;TB;W24H12)', '2.0', '5.0', 'N901iS', 100, true, 'N', '901i', array('status' => 'TB'))
                );
 
 $test_error_agents = array(
@@ -1363,6 +1370,114 @@ F901iC
 100
 1
 F
+901i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+
+DoCoMo
+DoCoMo/1.0/SO506iS/c20/TB/W20H10
+1.0
+5.0
+SO506iS
+20
+
+SO
+506i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+
+DoCoMo
+DoCoMo/2.0 SH901iS(c100;TB;W24H12)
+2.0
+5.0
+SH901iS
+100
+1
+SH
+901i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+
+DoCoMo
+DoCoMo/2.0 F901iS(c100;TB;W23H12)
+2.0
+5.0
+F901iS
+100
+1
+F
+901i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+
+DoCoMo
+DoCoMo/2.0 D901iS(c100;TB;W23H12)
+2.0
+5.0
+D901iS
+100
+1
+D
+901i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+
+DoCoMo
+DoCoMo/2.0 P901iS(c100;TB;W24H12)
+2.0
+5.0
+P901iS
+100
+1
+P
+901i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+
+DoCoMo
+DoCoMo/2.0 N901iS(c100;TB;W24H12)
+2.0
+5.0
+N901iS
+100
+1
+N
 901i
 Testing status ...
 TB
