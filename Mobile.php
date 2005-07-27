@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Mobile.php,v 1.20 2005/07/27 07:14:52 kuboa Exp $
+// $Id: Mobile.php,v 1.21 2005/07/27 08:15:27 kuboa Exp $
 //
 
 require_once('PEAR.php');
@@ -29,6 +29,13 @@ define('NET_USERAGENT_MOBILE_OK',               1);
 define('NET_USERAGENT_MOBILE_ERROR',           -1);
 define('NET_USERAGENT_MOBILE_ERROR_NOMATCH',   -2);
 define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
+
+/**
+ * globals for fallback on no match
+ * @name $_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH
+ * @global boolean $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH']
+ */
+$GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] = false;
 
 /**
  * HTTP mobile user agent string parser
@@ -74,7 +81,7 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.20 $
+ * @version  $Revision: 1.21 $
  */
 class Net_UserAgent_Mobile
 {
@@ -147,6 +154,13 @@ class Net_UserAgent_Mobile
         $instance = &new $className($request);
         $error = &$instance->isError();
         if (Net_UserAgent_Mobile::isError($error)) {
+            if ($GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH']
+                && $error->getCode() == NET_USERAGENT_MOBILE_ERROR_NOMATCH
+                ) {
+                $instance = &Net_UserAgent_Mobile::factory('Net_UserAgent_Mobile_Fallback_On_NoMatch');
+                return $instance;
+            }
+
             $instance = &$error;
         }
 
@@ -233,7 +247,7 @@ class Net_UserAgent_Mobile
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.20 $
+ * @version  $Revision: 1.21 $
  */
 class Net_UserAgent_Mobile_Error extends PEAR_Error
 {
