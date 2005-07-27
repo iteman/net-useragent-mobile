@@ -569,6 +569,72 @@ $tests = array(
                            'width_bytes' => 24,
                            'height_bytes' => 12
                            )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/1.0/SO506iS/c20/TB/W20H10'),
+                     array(
+                           'width' => 240,
+                           'height' => 256,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 20,
+                           'height_bytes' => 10
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 SH901iS(c100;TB;W24H12)'),
+                     array(
+                           'width' => 240,
+                           'height' => 252,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 24,
+                           'height_bytes' => 12
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 F901iS(c100;TB;W23H12)'),
+                     array(
+                           'width' => 230,
+                           'height' => 240,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 23,
+                           'height_bytes' => 12
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 D901iS(c100;TB;W23H12)'),
+                     array(
+                           'width' => 230,
+                           'height' => 240,
+                           'color' => true,
+                           'depth' => 262144,
+                           'width_bytes' => 23,
+                           'height_bytes' => 12
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 P901iS(c100;TB;W24H12)'),
+                     array(
+                           'width' => 240,
+                           'height' => 270,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 24,
+                           'height_bytes' => 12
+                           )
+                     ),
+               array(
+                     array('HTTP_USER_AGENT' => 'DoCoMo/2.0 N901iS(c100;TB;W24H12)'),
+                     array(
+                           'width' => 240,
+                           'height' => 270,
+                           'color' => true,
+                           'depth' => 65536,
+                           'width_bytes' => 24,
+                           'height_bytes' => 12
+                           )
                      )
                );
 
@@ -1044,6 +1110,60 @@ DoCoMo/2.0 N700i(c100;TB;W24H12)
 1
 net_useragent_mobile_display
 DoCoMo/2.0 P700i(c100;TB;W24H12)
+240
+270
+1
+65536
+24
+12
+1
+net_useragent_mobile_display
+DoCoMo/1.0/SO506iS/c20/TB/W20H10
+240
+256
+1
+262144
+20
+10
+1
+net_useragent_mobile_display
+DoCoMo/2.0 SH901iS(c100;TB;W24H12)
+240
+252
+1
+262144
+24
+12
+1
+net_useragent_mobile_display
+DoCoMo/2.0 F901iS(c100;TB;W23H12)
+230
+240
+1
+262144
+23
+12
+1
+net_useragent_mobile_display
+DoCoMo/2.0 D901iS(c100;TB;W23H12)
+230
+240
+1
+262144
+23
+12
+1
+net_useragent_mobile_display
+DoCoMo/2.0 P901iS(c100;TB;W24H12)
+240
+270
+1
+65536
+24
+12
+1
+net_useragent_mobile_display
+DoCoMo/2.0 N901iS(c100;TB;W24H12)
 240
 270
 1
