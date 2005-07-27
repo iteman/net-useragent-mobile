@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.21 2005/03/23 08:33:10 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.22 2005/07/27 05:09:29 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.21 $
+ * @version  $Revision: 1.22 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -778,6 +778,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                       'depth'  => 262144,
                                                       'color'  => 1
                                                       ),
+                                    'SO506IS' => array(
+                                                       'width'  => 240,
+                                                       'height' => 256,
+                                                       'depth'  => 262144,
+                                                       'color'  => 1
+                                                       ),
                                     'D253I' => array(
                                                      'width'  => 176,
                                                      'height' => 198,
@@ -938,6 +944,37 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                       'color'  => 1
                                                       ),
                                     'P700I' => array(
+                                                      'width'  => 240,
+                                                      'height' => 270,
+                                                      'depth'  => 65536,
+                                                      'color'  => 1
+                                                      ),
+
+                                    'SH901IS' => array(
+                                                       'width'  => 240,
+                                                       'height' => 252,
+                                                       'depth'  => 262144,
+                                                       'color'  => 1
+                                                       ),
+                                    'F901IS' => array(
+                                                      'width'  => 230,
+                                                      'height' => 240,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
+                                    'D901IS' => array(
+                                                      'width'  => 230,
+                                                      'height' => 240,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
+                                    'P901IS' => array(
+                                                      'width'  => 240,
+                                                      'height' => 270,
+                                                      'depth'  => 65536,
+                                                      'color'  => 1
+                                                      ),
+                                    'N901IS' => array(
                                                       'width'  => 240,
                                                       'height' => 270,
                                                       'depth'  => 65536,
