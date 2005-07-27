@@ -19,6 +19,7 @@ $tests = array(
                array('UP.Browser/3.04-TS14 UP.Link/3.4.4 (Google WAP Proxy/1.0)', '3.04', 'TS14', 'TS14', 'UP.Link/3.4.4', false, 'Google WAP Proxy/1.0', true, false),
                array('UP.Browser/3.04-TST4 UP.Link/3.4.5.6', '3.04', 'TST4', 'TST4', 'UP.Link/3.4.5.6', false, null, true, false),
                array('KDDI-KCU1 UP.Browser/6.2.0.5.1 (GUI) MMP/2.0', '6.2.0.5.1 (GUI)', 'KCU1', 'KCU1', 'MMP/2.0', true, null, false, true),
+               array('KDDI-TS2A UP.Browser/6.2.0.9 (GUI) MMP/2.0', '6.2.0.9 (GUI)', 'TS2A', 'TS2A', 'MMP/2.0', true, null, false, true),
                );
 
 print "Testing EZweb ...\n";
@@ -142,6 +143,24 @@ KDDI-KCU1 UP.Browser/6.2.0.5.1 (GUI) MMP/2.0
 6.2.0.5.1 (GUI)
 KCU1
 KCU1
+MMP/2.0
+1
+
+
+1
+1
+net_useragent_mobile_common
+net_useragent_mobile_ezweb
+
+
+
+1
+
+UP.Browser
+KDDI-TS2A UP.Browser/6.2.0.9 (GUI) MMP/2.0
+6.2.0.9 (GUI)
+TS2A
+TS2A
 MMP/2.0
 1
 
