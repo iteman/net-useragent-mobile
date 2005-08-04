@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Vodafone.php,v 1.4 2005/08/04 05:18:53 kuboa Exp $
+// $Id: Vodafone.php,v 1.5 2005/08/04 05:36:19 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -58,7 +58,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.4 $
+ * @version  $Revision: 1.5 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://developers.vodafone.jp/dp/tool_dl/web/useragent.php
  * @link     http://developers.vodafone.jp/dp/tool_dl/web/position.php
@@ -495,7 +495,9 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
                 explode('/', $agent[0]);
             $this->_model  = (string)$model;
             if ($this->_model) {
-                if (preg_match('!J-([A-Z]+)!', $this->_model, $matches)) {
+                if (preg_match('!V\d+([A-Z]+)!', $this->_model, $matches)) {
+                    $this->_vendor = $matches[1];
+                } elseif (preg_match('!J-([A-Z]+)!', $this->_model, $matches)) {
                     $this->_vendor = $matches[1];
                 }
             }
