@@ -24,7 +24,8 @@ $tests = array(
                array('Vodafone/1.0/V802SE/SEJ001/SN123456789012345 Browser/SEMC-Browser/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1', '1.0', 'V802SE', true, 'SN123456789012345', 'SE', 'J001', array('Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1')),
                array('Vodafone/1.0/V902SH/SHJ001 Browser/UP.Browser/7.0.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1 Ext-J-Profile/JSCL-1.2.2 Ext-V-Profile/VSCL-2.0.0', '1.0', 'V902SH', true, null, 'SH', 'J001', array('Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1')),
                array('Vodafone/1.0/V802N/NJ001 Browser/UP.Browser/7.0.2.1.258 Profile/MIDP-2.0 Configuration/CLDC-1.1 Ext-J-Profile/JSCL-1.2.2 Ext-V-Profile/VSCL-2.0.0', '1.0', 'V802N', true, null, 'N', 'J001', array('Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1')),
-               array('MOT-V980/80.2F.2E. MIB/2.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1', '', 'V980', true, null, 'MOT', '80.2F.2E.', array('Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1'))
+               array('MOT-V980/80.2F.2E. MIB/2.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1', '', 'V980', true, null, 'MOT', '80.2F.2E.', array('Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1')),
+               array('J-PHONE/3.0/V301SH', '3.0', 'V301SH', false)
                );
 
 $test_error_agents = array(
@@ -313,6 +314,18 @@ Testing Profile ...
 MIDP-2.0
 Testing Configuration ...
 CLDC-1.1
+1
+net_useragent_mobile_common
+net_useragent_mobile_vodafone
+
+1
+1
+
+J-PHONE
+J-PHONE/3.0/V301SH
+3.0
+V301SH
+
 1
 net_useragent_mobile_error
 Net_UserAgent_Mobile Error: no match
