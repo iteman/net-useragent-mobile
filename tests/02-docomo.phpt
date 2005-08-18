@@ -89,7 +89,8 @@ $tests = array(
                array('DoCoMo/2.0 F901iS(c100;TB;W23H12)', '2.0', '5.0', 'F901iS', 100, true, 'F', '901i', array('status' => 'TB')),
                array('DoCoMo/2.0 D901iS(c100;TB;W23H12)', '2.0', '5.0', 'D901iS', 100, true, 'D', '901i', array('status' => 'TB')),
                array('DoCoMo/2.0 P901iS(c100;TB;W24H12)', '2.0', '5.0', 'P901iS', 100, true, 'P', '901i', array('status' => 'TB')),
-               array('DoCoMo/2.0 N901iS(c100;TB;W24H12)', '2.0', '5.0', 'N901iS', 100, true, 'N', '901i', array('status' => 'TB'))
+               array('DoCoMo/2.0 N901iS(c100;TB;W24H12)', '2.0', '5.0', 'N901iS', 100, true, 'N', '901i', array('status' => 'TB')),
+               array('DoCoMo/2.0 SH851i(c100;TB;W24H12)', '2.0', '5.0', 'SH851i', 100, true, 'SH', '851i', array('status' => 'TB'))
                );
 
 $test_error_agents = array(
@@ -1479,6 +1480,24 @@ N901iS
 1
 N
 901i
+Testing status ...
+TB
+1
+net_useragent_mobile_common
+net_useragent_mobile_docomo
+1
+
+
+
+DoCoMo
+DoCoMo/2.0 SH851i(c100;TB;W24H12)
+2.0
+5.0
+SH851i
+100
+1
+SH
+851i
 Testing status ...
 TB
 1
