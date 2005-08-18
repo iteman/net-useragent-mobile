@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.23 2005/08/04 07:00:31 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.24 2005/08/18 07:18:26 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.23 $
+ * @version  $Revision: 1.24 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -990,6 +990,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                       'width'  => 240,
                                                       'height' => 270,
                                                       'depth'  => 65536,
+                                                      'color'  => 1
+                                                      ),
+                                    'SH851I' => array(
+                                                      'width'  => 240,
+                                                      'height' => 252,
+                                                      'depth'  => 262144,
                                                       'color'  => 1
                                                       )
                                     );
