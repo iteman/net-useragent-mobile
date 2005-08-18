@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Common.php,v 1.10 2004/09/25 07:41:09 kuboa Exp $
+// $Id: Common.php,v 1.11 2005/08/18 07:01:19 kuboa Exp $
 //
 
 /**
@@ -30,7 +30,7 @@
  * @abstract
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.10 $
+ * @version  $Revision: 1.11 $
  */
 class Net_UserAgent_Mobile_Common extends PEAR
 {
@@ -149,14 +149,16 @@ class Net_UserAgent_Mobile_Common extends PEAR
 
         // The error is yet a Net_UserAgent_Mobile error object
         if (is_object($code)) {
-            return PEAR::raiseError($code, null, null, null, null, null,
-                                    true
-                                    );
+            $error = &PEAR::raiseError($code, null, null, null, null, null,
+                                       true
+                                       );
+            return $error;
         }
 
-        return PEAR::raiseError(null, $code, $mode, $options, $userinfo,
-                                'Net_UserAgent_Mobile_Error', true
-                                );
+        $error = &PEAR::raiseError(null, $code, $mode, $options, $userinfo,
+                                   'Net_UserAgent_Mobile_Error', true
+                                   );
+        return $error;
     }
 
     // }}}
