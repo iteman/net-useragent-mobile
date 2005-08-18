@@ -21,16 +21,14 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.24.0</version>
+    <version>0.25.0</version>
     <state>beta</state>
-    <date>2005-07-27</date>
+    <date>2005-08-18</date>
     <notes>
-- Added fallback mode on no match using $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'].
-- Changed the EZweb regex pattern to be able to match au's A5511T.
-- Added support for DoCoMo's SO506iS, SH901iS, F901iS, D901iS, P901iS, N901iS.
-
-** NOTE **
-If you want to use fallback mode on no match, please set true to $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] before calling factory().
+- Fixed "Only variable references should be returned by reference" notice with PHP 4.4.0 and 5.1.0.
+- Added support for DoCoMo's SH851i, F700iS, SH700iS.
+- Added code to get the vendor code of 'V301SH', 'V301T', etc in Vodafone.php. (Bug #5124)
+- Fixed 'Undefined offset' error in Vodafone.php.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -63,6 +61,19 @@ If you want to use fallback mode on no match, please set true to $GLOBALS['_NET_
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.24.0</version>
+      <state>beta</state>
+      <date>2005-07-27</date>
+      <notes>
+- Added fallback mode on no match using $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'].
+- Changed the EZweb regex pattern to be able to match au's A5511T.
+- Added support for DoCoMo's SO506iS, SH901iS, F901iS, D901iS, P901iS, N901iS.
+
+** NOTE **
+If you want to use fallback mode on no match, please set true to $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] before calling factory().
+      </notes>
+    </release>
     <release>
       <version>0.23.0</version>
       <state>beta</state>
