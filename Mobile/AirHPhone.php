@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: AirHPhone.php,v 1.7 2004/09/25 12:35:38 kuboa Exp $
+// $Id: AirHPhone.php,v 1.8 2006/01/20 07:40:10 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -49,7 +49,7 @@ require_once(dirname(__FILE__) . '/Display.php');
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.7 $
+ * @version  $Revision: 1.8 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.ddipocket.co.jp/airh_phone/i_hp.html
  */
@@ -63,7 +63,7 @@ class Net_UserAgent_Mobile_AirHPhone extends Net_UserAgent_Mobile_Common
      * @var string
      * @access public
      */
-    var $name = 'DDIPOCKET';
+    var $name = 'WILLCOM';
 
     /**#@+
      * @access private
@@ -127,13 +127,13 @@ class Net_UserAgent_Mobile_AirHPhone extends Net_UserAgent_Mobile_Common
     function parse()
     {
         $agent = $this->getUserAgent();
-        if (preg_match('!^Mozilla/3\.0\(DDIPOCKET;(.*)\)CNF/2\.0$!',
+        if (preg_match('!^Mozilla/3\.0\((?:DDIPOCKET|WILLCOM);(.*)\)!',
                        $agent, $matches)
             ) {
             list($this->_vendor, $this->_model, $this->_modelVersion,
                  $this->_browserVersion, $cache) =
                 explode('/', $matches[1]);
-            if (!preg_match('/^c(\d+)/', $cache, $matches)) {
+            if (!preg_match('/^[Cc](\d+)/', $cache, $matches)) {
                 return $this->noMatch();
             }
             $this->_cacheSize = (integer)$matches[1];
