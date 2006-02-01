@@ -16,7 +16,7 @@
 // | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: DoCoMoDisplayMap.php,v 1.24 2005/08/18 07:18:26 kuboa Exp $
+// $Id: DoCoMoDisplayMap.php,v 1.25 2006/02/01 05:54:44 kuboa Exp $
 //
 
 /**
@@ -26,7 +26,7 @@
  * @category Networking
  * @author   KUBO Atsuhiro <kubo@isite.co.jp>
  * @access   public
- * @version  $Revision: 1.24 $
+ * @version  $Revision: 1.25 $
  * @see      Net_UserAgent_Mobile_Display
  * @link     http://www.nttdocomo.co.jp/p_s/imode/spec/ryouiki.html
  */
@@ -581,6 +581,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                        'depth'  => 65536,
                                                        'color'  => 1
                                                        ),
+                                    'SO213IWR' => array(
+                                                        'width'  => 120,
+                                                        'height' => 112,
+                                                        'depth'  => 65536,
+                                                        'color'  => 1
+                                                        ),
 
                                     // i-mode compliant HTML 4.0
                                     // (FOMA 2051/2102V/2701)
@@ -961,6 +967,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                       'depth'  => 262144,
                                                       'color'  => 1
                                                       ),
+                                    'SA700IS' => array(
+                                                       'width'  => 240,
+                                                       'height' => 252,
+                                                       'depth'  => 65536,
+                                                       'color'  => 1
+                                                       ),
 
                                     'SH901IS' => array(
                                                        'width'  => 240,
@@ -995,6 +1007,69 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                     'SH851I' => array(
                                                       'width'  => 240,
                                                       'height' => 252,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
+                                    'P851I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 270,
+                                                     'depth'  => 65536,
+                                                     'color'  => 1
+                                                     ),
+                                    'D701I' => array(
+                                                     'width'  => 230,
+                                                     'height' => 240,
+                                                     'depth'  => 65536,
+                                                     'color'  => 1
+                                                     ),
+                                    'N701I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 270,
+                                                     'depth'  => 65536,
+                                                     'color'  => 1
+                                                     ),
+                                    'P701ID' => array(
+                                                      'width'  => 240,
+                                                      'height' => 270,
+                                                      'depth'  => 65536,
+                                                      'color'  => 1
+                                                      ),
+                                    'D701IWM' => array(
+                                                       'width'  => 230,
+                                                       'height' => 240,
+                                                       'depth'  => 65536,
+                                                       'color'  => 1
+                                                       ),
+
+                                    // i-mode compliant HTML 6.0
+                                    // (FOMA 902i etc.)
+                                    'F902I' => array(
+                                                     'width'  => 230,
+                                                     'height' => 240,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'D902I' => array(
+                                                     'width'  => 230,
+                                                     'height' => 240,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'N902I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 270,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'P902I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 270,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'SH902I' => array(
+                                                      'width'  => 240,
+                                                      'height' => 240,
                                                       'depth'  => 262144,
                                                       'color'  => 1
                                                       )
