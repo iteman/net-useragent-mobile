@@ -21,13 +21,35 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.26.0</version>
+    <version>0.27.0</version>
     <state>beta</state>
-    <date>2006-02-01</date>
+    <date>2006-07-13</date>
     <notes>
-- Added support for 'WILLCOM'.
-- Added support for 701i and 902i in getHTMLVersion.
-- Added support for DoCoMo's SO213iWR, SA700iS, P851i, D701i, N701i, P701iD, D701iWM, F902i, D902i, N902i, P902i, SH902i.
+- Added support a lot of agents as follows:
+NM850iG
+P901iTV
+F881iES
+N701iECO
+SA800i
+L600i
+N600i
+SO902i
+SH902iS
+P902iS
+N902iS
+D902iS
+F902iS
+SO902iWP+
+P702i
+N702iD
+F702iD
+SH702iD
+D702i
+SO702i
+D702iBCL
+D851iWM
+SH902iSL
+SA702i
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -60,6 +82,48 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.27.0</version>
+      <state>beta</state>
+      <date>2006-07-13</date>
+      <notes>
+- Added support a lot of agents as follows:
+NM850iG
+P901iTV
+F881iES
+N701iECO
+SA800i
+L600i
+N600i
+SO902i
+SH902iS
+P902iS
+N902iS
+D902iS
+F902iS
+SO902iWP+
+P702i
+N702iD
+F702iD
+SH702iD
+D702i
+SO702i
+D702iBCL
+D851iWM
+SH902iSL
+SA702i
+      </notes>
+    </release>
+    <release>
+      <version>0.26.0</version>
+      <state>beta</state>
+      <date>2006-02-01</date>
+      <notes>
+- Added support for 'WILLCOM'.
+- Added support for 701i and 902i in getHTMLVersion.
+- Added support for DoCoMo's SO213iWR, SA700iS, P851i, D701i, N701i, P701iD, D701iWM, F902i, D902i, N902i, P902i, SH902i.
+      </notes>
+    </release>
     <release>
       <version>0.25.0</version>
       <state>beta</state>
