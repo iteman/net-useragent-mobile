@@ -21,35 +21,13 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </maintainer>
   </maintainers>
   <release>
-    <version>0.27.0</version>
+    <version>0.28.0</version>
     <state>beta</state>
-    <date>2006-07-13</date>
+    <date>2006-09-25</date>
     <notes>
-- Added support a lot of agents as follows:
-NM850iG
-P901iTV
-F881iES
-N701iECO
-SA800i
-L600i
-N600i
-SO902i
-SH902iS
-P902iS
-N902iS
-D902iS
-F902iS
-SO902iWP+
-P702i
-N702iD
-F702iD
-SH702iD
-D702i
-SO702i
-D702iBCL
-D851iWM
-SH902iSL
-SA702i
+- Added support for SoftBank. Thanks to Kazunari Komoriya &lt;komoriya@livedoor.jp&gt; for the patches.
+- Added support for N902iX, SH702iS, N702iS, P702iD, D702iF, F882iES.
+- Fixed height of F902iS.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
