@@ -13,12 +13,12 @@
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <kubo@isite.co.jp>
- * @copyright  2005-2006 KUBO Atsuhiro <kubo@isite.co.jp>
+ * @copyright  2003-2006 KUBO Atsuhiro <kubo@isite.co.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.26 2006/07/13 01:39:41 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.27 2006/09/25 03:42:36 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
  * @see        Net_UserAgent_Mobile_Display
- * @since      File available since Release 0.1.0
+ * @since      File available since Release 0.1
  */
 
 // {{{ Net_UserAgent_Mobile_DoCoMoDisplayMap
@@ -29,12 +29,12 @@
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <kubo@isite.co.jp>
- * @copyright  2005-2006 KUBO Atsuhiro <kubo@isite.co.jp>
+ * @copyright  2003-2006 KUBO Atsuhiro <kubo@isite.co.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
  * @see        Net_UserAgent_Mobile_Display
- * @since      File available since Release 0.1.0
+ * @since      Class available since Release 0.1
  */
 class Net_UserAgent_Mobile_DoCoMoDisplayMap
 {
@@ -1185,7 +1185,7 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                       ),
                                     'F902IS' => array(
                                                       'width'  => 230,
-                                                      'height' => 320,
+                                                      'height' => 240,
                                                       'depth'  => 262144,
                                                       'color'  => 1
                                                       ),
@@ -1201,6 +1201,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                         'depth'  => 262144,
                                                         'color'  => 1
                                                         ),
+                                    'N902IX' => array(
+                                                      'width'  => 240,
+                                                      'height' => 270,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
                                     'P702I' => array(
                                                      'width'  => 240,
                                                      'height' => 270,
@@ -1249,12 +1255,42 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                       'depth'  => 65536,
                                                       'color'  => 1
                                                       ),
+                                    'SH702IS' => array(
+                                                       'width'  => 240,
+                                                       'height' => 240,
+                                                       'depth'  => 262144,
+                                                       'color'  => 1
+                                                       ),
+                                    'N702IS' => array(
+                                                      'width'  => 240,
+                                                      'height' => 270,
+                                                      'depth'  => 65536,
+                                                      'color'  => 1
+                                                      ),
+                                    'P702ID' => array(
+                                                      'width'  => 240,
+                                                      'height' => 270,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
+                                    'D702IF' => array(
+                                                      'width'  => 230,
+                                                      'height' => 240,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
                                     'D851IWM' => array(
                                                         'width'  => 230,
                                                         'height' => 320,
                                                         'depth'  => 262144,
                                                         'color'  => 1
-                                                        )
+                                                        ),
+                                    'F882IES' => array(
+                                                       'width'  => 240,
+                                                       'height' => 256,
+                                                       'depth'  => 65536,
+                                                       'color'  => 1
+                                                       )
                                     );
             }
         }
