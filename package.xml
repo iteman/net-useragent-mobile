@@ -17,17 +17,25 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
       <user>kuboa</user>
       <role>lead</role>
       <name>KUBO Atsuhiro</name>
-      <email>kubo@isite.co.jp</email>
+      <email>iteman@users.sourceforge.net</email>
     </maintainer>
   </maintainers>
   <release>
-    <version>0.28.0</version>
+    <version>0.29.0</version>
     <state>beta</state>
-    <date>2006-09-25</date>
-    <notes>
-- Added support for SoftBank. Thanks to Kazunari Komoriya &lt;komoriya@livedoor.jp&gt; for the patches.
-- Added support for N902iX, SH702iS, N702iS, P702iD, D702iF, F882iES.
-- Fixed height of F902iS.
+    <date>2006-11-07</date>
+    <notes>This release includes support for SoftBank 705P and DoCoMo 903i series. See the following release notes for details.
+
+## Enhancements ##
+
+### Net_UserAgent_Mobile_Vodafone ###
+- Added support for SoftBank 705P. Thanks to Seiji Kajiwara &lt;kajiwara@serverworks.co.jp&gt; and HORINOUCHI Masato &lt;t-hermes@confei.to&gt; for the patches.
+
+### Net_UserAgent_Mobile_DoCoMo ###
+- Added support for 903i series. Thanks to Masaki Fujimoto &lt;fujimoto@php.net&gt; for the patch.
+
+### Net_UserAgent_Mobile_DoCoMoDisplayMap ###
+- Added support for SH903i, P903i.
     </notes>
     <filelist>
       <dir name="/" baseinstalldir="Net/UserAgent">
@@ -60,6 +68,34 @@ The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
     </filelist>
   </release>
   <changelog>
+    <release>
+      <version>0.29.0</version>
+      <state>beta</state>
+      <date>2006-11-07</date>
+      <notes>This release includes support for SoftBank 705P and DoCoMo 903i series. See the following release notes for details.
+
+## Enhancements ##
+
+### Net_UserAgent_Mobile_Vodafone ###
+- Added support for SoftBank 705P. Thanks to Seiji Kajiwara &lt;kajiwara@serverworks.co.jp&gt; and HORINOUCHI Masato &lt;t-hermes@confei.to&gt; for the patches.
+
+### Net_UserAgent_Mobile_DoCoMo ###
+- Added support for 903i series. Thanks to Masaki Fujimoto &lt;fujimoto@php.net&gt; for the patch.
+
+### Net_UserAgent_Mobile_DoCoMoDisplayMap ###
+- Added support for SH903i, P903i.
+      </notes>
+    </release>
+    <release>
+      <version>0.28.0</version>
+      <state>beta</state>
+      <date>2006-09-25</date>
+      <notes>
+- Added support for SoftBank. Thanks to Kazunari Komoriya &lt;komoriya@livedoor.jp&gt; for the patches.
+- Added support for N902iX, SH702iS, N702iS, P702iD, D702iF, F882iES.
+- Fixed height of F902iS.
+      </notes>
+    </release>
     <release>
       <version>0.27.0</version>
       <state>beta</state>
