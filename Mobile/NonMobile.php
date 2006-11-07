@@ -13,10 +13,10 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
+// | Authors: KUBO Atsuhiro <iteman@users.sourceforge.net>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: NonMobile.php,v 1.9 2005/02/03 08:56:04 kuboa Exp $
+// $Id: NonMobile.php,v 1.10 2006/11/07 09:25:14 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -39,9 +39,9 @@ require_once(dirname(__FILE__) . '/Display.php');
  *
  * @package  Net_UserAgent_Mobile
  * @category Networking
- * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author   KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @access   public
- * @version  $Revision: 1.9 $
+ * @version  $Revision: 1.10 $
  * @see      Net_UserAgent_Mobile_Common
  */
 class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common

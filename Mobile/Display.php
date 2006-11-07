@@ -13,10 +13,10 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
+// | Authors: KUBO Atsuhiro <iteman@users.sourceforge.net>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Display.php,v 1.8 2004/09/25 12:37:08 kuboa Exp $
+// $Id: Display.php,v 1.9 2006/11/07 09:25:14 kuboa Exp $
 //
 
 /**
@@ -54,9 +54,9 @@
  *
  * @package  Net_UserAgent_Mobile
  * @category Networking
- * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author   KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @access   public
- * @version  $Revision: 1.8 $
+ * @version  $Revision: 1.9 $
  */
 class Net_UserAgent_Mobile_Display
 {

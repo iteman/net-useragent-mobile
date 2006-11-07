@@ -12,10 +12,10 @@
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <kubo@isite.co.jp>
- * @copyright  2003-2006 KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.28 2006/11/07 05:35:01 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.29 2006/11/07 09:25:14 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
@@ -73,8 +73,8 @@ require_once dirname(__FILE__) . '/DoCoMoDisplayMap.php';
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <kubo@isite.co.jp>
- * @copyright  2003-2006 KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html

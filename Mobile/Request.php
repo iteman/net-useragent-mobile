@@ -13,10 +13,10 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
+// | Authors: KUBO Atsuhiro <iteman@users.sourceforge.net>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Request.php,v 1.4 2004/02/08 11:58:38 kuboa Exp $
+// $Id: Request.php,v 1.5 2006/11/07 09:25:14 kuboa Exp $
 //
 
 /**
@@ -25,9 +25,9 @@
  *
  * @package  Net_UserAgent_Mobile
  * @category Networking
- * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author   KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @access   public
- * @version  $Revision: 1.4 $
+ * @version  $Revision: 1.5 $
  */
 class Net_UserAgent_Mobile_Request
 {
@@ -72,9 +72,9 @@ class Net_UserAgent_Mobile_Request
  *
  * @package  Net_UserAgent_Mobile
  * @category Networking
- * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author   KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @access   public
- * @version  $Revision: 1.4 $
+ * @version  $Revision: 1.5 $
  */
 class Net_UserAgent_Mobile_Request_Env
 {

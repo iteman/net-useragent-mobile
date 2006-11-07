@@ -13,10 +13,10 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
+// | Authors: KUBO Atsuhiro <iteman@users.sourceforge.net>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: AirHPhone.php,v 1.8 2006/01/20 07:40:10 kuboa Exp $
+// $Id: AirHPhone.php,v 1.9 2006/11/07 09:25:14 kuboa Exp $
 //
 
 require_once(dirname(__FILE__) . '/Common.php');
@@ -47,9 +47,9 @@ require_once(dirname(__FILE__) . '/Display.php');
  *
  * @package  Net_UserAgent_Mobile
  * @category Networking
- * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author   KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @access   public
- * @version  $Revision: 1.8 $
+ * @version  $Revision: 1.9 $
  * @see      Net_UserAgent_Mobile_Common
  * @link     http://www.ddipocket.co.jp/airh_phone/i_hp.html
  */

@@ -13,10 +13,10 @@
 // | obtain it through the world-wide-web, please send a note to          |
 // | license@php.net so we can mail you a copy immediately.               |
 // +----------------------------------------------------------------------+
-// | Authors: KUBO Atsuhiro <kubo@isite.co.jp>                            |
+// | Authors: KUBO Atsuhiro <iteman@users.sourceforge.net>                            |
 // +----------------------------------------------------------------------+
 //
-// $Id: Common.php,v 1.11 2005/08/18 07:01:19 kuboa Exp $
+// $Id: Common.php,v 1.12 2006/11/07 09:25:14 kuboa Exp $
 //
 
 /**
@@ -28,9 +28,9 @@
  * @package  Net_UserAgent_Mobile
  * @category Networking
  * @abstract
- * @author   KUBO Atsuhiro <kubo@isite.co.jp>
+ * @author   KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @access   public
- * @version  $Revision: 1.11 $
+ * @version  $Revision: 1.12 $
  */
 class Net_UserAgent_Mobile_Common extends PEAR
 {
