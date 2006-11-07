@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <kubo@isite.co.jp>
  * @copyright  2003-2006 KUBO Atsuhiro <kubo@isite.co.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Vodafone.php,v 1.6 2006/09/25 03:05:24 kuboa Exp $
+ * @version    CVS: $Id: Vodafone.php,v 1.7 2006/11/07 05:20:31 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -451,10 +451,10 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
             }
         }
 
-        if (!preg_match('!^([a-z]+)([a-z]\d{3})$!i', $modelVersion, $matches)
-            ) {
+        if (!preg_match('!^([a-z]+)([a-z]\d{2,3})$!i', $modelVersion, $matches)) {
             return $this->noMatch();
         }
+
         $this->_vendor = $matches[1];
         $this->_vendorVersion = $matches[2];
 
