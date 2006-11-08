@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.29 2006/11/07 09:25:14 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.30 2006/11/08 03:09:12 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
@@ -552,8 +552,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                     $this->_status = $matches[1];
                     continue;
                 }
-                if (preg_match('/^icc(\w{20})$/', $value, $matches)) {
-                    $this->_cardID = $matches[1];
+                if (preg_match('/^icc(\w{20})?$/', $value, $matches)) {
+                    if (count($matches) == 2) {
+                        $this->_cardID = $matches[1];
+                    }
                     continue;
                 }
                 if (preg_match('/^W(\d+)H(\d+)$/', $value, $matches)) {
