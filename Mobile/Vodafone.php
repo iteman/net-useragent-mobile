@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Vodafone.php,v 1.8 2006/11/07 09:25:14 kuboa Exp $
+ * @version    CVS: $Id: Vodafone.php,v 1.9 2006/11/08 02:27:08 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -443,12 +443,10 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
         @list($this->name, $this->version, $this->_model, $modelVersion,
               $serialNumber) = explode('/', $agent[0]);
         if ($serialNumber) {
-            if ($serialNumber) {
-                if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
-                    return $this->noMatch();
-                }
-                $this->_serialNumber = $matches[1];
+            if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
+                return $this->noMatch();
             }
+            $this->_serialNumber = $matches[1];
         }
 
         if (!preg_match('!^([a-z]+)([a-z]\d{2,3})$!i', $modelVersion, $matches)) {
