@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.32 2007/02/20 14:12:42 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.33 2007/02/20 14:51:50 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
@@ -36,7 +36,7 @@ require_once 'Net/UserAgent/Mobile/DoCoMoDisplayMap.php';
  *
  * SYNOPSIS:
  * <code>
- * require_once('Net/UserAgent/Mobile.php');
+ * require_once 'Net/UserAgent/Mobile.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] = 'DoCoMo/1.0/P502i/c10';
  * $agent = &Net_UserAgent_Mobile::factory();
