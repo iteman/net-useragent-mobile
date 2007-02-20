@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: package.php,v 1.1 2007/02/20 19:03:30 kuboa Exp $
+ * @version    CVS: $Id: package.php,v 1.2 2007/02/20 19:24:46 kuboa Exp $
  * @since      File available since Release 0.30.0
  */
 
@@ -30,11 +30,21 @@ $notes = 'A new release of Net_UserAgent_Mobile is now available.
 
 This release includes a fix for the bug #9891 "dirname(__FILE__) should not be used for include/require". This can be replaced a driver with a user enhancement driver in the normal way.
 
-And also this release supports many new models. See the following release notes for details.
+And also this release includes other fixes and supports many new models. See the following release notes for details.
 
 ## Defect Fixes ##
 
 - Changed to not use dirname(__FILE__) for include/require. (Bug #9891)
+
+### Net_UserAgent_Mobile_DoCoMo ###
+
+- Changed so that an FOMA Card ID (iccXXXXXXXXXXXXXXXXXXXX) without 20 digit alphanumeric can be parsed successfully. Then getCardID() method will simply return null. (Bug #8584)
+- Fixed the HTML version for 882i from 5.0 to 6.0.
+
+### Net_UserAgent_Mobile_Vodafone ###
+
+- Removed a duplicate statement. (Bug #8806)
+- Fixed model version matching to get appropriate model version as JP10 for 705P/PJP10.
 
 ## Enhancements ##
 
