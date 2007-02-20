@@ -1,7 +1,7 @@
 --TEST--
 Net_UserAgent_Mobile: EZweb
 --SKIPIF--
-<?php if (!@include('../Mobile.php')) print 'skip'; ?>
+<?php if (!@include 'Net/UserAgent/Mobile.php') print 'skip'; ?>
 --FILE--
 <?php
 //
@@ -10,7 +10,7 @@ Net_UserAgent_Mobile: EZweb
 //
 
 error_reporting(E_ALL);
-require_once('../Mobile.php');
+require_once 'Net/UserAgent/Mobile.php';
 
 $tests = array(
                // ua, version, model, device_id, server, xhtml_compliant, comment, is_wap1, is_wap2

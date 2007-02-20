@@ -1,7 +1,7 @@
 --TEST--
 Net_UserAgent_Mobile: NonMobile
 --SKIPIF--
-<?php if (!@include('../Mobile.php')) print 'skip'; ?>
+<?php if (!@include 'Net/UserAgent/Mobile.php') print 'skip'; ?>
 --FILE--
 <?php
 //
@@ -10,7 +10,7 @@ Net_UserAgent_Mobile: NonMobile
 //
 
 error_reporting(E_ALL);
-require_once('../Mobile.php');
+require_once 'Net/UserAgent/Mobile.php';
 
 $test_agents = array(
                      'Mozilla/2.0 (compatible; Ask Jeeves)',
