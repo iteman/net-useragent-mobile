@@ -15,12 +15,12 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Vodafone.php,v 1.10 2006/12/23 02:56:56 kuboa Exp $
+ * @version    CVS: $Id: Vodafone.php,v 1.11 2007/02/20 14:12:43 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
-require_once dirname(__FILE__) . '/Common.php';
-require_once dirname(__FILE__) . '/Display.php';
+require_once 'Net/UserAgent/Mobile/Common.php';
+require_once 'Net/UserAgent/Mobile/Display.php';
 
 /**
  * Vodafone implementation

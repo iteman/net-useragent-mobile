@@ -15,12 +15,12 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.25 2006/11/07 09:25:14 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.26 2007/02/20 14:12:42 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
 require_once 'PEAR.php';
-require_once dirname(__FILE__) . '/Mobile/Request.php';
+require_once 'Net/UserAgent/Mobile/Request.php';
 
 // {{{ constants
 
@@ -154,22 +154,14 @@ class Net_UserAgent_Mobile
                  (@$matches[3] ? 'EZweb' : 'AirHPhone'));
         }
         $className = "Net_UserAgent_Mobile_{$sub}";
-        $include    = dirname(__FILE__) . "/Mobile/{$sub}.php";
 
         if (!class_exists($className)) {
-            if (!is_readable($include)) {
+            $file = str_replace('_', '/', $className) . '.php';
+            if (!include_once $file) {
                 return PEAR::raiseError(null,
                                         NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
                                         null, null,
-                                        "Unable to read the $include file",
-                                        'Net_UserAgent_Mobile_Error', true
-                                        );
-            }
-            if (!include_once $include) {
-                return PEAR::raiseError(null,
-                                        NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
-                                        null, null,
-                                        "Unable to include the $include file",
+                                        "Unable to include the $file file",
                                         'Net_UserAgent_Mobile_Error', true
                                         );
             }

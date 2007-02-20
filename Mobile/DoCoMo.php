@@ -15,15 +15,15 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2006 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.31 2006/11/08 04:31:25 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.32 2007/02/20 14:12:42 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
  */
 
-require_once dirname(__FILE__) . '/Common.php';
-require_once dirname(__FILE__) . '/Display.php';
-require_once dirname(__FILE__) . '/DoCoMoDisplayMap.php';
+require_once 'Net/UserAgent/Mobile/Common.php';
+require_once 'Net/UserAgent/Mobile/Display.php';
+require_once 'Net/UserAgent/Mobile/DoCoMoDisplayMap.php';
 
 // {{{ Net_UserAgent_Mobile_DoCoMo
 
