@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.30 2007/02/20 15:21:22 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.31 2007/02/20 17:28:30 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
  * @see        Net_UserAgent_Mobile_Display
  * @since      File available since Release 0.1
@@ -1120,6 +1120,24 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                      'depth'  => 65536,
                                                      'color'  => 1
                                                      ),
+                                    'L600I' => array(
+                                                     'width'  => 176,
+                                                     'height' => 189,
+                                                     'depth'  => 65536,
+                                                     'color'  => 1
+                                                     ),
+                                    'M702IS' => array(
+                                                      'width'  => 240,
+                                                      'height' => 267,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
+                                    'M702IG' => array(
+                                                      'width'  => 240,
+                                                      'height' => 267,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
 
                                     // i-mode compliant HTML 6.0
                                     // (FOMA 902i etc.)
@@ -1202,6 +1220,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                         'color'  => 1
                                                         ),
                                     'N902IX' => array(
+                                                      'width'  => 240,
+                                                      'height' => 270,
+                                                      'depth'  => 262144,
+                                                      'color'  => 1
+                                                      ),
+                                    'N902IL' => array(
                                                       'width'  => 240,
                                                       'height' => 270,
                                                       'depth'  => 262144,
@@ -1291,6 +1315,24 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                        'depth'  => 65536,
                                                        'color'  => 1
                                                        ),
+                                    'N601I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 270,
+                                                     'depth'  => 65536,
+                                                     'color'  => 1
+                                                     ),
+                                    'D800IDS' => array(
+                                                       'width'  => 230,
+                                                       'height' => 240,
+                                                       'depth'  => 262144,
+                                                       'color'  => 1
+                                                       ),
+                                    'P703IMYU' => array(
+                                                        'width'  => 240,
+                                                        'height' => 270,
+                                                        'depth'  => 262144,
+                                                        'color'  => 1
+                                                        ),
 
                                     // i-mode compliant HTML 7.0
                                     // (FOMA 903i etc.)
