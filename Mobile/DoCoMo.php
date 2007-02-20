@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.34 2007/02/20 15:21:22 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.35 2007/02/20 18:41:04 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
@@ -247,9 +247,9 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                                     '(D210i|SO210i)|503i|211i|SH251i|692i|200[12]|2101V' => '3.0',
                                     '504i|251i|^F671iS$|212i|2051|2102V|661i|2701|672i|SO213i|850i' => '4.0',
                                     'eggy|P751v' => '3.2',
-                                    '505i|252i|900i|506i|880i|253i|P213i|901i|700i|851i|701i|881i|800i|600i' => '5.0',
-                                    '902i|702i|851i|882i' => '6.0',
-                                    '903i' => '7.0'
+                                    '505i|252i|900i|506i|880i|253i|P213i|901i|700i|851i|701i|881i|^SA800i$|600i|^L601i$|^M702i(S|G)$' => '5.0',
+                                    '902i|702i|851i|882i|^N601i$|^D800iDS$|^P703imyu$' => '6.0',
+                                    '903i|703i' => '7.0'
                                     );
         }
 
