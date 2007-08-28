@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.32 2007/02/20 18:30:17 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.33 2007/08/28 13:47:44 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
  * @see        Net_UserAgent_Mobile_Display
  * @since      File available since Release 0.1
@@ -822,12 +822,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                        'depth'  => 262144,
                                                        'color'  => 1
                                                        ),
-                                    'N506ISII' => array(
-                                                        'width'  => 240,
-                                                        'height' => 295,
-                                                        'depth'  => 262144,
-                                                        'color'  => 1
-                                                        ),
+                                    'N506IS2' => array(
+                                                       'width'  => 240,
+                                                       'height' => 295,
+                                                       'depth'  => 262144,
+                                                       'color'  => 1
+                                                       ),
                                     'P506ICII' => array(
                                                         'width'  => 240,
                                                         'height' => 266,
