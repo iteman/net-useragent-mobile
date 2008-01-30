@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.28 2008/01/30 12:16:55 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.29 2008/01/30 12:32:05 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -363,4 +363,3 @@ class Net_UserAgent_Mobile_Error extends PEAR_Error
  * indent-tabs-mode: nil
  * End:
  */
-?>

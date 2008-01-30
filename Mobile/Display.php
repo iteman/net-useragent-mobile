@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Display.php,v 1.10 2007/02/20 15:00:06 kuboa Exp $
+ * @version    CVS: $Id: Display.php,v 1.11 2008/01/30 12:32:05 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -265,4 +265,3 @@ class Net_UserAgent_Mobile_Display
  * indent-tabs-mode: nil
  * End:
  */
-?>

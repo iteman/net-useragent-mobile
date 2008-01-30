@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: MobileTestCase.php,v 1.1 2008/01/30 12:19:38 kuboa Exp $
+ * @version    CVS: $Id: MobileTestCase.php,v 1.2 2008/01/30 12:32:05 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -156,4 +156,3 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
  * indent-tabs-mode: nil
  * End:
  */
-?>

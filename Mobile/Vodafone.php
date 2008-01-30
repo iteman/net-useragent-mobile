@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Vodafone.php,v 1.12 2007/02/20 15:21:05 kuboa Exp $
+ * @version    CVS: $Id: Vodafone.php,v 1.13 2008/01/30 12:32:05 kuboa Exp $
  * @since      File available since Release 0.20.0
  */
 
@@ -554,4 +554,3 @@ class Net_UserAgent_Mobile_Vodafone extends Net_UserAgent_Mobile_Common
  * indent-tabs-mode: nil
  * End:
  */
-?>

@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Request.php,v 1.6 2007/02/20 15:18:26 kuboa Exp $
+ * @version    CVS: $Id: Request.php,v 1.7 2008/01/30 12:32:05 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -182,4 +182,3 @@ class Net_UserAgent_Mobile_Request_Env
  * indent-tabs-mode: nil
  * End:
  */
-?>
