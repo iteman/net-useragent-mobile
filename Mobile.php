@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.29 2008/01/30 12:32:05 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.30 2008/02/02 06:18:16 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -150,7 +150,7 @@ class Net_UserAgent_Mobile
         $sub = 'NonMobile';
         if (preg_match("!$mobileRegex!", $ua, $matches)) {
             $sub = @$matches[1] ? 'DoCoMo' :
-                (@$matches[2] ? 'Vodafone' :
+                (@$matches[2] ? 'SoftBank' :
                  (@$matches[3] ? 'EZweb' : 'AirHPhone'));
         }
         $className = "Net_UserAgent_Mobile_{$sub}";

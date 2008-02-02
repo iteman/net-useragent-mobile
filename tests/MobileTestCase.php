@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: MobileTestCase.php,v 1.2 2008/01/30 12:32:05 kuboa Exp $
+ * @version    CVS: $Id: MobileTestCase.php,v 1.3 2008/02/02 06:18:16 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -70,7 +70,7 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
         $this->assertType('Net_UserAgent_Mobile_EZweb',
                           Net_UserAgent_Mobile::factory('KDDI-SA31 UP.Browser/6.2.0.7.3.129 (GUI) MMP/2.0')
                           );
-        $this->assertType('Net_UserAgent_Mobile_Vodafone',
+        $this->assertType('Net_UserAgent_Mobile_SoftBank',
                           Net_UserAgent_Mobile::factory('SoftBank/1.0/706SC/SCJ001 Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1')
                           );
         $this->assertType('Net_UserAgent_Mobile_AirHPhone',
