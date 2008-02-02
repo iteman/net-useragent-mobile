@@ -74,8 +74,8 @@ foreach ($tests as $value1) {
     if ($agent->getCarrierShortName() != 'V') {
         print "Carrier short name isn't V\n";
     }
-    if ($agent->getCarrierLongName() != 'Vodafone') {
-        print "Carrier long name isn't Vodafone\n";
+    if ($agent->getCarrierLongName() != 'SoftBank') {
+        print "Carrier long name isn't SoftBank\n";
     }
     if ($ua == 'J-PHONE/2.0/J-DN02') {
         if (!$agent->isTypeC() || $agent->isTypeP() || $agent->isTypeW()) {
@@ -126,7 +126,7 @@ print $agent->getMsname() . "\n";
 Testing J-PHONE ...
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -138,7 +138,7 @@ J-DN02
 
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -150,7 +150,7 @@ J-PE03_a
 
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -171,7 +171,7 @@ Testing Ext-Profile ...
 JSCL-1.1.0
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -192,7 +192,7 @@ Testing Ext-Profile ...
 JSCL-1.1.0
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -204,7 +204,7 @@ V801SA
 1
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -223,7 +223,7 @@ Testing Configuration ...
 CLDC-1.1
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -242,7 +242,7 @@ Testing Configuration ...
 CLDC-1.1
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -261,7 +261,7 @@ Testing Configuration ...
 CLDC-1.1
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -280,7 +280,7 @@ Testing Configuration ...
 CLDC-1.1
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -299,7 +299,7 @@ Testing Configuration ...
 CLDC-1.1
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -318,7 +318,7 @@ Testing Configuration ...
 CLDC-1.1
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -330,7 +330,7 @@ V301SH
 
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
@@ -342,7 +342,7 @@ V301T
 
 1
 net_useragent_mobile_common
-net_useragent_mobile_vodafone
+net_useragent_mobile_softbank
 
 1
 1
