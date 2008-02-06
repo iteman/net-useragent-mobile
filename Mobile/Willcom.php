@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Willcom.php,v 1.1 2008/02/06 02:03:13 kuboa Exp $
+ * @version    CVS: $Id: Willcom.php,v 1.2 2008/02/06 02:45:58 kuboa Exp $
  * @link       http://www.willcom-inc.com/ja/service/contents_service/club_air_edge/for_phone/homepage/index.html
  * @since      File available since Release 0.5
  */
@@ -132,13 +132,14 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
     // {{{ parse()
 
     /**
-     * parse HTTP_USER_AGENT string
+     * Parses HTTP_USER_AGENT string.
+     *
+     * @param string $userAgent User-Agent string
      */
-    function parse()
+    function parse($userAgent)
     {
-        $agent = $this->getUserAgent();
         if (preg_match('!^Mozilla/3\.0\((?:DDIPOCKET|WILLCOM);(.*)\)!',
-                       $agent, $matches)
+                       $userAgent, $matches)
             ) {
             list($this->_vendor, $this->_model, $this->_modelVersion,
                  $this->_browserVersion, $cache) =

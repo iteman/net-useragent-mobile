@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: EZweb.php,v 1.18 2008/01/30 12:32:05 kuboa Exp $
+ * @version    CVS: $Id: EZweb.php,v 1.19 2008/02/06 02:45:58 kuboa Exp $
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
  * @see        Net_UserAgent_Mobile_Common
@@ -158,13 +158,13 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     // {{{ parse()
 
     /**
-     * parse HTTP_USER_AGENT string
+     * Parses HTTP_USER_AGENT string.
+     *
+     * @param string $userAgent User-Agent string
      */
-    function parse()
+    function parse($userAgent)
     {
-        $agent = $this->getUserAgent();
-
-        if (preg_match('/^KDDI-(.*)/', $agent, $matches)) {
+        if (preg_match('/^KDDI-(.*)/', $userAgent, $matches)) {
 
             // KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
             $this->_xhtmlCompliant = true;
@@ -176,7 +176,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
 
             // UP.Browser/3.01-HI01 UP.Link/3.4.5.2
             @list($browser, $this->_serverName, $comment) =
-                explode(' ', $agent, 3);
+                explode(' ', $userAgent, 3);
             list($this->name, $software) = explode('/', $browser);
             list($this->version, $this->_deviceID) =
                 explode('-', $software);
@@ -202,12 +202,12 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     function makeDisplay()
     {
         @list($width, $height) =
-            explode(',', $this->getHeader('x-up-devcap-screenpixels'));
+            explode(',', $this->getHeader('X-UP-DEVCAP-SCREENPIXELS'));
         $screenDepth =
-            explode(',', $this->getHeader('x-up-devcap-screendepth'));
+            explode(',', $this->getHeader('X-UP-DEVCAP-SCREENDEPTH'));
         $depth = $screenDepth[0] ? pow(2, (integer)$screenDepth[0]) : 0;
         $color =
-            $this->getHeader('x-up-devcap-iscolor') === '1' ? true : false;
+            $this->getHeader('X-UP-DEVCAP-ISCOLOR') === '1' ? true : false;
         return new Net_UserAgent_Mobile_Display(array(
                                                       'width'  => $width,
                                                       'height' => $height,

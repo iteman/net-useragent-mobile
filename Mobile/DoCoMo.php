@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.39 2008/02/02 06:49:13 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.40 2008/02/06 02:45:58 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
@@ -173,14 +173,14 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ parse()
 
     /**
-     * parse HTTP_USER_AGENT string
+     * Parses HTTP_USER_AGENT string.
      *
+     * @param string $userAgent User-Agent string
      * @return mixed void, or a PEAR error object on error
      */
-    function parse()
+    function parse($userAgent)
     {
-        @list($main, $foma_or_comment) =
-            explode(' ', $this->getUserAgent(), 2);
+        @list($main, $foma_or_comment) = explode(' ', $userAgent, 2);
 
         if ($foma_or_comment
             && preg_match('/^\((.*)\)$/', $foma_or_comment, $matches)

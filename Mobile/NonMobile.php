@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: NonMobile.php,v 1.13 2008/01/30 12:32:05 kuboa Exp $
+ * @version    CVS: $Id: NonMobile.php,v 1.14 2008/02/06 02:45:58 kuboa Exp $
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1.0
  */
@@ -87,12 +87,13 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
     // {{{ parse()
 
     /**
-     * parse HTTP_USER_AGENT string
+     * Parses HTTP_USER_AGENT string.
+     *
+     * @param string $userAgent User-Agent string
      */
-    function parse()
+    function parse($userAgent)
     {
-        @list($this->name, $this->version) =
-            explode('/', $this->getUserAgent());
+        @list($this->name, $this->version) = explode('/', $userAgent);
     }
 
     // }}}

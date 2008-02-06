@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.1 2008/02/05 15:50:28 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.2 2008/02/06 02:45:58 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -835,7 +835,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     {
         reset($this->_profiles);
         while (list($userAgent, $profile) = each($this->_profiles)) {
-            $agent = new Net_UserAgent_Mobile_DoCoMo(Net_UserAgent_Mobile_Request::factory($userAgent));
+            $agent = new Net_UserAgent_Mobile_DoCoMo($userAgent);
 
             $this->assertTrue($agent->isDoCoMo());
         }
@@ -845,7 +845,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     {
         reset($this->_profiles);
         while (list($userAgent, $profile) = each($this->_profiles)) {
-            $agent = new Net_UserAgent_Mobile_DoCoMo(Net_UserAgent_Mobile_Request::factory($userAgent));
+            $agent = new Net_UserAgent_Mobile_DoCoMo($userAgent);
 
             if ($profile['model'] == 'MST_v_SH2101V') {
                 $this->assertEquals('SH2101V', $agent->getModel());
