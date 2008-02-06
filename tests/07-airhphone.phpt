@@ -36,11 +36,11 @@ foreach ($tests as $value) {
     print $agent->getModelVersion() . "\n";
     print $agent->getBrowserVersion() . "\n";
     print $agent->getCacheSize() . "\n";
-    if ($agent->getCarrierShortName() != 'H') {
-        print "Carrier short name isn't H\n";
+    if ($agent->getCarrierShortName() != 'W') {
+        print "Carrier short name isn't W\n";
     }
-    if ($agent->getCarrierLongName() != 'AirH') {
-        print "Carrier long name isn't AirH\n";
+    if ($agent->getCarrierLongName() != 'WILLCOM') {
+        print "Carrier long name isn't WILLCOM\n";
     }
 }
 ?>
