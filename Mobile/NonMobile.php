@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: NonMobile.php,v 1.14 2008/02/06 02:45:58 kuboa Exp $
+ * @version    CVS: $Id: NonMobile.php,v 1.15 2008/02/06 14:24:30 kuboa Exp $
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1.0
  */
@@ -109,32 +109,6 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
     function makeDisplay()
     {
         return new Net_UserAgent_Mobile_Display(null);
-    }
-
-    // }}}
-    // {{{ getModel()
-
-    /**
-     * returns name of the model
-     *
-     * @return string
-     */
-    function getModel()
-    {
-        return '';
-    }
-
-    // }}}
-    // {{{ getDeviceID()
-
-    /**
-     * returns device ID
-     *
-     * @return string
-     */
-    function getDeviceID()
-    {
-        return '';
     }
 
     // }}}
