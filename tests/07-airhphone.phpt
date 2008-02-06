@@ -50,7 +50,7 @@ foreach ($tests as $value) {
 Testing AirH"PHONE ...
 1
 net_useragent_mobile_common
-net_useragent_mobile_airhphone
+net_useragent_mobile_willcom
 1
 WILLCOM
 JRC
@@ -60,7 +60,7 @@ AH-J3001V,AH-J3002V
 50
 1
 net_useragent_mobile_common
-net_useragent_mobile_airhphone
+net_useragent_mobile_willcom
 1
 WILLCOM
 KYOCERA
@@ -70,7 +70,7 @@ AH-K3001V
 100
 1
 net_useragent_mobile_common
-net_useragent_mobile_airhphone
+net_useragent_mobile_willcom
 1
 WILLCOM
 JRC
@@ -80,7 +80,7 @@ AH-J3003S
 50
 1
 net_useragent_mobile_common
-net_useragent_mobile_airhphone
+net_useragent_mobile_willcom
 1
 WILLCOM
 SANYO

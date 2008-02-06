@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.31 2008/02/06 01:48:14 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.32 2008/02/06 02:03:13 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -144,7 +144,7 @@ class Net_UserAgent_Mobile
         } elseif (Net_UserAgent_Mobile::isSoftBank($userAgent)) {
             $driver = 'SoftBank';
         } elseif (Net_UserAgent_Mobile::isWillcom($userAgent)) {
-            $driver = 'AirHPhone';
+            $driver = 'Willcom';
         } else {
             $driver = 'NonMobile';
         }

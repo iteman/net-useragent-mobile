@@ -13,25 +13,24 @@
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: AirHPhone.php,v 1.13 2008/01/30 12:32:05 kuboa Exp $
+ * @version    CVS: $Id: Willcom.php,v 1.1 2008/02/06 02:03:13 kuboa Exp $
  * @link       http://www.willcom-inc.com/ja/service/contents_service/club_air_edge/for_phone/homepage/index.html
- * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.5
  */
 
 require_once 'Net/UserAgent/Mobile/Common.php';
 require_once 'Net/UserAgent/Mobile/Display.php';
 
-// {{{ Net_UserAgent_Mobile_AirHPhone
+// {{{ Net_UserAgent_Mobile_Willcom
 
 /**
  * AirH"PHONE implementation
  *
- * Net_UserAgent_Mobile_AirHPhone is a subclass of
- * {@link Net_UserAgent_Mobile_Common}, which implements DDI POCKET's
- * AirH"PHONE user agents.
+ * Net_UserAgent_Mobile_Willcom is a subclass of
+ * {@link Net_UserAgent_Mobile_Common}, which implements Willcom's user
+ * agents.
  *
  * SYNOPSIS:
  * <code>
@@ -52,14 +51,14 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @link       http://www.willcom-inc.com/ja/service/contents_service/club_air_edge/for_phone/homepage/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      Class available since Release 0.5
  */
-class Net_UserAgent_Mobile_AirHPhone extends Net_UserAgent_Mobile_Common
+class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
 {
 
     // {{{ properties
@@ -126,7 +125,7 @@ class Net_UserAgent_Mobile_AirHPhone extends Net_UserAgent_Mobile_Common
      */
     function isAirHPhone()
     {
-        return true;
+        return $this->isWillcom();
     }
 
     // }}}
@@ -257,6 +256,20 @@ class Net_UserAgent_Mobile_AirHPhone extends Net_UserAgent_Mobile_Common
     function getCarrierLongName()
     {
         return 'AirH';
+    }
+
+    // }}}
+    // {{{ isWillcom()
+
+    /**
+     * Returns whether the agent is Willcom or not.
+     *
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    function isWillcom()
+    {
+        return true;
     }
 
     /**#@-*/
