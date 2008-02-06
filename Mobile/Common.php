@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Common.php,v 1.17 2008/02/02 06:07:32 kuboa Exp $
+ * @version    CVS: $Id: Common.php,v 1.18 2008/02/06 02:01:52 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -431,6 +431,20 @@ class Net_UserAgent_Mobile_Common extends PEAR
      * @since Method available since Release 0.31.0
      */
     function isSoftBank()
+    {
+        return false;
+    }
+
+    // }}}
+    // {{{ isWillcom()
+
+    /**
+     * Returns whether the agent is Willcom or not.
+     *
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    function isWillcom()
     {
         return false;
     }
