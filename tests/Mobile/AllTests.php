@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: AllTests.php,v 1.1 2008/02/05 15:50:28 kuboa Exp $
+ * @version    CVS: $Id: AllTests.php,v 1.2 2008/02/06 03:24:33 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -29,6 +29,10 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
 chdir(dirname(__FILE__) . '/../..');
 
 require_once dirname(__FILE__) . '/DoCoMoTestCase.php';
+require_once dirname(__FILE__) . '/EZwebTestCase.php';
+require_once dirname(__FILE__) . '/SoftBankTestCase.php';
+require_once dirname(__FILE__) . '/WillcomTestCase.php';
+require_once dirname(__FILE__) . '/NonMobileTestCase.php';
 
 class Mobile_AllTests
 {
@@ -40,6 +44,10 @@ class Mobile_AllTests
     {
         $suite = new PHPUnit_Framework_TestSuite('Net_UserAgent_Mobile package');
         $suite->addTestSuite('Net_UserAgent_Mobile_DoCoMoTestCase');
+        $suite->addTestSuite('Net_UserAgent_Mobile_EZwebTestCase');
+        $suite->addTestSuite('Net_UserAgent_Mobile_SoftBankTestCase');
+        $suite->addTestSuite('Net_UserAgent_Mobile_WillcomTestCase');
+        $suite->addTestSuite('Net_UserAgent_Mobile_NonMobileTestCase');
         return $suite;
     }
 }
