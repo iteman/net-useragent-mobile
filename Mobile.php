@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.30 2008/02/02 06:18:16 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.31 2008/02/06 01:48:14 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -133,30 +133,26 @@ class Net_UserAgent_Mobile
      */
     function &factory($stuff = null)
     {
-        static $mobileRegex;
-        if (!isset($mobileRegex)) {
-            $docomoRegex    = '^DoCoMo/\d\.\d[ /]';
-            $vodafoneRegex  = '^(?:(?:SoftBank|Vodafone|J-PHONE)/\d\.\d|MOT-)';
-            $ezwebRegex     = '^(?:KDDI-[A-Z]+\d+[A-Z]? )?UP\.Browser\/';
-            $airhphoneRegex = '^Mozilla/3\.0\((?:DDIPOCKET|WILLCOM);';
-            $mobileRegex =
-                "(?:($docomoRegex)|($vodafoneRegex)|($ezwebRegex)|($airhphoneRegex))";
-        }
-
         $request = &Net_UserAgent_Mobile_Request::factory($stuff);
 
         // parse User-Agent string
-        $ua = $request->get('User-Agent');
-        $sub = 'NonMobile';
-        if (preg_match("!$mobileRegex!", $ua, $matches)) {
-            $sub = @$matches[1] ? 'DoCoMo' :
-                (@$matches[2] ? 'SoftBank' :
-                 (@$matches[3] ? 'EZweb' : 'AirHPhone'));
+        $userAgent = $request->get('User-Agent');
+        if (Net_UserAgent_Mobile::isDoCoMo($userAgent)) {
+            $driver = 'DoCoMo';
+        } elseif (Net_UserAgent_Mobile::isEZweb($userAgent)) {
+            $driver = 'EZweb';
+        } elseif (Net_UserAgent_Mobile::isSoftBank($userAgent)) {
+            $driver = 'SoftBank';
+        } elseif (Net_UserAgent_Mobile::isWillcom($userAgent)) {
+            $driver = 'AirHPhone';
+        } else {
+            $driver = 'NonMobile';
         }
-        $className = "Net_UserAgent_Mobile_{$sub}";
 
-        if (!class_exists($className)) {
-            $file = str_replace('_', '/', $className) . '.php';
+        $class = "Net_UserAgent_Mobile_$driver";
+
+        if (!class_exists($class)) {
+            $file = str_replace('_', '/', $class) . '.php';
             if (!include_once $file) {
                 return PEAR::raiseError(null,
                                         NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
@@ -167,7 +163,7 @@ class Net_UserAgent_Mobile
             }
         }
 
-        $instance = &new $className($request);
+        $instance = &new $class($request);
         $error = &$instance->isError();
         if (Net_UserAgent_Mobile::isError($error)) {
             if ($GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH']
@@ -205,13 +201,13 @@ class Net_UserAgent_Mobile
         }
 
         $request = &Net_UserAgent_Mobile_Request::factory($stuff);
-        $ua = $request->get('User-Agent');
+        $userAgent = $request->get('User-Agent');
 
-        if (!array_key_exists($ua, $instances)) {
-            $instances[$ua] = Net_UserAgent_Mobile::factory($stuff);
+        if (!array_key_exists($userAgent, $instances)) {
+            $instances[$userAgent] = Net_UserAgent_Mobile::factory($stuff);
         }
 
-        return $instances[$ua];
+        return $instances[$userAgent];
     }
 
     // }}}
@@ -258,6 +254,140 @@ class Net_UserAgent_Mobile
         return isset($errorMessages[$value]) ?
             $errorMessages[$value] :
             $errorMessages[NET_USERAGENT_MOBILE_ERROR];
+    }
+
+    // }}}
+    // {{{ isMobile()
+
+    /**
+     * Checks whether or not the user agent is mobile by a given user agent
+     * string.
+     *
+     * @param string $userAgent
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    function isMobile($userAgent = null)
+    {
+        if (Net_UserAgent_Mobile::isDoCoMo($userAgent)) {
+            return true;
+        } elseif (Net_UserAgent_Mobile::isEZweb($userAgent)) {
+            return true;
+        } elseif (Net_UserAgent_Mobile::isSoftBank($userAgent)) {
+            return true;
+        } elseif (Net_UserAgent_Mobile::isWillcom($userAgent)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // }}}
+    // {{{ isDoCoMo()
+
+    /**
+     * Checks whether or not the user agent is DoCoMo by a given user agent
+     * string.
+     *
+     * @param string $userAgent
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    function isDoCoMo($userAgent = null)
+    {
+        if (is_null($userAgent)) {
+            $request = &Net_UserAgent_Mobile_Request::factory();
+            $userAgent = $request->get('User-Agent');
+        }
+
+        if (preg_match('!^DoCoMo!', $userAgent)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // }}}
+    // {{{ isEZweb()
+
+    /**
+     * Checks whether or not the user agent is EZweb by a given user agent
+     * string.
+     *
+     * @param string $userAgent
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    function isEZweb($userAgent = null)
+    {
+        if (is_null($userAgent)) {
+            $request = &Net_UserAgent_Mobile_Request::factory();
+            $userAgent = $request->get('User-Agent');
+        }
+
+        if (preg_match('!^KDDI-!', $userAgent)) {
+            return true;
+        } elseif (preg_match('!^UP\.Browser!', $userAgent)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // }}}
+    // {{{ isSoftBank()
+
+    /**
+     * Checks whether or not the user agent is SoftBank by a given user agent
+     * string.
+     *
+     * @param string $userAgent
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    function isSoftBank($userAgent = null)
+    {
+        if (is_null($userAgent)) {
+            $request = &Net_UserAgent_Mobile_Request::factory();
+            $userAgent = $request->get('User-Agent');
+        }
+
+        if (preg_match('!^SoftBank!', $userAgent)) {
+            return true;
+        } elseif (preg_match('!^Vodafone!', $userAgent)) {
+            return true;
+        } elseif (preg_match('!^MOT-!', $userAgent)) {
+            return true;
+        } elseif (preg_match('!^J-PHONE!', $userAgent)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    // }}}
+    // {{{ isWillcom()
+
+    /**
+     * Checks whether or not the user agent is Willcom by a given user agent
+     * string.
+     *
+     * @param string $userAgent
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    function isWillcom($userAgent = null)
+    {
+        if (is_null($userAgent)) {
+            $request = &Net_UserAgent_Mobile_Request::factory();
+            $userAgent = $request->get('User-Agent');
+        }
+
+        if (preg_match('!^Mozilla/3\.0\((?:DDIPOCKET|WILLCOM);!', $userAgent)) {
+            return true;
+        }
+
+        return false;
     }
 
     /**#@-*/
