@@ -15,9 +15,11 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Common.php,v 1.19 2008/02/06 02:45:58 kuboa Exp $
+ * @version    CVS: $Id: Common.php,v 1.20 2008/02/06 14:06:22 kuboa Exp $
  * @since      File available since Release 0.1
  */
+
+require_once 'Net/UserAgent/Mobile.php';
 
 // {{{ Net_UserAgent_Mobile_Common
 
@@ -48,13 +50,13 @@ class Net_UserAgent_Mobile_Common extends PEAR
      * User-Agent name like 'DoCoMo'
      * @var string
      */
-    var $name = '';
+    var $name;
 
     /**
      * User-Agent version number like '1.0'
      * @var string
      */
-    var $version = '';
+    var $version;
 
     /**#@-*/
 
@@ -81,6 +83,22 @@ class Net_UserAgent_Mobile_Common extends PEAR
      * @since Property available since Release 0.31.0
      **/
     var $_userAgent;
+
+    /**
+     * The model name of the user agent.
+     *
+     * @var string
+     * @since Property available since Release 0.31.0
+     */
+    var $_model;
+
+    /**
+     * The raw model name of the user agent.
+     *
+     * @var string
+     * @since Property available since Release 0.31.0
+     */
+    var $_rawModel;
 
     /**#@-*/
 
@@ -448,6 +466,38 @@ class Net_UserAgent_Mobile_Common extends PEAR
     function isWillcom()
     {
         return false;
+    }
+
+    // }}}
+    // {{{ getModel()
+
+    /**
+     * Returns the model name of the user agent.
+     *
+     * @return string
+     * @since Method available since Release 0.31.0
+     */
+    function getModel()
+    {
+        if (is_null($this->_model)) {
+            return $this->_rawModel;
+        } else {
+            return $this->_model;
+        }
+    }
+
+    // }}}
+    // {{{ getRawModel()
+
+    /**
+     * Returns the raw model name of the user agent.
+     *
+     * @return string
+     * @since Method available since Release 0.31.0
+     */
+    function getRawModel()
+    {
+        return $this->_rawModel;
     }
 
     /**#@-*/
