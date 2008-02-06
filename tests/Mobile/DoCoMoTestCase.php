@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.3 2008/02/06 03:06:51 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.4 2008/02/06 03:14:18 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -838,6 +838,10 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
             $agent = new Net_UserAgent_Mobile_DoCoMo($userAgent);
 
             $this->assertTrue($agent->isDoCoMo());
+            $this->assertFalse($agent->isEZweb());
+            $this->assertFalse($agent->isSoftBank());
+            $this->assertFalse($agent->isWillcom());
+            $this->assertFalse($agent->isNonMobile());
         }
     }
 
