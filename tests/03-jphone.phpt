@@ -71,8 +71,8 @@ foreach ($tests as $value1) {
             }
         }
     }
-    if ($agent->getCarrierShortName() != 'V') {
-        print "Carrier short name isn't V\n";
+    if ($agent->getCarrierShortName() != 'S') {
+        print "Carrier short name isn't S\n";
     }
     if ($agent->getCarrierLongName() != 'SoftBank') {
         print "Carrier long name isn't SoftBank\n";

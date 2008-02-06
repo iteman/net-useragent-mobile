@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBank.php,v 1.3 2008/02/06 14:24:58 kuboa Exp $
+ * @version    CVS: $Id: SoftBank.php,v 1.4 2008/02/06 14:39:46 kuboa Exp $
  * @since      File available since Release 0.20.0
  */
 
@@ -308,7 +308,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      */
     function getCarrierShortName()
     {
-        return 'V';
+        return 'S';
     }
 
     // }}}
