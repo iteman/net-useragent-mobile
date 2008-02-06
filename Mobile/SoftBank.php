@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBank.php,v 1.2 2008/02/06 02:45:58 kuboa Exp $
+ * @version    CVS: $Id: SoftBank.php,v 1.3 2008/02/06 14:24:58 kuboa Exp $
  * @since      File available since Release 0.20.0
  */
 
@@ -81,12 +81,6 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
     /**#@+
      * @access private
      */
-
-    /**
-     * name of the model like 'J-DN02'
-     * @var string
-     */
-    var $_model = '';
 
     /**
      * whether the agent is packet connection complicant or not
@@ -230,19 +224,6 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
                                                       'depth'  => $depth,
                                                       'color'  => $color)
                                                 );
-    }
-
-    // }}}
-    // {{{ getModel()
-
-    /**
-     * returns name of the model like 'J-DN02'
-     *
-     * @return string
-     */
-    function getModel()
-    {
-        return $this->_model;
     }
 
     // }}}
@@ -456,7 +437,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
         // Vodafone/1.0/V702NK/NKJ001 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1
         // Vodafone/1.0/V702NK/NKJ001/SN123456789012345 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1
         // Vodafone/1.0/V802SE/SEJ001/SN123456789012345 Browser/SEMC-Browser/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1
-        @list($this->name, $this->version, $this->_model, $modelVersion,
+        @list($this->name, $this->version, $this->_rawModel, $modelVersion,
               $serialNumber) = explode('/', $agent[0]);
         if ($serialNumber) {
             if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
@@ -496,7 +477,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
 
             // J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0
             $this->_packetCompliant = true;
-            @list($this->name, $this->version, $this->_model,
+            @list($this->name, $this->version, $this->_rawModel,
                   $serialNumber) = explode('/', $agent[0]);
             if ($serialNumber) {
                 if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
@@ -513,13 +494,12 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
         } else {
 
             // J-PHONE/2.0/J-DN02
-            @list($this->name, $this->version, $model) =
+            @list($this->name, $this->version, $this->_rawModel) =
                 explode('/', $agent[0]);
-            $this->_model  = (string)$model;
-            if ($this->_model) {
-                if (preg_match('!V\d+([A-Z]+)!', $this->_model, $matches)) {
+            if ($this->_rawModel) {
+                if (preg_match('!V\d+([A-Z]+)!', $this->_rawModel, $matches)) {
                     $this->_vendor = $matches[1];
-                } elseif (preg_match('!J-([A-Z]+)!', $this->_model, $matches)) {
+                } elseif (preg_match('!J-([A-Z]+)!', $this->_rawModel, $matches)) {
                     $this->_vendor = $matches[1];
                 }
             }
@@ -542,8 +522,8 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
         $this->_vendor = 'MOT';
 
         // MOT-V980/80.2F.2E. MIB/2.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1
-        list($name, $this->_vendorVersion) = explode('/', $agent[0]);
-        $this->_model = substr(strrchr($name, '-'), 1);
+        list($this->_rawModel, $this->_vendorVersion) = explode('/', $agent[0]);
+        $this->_model = substr(strrchr($this->_rawModel, '-'), 1);
 
         for ($i = 2; $i < $count; ++$i) {
             list($key, $value) = explode('/', $agent[$i]);

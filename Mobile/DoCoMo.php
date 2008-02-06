@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.40 2008/02/06 02:45:58 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.41 2008/02/06 14:24:58 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
@@ -97,28 +97,22 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
 
     /**
-     * name of the model like 'P502i'
-     * @var string
-     */
-    var $_model = '';
-
-    /**
      * status of the cache (TC, TB, TD, TJ)
      * @var string
      */
-    var $_status = '';
+    var $_status;
 
     /**
      * bandwidth like 32 as kilobytes unit
      * @var integer
      */
-    var $_bandwidth = null;
+    var $_bandwidth;
 
     /**
      * hardware unique serial number
      * @var string
      */
-    var $_serialNumber = null;
+    var $_serialNumber;
 
     /**
      * whether it's FOMA or not
@@ -130,13 +124,13 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * FOMA Card ID (20 digit alphanumeric)
      * @var string
      */
-    var $_cardID = null;
+    var $_cardID;
 
     /**
      * comment on user agent string like 'Google Proxy'
      * @var string
      */
-    var $_comment = null;
+    var $_comment;
 
     /**
      * cache size as killobytes unit
@@ -148,7 +142,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * width and height of the display
      * @var string
      */
-    var $_displayBytes = '';
+    var $_displayBytes;
 
     /**#@-*/
 
@@ -219,8 +213,8 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function makeDisplay()
     {
-        $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->_model);
-        if ($this->_displayBytes !== '') {
+        $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->getModel());
+        if (!is_null($this->_displayBytes)) {
             list($widthBytes, $heightBytes) =
                 explode('*', $this->_displayBytes);
             $display['width_bytes']  = $widthBytes;
@@ -255,7 +249,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         }
 
         foreach ($htmlVersionMap as $key => $value) {
-            if (preg_match("/$key/", $this->_model)) {
+            if (preg_match("/$key/", $this->_rawModel)) {
                 return $value;
             }
         }
@@ -293,15 +287,15 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function getSeries()
     {
-        if ($this->isFOMA() && preg_match('/(\d{4})/', $this->_model)) {
+        if ($this->isFOMA() && preg_match('/(\d{4})/', $this->_rawModel)) {
             return 'FOMA';
         }
 
-        if (preg_match('/(\d{3}i)/', $this->_model, $matches)) {
+        if (preg_match('/(\d{3}i)/', $this->_rawModel, $matches)) {
             return $matches[1];
         }
 
-        if ($this->_model == 'P651ps') {
+        if ($this->_rawModel == 'P651ps') {
             return '651';
         }
 
@@ -318,23 +312,11 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function getVendor()
     {
-        if (preg_match('/([A-Z]+)\d/', $this->_model, $matches)) {
+        if (preg_match('/([A-Z]+)\d/', $this->_rawModel, $matches)) {
             return $matches[1];
         }
+
         return null;
-    }
-
-    // }}}
-    // {{{ getModel()
-
-    /**
-     * returns name of the model like 'P502i'
-     *
-     * @return string
-     */
-    function getModel()
-    {
-        return $this->_model;
     }
 
     // }}}
@@ -437,7 +419,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if (!isset($gpsModels)) {
             $gpsModels = array('F661i', 'F505iGPS');
         }
-        return in_array($this->_model, $gpsModels);
+        return in_array($this->_rawModel, $gpsModels);
     }
 
     // }}}
@@ -483,9 +465,9 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */ 
     function _parseMain($main)
     {
-        @list($this->name, $this->version, $this->_model, $cache, $rest) =
+        @list($this->name, $this->version, $this->_rawModel, $cache, $rest) =
             explode('/', $main, 5);
-        if ($this->_model === 'SH505i2') {
+        if ($this->_rawModel == 'SH505i2') {
             $this->_model = 'SH505i';
         }
 
@@ -533,8 +515,8 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if (!preg_match('/^([^(]+)/', $foma, $matches)) {
             return $this->noMatch();
         }
-        $this->_model = $matches[1];
-        if ($matches[1] === 'MST_v_SH2101V') {
+        $this->_rawModel = $matches[1];
+        if ($this->_rawModel == 'MST_v_SH2101V') {
             $this->_model = 'SH2101V';
         }
 
