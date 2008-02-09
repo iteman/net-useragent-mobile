@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.36 2008/01/30 12:32:05 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoDisplayMap.php,v 1.37 2008/02/09 13:18:02 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
  * @see        Net_UserAgent_Mobile_Display
  * @since      File available since Release 0.1
@@ -1109,7 +1109,7 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                       'color'  => 1
                                                       ),
                                     'L600I' => array(
-                                                     'width'  => 176,
+                                                     'width'  => 170,
                                                      'height' => 189,
                                                      'depth'  => 65536,
                                                      'color'  => 1
@@ -1121,7 +1121,7 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                      'color'  => 1
                                                      ),
                                     'L601I' => array(
-                                                     'width'  => 176,
+                                                     'width'  => 170,
                                                      'height' => 189,
                                                      'depth'  => 65536,
                                                      'color'  => 1
@@ -1155,7 +1155,7 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                      ),
                                     'D902I' => array(
                                                      'width'  => 230,
-                                                     'height' => 240,
+                                                     'height' => 320,
                                                      'depth'  => 262144,
                                                      'color'  => 1
                                                      ),
@@ -1352,6 +1352,12 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                         'color'  => 1
                                                         ),
                                     'L704I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 280,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'L705I' => array(
                                                      'width'  => 240,
                                                      'height' => 280,
                                                      'depth'  => 262144,
@@ -1564,6 +1570,24 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                      'depth'  => 65536,
                                                      'color'  => 1
                                                      ),
+                                    'F705I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 352,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'D705I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 320,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'D705IMYU' => array(
+                                                        'width'  => 240,
+                                                        'height' => 240,
+                                                        'depth'  => 262144,
+                                                        'color'  => 1
+                                                        ),
  
                                     // i-mode compliant HTML 7.1
                                     // (FOMA 905i etc.)
@@ -1586,7 +1610,7 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                      'color'  => 1
                                                      ),
                                     'P905I' => array(
-                                                     'width'  => 250,
+                                                     'width'  => 240,
                                                      'height' => 350,
                                                      'depth'  => 262144,
                                                      'color'  => 1
@@ -1608,7 +1632,31 @@ class Net_UserAgent_Mobile_DoCoMoDisplayMap
                                                         'height' => 320,
                                                         'depth'  => 262144,
                                                         'color'  => 1
-                                                        )
+                                                        ),
+                                    'N905IBIZ' => array(
+                                                        'width'  => 240,
+                                                        'height' => 320,
+                                                        'depth'  => 262144,
+                                                        'color'  => 1
+                                                        ),
+                                    'SH905ITV' => array(
+                                                        'width'  => 240,
+                                                        'height' => 320,
+                                                        'depth'  => 16777216,
+                                                        'color'  => 1
+                                                        ),
+                                    'P705I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 350,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     ),
+                                    'N705I' => array(
+                                                     'width'  => 240,
+                                                     'height' => 320,
+                                                     'depth'  => 262144,
+                                                     'color'  => 1
+                                                     )
                                     );
             }
         }
