@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBank.php,v 1.4 2008/02/06 14:39:46 kuboa Exp $
+ * @version    CVS: $Id: SoftBank.php,v 1.5 2008/02/09 17:55:08 kuboa Exp $
  * @since      File available since Release 0.20.0
  */
 
@@ -168,7 +168,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
     function parse($userAgent)
     {
         $agent = explode(' ', $userAgent);
-        preg_match('!^(?:(SoftBank|Vodafone|J-PHONE)/\d\.\d|MOT-)!',
+        preg_match('!^(?:(SoftBank|Semulator|Vodafone|Vemulator|J-PHONE|J-EMULATOR)/\d\.\d|MOT-|MOTEMULATOR)!',
                    $agent[0], $matches
                    );
         if (count($matches) > 1) {
@@ -178,14 +178,18 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
         }
 
         switch ($carrier) {
-        case 'Vodafone':
         case 'SoftBank':
+        case 'Semulator':
+        case 'Vodafone':
+        case 'Vemulator':
             $result = $this->_parseVodafone($agent);
             break;
         case 'J-PHONE':
+        case 'J-EMULATOR':
             $result = $this->_parseJphone($agent);
             break;
         case 'Motorola':
+        case 'MOTEMULATOR':
             $result = $this->_parseMotorola($agent);
             break;
         }
@@ -485,6 +489,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
                 }
                 $this->_serialNumber = $matches[1];
             }
+
             list($this->_vendor, $this->_vendorVersion) =
                 explode('/', $agent[1]);
             for ($i = 2; $i < $count; ++$i) {
@@ -494,8 +499,15 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
         } else {
 
             // J-PHONE/2.0/J-DN02
-            @list($this->name, $this->version, $this->_rawModel) =
-                explode('/', $agent[0]);
+            @list($this->name, $this->version, $this->_rawModel,
+                  $serialNumber) = explode('/', $agent[0]);
+            if ($serialNumber) {
+                if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
+                    return $this->noMatch();
+                }
+                $this->_serialNumber = $matches[1];
+            }
+
             if ($this->_rawModel) {
                 if (preg_match('!V\d+([A-Z]+)!', $this->_rawModel, $matches)) {
                     $this->_vendor = $matches[1];

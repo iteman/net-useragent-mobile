@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBankTestCase.php,v 1.1 2008/02/06 03:24:33 kuboa Exp $
+ * @version    CVS: $Id: SoftBankTestCase.php,v 1.2 2008/02/09 17:55:08 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -146,6 +146,62 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
 
             $this->assertEquals($profile['model'], $agent->getModel());
         }
+    }
+
+    public function testShouldSupportSemulator()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('Semulator/1.0/813T/TJ001/SN123456789012345 Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1');
+
+        $this->assertTrue($agent->isSoftBank());
+        $this->assertEquals('813T', $agent->getModel());
+        $this->assertTrue($agent->isPacketCompliant());
+        $this->assertEquals('123456789012345', $agent->getSerialNumber());
+        $this->assertEquals('J001', $agent->getVendorVersion());
+        $this->assertEquals(array('Profile' => 'MIDP-2.0',
+                                  'Configuration' => 'CLDC-1.1'),
+                            $agent->getJavaInfo()
+                            );
+        $this->assertTrue($agent->isType3GC());
+        $this->assertEquals('Semulator', $agent->getName());
+        $this->assertEquals('1.0', $agent->getVersion());
+
+        $agent = new Net_UserAgent_Mobile_SoftBank('Vemulator/1.0/V902SH/SHJ001/SN123456789012345');
+
+        $this->assertTrue($agent->isSoftBank());
+        $this->assertEquals('V902SH', $agent->getModel());
+        $this->assertTrue($agent->isPacketCompliant());
+        $this->assertEquals('123456789012345', $agent->getSerialNumber());
+        $this->assertEquals('J001', $agent->getVendorVersion());
+        $this->assertTrue($agent->isType3GC());
+        $this->assertEquals('Vemulator', $agent->getName());
+        $this->assertEquals('1.0', $agent->getVersion());
+    }
+
+    public function testShouldSupportVemulator()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('Vemulator/1.0/V902SH/SHJ001/SN123456789012345');
+
+        $this->assertTrue($agent->isSoftBank());
+        $this->assertEquals('V902SH', $agent->getModel());
+        $this->assertTrue($agent->isPacketCompliant());
+        $this->assertEquals('123456789012345', $agent->getSerialNumber());
+        $this->assertEquals('J001', $agent->getVendorVersion());
+        $this->assertTrue($agent->isType3GC());
+        $this->assertEquals('Vemulator', $agent->getName());
+        $this->assertEquals('1.0', $agent->getVersion());
+    }
+
+    public function testShouldSupportJemulator()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('J-EMULATOR/4.3/V602SH/SN12345678901');
+
+        $this->assertTrue($agent->isSoftBank());
+        $this->assertEquals('V602SH', $agent->getModel());
+        $this->assertFalse($agent->isPacketCompliant());
+        $this->assertEquals('12345678901', $agent->getSerialNumber());
+        $this->assertTrue($agent->isTypeP());
+        $this->assertEquals('J-EMULATOR', $agent->getName());
+        $this->assertEquals('4.3', $agent->getVersion());
     }
 
     /**#@-*/

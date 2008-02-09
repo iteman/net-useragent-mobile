@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.33 2008/02/06 02:45:58 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.34 2008/02/09 17:55:08 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -349,11 +349,19 @@ class Net_UserAgent_Mobile
 
         if (preg_match('!^SoftBank!', $userAgent)) {
             return true;
+        } elseif (preg_match('!^Semulator!', $userAgent)) {
+            return true;
         } elseif (preg_match('!^Vodafone!', $userAgent)) {
+            return true;
+        } elseif (preg_match('!^Vemulator!', $userAgent)) {
             return true;
         } elseif (preg_match('!^MOT-!', $userAgent)) {
             return true;
+        } elseif (preg_match('!^MOTEMULATOR!', $userAgent)) {
+            return true;
         } elseif (preg_match('!^J-PHONE!', $userAgent)) {
+            return true;
+        } elseif (preg_match('!^J-EMULATOR!', $userAgent)) {
             return true;
         }
 
