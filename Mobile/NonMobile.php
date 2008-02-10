@@ -13,9 +13,9 @@
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: NonMobile.php,v 1.15 2008/02/06 14:24:30 kuboa Exp $
+ * @version    CVS: $Id: NonMobile.php,v 1.16 2008/02/10 06:19:23 kuboa Exp $
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1.0
  */
@@ -43,7 +43,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @see        Net_UserAgent_Mobile_Common
