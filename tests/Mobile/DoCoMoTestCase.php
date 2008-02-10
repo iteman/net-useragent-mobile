@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.6 2008/02/09 13:24:45 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.7 2008/02/10 05:39:41 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1060,6 +1060,25 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
             $this->assertEquals($profile['width'], $display->getWidth());
             $this->assertEquals($profile['height'], $display->getHeight());
         }
+    }
+
+    public function testShouldSupportYahooWebCrawler()
+    {
+        $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 SH902i (compatible; Y!J-SRD/1.0; http://help.yahoo.co.jp/help/jp/search/indexing/indexing-27.html)');
+
+        $this->assertTrue($agent->isDoCoMo());
+        $this->assertEquals('SH902i', $agent->getModel());
+        $this->assertNull($agent->getStatus());
+        $this->assertNull($agent->getBandwidth());
+        $this->assertNull($agent->getSerialNumber());
+        $this->assertTrue($agent->isFOMA());
+        $this->assertNull($agent->getCardID());
+        $this->assertEquals('compatible; Y!J-SRD/1.0; http://help.yahoo.co.jp/help/jp/search/indexing/indexing-27.html',
+                            $agent->getComment()
+                            );
+        $this->assertEquals(5, $agent->getCacheSize());
+        $this->assertEquals('DoCoMo', $agent->getName());
+        $this->assertEquals('2.0', $agent->getVersion());
     }
 
     /**#@-*/
