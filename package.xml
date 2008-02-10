@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Id: package.xml,v 1.36 2008/02/10 06:18:15 kuboa Exp $ -->
-<package packagerversion="1.5.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -16,10 +15,10 @@ See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent</descri
   <email>iteman@users.sourceforge.net</email>
   <active>yes</active>
  </lead>
- <date>2007-02-20</date>
- <time>19:22:26</time>
+ <date>2008-02-10</date>
+ <time>20:45:04</time>
  <version>
-  <release>0.30.0</release>
+  <release>0.31.0</release>
   <api>0.30.0</api>
  </version>
  <stability>
@@ -29,35 +28,38 @@ See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent</descri
  <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
  <notes>A new release of Net_UserAgent_Mobile is now available.
 
-This release includes a fix for the bug #9891 &quot;dirname(__FILE__) should not be used for include/require&quot;. This can be replaced a driver with a user enhancement driver in the normal way.
+What&apos;s New in Net_UserAgent_Mobile 0.31.0
 
-And also this release includes other fixes and supports many new models. See the following release notes for details.
+ * Updated DoCoMo Support: A lot of new models since the release 0.30.0 have been supported. Thanks to yosuke for providing a patch.
+ * Some useful interfaces by the Net_UserAgent_Mobile class: The new methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() can be used directly to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom.
+ * Enhanced parsers: The Net_UserAgent_Mobile class and the SoftBank parser support SoftBank emulators. And the DoCoMo parser supports Yahoo!&apos;s Web Crawler. Thanks to Hiroaki Kawai for feature requests and providing patches.
 
-## Defect Fixes ##
+See the following release notes for details.
 
-- Changed to not use dirname(__FILE__) for include/require. (Bug #9891)
+Enhancements
+============
 
-### Net_UserAgent_Mobile_DoCoMo ###
+- Added support for a lot of models. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
+- Changed the behavior of singleton() so that it creates a cache for each user-agent. (Net_UserAgent_Mobile)
+- Added the method isSoftBank() to check whether an agent is SoftBank or not. (Net_UserAgent_Mobile_Common)
+- Renamed the class name from Net_UserAgent_Mobile_Vodafone to Net_UserAgent_Mobile_SoftBank.
+- Added the methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom by a given user agent string or by the HTTP header in an environment. (Net_UserAgent_Mobile)
+- Added the method isWillcom() to check whether an agent is Willcom or not. (Net_UserAgent_Mobile_Common)
+- Renamed the class name from Net_UserAgent_Mobile_AirHPhone to Net_UserAgent_Mobile_Willcom.
+- Added $_model/$_rawModel properties and getModel()/getRawModel() methods. (Net_UserAgent_Mobile_Common)
+- Removed getDeviceID(). (Net_UserAgent_Mobile_NonMobile)
+- Added support some emulators. (Request #12877) (Net_UserAgent_Mobile, Net_UserAgent_Mobile_SoftBank)
+- Added support for Yahoo!&apos;s Web Crawler. (Request #13061) (Net_UserAgent_Mobile_DoCoMo)
 
-- Changed so that an FOMA Card ID (iccXXXXXXXXXXXXXXXXXXXX) without 20 digit alphanumeric can be parsed successfully. Then getCardID() method will simply return null. (Bug #8584)
-- Fixed the HTML version for 882i from 5.0 to 6.0.
+Defect Fixes
+============
 
-### Net_UserAgent_Mobile_Vodafone ###
-
-- Removed a duplicate statement. (Bug #8806)
-- Fixed model version matching to get appropriate model version as JP10 for 705P/PJP10.
-
-## Enhancements ##
-
-### Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap ###
-
-- Added support for L601i, M702iS, M702iG, N902iL, N601i, D800iDS, P703imyu, N903i, D903i, F903i, SO9603i, D903iTV, F903iX, P903iTV, N703iD, F703i, P703i, D703i, SH703i, N703imyu, SO703i.</notes>
+- Fixed the model name from N506ISII to N506IS2. (Net_UserAgent_Mobile_DoCoMoDisplayMap)
+- Fixed a defect that caused supported HTML versions for some user agents that support HTML version 6.0 or greater to be detected as 5.0. (Net_UserAgent_Mobile_DoCoMo)
+- Fixed invalid width and height of some models. (Net_UserAgent_Mobile_DoCoMoDisplayMap)</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <dir name="Mobile">
-    <file baseinstalldir="/" name="AirHPhone.php" role="php">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
     <file baseinstalldir="/" name="Common.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
@@ -76,14 +78,34 @@ And also this release includes other fixes and supports many new models. See the
     <file baseinstalldir="/" name="NonMobile.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
-    <file baseinstalldir="/" name="Request.php" role="php">
+    <file baseinstalldir="/" name="SoftBank.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
-    <file baseinstalldir="/" name="Vodafone.php" role="php">
+    <file baseinstalldir="/" name="Willcom.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
    </dir> <!-- /Mobile -->
    <dir name="tests">
+    <dir name="Mobile">
+     <file baseinstalldir="/" name="AllTests.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file baseinstalldir="/" name="DoCoMoTestCase.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file baseinstalldir="/" name="EZwebTestCase.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file baseinstalldir="/" name="NonMobileTestCase.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file baseinstalldir="/" name="SoftBankTestCase.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+     <file baseinstalldir="/" name="WillcomTestCase.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+    </dir> <!-- /tests/Mobile -->
     <file baseinstalldir="/" name="00-compile.phpt" role="test">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
@@ -114,7 +136,16 @@ And also this release includes other fixes and supports many new models. See the
     <file baseinstalldir="/" name="09-fallback-on-nomatch.phpt" role="test">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
+    <file baseinstalldir="/" name="AllTests.php" role="test">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
     <file baseinstalldir="/" name="DoCoMoMap.xml" role="test">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+    <file baseinstalldir="/" name="MobileTestCase.php" role="test">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+    <file baseinstalldir="/" name="prepare.php" role="test">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
    </dir> <!-- /tests -->
@@ -136,23 +167,73 @@ And also this release includes other fixes and supports many new models. See the
     <channel>pear.php.net</channel>
     <min>1.4.3</min>
    </package>
+   <extension>
+    <name>pcre</name>
+   </extension>
   </required>
+  <optional>
+   <extension>
+    <name>xml</name>
+   </extension>
+  </optional>
  </dependencies>
  <phprelease>
   <filelist>
    <install as="Net/UserAgent/Mobile.php" name="Mobile.php" />
-   <install as="Net/UserAgent/Mobile/AirHPhone.php" name="Mobile/AirHPhone.php" />
    <install as="Net/UserAgent/Mobile/Common.php" name="Mobile/Common.php" />
    <install as="Net/UserAgent/Mobile/Display.php" name="Mobile/Display.php" />
    <install as="Net/UserAgent/Mobile/DoCoMo.php" name="Mobile/DoCoMo.php" />
    <install as="Net/UserAgent/Mobile/DoCoMoDisplayMap.php" name="Mobile/DoCoMoDisplayMap.php" />
    <install as="Net/UserAgent/Mobile/EZweb.php" name="Mobile/EZweb.php" />
    <install as="Net/UserAgent/Mobile/NonMobile.php" name="Mobile/NonMobile.php" />
-   <install as="Net/UserAgent/Mobile/Request.php" name="Mobile/Request.php" />
-   <install as="Net/UserAgent/Mobile/Vodafone.php" name="Mobile/Vodafone.php" />
+   <install as="Net/UserAgent/Mobile/SoftBank.php" name="Mobile/SoftBank.php" />
+   <install as="Net/UserAgent/Mobile/Willcom.php" name="Mobile/Willcom.php" />
   </filelist>
  </phprelease>
  <changelog>
+  <release>
+   <version>
+    <release>0.31.0</release>
+    <api>0.30.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2008-02-10</date>
+   <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
+   <notes>A new release of Net_UserAgent_Mobile is now available.
+
+What&apos;s New in Net_UserAgent_Mobile 0.31.0
+
+ * Updated DoCoMo Support: A lot of new models since the release 0.30.0 have been supported. Thanks to yosuke for providing a patch.
+ * Some useful interfaces by the Net_UserAgent_Mobile class: The new methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() can be used directly to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom.
+ * Enhanced parsers: The Net_UserAgent_Mobile class and the SoftBank parser support SoftBank emulators. And the DoCoMo parser supports Yahoo!&apos;s Web Crawler. Thanks to Hiroaki Kawai for feature requests and providing patches.
+
+See the following release notes for details.
+
+Enhancements
+============
+
+- Added support for a lot of models. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
+- Changed the behavior of singleton() so that it creates a cache for each user-agent. (Net_UserAgent_Mobile)
+- Added the method isSoftBank() to check whether an agent is SoftBank or not. (Net_UserAgent_Mobile_Common)
+- Renamed the class name from Net_UserAgent_Mobile_Vodafone to Net_UserAgent_Mobile_SoftBank.
+- Added the methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom by a given user agent string or by the HTTP header in an environment. (Net_UserAgent_Mobile)
+- Added the method isWillcom() to check whether an agent is Willcom or not. (Net_UserAgent_Mobile_Common)
+- Renamed the class name from Net_UserAgent_Mobile_AirHPhone to Net_UserAgent_Mobile_Willcom.
+- Added $_model/$_rawModel properties and getModel()/getRawModel() methods. (Net_UserAgent_Mobile_Common)
+- Removed getDeviceID(). (Net_UserAgent_Mobile_NonMobile)
+- Added support some emulators. (Request #12877) (Net_UserAgent_Mobile, Net_UserAgent_Mobile_SoftBank)
+- Added support for Yahoo!&apos;s Web Crawler. (Request #13061) (Net_UserAgent_Mobile_DoCoMo)
+
+Defect Fixes
+============
+
+- Fixed the model name from N506ISII to N506IS2. (Net_UserAgent_Mobile_DoCoMoDisplayMap)
+- Fixed a defect that caused supported HTML versions for some user agents that support HTML version 6.0 or greater to be detected as 5.0. (Net_UserAgent_Mobile_DoCoMo)
+- Fixed invalid width and height of some models. (Net_UserAgent_Mobile_DoCoMoDisplayMap)</notes>
+  </release>
   <release>
    <version>
     <release>0.30.0</release>

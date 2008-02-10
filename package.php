@@ -13,9 +13,9 @@
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: package.php,v 1.3 2008/01/30 12:32:05 kuboa Exp $
+ * @version    CVS: $Id: package.php,v 1.4 2008/02/10 11:46:17 kuboa Exp $
  * @since      File available since Release 0.30.0
  */
 
@@ -23,41 +23,48 @@ require_once 'PEAR/PackageFileManager2.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$version = '0.30.0';
-$apiVersion = '0.30.0';
+$releaseVersion = '0.31.0';
 $releaseStability = 'beta';
+$apiVersion = '0.30.0';
+$apiStability = 'beta';
 $notes = 'A new release of Net_UserAgent_Mobile is now available.
 
-This release includes a fix for the bug #9891 "dirname(__FILE__) should not be used for include/require". This can be replaced a driver with a user enhancement driver in the normal way.
+What\'s New in Net_UserAgent_Mobile 0.31.0
 
-And also this release includes other fixes and supports many new models. See the following release notes for details.
+ * Updated DoCoMo Support: A lot of new models since the release 0.30.0 have been supported. Thanks to yosuke for providing a patch.
+ * Some useful interfaces by the Net_UserAgent_Mobile class: The new methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() can be used directly to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom.
+ * Enhanced parsers: The Net_UserAgent_Mobile class and the SoftBank parser support SoftBank emulators. And the DoCoMo parser supports Yahoo!\'s Web Crawler. Thanks to Hiroaki Kawai for feature requests and providing patches.
 
-## Defect Fixes ##
+See the following release notes for details.
 
-- Changed to not use dirname(__FILE__) for include/require. (Bug #9891)
+Enhancements
+============
 
-### Net_UserAgent_Mobile_DoCoMo ###
+- Added support for a lot of models. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
+- Changed the behavior of singleton() so that it creates a cache for each user-agent. (Net_UserAgent_Mobile)
+- Added the method isSoftBank() to check whether an agent is SoftBank or not. (Net_UserAgent_Mobile_Common)
+- Renamed the class name from Net_UserAgent_Mobile_Vodafone to Net_UserAgent_Mobile_SoftBank.
+- Added the methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom by a given user agent string or by the HTTP header in an environment. (Net_UserAgent_Mobile)
+- Added the method isWillcom() to check whether an agent is Willcom or not. (Net_UserAgent_Mobile_Common)
+- Renamed the class name from Net_UserAgent_Mobile_AirHPhone to Net_UserAgent_Mobile_Willcom.
+- Added $_model/$_rawModel properties and getModel()/getRawModel() methods. (Net_UserAgent_Mobile_Common)
+- Removed getDeviceID(). (Net_UserAgent_Mobile_NonMobile)
+- Added support some emulators. (Request #12877) (Net_UserAgent_Mobile, Net_UserAgent_Mobile_SoftBank)
+- Added support for Yahoo!\'s Web Crawler. (Request #13061) (Net_UserAgent_Mobile_DoCoMo)
 
-- Changed so that an FOMA Card ID (iccXXXXXXXXXXXXXXXXXXXX) without 20 digit alphanumeric can be parsed successfully. Then getCardID() method will simply return null. (Bug #8584)
-- Fixed the HTML version for 882i from 5.0 to 6.0.
+Defect Fixes
+============
 
-### Net_UserAgent_Mobile_Vodafone ###
-
-- Removed a duplicate statement. (Bug #8806)
-- Fixed model version matching to get appropriate model version as JP10 for 705P/PJP10.
-
-## Enhancements ##
-
-### Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap ###
-
-- Added support for L601i, M702iS, M702iG, N902iL, N601i, D800iDS, P703imyu, N903i, D903i, F903i, SO9603i, D903iTV, F903iX, P903iTV, N703iD, F703i, P703i, D703i, SH703i, N703imyu, SO703i.';
+- Fixed the model name from N506ISII to N506IS2. (Net_UserAgent_Mobile_DoCoMoDisplayMap)
+- Fixed a defect that caused supported HTML versions for some user agents that support HTML version 6.0 or greater to be detected as 5.0. (Net_UserAgent_Mobile_DoCoMo)
+- Fixed invalid width and height of some models. (Net_UserAgent_Mobile_DoCoMoDisplayMap)';
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'cvs',
                            'changelogoldtonew' => false,
                            'simpleoutput'      => true,
                            'baseinstalldir'    => '/',
-                           'packagefile'       => 'package2.xml',
+                           'packagefile'       => 'package.xml',
                            'packagedirectory'  => '.',
                            'dir_roles'         => array('tests' => 'test'))
                      );
@@ -73,32 +80,31 @@ $package->setLicense('PHP License',
                      'http://www.opensource.org/licenses/php.php'
                      );
 $package->setAPIVersion($apiVersion);
-$package->setAPIStability('beta');
-$package->setReleaseVersion($version);
+$package->setAPIStability($apiStability);
+$package->setReleaseVersion($releaseVersion);
 $package->setReleaseStability($releaseStability);
 $package->setNotes($notes);
 $package->setPhpDep('4.3.0');
 $package->setPearinstallerDep('1.4.3');
 $package->addPackageDepWithChannel('required', 'PEAR', 'pear.php.net', '1.4.3');
+$package->addExtensionDep('required', 'pcre');
+$package->addExtensionDep('optional', 'xml');
 $package->addMaintainer('lead', 'kuboa', 'KUBO Atsuhiro', 'iteman@users.sourceforge.net');
-$package->addIgnore(array('package.php', 'package2.xml'));
+$package->addIgnore(array('package.php', 'package.xml'));
 $package->addGlobalReplacement('package-info', '@package_version@', 'version');
 $package->addInstallAs('Mobile.php', 'Net/UserAgent/Mobile.php');
-$package->addInstallAs('Mobile/AirHPhone.php', 'Net/UserAgent/Mobile/AirHPhone.php');
 $package->addInstallAs('Mobile/Common.php', 'Net/UserAgent/Mobile/Common.php');
 $package->addInstallAs('Mobile/Display.php', 'Net/UserAgent/Mobile/Display.php');
 $package->addInstallAs('Mobile/DoCoMo.php', 'Net/UserAgent/Mobile/DoCoMo.php');
 $package->addInstallAs('Mobile/DoCoMoDisplayMap.php', 'Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
 $package->addInstallAs('Mobile/EZweb.php', 'Net/UserAgent/Mobile/EZweb.php');
 $package->addInstallAs('Mobile/NonMobile.php', 'Net/UserAgent/Mobile/NonMobile.php');
-$package->addInstallAs('Mobile/Request.php', 'Net/UserAgent/Mobile/Request.php');
-$package->addInstallAs('Mobile/Vodafone.php', 'Net/UserAgent/Mobile/Vodafone.php');
+$package->addInstallAs('Mobile/SoftBank.php', 'Net/UserAgent/Mobile/SoftBank.php');
+$package->addInstallAs('Mobile/Willcom.php', 'Net/UserAgent/Mobile/Willcom.php');
 
 $package->generateContents();
 
-if (array_key_exists(1, $_SERVER['argv'])
-    && $_SERVER['argv'][1] == 'make'
-    ) {
+if (array_key_exists(1, $_SERVER['argv']) && $_SERVER['argv'][1] == 'make') {
     $package->writePackageFile();
 } else {
     $package->debugPackageFile();
