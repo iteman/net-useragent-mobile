@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE: This source file is subject to version 3.0 of the PHP license
  * that is available through the world-wide-web at the following URI:
@@ -15,8 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: NonMobile.php,v 1.16 2008/02/10 06:19:23 kuboa Exp $
- * @see        Net_UserAgent_Mobile_Common
+ * @version    CVS: $Id: NonMobile.php,v 1.17 2008/02/11 12:43:16 kuboa Exp $
  * @since      File available since Release 0.1.0
  */
 
@@ -37,7 +36,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * require_once 'Net/UserAgent/Mobile.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] = 'Mozilla/4.0';
- * $agent = &Net_UserAgent_Mobile::factory();
+ * $agent = Net_UserAgent_Mobile::factory();
  * </code>
  *
  * @category   Networking
@@ -46,7 +45,6 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
- * @see        Net_UserAgent_Mobile_Common
  * @since      Class available since Release 0.1.0
  */
 class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
@@ -56,6 +54,12 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
 
     /**#@+
      * @access public
+     */
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
      */
 
     /**#@-*/
@@ -78,22 +82,9 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isNonMobile()
+    public function isNonMobile()
     {
         return true;
-    }
-
-    // }}}
-    // {{{ parse()
-
-    /**
-     * Parses HTTP_USER_AGENT string.
-     *
-     * @param string $userAgent User-Agent string
-     */
-    function parse($userAgent)
-    {
-        @list($this->name, $this->version) = explode('/', $userAgent);
     }
 
     // }}}
@@ -106,7 +97,7 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *     object
      * @see Net_UserAgent_Mobile_Display
      */
-    function makeDisplay()
+    public function makeDisplay()
     {
         return new Net_UserAgent_Mobile_Display(null);
     }
@@ -119,7 +110,7 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierShortName()
+    public function getCarrierShortName()
     {
         return 'N';
     }
@@ -132,9 +123,28 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierLongName()
+    public function getCarrierLongName()
     {
         return 'NonMobile';
+    }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
+
+    // }}}
+    // {{{ parse()
+
+    /**
+     * Parses HTTP_USER_AGENT string.
+     *
+     * @param string $userAgent User-Agent string
+     */
+    protected function _parse($userAgent)
+    {
+        @list($this->_name, $this->_version) = explode('/', $userAgent);
     }
 
     /**#@-*/

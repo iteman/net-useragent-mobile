@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE: This source file is subject to version 3.0 of the PHP license
  * that is available through the world-wide-web at the following URI:
@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Willcom.php,v 1.4 2008/02/06 14:49:10 kuboa Exp $
+ * @version    CVS: $Id: Willcom.php,v 1.5 2008/02/11 12:43:16 kuboa Exp $
  * @link       http://www.willcom-inc.com/ja/service/contents_service/club_air_edge/for_phone/homepage/index.html
  * @since      File available since Release 0.5
  */
@@ -26,7 +26,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
 // {{{ Net_UserAgent_Mobile_Willcom
 
 /**
- * AirH"PHONE implementation
+ * WILLCOM implementation
  *
  * Net_UserAgent_Mobile_Willcom is a subclass of
  * {@link Net_UserAgent_Mobile_Common}, which implements Willcom's user
@@ -38,7 +38,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] =
  *     'Mozilla/3.0(DDIPOCKET;JRC/AH-J3001V,AH-J3002V/1.0/0100/c50)CNF/2.0';
- * $agent = &Net_UserAgent_Mobile::factory();
+ * $agent = Net_UserAgent_Mobile::factory();
  *
  * printf("Name: %s\n", $agent->getName()); // 'DDIPOCKET'
  * printf("Verdor: %s\n", $agent->getVendor()); // 'JRC'
@@ -55,7 +55,6 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @link       http://www.willcom-inc.com/ja/service/contents_service/club_air_edge/for_phone/homepage/index.html
- * @see        Net_UserAgent_Mobile_Common
  * @since      Class available since Release 0.5
  */
 class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
@@ -67,11 +66,17 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      * @access public
      */
 
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
+
     /**
      * User-Agent name
      * @var string
      */
-    var $name = 'WILLCOM';
+    protected $name = 'WILLCOM';
 
     /**#@-*/
 
@@ -83,25 +88,25 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      * vendor name
      * @var string
      */
-    var $_vendor;
+    private $_vendor;
 
     /**
      * version number of the model
      * @var string
      */
-    var $_modelVersion;
+    private $_modelVersion;
 
     /**
      * version number of the browser
      * @var string
      */
-    var $_browserVersion;
+    private $_browserVersion;
 
     /**
      * cache size as killobytes unit
      * @var integer
      */
-    var $_cacheSize;
+    private $_cacheSize;
 
     /**#@-*/
 
@@ -117,10 +122,123 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isAirHPhone()
+    public function isAirHPhone()
     {
         return $this->isWillcom();
     }
+
+    // }}}
+    // {{{ makeDisplay()
+
+    /**
+     * create a new {@link Net_UserAgent_Mobile_Display} class instance
+     *
+     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
+     *     object
+     * @see Net_UserAgent_Mobile_Display
+     */
+    public function makeDisplay()
+    {
+        return new Net_UserAgent_Mobile_Display(null);
+    }
+
+    // }}}
+    // {{{ getVendor()
+
+    /**
+     * returns vendor name
+     *
+     * @return string
+     */
+    public function getVendor()
+    {
+        return $this->_vendor;
+    }
+
+    // }}}
+    // {{{ getModelVersion()
+
+    /**
+     * returns version number of the model
+     *
+     * @return string
+     */
+    public function getModelVersion()
+    {
+        return $this->_modelVersion;
+    }
+
+    // }}}
+    // {{{ getBrowserVersion()
+
+    /**
+     * returns version number of the browser
+     *
+     * @return string
+     */
+    public function getBrowserVersion()
+    {
+        return $this->_browserVersion;
+    }
+
+    // }}}
+    // {{{ getCacheSize()
+
+    /**
+     * returns cache size as killobytes unit
+     *
+     * @return integer
+     */
+    public function getCacheSize()
+    {
+        return $this->_cacheSize;
+    }
+
+    // }}}
+    // {{{ getCarrierShortName()
+
+    /**
+     * returns the short name of the carrier
+     *
+     * @return string
+     */
+    public function getCarrierShortName()
+    {
+        return 'W';
+    }
+
+    // }}}
+    // {{{ getCarrierLongName()
+
+    /**
+     * returns the long name of the carrier
+     *
+     * @return string
+     */
+    public function getCarrierLongName()
+    {
+        return 'WILLCOM';
+    }
+
+    // }}}
+    // {{{ isWillcom()
+
+    /**
+     * Returns whether the agent is Willcom or not.
+     *
+     * @return boolean
+     * @since Method available since Release 0.31.0
+     */
+    public function isWillcom()
+    {
+        return true;
+    }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     // }}}
     // {{{ parse()
@@ -130,7 +248,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @param string $userAgent User-Agent string
      */
-    function parse($userAgent)
+    protected function _parse($userAgent)
     {
         if (preg_match('!^Mozilla/3\.0\((?:DDIPOCKET|WILLCOM);(.*)\)!',
                        $userAgent, $matches)
@@ -145,113 +263,6 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
         } else {
             $this->noMatch();
         }
-    }
-
-    // }}}
-    // {{{ makeDisplay()
-
-    /**
-     * create a new {@link Net_UserAgent_Mobile_Display} class instance
-     *
-     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
-     *     object
-     * @see Net_UserAgent_Mobile_Display
-     */
-    function makeDisplay()
-    {
-        return new Net_UserAgent_Mobile_Display(null);
-    }
-
-    // }}}
-    // {{{ getVendor()
-
-    /**
-     * returns vendor name
-     *
-     * @return string
-     */
-    function getVendor()
-    {
-        return $this->_vendor;
-    }
-
-    // }}}
-    // {{{ getModelVersion()
-
-    /**
-     * returns version number of the model
-     *
-     * @return string
-     */
-    function getModelVersion()
-    {
-        return $this->_modelVersion;
-    }
-
-    // }}}
-    // {{{ getBrowserVersion()
-
-    /**
-     * returns version number of the browser
-     *
-     * @return string
-     */
-    function getBrowserVersion()
-    {
-        return $this->_browserVersion;
-    }
-
-    // }}}
-    // {{{ getCacheSize()
-
-    /**
-     * returns cache size as killobytes unit
-     *
-     * @return integer
-     */
-    function getCacheSize()
-    {
-        return $this->_cacheSize;
-    }
-
-    // }}}
-    // {{{ getCarrierShortName()
-
-    /**
-     * returns the short name of the carrier
-     *
-     * @return string
-     */
-    function getCarrierShortName()
-    {
-        return 'W';
-    }
-
-    // }}}
-    // {{{ getCarrierLongName()
-
-    /**
-     * returns the long name of the carrier
-     *
-     * @return string
-     */
-    function getCarrierLongName()
-    {
-        return 'WILLCOM';
-    }
-
-    // }}}
-    // {{{ isWillcom()
-
-    /**
-     * Returns whether the agent is Willcom or not.
-     *
-     * @return boolean
-     * @since Method available since Release 0.31.0
-     */
-    function isWillcom()
-    {
-        return true;
     }
 
     /**#@-*/
