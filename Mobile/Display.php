@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP version 5
+ * PHP versions 4 and 5
  *
  * LICENSE: This source file is subject to version 3.0 of the PHP license
  * that is available through the world-wide-web at the following URI:
@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Display.php,v 1.12 2008/02/11 12:43:16 kuboa Exp $
+ * @version    CVS: $Id: Display.php,v 1.13 2008/02/12 14:36:25 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -31,7 +31,7 @@
  * <code>
  * require_once 'Net/UserAgent/Mobile.php';
  *
- * $agent = Net_UserAgent_Mobile::factory();
+ * $agent = &Net_UserAgent_Mobile::factory();
  * $display = $agent->getDisplay();
  *
  * $width  = $display->getWidth();
@@ -74,12 +74,6 @@ class Net_UserAgent_Mobile_Display
     /**#@-*/
 
     /**#@+
-     * @access protected
-     */
-
-    /**#@-*/
-
-    /**#@+
      * @access private
      */
 
@@ -87,37 +81,37 @@ class Net_UserAgent_Mobile_Display
      * width of the display
      * @var integer
      */
-    private $_width;
+    var $_width;
 
     /**
      * height of the display
      * @var integer
      */
-    private $_height;
+    var $_height;
 
     /**
      * depth of the display
      * @var integer
      */
-    private $_depth;
+    var $_depth;
 
     /**
      * color capability of the display
      * @var boolean
      */
-    private $_color;
+    var $_color;
 
     /**
      * width (bytes) of the display
      * @var integer
      */
-    private $_widthBytes;
+    var $_widthBytes;
 
     /**
      * height (bytes) of the display
      * @var integer
      */
-    private $_heightBytes;
+    var $_heightBytes;
 
     /**#@-*/
 
@@ -126,14 +120,14 @@ class Net_UserAgent_Mobile_Display
      */
 
     // }}}
-    // {{{ construct()
+    // {{{ constructor
 
     /**
      * constructor
      *
      * @param array $data display infomation
      */
-    public function __construct($data)
+    function Net_UserAgent_Mobile_Display($data)
     {
         $this->_width  = (integer)@$data['width'];
         $this->_height = (integer)@$data['height'];
@@ -152,7 +146,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    public function calcSize()
+    function calcSize()
     {
         return $this->_width * $this->_height;
     }
@@ -165,7 +159,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return array
      */
-    public function getSize()
+    function getSize()
     {
         return array($this->_width, $this->_height);
     }
@@ -178,7 +172,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    public function getWidth()
+    function getWidth()
     {
         return $this->_width;
     }
@@ -191,7 +185,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    public function getHeight()
+    function getHeight()
     {
         return $this->_height;
     }
@@ -204,7 +198,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    public function getDepth()
+    function getDepth()
     {
         return $this->_depth;
     }
@@ -217,7 +211,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return boolean
      */
-    public function isColor()
+    function isColor()
     {
         return $this->_color;
     }
@@ -230,7 +224,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    public function getWidthBytes()
+    function getWidthBytes()
     {
         return $this->_widthBytes;
     }
@@ -243,16 +237,10 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    public function getHeightBytes()
+    function getHeightBytes()
     {
         return $this->_heightBytes;
     }
-
-    /**#@-*/
-
-    /**#@+
-     * @access protected
-     */
 
     /**#@-*/
 

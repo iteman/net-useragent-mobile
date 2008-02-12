@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP version 5
+ * PHP versions 4 and 5
  *
  * LICENSE: This source file is subject to version 3.0 of the PHP license
  * that is available through the world-wide-web at the following URI:
@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: EZweb.php,v 1.22 2008/02/11 12:43:16 kuboa Exp $
+ * @version    CVS: $Id: EZweb.php,v 1.23 2008/02/12 14:36:25 kuboa Exp $
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
  * @see        Net_UserAgent_Mobile_Common
@@ -39,7 +39,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * require_once 'Net/UserAgent/Mobile.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] = 'UP.Browser/3.01-HI02 UP.Link/3.2.1.2';
- * $agent = Net_UserAgent_Mobile::factory();
+ * $agent = &Net_UserAgent_Mobile::factory();
  *
  * printf("Name: %s\n", $agent->getName()); // 'UP.Browser'
  * printf("Version: %s\n", $agent->getVersion()); // 3.01
@@ -78,12 +78,6 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     /**#@-*/
 
     /**#@+
-     * @access protected
-     */
-
-    /**#@-*/
-
-    /**#@+
      * @access private
      */
 
@@ -91,19 +85,19 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * server string like 'UP.Link/3.2.1.2'
      * @var string
      */
-    private $_serverName = '';
+    var $_serverName = '';
 
     /**
      * comment like 'Google WAP Proxy/1.0'
      * @var string
      */
-    private $_comment = null;
+    var $_comment = null;
 
     /**
      * whether it's XHTML compliant or not
      * @var boolean
      */
-    private $_xhtmlCompliant = false;
+    var $_xhtmlCompliant = false;
 
     /**#@-*/
 
@@ -119,7 +113,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    public function isEZweb()
+    function isEZweb()
     {
         return true;
     }
@@ -132,7 +126,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    public function isTUKa()
+    function isTUKa()
     {
         $tuka = substr($this->_rawModel, 2, 1);
         if ($this->isWAP2()) {
@@ -149,6 +143,39 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     }
 
     // }}}
+    // {{{ parse()
+
+    /**
+     * Parses HTTP_USER_AGENT string.
+     *
+     * @param string $userAgent User-Agent string
+     */
+    function parse($userAgent)
+    {
+        if (preg_match('/^KDDI-(.*)/', $userAgent, $matches)) {
+
+            // KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
+            $this->_xhtmlCompliant = true;
+            list($this->_rawModel, $browser, $opt, $this->_serverName) =
+                explode(' ', $matches[1], 4);
+            list($this->name, $version) = explode('/', $browser);
+            $this->version = "$version $opt";
+        } else {
+
+            // UP.Browser/3.01-HI01 UP.Link/3.4.5.2
+            @list($browser, $this->_serverName, $comment) =
+                explode(' ', $userAgent, 3);
+            list($this->name, $software) = explode('/', $browser);
+            list($this->version, $this->_rawModel) =
+                explode('-', $software);
+            if ($comment) {
+                $this->_comment =
+                    preg_replace('/^\((.*)\)$/', '$1', $comment);
+            }
+        }
+    }
+
+    // }}}
     // {{{ makeDisplay()
 
     /**
@@ -158,7 +185,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *     object
      * @see Net_UserAgent_Mobile_Display
      */
-    public function makeDisplay()
+    function makeDisplay()
     {
         @list($width, $height) =
             explode(',', $this->getHeader('X-UP-DEVCAP-SCREENPIXELS'));
@@ -184,7 +211,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    public function getDeviceID()
+    function getDeviceID()
     {
         return $this->_rawModel;
     }
@@ -197,7 +224,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    public function getServer()
+    function getServer()
     {
         return $this->_serverName;
     }
@@ -210,7 +237,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    public function getComment()
+    function getComment()
     {
         return $this->_comment;
     }
@@ -223,7 +250,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    public function isXHTMLCompliant()
+    function isXHTMLCompliant()
     {
         return $this->_xhtmlCompliant;
     }
@@ -236,7 +263,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    public function getCarrierShortName()
+    function getCarrierShortName()
     {
         return 'E';
     }
@@ -249,7 +276,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    public function getCarrierLongName()
+    function getCarrierLongName()
     {
         return 'EZweb';
     }
@@ -262,48 +289,9 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    public function isWIN()
+    function isWIN()
     {
         return substr($this->_rawModel, 2, 1) == 3 ? true : false;
-    }
-
-    /**#@-*/
-
-    /**#@+
-     * @access protected
-     */
-
-    // }}}
-    // {{{ parse()
-
-    /**
-     * Parses HTTP_USER_AGENT string.
-     *
-     * @param string $userAgent User-Agent string
-     */
-    protected function _parse($userAgent)
-    {
-        if (preg_match('/^KDDI-(.*)/', $userAgent, $matches)) {
-
-            // KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
-            $this->_xhtmlCompliant = true;
-            list($this->_rawModel, $browser, $opt, $this->_serverName) =
-                explode(' ', $matches[1], 4);
-            list($this->_name, $version) = explode('/', $browser);
-            $this->_version = "$version $opt";
-        } else {
-
-            // UP.Browser/3.01-HI01 UP.Link/3.4.5.2
-            @list($browser, $this->_serverName, $comment) =
-                explode(' ', $userAgent, 3);
-            list($this->_name, $software) = explode('/', $browser);
-            list($this->_version, $this->_rawModel) =
-                explode('-', $software);
-            if ($comment) {
-                $this->_comment =
-                    preg_replace('/^\((.*)\)$/', '$1', $comment);
-            }
-        }
     }
 
     /**#@-*/
