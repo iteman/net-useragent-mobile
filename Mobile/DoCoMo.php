@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.46 2008/02/12 14:36:25 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.47 2008/02/18 03:40:46 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
@@ -521,10 +521,16 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
             $this->_model = 'SH2101V';
         }
 
-        if (preg_match('/^[^(\s]+\s?\((.*?)\)$/', $foma, $matches)) {
+        if (preg_match('/^[^(\s]+\s?\(([^)]+)\)(?:\(([^)]+)\))?$/', $foma, $matches)) {
             if (preg_match('/^compatible/', $matches[1])) { // The user-agent is DoCoMo compatible.
                 $this->_comment = $matches[1];
                 return;
+            }
+
+            if (count($matches) == 3) {
+                if (preg_match('/^compatible/', $matches[2])) { // The user-agent is DoCoMo compatible.
+                    $this->_comment = $matches[2];
+                }
             }
 
             $rest = explode(';', $matches[1]);
