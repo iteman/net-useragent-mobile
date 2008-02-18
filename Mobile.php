@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.36 2008/02/12 14:36:25 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.37 2008/02/18 03:02:39 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -131,7 +131,7 @@ class Net_UserAgent_Mobile
     function &factory($userAgent = null)
     {
         if (is_null($userAgent)) {
-            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
         // parse User-Agent string
@@ -198,7 +198,7 @@ class Net_UserAgent_Mobile
         }
 
         if (is_null($userAgent)) {
-            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
         if (!array_key_exists($userAgent, $instances)) {
@@ -294,7 +294,7 @@ class Net_UserAgent_Mobile
     function isDoCoMo($userAgent = null)
     {
         if (is_null($userAgent)) {
-            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
         if (preg_match('!^DoCoMo!', $userAgent)) {
@@ -318,7 +318,7 @@ class Net_UserAgent_Mobile
     function isEZweb($userAgent = null)
     {
         if (is_null($userAgent)) {
-            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
         if (preg_match('!^KDDI-!', $userAgent)) {
@@ -344,7 +344,7 @@ class Net_UserAgent_Mobile
     function isSoftBank($userAgent = null)
     {
         if (is_null($userAgent)) {
-            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
         if (preg_match('!^SoftBank!', $userAgent)) {
@@ -382,7 +382,7 @@ class Net_UserAgent_Mobile
     function isWillcom($userAgent = null)
     {
         if (is_null($userAgent)) {
-            $userAgent = $_SERVER['HTTP_USER_AGENT'];
+            $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
         if (preg_match('!^Mozilla/3\.0\((?:DDIPOCKET|WILLCOM);!', $userAgent)) {
