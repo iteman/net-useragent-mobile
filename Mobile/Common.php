@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Common.php,v 1.23 2008/02/12 14:36:25 kuboa Exp $
+ * @version    CVS: $Id: Common.php,v 1.24 2008/02/18 03:12:07 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -118,12 +118,12 @@ class Net_UserAgent_Mobile_Common extends PEAR
     {
         parent::PEAR('Net_UserAgent_Mobile_Error');
 
+        $this->_userAgent = $userAgent;
+
         $result = $this->parse($userAgent);
         if (Net_UserAgent_Mobile::isError($result)) {
             $this->isError($result);
         }
-
-        $this->_userAgent = $userAgent;
     }
 
     // }}}
