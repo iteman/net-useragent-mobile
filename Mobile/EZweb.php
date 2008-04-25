@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: EZweb.php,v 1.23 2008/02/12 14:36:25 kuboa Exp $
+ * @version    CVS: $Id: EZweb.php,v 1.24 2008/04/25 17:21:43 kuboa Exp $
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
  * @see        Net_UserAgent_Mobile_Common
@@ -292,6 +292,22 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     function isWIN()
     {
         return substr($this->_rawModel, 2, 1) == 3 ? true : false;
+    }
+
+    // }}}
+    // {{{ getUID()
+
+    /**
+     * Gets the UID of a subscriber.
+     *
+     * @return string
+     * @since Method available since Release 1.0.0
+     */
+    function getUID()
+    {
+        if (array_key_exists('HTTP_X_UP_SUBNO', $_SERVER)) {
+            return $_SERVER['HTTP_X_UP_SUBNO'];
+        }
     }
 
     /**#@-*/

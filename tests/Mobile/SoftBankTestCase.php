@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBankTestCase.php,v 1.2 2008/02/09 17:55:08 kuboa Exp $
+ * @version    CVS: $Id: SoftBankTestCase.php,v 1.3 2008/04/25 17:21:43 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -202,6 +202,23 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
         $this->assertTrue($agent->isTypeP());
         $this->assertEquals('J-EMULATOR', $agent->getName());
         $this->assertEquals('4.3', $agent->getVersion());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheUidOfASubscriber()
+    {
+        $uid = '1234567890123456';
+        $_SERVER['HTTP_X_JPHONE_UID'] = $uid;
+        $agent = new Net_UserAgent_Mobile_SoftBank('SoftBank/1.0/706SC/SCJ001 Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1');
+
+        $this->assertEquals($uid, $agent->getUID());
+
+        unset($_SERVER['HTTP_X_JPHONE_UID']);
+        $agent = new Net_UserAgent_Mobile_SoftBank('SoftBank/1.0/706SC/SCJ001 Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1');
+
+        $this->assertNull($agent->getUID());
     }
 
     /**#@-*/

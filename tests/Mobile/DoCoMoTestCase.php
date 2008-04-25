@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.9 2008/02/18 03:40:46 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.10 2008/04/25 17:21:43 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1098,6 +1098,23 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
         $this->assertEquals(100, $agent->getCacheSize());
         $this->assertEquals('DoCoMo', $agent->getName());
         $this->assertEquals('2.0', $agent->getVersion());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheUidOfASubscriber()
+    {
+        $uid = '1234567';
+        $_SERVER['HTTP_X_DCMGUID'] = $uid;
+        $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 SH905i(c100;TB;W24H16)');
+
+        $this->assertEquals($uid, $agent->getUID());
+
+        unset($_SERVER['HTTP_X_DCMGUID']);
+        $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 SH905i(c100;TB;W24H16)');
+
+        $this->assertNull($agent->getUID());
     }
 
     /**#@-*/

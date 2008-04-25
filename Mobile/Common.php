@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Common.php,v 1.24 2008/02/18 03:12:07 kuboa Exp $
+ * @version    CVS: $Id: Common.php,v 1.25 2008/04/25 17:21:43 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -499,6 +499,17 @@ class Net_UserAgent_Mobile_Common extends PEAR
     {
         return $this->_rawModel;
     }
+
+    // }}}
+    // {{{ getUID()
+
+    /**
+     * Gets the UID of a subscriber.
+     *
+     * @return string
+     * @since Method available since Release 1.0.0
+     */
+    function getUID() {}
 
     /**#@-*/
 

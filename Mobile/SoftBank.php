@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBank.php,v 1.8 2008/02/12 14:36:25 kuboa Exp $
+ * @version    CVS: $Id: SoftBank.php,v 1.9 2008/04/25 17:21:43 kuboa Exp $
  * @since      File available since Release 0.20.0
  */
 
@@ -416,6 +416,22 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
     function isSoftBank()
     {
         return true;
+    }
+
+    // }}}
+    // {{{ getUID()
+
+    /**
+     * Gets the UID of a subscriber.
+     *
+     * @return string
+     * @since Method available since Release 1.0.0
+     */
+    function getUID()
+    {
+        if (array_key_exists('HTTP_X_JPHONE_UID', $_SERVER)) {
+            return $_SERVER['HTTP_X_JPHONE_UID'];
+        }
     }
 
     /**#@-*/
