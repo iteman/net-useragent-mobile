@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: package.php,v 1.4 2008/02/10 11:46:17 kuboa Exp $
+ * @version    CVS: $Id: package.php,v 1.5 2008/05/03 15:02:13 kuboa Exp $
  * @since      File available since Release 0.30.0
  */
 
@@ -23,41 +23,32 @@ require_once 'PEAR/PackageFileManager2.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '0.31.0';
+$releaseVersion = '1.0.0RC1';
 $releaseStability = 'beta';
 $apiVersion = '0.30.0';
 $apiStability = 'beta';
 $notes = 'A new release of Net_UserAgent_Mobile is now available.
 
-What\'s New in Net_UserAgent_Mobile 0.31.0
+What\'s New in Net_UserAgent_Mobile 1.0.0RC1
 
- * Updated DoCoMo Support: A lot of new models since the release 0.30.0 have been supported. Thanks to yosuke for providing a patch.
- * Some useful interfaces by the Net_UserAgent_Mobile class: The new methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() can be used directly to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom.
- * Enhanced parsers: The Net_UserAgent_Mobile class and the SoftBank parser support SoftBank emulators. And the DoCoMo parser supports Yahoo!\'s Web Crawler. Thanks to Hiroaki Kawai for feature requests and providing patches.
+ * UID support: Getting subscriber IDs (UIDs) by getUID() has been supported.
+ * Updated DoCoMo Support: 14 new models since the release 0.31.0 have been supported. And also DeNA\'s Web Crawler has been supported.
+ * Two defect fixes: Two minor defects (#13128 and #13129) have been fixed.
 
 See the following release notes for details.
 
 Enhancements
 ============
 
-- Added support for a lot of models. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
-- Changed the behavior of singleton() so that it creates a cache for each user-agent. (Net_UserAgent_Mobile)
-- Added the method isSoftBank() to check whether an agent is SoftBank or not. (Net_UserAgent_Mobile_Common)
-- Renamed the class name from Net_UserAgent_Mobile_Vodafone to Net_UserAgent_Mobile_SoftBank.
-- Added the methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom by a given user agent string or by the HTTP header in an environment. (Net_UserAgent_Mobile)
-- Added the method isWillcom() to check whether an agent is Willcom or not. (Net_UserAgent_Mobile_Common)
-- Renamed the class name from Net_UserAgent_Mobile_AirHPhone to Net_UserAgent_Mobile_Willcom.
-- Added $_model/$_rawModel properties and getModel()/getRawModel() methods. (Net_UserAgent_Mobile_Common)
-- Removed getDeviceID(). (Net_UserAgent_Mobile_NonMobile)
-- Added support some emulators. (Request #12877) (Net_UserAgent_Mobile, Net_UserAgent_Mobile_SoftBank)
-- Added support for Yahoo!\'s Web Crawler. (Request #13061) (Net_UserAgent_Mobile_DoCoMo)
+- Added support for DeNA\'s Web Crawler. (Request #13130) (Net_UserAgent_Mobile_DoCoMo)
+- Added support for getting subscriber IDs (UIDs) by getUID().
+- Added support for NM705i, L705iX, F883iESS, SH705i, SH705i2, SO905iCS, F905iBiz, P905iTV, P705i, N705imyu, P705imyu, SO705i, P705iCL, F884i. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
 
 Defect Fixes
 ============
 
-- Fixed the model name from N506ISII to N506IS2. (Net_UserAgent_Mobile_DoCoMoDisplayMap)
-- Fixed a defect that caused supported HTML versions for some user agents that support HTML version 6.0 or greater to be detected as 5.0. (Net_UserAgent_Mobile_DoCoMo)
-- Fixed invalid width and height of some models. (Net_UserAgent_Mobile_DoCoMoDisplayMap)';
+- Added error control operators to all $_SERVER[\'HTTP_USER_AGENT\'] to avoid PHP notices. (Bug #13128) (Net_UserAgent_Mobile)
+- Fixed a defect that the user agent string is not included in an error message raised from noMatch(). (Bug #13129) (Net_UserAgent_Mobile_Common)';
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'cvs',

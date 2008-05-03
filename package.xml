@@ -15,10 +15,10 @@ See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent</descri
   <email>iteman@users.sourceforge.net</email>
   <active>yes</active>
  </lead>
- <date>2008-02-10</date>
- <time>20:45:04</time>
+ <date>2008-05-04</date>
+ <time>00:01:02</time>
  <version>
-  <release>0.31.0</release>
+  <release>1.0.0RC1</release>
   <api>0.30.0</api>
  </version>
  <stability>
@@ -28,35 +28,26 @@ See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent</descri
  <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
  <notes>A new release of Net_UserAgent_Mobile is now available.
 
-What&apos;s New in Net_UserAgent_Mobile 0.31.0
+What&apos;s New in Net_UserAgent_Mobile 1.0.0RC1
 
- * Updated DoCoMo Support: A lot of new models since the release 0.30.0 have been supported. Thanks to yosuke for providing a patch.
- * Some useful interfaces by the Net_UserAgent_Mobile class: The new methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() can be used directly to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom.
- * Enhanced parsers: The Net_UserAgent_Mobile class and the SoftBank parser support SoftBank emulators. And the DoCoMo parser supports Yahoo!&apos;s Web Crawler. Thanks to Hiroaki Kawai for feature requests and providing patches.
+ * UID support: Getting subscriber IDs (UIDs) by getUID() has been supported.
+ * Updated DoCoMo Support: 14 new models since the release 0.31.0 have been supported. And also DeNA&apos;s Web Crawler has been supported.
+ * Two defect fixes: Two minor defects (#13128 and #13129) have been fixed.
 
 See the following release notes for details.
 
 Enhancements
 ============
 
-- Added support for a lot of models. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
-- Changed the behavior of singleton() so that it creates a cache for each user-agent. (Net_UserAgent_Mobile)
-- Added the method isSoftBank() to check whether an agent is SoftBank or not. (Net_UserAgent_Mobile_Common)
-- Renamed the class name from Net_UserAgent_Mobile_Vodafone to Net_UserAgent_Mobile_SoftBank.
-- Added the methods isMobile() and isDoCoMo()/isEZweb()/isSoftBank()/isWillcom() to check whether or not the user agent is mobile/DoCoMo/EZweb/SoftBank/Willcom by a given user agent string or by the HTTP header in an environment. (Net_UserAgent_Mobile)
-- Added the method isWillcom() to check whether an agent is Willcom or not. (Net_UserAgent_Mobile_Common)
-- Renamed the class name from Net_UserAgent_Mobile_AirHPhone to Net_UserAgent_Mobile_Willcom.
-- Added $_model/$_rawModel properties and getModel()/getRawModel() methods. (Net_UserAgent_Mobile_Common)
-- Removed getDeviceID(). (Net_UserAgent_Mobile_NonMobile)
-- Added support some emulators. (Request #12877) (Net_UserAgent_Mobile, Net_UserAgent_Mobile_SoftBank)
-- Added support for Yahoo!&apos;s Web Crawler. (Request #13061) (Net_UserAgent_Mobile_DoCoMo)
+- Added support for DeNA&apos;s Web Crawler. (Request #13130) (Net_UserAgent_Mobile_DoCoMo)
+- Added support for getting subscriber IDs (UIDs) by getUID().
+- Added support for NM705i, L705iX, F883iESS, SH705i, SH705i2, SO905iCS, F905iBiz, P905iTV, P705i, N705imyu, P705imyu, SO705i, P705iCL, F884i. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
 
 Defect Fixes
 ============
 
-- Fixed the model name from N506ISII to N506IS2. (Net_UserAgent_Mobile_DoCoMoDisplayMap)
-- Fixed a defect that caused supported HTML versions for some user agents that support HTML version 6.0 or greater to be detected as 5.0. (Net_UserAgent_Mobile_DoCoMo)
-- Fixed invalid width and height of some models. (Net_UserAgent_Mobile_DoCoMoDisplayMap)</notes>
+- Added error control operators to all $_SERVER[&apos;HTTP_USER_AGENT&apos;] to avoid PHP notices. (Bug #13128) (Net_UserAgent_Mobile)
+- Fixed a defect that the user agent string is not included in an error message raised from noMatch(). (Bug #13129) (Net_UserAgent_Mobile_Common)</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <dir name="Mobile">
@@ -191,6 +182,40 @@ Defect Fixes
   </filelist>
  </phprelease>
  <changelog>
+  <release>
+   <version>
+    <release>1.0.0RC1</release>
+    <api>0.30.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2008-05-04</date>
+   <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
+   <notes>A new release of Net_UserAgent_Mobile is now available.
+
+What&apos;s New in Net_UserAgent_Mobile 1.0.0RC1
+
+ * UID support: Getting subscriber IDs (UIDs) by getUID() has been supported.
+ * Updated DoCoMo Support: 14 new models since the release 0.31.0 have been supported. And also DeNA&apos;s Web Crawler has been supported.
+ * Two defect fixes: Two minor defects (#13128 and #13129) have been fixed.
+
+See the following release notes for details.
+
+Enhancements
+============
+
+- Added support for DeNA&apos;s Web Crawler. (Request #13130) (Net_UserAgent_Mobile_DoCoMo)
+- Added support for getting subscriber IDs (UIDs) by getUID().
+- Added support for NM705i, L705iX, F883iESS, SH705i, SH705i2, SO905iCS, F905iBiz, P905iTV, P705i, N705imyu, P705imyu, SO705i, P705iCL, F884i. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap)
+
+Defect Fixes
+============
+
+- Added error control operators to all $_SERVER[&apos;HTTP_USER_AGENT&apos;] to avoid PHP notices. (Bug #13128) (Net_UserAgent_Mobile)
+- Fixed a defect that the user agent string is not included in an error message raised from noMatch(). (Bug #13129) (Net_UserAgent_Mobile_Common)</notes>
+  </release>
   <release>
    <version>
     <release>0.31.0</release>
