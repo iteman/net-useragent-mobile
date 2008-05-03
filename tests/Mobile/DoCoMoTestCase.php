@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.10 2008/04/25 17:21:43 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.11 2008/05/03 14:22:03 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -212,6 +212,9 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 NM850iG(c100;TB;W22H10)' => array('model' => 'NM850iG', 'htmlVersion' => '4.0', 'width' => 176, 'height' => 144),
                                'DoCoMo/2.0 NM850iG(c100;TD)' => array('model' => 'NM850iG', 'htmlVersion' => '4.0', 'width' => 176, 'height' => 144),
                                'DoCoMo/2.0 NM850iG(c100;TJ)' => array('model' => 'NM850iG', 'htmlVersion' => '4.0', 'width' => 176, 'height' => 144),
+                               'DoCoMo/2.0 NM705i(c100;TB;W15H13)' => array('model' => 'NM705i', 'htmlVersion' => '4.0', 'width' => 231, 'height' => 235),
+                               'DoCoMo/2.0 NM705i(c100;TD)' => array('model' => 'NM705i', 'htmlVersion' => '4.0', 'width' => 231, 'height' => 235),
+                               'DoCoMo/2.0 NM705i(c100;TJ)' => array('model' => 'NM705i', 'htmlVersion' => '4.0', 'width' => 231, 'height' => 235),
 
                                // HTML 5.0
                                'DoCoMo/1.0/D505i/c20/TB/W20H10' => array('model' => 'D505i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 270),
@@ -345,7 +348,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 N900i(c100;TB;W30H15)' => array('model' => 'N900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 269),
                                'DoCoMo/2.0 N900i(c100;TD)' => array('model' => 'N900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 269),
                                'DoCoMo/2.0 N900i(c100;TJ)' => array('model' => 'N900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 269),
-                               'DoCoMo/2.0 P900i(c100;TB;W24H12)' => array('model' => 'P900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
+                               'DoCoMo/2.0 P900i(c100;TB;W24H11)' => array('model' => 'P900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
                                'DoCoMo/2.0 P900i(c100;TB;W20H09)' => array('model' => 'P900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
                                'DoCoMo/2.0 P900i(c100;TB;W30H14)' => array('model' => 'P900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
                                'DoCoMo/2.0 P900i(c100;TD)' => array('model' => 'P900i', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
@@ -358,7 +361,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 F900iT(c100;TB;W28H15)' => array('model' => 'F900iT', 'htmlVersion' => '5.0', 'width' => 230, 'height' => 240),
                                'DoCoMo/2.0 F900iT(c100;TD)' => array('model' => 'F900iT', 'htmlVersion' => '5.0', 'width' => 230, 'height' => 240),
                                'DoCoMo/2.0 F900iT(c100;TJ)' => array('model' => 'F900iT', 'htmlVersion' => '5.0', 'width' => 230, 'height' => 240),
-                               'DoCoMo/2.0 P900iV(c100;TB;W24H12)' => array('model' => 'P900iV', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
+                               'DoCoMo/2.0 P900iV(c100;TB;W24H11)' => array('model' => 'P900iV', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
                                'DoCoMo/2.0 P900iV(c100;TB;W20H09)' => array('model' => 'P900iV', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
                                'DoCoMo/2.0 P900iV(c100;TB;W30H14)' => array('model' => 'P900iV', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
                                'DoCoMo/2.0 P900iV(c100;TD)' => array('model' => 'P900iV', 'htmlVersion' => '5.0', 'width' => 240, 'height' => 266),
@@ -722,6 +725,12 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 L705i(c100;TB;W21H11)' => array('model' => 'L705i', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
                                'DoCoMo/2.0 L705i(c100;TD)' => array('model' => 'L705i', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
                                'DoCoMo/2.0 L705i(c100;TJ)' => array('model' => 'L705i', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
+                               'DoCoMo/2.0 L705iX(c100;TB;W24H14)' => array('model' => 'L705iX', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
+                               'DoCoMo/2.0 L705iX(c100;TB;W20H11)' => array('model' => 'L705iX', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
+                               'DoCoMo/2.0 L705iX(c100;TB;W30H17)' => array('model' => 'L705iX', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
+                               'DoCoMo/2.0 L705iX(c100;TB;W21H11)' => array('model' => 'L705iX', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
+                               'DoCoMo/2.0 L705iX(c100;TD)' => array('model' => 'L705iX', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
+                               'DoCoMo/2.0 L705iX(c100;TJ)' => array('model' => 'L705iX', 'htmlVersion' => '6.0', 'width' => 240, 'height' => 280),
 
                                // HTML 7.0
                                'DoCoMo/2.0 SH903i(c100;TB;W24H16)' => array('model' => 'SH903i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
@@ -899,6 +908,9 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 P704i(c100;TJ)' => array('model' => 'P704i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 270),
                                'DoCoMo/2.0 F883iES(c100;TB;W20H08)' => array('model' => 'F883iES', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 256),
                                'DoCoMo/2.0 F883iES(c100;TB;W16H08)' => array('model' => 'F883iES', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 256),
+                               'DoCoMo/2.0 F883iESS(c100;TB;W20H08)' => array('model' => 'F883iESS', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 256),
+                               'DoCoMo/2.0 F883iESS(c100;TB;W16H08)' => array('model' => 'F883iESS', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 256),
+
                                'DoCoMo/2.0 F801i(c100;TB;W24H17)' => array('model' => 'F801i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 352),
                                'DoCoMo/2.0 F801i(c100;TB;W20H14)' => array('model' => 'F801i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 352),
                                'DoCoMo/2.0 F801i(c100;TB;W30H22)' => array('model' => 'F801i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 352),
@@ -919,6 +931,16 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 D705imyu(c100;TB;W30H15)' => array('model' => 'D705imyu', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 240),
                                'DoCoMo/2.0 D705imyu(c100;TD)' => array('model' => 'D705imyu', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 240),
                                'DoCoMo/2.0 D705imyu(c100;TJ)' => array('model' => 'D705imyu', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 240),
+                               'DoCoMo/2.0 SH705i(c100;TB;W24H16)' => array('model' => 'SH705i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i(c100;TB;W20H13)' => array('model' => 'SH705i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i(c100;TB;W30H20)' => array('model' => 'SH705i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i(c100;TD)' => array('model' => 'SH705i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i(c100;TJ)' => array('model' => 'SH705i', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i2(c100;TB;W20H13)' => array('model' => 'SH705i2', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i2(c100;TB;W24H16)' => array('model' => 'SH705i2', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i2(c100;TB;W30H20)' => array('model' => 'SH705i2', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i2(c100;TD)' => array('model' => 'SH705i2', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SH705i2(c100;TJ)' => array('model' => 'SH705i2', 'htmlVersion' => '7.0', 'width' => 240, 'height' => 320),
 
                                // HTML 7.1
                                'DoCoMo/2.0 SH905i(c100;TB;W24H16)' => array('model' => 'SH905i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
@@ -996,6 +1018,31 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 SH905iTV(c100;TB;W16H08)' => array('model' => 'SH905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
                                'DoCoMo/2.0 SH905iTV(c100;TD)' => array('model' => 'SH905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
                                'DoCoMo/2.0 SH905iTV(c100;TJ)' => array('model' => 'SH905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SO905iCS(c100;TB;W24H18)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 SO905iCS(c100;TB;W20H15)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 SO905iCS(c100;TB;W30H23)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 SO905iCS(c100;TB;W16H12)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 SO905iCS(c100;TB;W12H9)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 SO905iCS(c100;TB;W20H10)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 SO905iCS(c100;TD)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 SO905iCS(c100;TJ)' => array('model' => 'SO905iCS', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 368),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W24H17)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W24H12)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W20H14)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W20H10)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W30H22)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W30H15)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W16H12)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W16H8)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W40H29)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TB;W40H20)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TD)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 F905iBiz(c100;TJ)' => array('model' => 'F905iBiz', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 352),
+                               'DoCoMo/2.0 P905iTV(c100;TB;W24H15)' => array('model' => 'P905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P905iTV(c100;TB;W20H13)' => array('model' => 'P905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P905iTV(c100;TB;W30H19)' => array('model' => 'P905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P905iTV(c100;TD)' => array('model' => 'P905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P905iTV(c100;TJ)' => array('model' => 'P905iTV', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
                                'DoCoMo/2.0 P705i(c100;TB;W24H15)' => array('model' => 'P705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
                                'DoCoMo/2.0 P705i(c100;TB;W20H13)' => array('model' => 'P705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
                                'DoCoMo/2.0 P705i(c100;TB;W30H19)' => array('model' => 'P705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
@@ -1007,7 +1054,35 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                                'DoCoMo/2.0 N705i(c100;TB;W30H20)' => array('model' => 'N705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
                                'DoCoMo/2.0 N705i(c100;TB;W16H10)' => array('model' => 'N705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
                                'DoCoMo/2.0 N705i(c100;TD)' => array('model' => 'N705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
-                               'DoCoMo/2.0 N705i(c100;TJ)' => array('model' => 'N705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320)
+                               'DoCoMo/2.0 N705i(c100;TJ)' => array('model' => 'N705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 N705imyu(c100;TB;W24H16)' => array('model' => 'N705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 N705imyu(c100;TB;W20H13)' => array('model' => 'N705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 N705imyu(c100;TB;W30H20)' => array('model' => 'N705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 N705imyu(c100;TB;W16H10)' => array('model' => 'N705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 N705imyu(c100;TD)' => array('model' => 'N705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 N705imyu(c100;TJ)' => array('model' => 'N705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 P705imyu(c100;TB;W24H15)' => array('model' => 'P705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705imyu(c100;TB;W20H13)' => array('model' => 'P705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705imyu(c100;TB;W30H19)' => array('model' => 'P705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705imyu(c100;TB;W16H10)' => array('model' => 'P705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705imyu(c100;TD)' => array('model' => 'P705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705imyu(c100;TJ)' => array('model' => 'P705imyu', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 SO705i(c100;TB;W24H16)' => array('model' => 'SO705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SO705i(c100;TB;W20H13)' => array('model' => 'SO705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SO705i(c100;TB;W30H20)' => array('model' => 'SO705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SO705i(c100;TB;W16H10)' => array('model' => 'SO705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SO705i(c100;TD)' => array('model' => 'SO705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 SO705i(c100;TJ)' => array('model' => 'SO705i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 320),
+                               'DoCoMo/2.0 P705iCL(c100;TB;W16H10)' => array('model' => 'P705iCL', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705iCL(c100;TB;W20H13)' => array('model' => 'P705iCL', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705iCL(c100;TB;W24H15)' => array('model' => 'P705iCL', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705iCL(c100;TB;W30H19)' => array('model' => 'P705iCL', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705iCL(c100;TD)' => array('model' => 'P705iCL', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 P705iCL(c100;TJ)' => array('model' => 'P705iCL', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 350),
+                               'DoCoMo/2.0 F884i(c100;TB;W20H11)' => array('model' => 'F884i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 364),
+                               'DoCoMo/2.0 F884i(c100;TB;W16H11)' => array('model' => 'F884i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 364),
+                               'DoCoMo/2.0 F884i(c100;TD)' => array('model' => 'F884i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 364),
+                               'DoCoMo/2.0 F884i(c100;TJ)' => array('model' => 'F884i', 'htmlVersion' => '7.1', 'width' => 240, 'height' => 364)
                                );
 
     /**#@-*/
