@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBankTestCase.php,v 1.3 2008/04/25 17:21:43 kuboa Exp $
+ * @version    CVS: $Id: SoftBankTestCase.php,v 1.4 2008/05/09 14:58:05 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -164,6 +164,7 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
         $this->assertTrue($agent->isType3GC());
         $this->assertEquals('Semulator', $agent->getName());
         $this->assertEquals('1.0', $agent->getVersion());
+        $this->assertEquals('T', $agent->getVendor());
 
         $agent = new Net_UserAgent_Mobile_SoftBank('Vemulator/1.0/V902SH/SHJ001/SN123456789012345');
 
@@ -175,6 +176,7 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
         $this->assertTrue($agent->isType3GC());
         $this->assertEquals('Vemulator', $agent->getName());
         $this->assertEquals('1.0', $agent->getVersion());
+        $this->assertEquals('SH', $agent->getVendor());
     }
 
     public function testShouldSupportVemulator()
@@ -189,6 +191,7 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
         $this->assertTrue($agent->isType3GC());
         $this->assertEquals('Vemulator', $agent->getName());
         $this->assertEquals('1.0', $agent->getVersion());
+        $this->assertEquals('SH', $agent->getVendor());
     }
 
     public function testShouldSupportJemulator()
@@ -202,6 +205,7 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
         $this->assertTrue($agent->isTypeP());
         $this->assertEquals('J-EMULATOR', $agent->getName());
         $this->assertEquals('4.3', $agent->getVersion());
+        $this->assertEquals('SH', $agent->getVendor());
     }
 
     /**
@@ -219,6 +223,103 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
         $agent = new Net_UserAgent_Mobile_SoftBank('SoftBank/1.0/706SC/SCJ001 Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1');
 
         $this->assertNull($agent->getUID());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheJavaInformationOfAUserAgent()
+    {
+        $profiles = array('J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0' => array('Profile' => 'MIDP-1.0', 'Configuration' => 'CLDC-1.0', 'Ext-Profile' => 'JSCL-1.1.0'),
+                          'Vodafone/1.0/V702NK/NKJ001 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1' => array('Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1'),
+                          'Vodafone/1.0/V802SE/SEJ001/SN123456789012345 Browser/SEMC-Browser/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1' => array('model' => 'V802SE', 'Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1'),
+                          'Vodafone/1.0/V902SH/SHJ001 Browser/UP.Browser/7.0.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1 Ext-J-Profile/JSCL-1.2.2 Ext-V-Profile/VSCL-2.0.0' => array('model' => 'V902SH', 'Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1'),
+                          'Vodafone/1.0/V802N/NJ001 Browser/UP.Browser/7.0.2.1.258 Profile/MIDP-2.0 Configuration/CLDC-1.1 Ext-J-Profile/JSCL-1.2.2 Ext-V-Profile/VSCL-2.0.0' => array('model' => 'V802N', 'Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1'),
+                          'MOT-V980/80.2F.2E. MIB/2.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1' => array('model' => 'V980', 'Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1'),
+                          'SoftBank/1.0/705P/PJP10 Browser/Teleca-Browser/3.1 Profile/MIDP-2.0 Configuration/CLDC-1.1' => array('model' => '705P', 'Profile' => 'MIDP-2.0', 'Configuration' => 'CLDC-1.1')
+                          );
+        while (list($userAgent, $profile) = each($profiles)) {
+            $agent = new Net_UserAgent_Mobile_SoftBank($userAgent);
+            $javaInfo = $agent->getJavaInfo();
+
+            $this->assertEquals($profile['Profile'], $javaInfo['Profile']);
+            $this->assertEquals($profile['Configuration'], $javaInfo['Configuration']);
+
+            if (array_key_exists('Ext-Profile', $profile)) {
+                $this->assertEquals($profile['Ext-Profile'], $javaInfo['Ext-Profile']);
+            } else {
+                if (!is_null($javaInfo['Ext-Profile'])) {
+                    $this->fail($agent->getModel());
+                }
+            }
+        }
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldTellWhetherAUserAgentIsAModelTypeC()
+    {
+        foreach (array('J-PHONE/2.0/J-DN02', 'J-PHONE/3.0/J-PE03_a') as $userAgent) {
+            $agent = new Net_UserAgent_Mobile_SoftBank($userAgent);
+
+            $this->assertTrue($agent->isTypeC());
+            $this->assertFalse($agent->isTypeP());
+            $this->assertFalse($agent->isTypeW());
+            $this->assertFalse($agent->isType3GC());
+        }
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldTellWhetherAUserAgentIsAModelTypeP()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('J-PHONE/4.0/J-SH51/SNJSHA3029293 SH/0001aa Profile/MIDP-1.0 Configuration/CLDC-1.0 Ext-Profile/JSCL-1.1.0');
+
+        $this->assertFalse($agent->isTypeC());
+        $this->assertTrue($agent->isTypeP());
+        $this->assertFalse($agent->isTypeW());
+        $this->assertFalse($agent->isType3GC());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldTellWhetherAUserAgentIsAModelTypeW()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('J-PHONE/5.0/V801SA');
+
+        $this->assertFalse($agent->isTypeC());
+        $this->assertFalse($agent->isTypeP());
+        $this->assertTrue($agent->isTypeW());
+        $this->assertFalse($agent->isType3GC());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldTellWhetherAUserAgentIsAModelType3Gc()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('Vodafone/1.0/V702NK/NKJ001 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1');
+
+        $this->assertFalse($agent->isTypeC());
+        $this->assertFalse($agent->isTypeP());
+        $this->assertFalse($agent->isTypeW());
+        $this->assertTrue($agent->isType3GC());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheMsnameOfAUserAgent()
+    {
+        $_SERVER['HTTP_X_JPHONE_MSNAME'] = 'V702NK';
+        $agent = new Net_UserAgent_Mobile_SoftBank('Vodafone/1.0/V702NK/NKJ001 Series60/2.6 Nokia6630/2.39.148 Profile/MIDP-2.0 Configuration/CLDC-1.1');
+
+        $this->assertEquals('V702NK', $agent->getMsname());
+
+        unset($_SERVER['HTTP_X_JPHONE_MSNAME']);
     }
 
     /**#@-*/
