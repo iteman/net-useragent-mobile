@@ -15,9 +15,8 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.49 2008/05/03 14:22:02 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.50 2008/05/09 14:52:09 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
- * @see        Net_UserAgent_Mobile_Common
  * @since      File available since Release 0.1
  */
 
@@ -78,7 +77,6 @@ require_once 'Net/UserAgent/Mobile/DoCoMoDisplayMap.php';
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
- * @see        Net_UserAgent_Mobile_Common
  * @since      Class available since Release 0.1
  */
 class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
@@ -143,6 +141,62 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * @var string
      */
     var $_displayBytes;
+
+    /**
+     * The model names which have GPS capability.
+     *
+     * @var array
+     * @since Property available since Release 1.0.0
+     */
+    var $_gpsModels = array('F884i',
+                            'F801i',
+                            'F905iBiz',
+                            'SO905iCS',
+                            'N905iBiz',
+                            'N905imyu',
+                            'SO905i',
+                            'F905i',
+                            'P905i',
+                            'N905i',
+                            'D905i',
+                            'SH905i',
+                            'P904i',
+                            'D904i',
+                            'F904i',
+                            'N904i',
+                            'SH904i',
+                            'F883iESS',
+                            'F883iES',
+                            'F903iBSC',
+                            'SO903i',
+                            'F903i',
+                            'D903i',
+                            'N903i',
+                            'P903i',
+                            'SH903i',
+                            'SA800i',
+                            'SA702i',
+                            'SA700iS',
+                            'F505iGPS',
+                            'F661i'
+                            );
+
+    /**
+     * The HTML version map which maps models to HTML versions.
+     *
+     * @var array
+     * @since Property available since Release 1.0.0
+     */
+    var $_htmlVersionMap = array('[DFNP]501i' => '1.0',
+                                 '502i|821i|209i|651|691i|(F|N|P|KO)210i|^F671i$' => '2.0',
+                                 '(D210i|SO210i)|503i|211i|SH251i|692i|200[12]|2101V' => '3.0',
+                                 '504i|251i|^F671iS$|212i|2051|2102V|661i|2701|672i|SO213i|850i|^NM705i$' => '4.0',
+                                 'eggy|P751v' => '3.2',
+                                 '505i|252i|900i|506i|880i|253i|P213i|901i|700i|^(SH|P)851i|701i|881i|^SA800i$|600i|^L601i$|^M702i(S|G)$|^L602i$' => '5.0',
+                                 '902i|702i|851i|882i|^N601i$|^D800iDS$|^P703imyu$|^P704imyu$|^L704i$|^L705iX?$|^F883i$' => '6.0',
+                                 '903i|703i|904i|704i|883i|801i|^(F|D|SH)705i' => '7.0',
+                                 '905i|705i|884i' => '7.1'
+                                 );
 
     /**#@-*/
 
@@ -215,11 +269,11 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     {
         $display = Net_UserAgent_Mobile_DoCoMoDisplayMap::get($this->getModel());
         if (!is_null($this->_displayBytes)) {
-            list($widthBytes, $heightBytes) =
-                explode('*', $this->_displayBytes);
+            list($widthBytes, $heightBytes) = explode('*', $this->_displayBytes);
             $display['width_bytes']  = $widthBytes;
             $display['height_bytes'] = $heightBytes;
         }
+
         return new Net_UserAgent_Mobile_Display($display);
     }
 
@@ -233,27 +287,11 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function getHTMLVersion()
     {
-        static $htmlVersionMap;
-        if (!isset($htmlVersionMap)) {
-            $htmlVersionMap = array(
-                                    '[DFNP]501i' => '1.0',
-                                    '502i|821i|209i|651|691i|(F|N|P|KO)210i|^F671i$' => '2.0',
-                                    '(D210i|SO210i)|503i|211i|SH251i|692i|200[12]|2101V' => '3.0',
-                                    '504i|251i|^F671iS$|212i|2051|2102V|661i|2701|672i|SO213i|850i|^NM705i$' => '4.0',
-                                    'eggy|P751v' => '3.2',
-                                    '505i|252i|900i|506i|880i|253i|P213i|901i|700i|^(SH|P)851i|701i|881i|^SA800i$|600i|^L601i$|^M702i(S|G)$|^L602i$' => '5.0',
-                                    '902i|702i|851i|882i|^N601i$|^D800iDS$|^P703imyu$|^P704imyu$|^L704i$|^L705iX?$|^F883i$' => '6.0',
-                                    '903i|703i|904i|704i|883i|801i|^(F|D|SH)705i' => '7.0',
-                                    '905i|705i|884i' => '7.1'
-                                    );
-        }
-
-        foreach ($htmlVersionMap as $key => $value) {
+        foreach ($this->_htmlVersionMap as $key => $value) {
             if (preg_match("/$key/", $this->_rawModel)) {
                 return $value;
             }
         }
-        return null;
     }
 
     // }}}
@@ -287,7 +325,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function getSeries()
     {
-        if ($this->isFOMA() && preg_match('/(\d{4})/', $this->_rawModel)) {
+        if (preg_match('/(\d{4})/', $this->_rawModel)) {
             return 'FOMA';
         }
 
@@ -298,8 +336,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if ($this->_rawModel == 'P651ps') {
             return '651';
         }
-
-        return null;
     }
 
     // }}}
@@ -315,8 +351,6 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if (preg_match('/([A-Z]+)\d/', $this->_rawModel, $matches)) {
             return $matches[1];
         }
-
-        return null;
     }
 
     // }}}
@@ -411,15 +445,13 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     // {{{ isGPS()
 
     /**
+     * Returns whether a user agent is a GPS model or not.
+     *
      * @return boolean
      */ 
     function isGPS()
     {
-        static $gpsModels;
-        if (!isset($gpsModels)) {
-            $gpsModels = array('F661i', 'F505iGPS');
-        }
-        return in_array($this->_rawModel, $gpsModels);
+        return in_array($this->_rawModel, $this->_gpsModels);
     }
 
     // }}}
