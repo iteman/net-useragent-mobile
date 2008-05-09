@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.50 2008/05/09 14:52:09 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.51 2008/05/09 15:03:36 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @since      File available since Release 0.1
  */
@@ -308,11 +308,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
             return $this->_cacheSize;
         }
 
-        static $defaultCacheSize;
-        if (!isset($defaultCacheSize)) {
-            $defaultCacheSize = 5;
-        }
-        return $defaultCacheSize;
+        return 5;
     }
 
     // }}}
