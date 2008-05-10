@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.12 2008/05/07 13:26:23 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.13 2008/05/10 09:25:13 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1336,6 +1336,22 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                 $this->assertTrue($agent->isGPS(), $agent->getModel());
             }
         }
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheScreenInformationOfAUserAgent()
+    {
+        $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 P705iCL(c100;TB;W16H10)');
+        $display = $agent->getDisplay();
+
+        $this->assertEquals(240, $display->getWidth());
+        $this->assertEquals(350, $display->getHeight());
+        $this->assertTrue($display->isColor());
+        $this->assertEquals(262144, $display->getDepth());
+        $this->assertEquals(16, $display->getWidthBytes());
+        $this->assertEquals(10, $display->getHeightBytes());
     }
 
     /**#@-*/

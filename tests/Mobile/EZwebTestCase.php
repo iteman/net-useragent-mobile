@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: EZwebTestCase.php,v 1.3 2008/05/10 06:48:10 kuboa Exp $
+ * @version    CVS: $Id: EZwebTestCase.php,v 1.4 2008/05/10 09:25:13 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -311,6 +311,29 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
         $agent = new Net_UserAgent_Mobile_EZweb('UP.Browser/3.04-TST4 UP.Link/3.4.5.6');
 
         $this->assertTrue($agent->isWAP1());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheScreenInformationOfAUserAgent()
+    {
+        $_SERVER['HTTP_X_UP_DEVCAP_SCREENPIXELS'] = '90,70';
+        $_SERVER['HTTP_X_UP_DEVCAP_SCREENDEPTH'] = '16,RGB565';
+        $_SERVER['HTTP_X_UP_DEVCAP_ISCOLOR'] = '1';
+
+        $agent = new Net_UserAgent_Mobile_EZweb('KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1');
+
+        $display = $agent->getDisplay();
+
+        $this->assertEquals(90, $display->getWidth());
+        $this->assertEquals(70, $display->getHeight());
+        $this->assertTrue($display->isColor());
+        $this->assertEquals(65536, $display->getDepth());
+
+        unset($_SERVER['HTTP_X_UP_DEVCAP_ISCOLOR']);
+        unset($_SERVER['HTTP_X_UP_DEVCAP_SCREENDEPTH']);
+        unset($_SERVER['HTTP_X_UP_DEVCAP_SCREENPIXELS']);
     }
 
     /**#@-*/

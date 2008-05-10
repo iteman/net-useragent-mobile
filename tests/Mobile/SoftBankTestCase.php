@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBankTestCase.php,v 1.4 2008/05/09 14:58:05 kuboa Exp $
+ * @version    CVS: $Id: SoftBankTestCase.php,v 1.5 2008/05/10 09:25:13 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -320,6 +320,26 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
         $this->assertEquals('V702NK', $agent->getMsname());
 
         unset($_SERVER['HTTP_X_JPHONE_MSNAME']);
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheScreenInformationOfAUserAgent()
+    {
+        $_SERVER['HTTP_X_JPHONE_DISPLAY'] = '120*117';
+        $_SERVER['HTTP_X_JPHONE_COLOR'] = 'C256';
+        $agent = new Net_UserAgent_Mobile_SoftBank('J-PHONE/2.0/J-DN02');
+
+        $display = $agent->getDisplay();
+
+        $this->assertEquals(120, $display->getWidth());
+        $this->assertEquals(117, $display->getHeight());
+        $this->assertTrue($display->isColor());
+        $this->assertEquals(256, $display->getDepth());
+
+        unset($_SERVER['HTTP_X_JPHONE_COLOR']);
+        unset($_SERVER['HTTP_X_JPHONE_DISPLAY']);
     }
 
     /**#@-*/
