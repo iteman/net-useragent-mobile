@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.13 2008/05/10 09:25:13 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.14 2008/05/10 11:14:27 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1352,6 +1352,21 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
         $this->assertEquals(262144, $display->getDepth());
         $this->assertEquals(16, $display->getWidthBytes());
         $this->assertEquals(10, $display->getHeightBytes());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldUseAnExternalScreenInformationIfTheEnvironmentVariableIsGiven1()
+    {
+        $_SERVER['DOCOMO_MAP'] = dirname(__FILE__) . '/' . basename(__FILE__, '.php') . '/docomo-screen.xml';
+        $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 P705iCL(c100;TB;W16H10)');
+        $display = $agent->getDisplay();
+
+        $this->assertEquals(999, $display->getWidth());
+        $this->assertEquals(999, $display->getHeight());
+        $this->assertFalse($display->isColor());
+        $this->assertEquals(999, $display->getDepth());
     }
 
     /**#@-*/
