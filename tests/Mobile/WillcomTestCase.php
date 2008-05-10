@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: WillcomTestCase.php,v 1.1 2008/02/06 03:24:33 kuboa Exp $
+ * @version    CVS: $Id: WillcomTestCase.php,v 1.2 2008/05/10 09:38:52 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -90,6 +90,46 @@ class Net_UserAgent_Mobile_WillcomTestCase extends PHPUnit_Framework_TestCase
 
             $this->assertEquals($profile['model'], $agent->getModel());
         }
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheVendorNameOfAUserAgent()
+    {
+        $agent = new Net_UserAgent_Mobile_Willcom('Mozilla/3.0(WILLCOM;SANYO/WX310SA/2;1/1/C128) NetFront/3.3,61.198.142.127');
+
+        $this->assertEquals('SANYO', $agent->getVendor());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheModelVersionOfAUserAgent()
+    {
+        $agent = new Net_UserAgent_Mobile_Willcom('Mozilla/3.0(WILLCOM;SANYO/WX310SA/2;1/1/C128) NetFront/3.3,61.198.142.127');
+
+        $this->assertEquals('2;1', $agent->getModelVersion());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheBrowserVersionOfAUserAgent()
+    {
+        $agent = new Net_UserAgent_Mobile_Willcom('Mozilla/3.0(WILLCOM;SANYO/WX310SA/2;1/1/C128) NetFront/3.3,61.198.142.127');
+
+        $this->assertEquals('1', $agent->getBrowserVersion());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0
+     */
+    public function testShouldProvideTheCacheSizeOfAUserAgent()
+    {
+        $agent = new Net_UserAgent_Mobile_Willcom('Mozilla/3.0(WILLCOM;SANYO/WX310SA/2;1/1/C128) NetFront/3.3,61.198.142.127');
+
+        $this->assertEquals(128, $agent->getCacheSize());
     }
 
     /**#@-*/
