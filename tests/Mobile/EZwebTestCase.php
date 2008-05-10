@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: EZwebTestCase.php,v 1.4 2008/05/10 09:25:13 kuboa Exp $
+ * @version    CVS: $Id: EZwebTestCase.php,v 1.5 2008/05/10 11:39:46 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -199,7 +199,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheUidOfASubscriber()
     {
@@ -216,7 +216,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheVersionOfAUserAgent()
     {
@@ -230,7 +230,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheDeviceIdOfAUserAgent()
     {
@@ -244,7 +244,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheServerOfAUserAgent()
     {
@@ -258,7 +258,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldTellWhetherAUserAgentIsXhtmlCompliantModelOrNot()
     {
@@ -272,7 +272,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheCommentOfAUserAgent()
     {
@@ -286,7 +286,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldTellWhetherAUserAgentIsWap2ModelOrNot()
     {
@@ -300,7 +300,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldTellWhetherAUserAgentIsWap1ModelOrNot()
     {
@@ -314,7 +314,7 @@ class Net_UserAgent_Mobile_EZwebTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheScreenInformationOfAUserAgent()
     {

@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.15 2008/05/10 11:37:02 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.16 2008/05/10 11:39:46 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1177,7 +1177,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheUidOfASubscriber()
     {
@@ -1194,7 +1194,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheVersionOfAUserAgent()
     {
@@ -1207,7 +1207,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheCacheSizeOfAUserAgent()
     {
@@ -1220,7 +1220,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldTellWhetherAUserAgentIsFomaOrNot()
     {
@@ -1233,7 +1233,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheVendorOfAUserAgent()
     {
@@ -1246,7 +1246,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheSeriesOfAUserAgent()
     {
@@ -1259,7 +1259,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheStatusOfAUserAgent()
     {
@@ -1278,7 +1278,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheSerialNumberOfAUserAgent()
     {
@@ -1294,7 +1294,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheCardIdOfAUserAgent()
     {
@@ -1307,7 +1307,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheBandwidthOfAUserAgent()
     {
@@ -1322,7 +1322,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldTellWhetherAUserAgentIsAGpsModelOrNot()
     {
@@ -1340,7 +1340,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheScreenInformationOfAUserAgent()
     {
@@ -1356,7 +1356,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldUseAnExternalScreenInformationIfTheEnvironmentVariableIsGiven1()
     {

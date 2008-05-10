@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: WillcomTestCase.php,v 1.2 2008/05/10 09:38:52 kuboa Exp $
+ * @version    CVS: $Id: WillcomTestCase.php,v 1.3 2008/05/10 11:39:46 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -93,7 +93,7 @@ class Net_UserAgent_Mobile_WillcomTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheVendorNameOfAUserAgent()
     {
@@ -103,7 +103,7 @@ class Net_UserAgent_Mobile_WillcomTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheModelVersionOfAUserAgent()
     {
@@ -113,7 +113,7 @@ class Net_UserAgent_Mobile_WillcomTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheBrowserVersionOfAUserAgent()
     {
@@ -123,7 +123,7 @@ class Net_UserAgent_Mobile_WillcomTestCase extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @since Method available since Release 1.0.0
+     * @since Method available since Release 1.0.0RC1
      */
     public function testShouldProvideTheCacheSizeOfAUserAgent()
     {
