@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: package.php,v 1.5 2008/05/03 15:02:13 kuboa Exp $
+ * @version    CVS: $Id: package.php,v 1.6 2008/05/10 12:29:56 kuboa Exp $
  * @since      File available since Release 0.30.0
  */
 
@@ -87,7 +87,7 @@ $package->addInstallAs('Mobile.php', 'Net/UserAgent/Mobile.php');
 $package->addInstallAs('Mobile/Common.php', 'Net/UserAgent/Mobile/Common.php');
 $package->addInstallAs('Mobile/Display.php', 'Net/UserAgent/Mobile/Display.php');
 $package->addInstallAs('Mobile/DoCoMo.php', 'Net/UserAgent/Mobile/DoCoMo.php');
-$package->addInstallAs('Mobile/DoCoMoDisplayMap.php', 'Net/UserAgent/Mobile/DoCoMoDisplayMap.php');
+$package->addInstallAs('Mobile/DoCoMo/ScreenInfo.php', 'Net/UserAgent/Mobile/DoCoMo/ScreenInfo.php');
 $package->addInstallAs('Mobile/EZweb.php', 'Net/UserAgent/Mobile/EZweb.php');
 $package->addInstallAs('Mobile/NonMobile.php', 'Net/UserAgent/Mobile/NonMobile.php');
 $package->addInstallAs('Mobile/SoftBank.php', 'Net/UserAgent/Mobile/SoftBank.php');

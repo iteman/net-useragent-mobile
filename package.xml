@@ -15,8 +15,8 @@ See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent</descri
   <email>iteman@users.sourceforge.net</email>
   <active>yes</active>
  </lead>
- <date>2008-05-04</date>
- <time>00:01:02</time>
+ <date>2008-05-10</date>
+ <time>21:26:35</time>
  <version>
   <release>1.0.0RC1</release>
   <api>0.30.0</api>
@@ -51,6 +51,11 @@ Defect Fixes
  <contents>
   <dir baseinstalldir="/" name="/">
    <dir name="Mobile">
+    <dir name="DoCoMo">
+     <file baseinstalldir="/" name="ScreenInfo.php" role="php">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
+    </dir> <!-- /Mobile/DoCoMo -->
     <file baseinstalldir="/" name="Common.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
@@ -58,9 +63,6 @@ Defect Fixes
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
     <file baseinstalldir="/" name="DoCoMo.php" role="php">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="DoCoMoDisplayMap.php" role="php">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
     <file baseinstalldir="/" name="EZweb.php" role="php">
@@ -78,6 +80,11 @@ Defect Fixes
    </dir> <!-- /Mobile -->
    <dir name="tests">
     <dir name="Mobile">
+     <dir name="DoCoMoTestCase">
+      <file baseinstalldir="/" name="docomo-screen.xml" role="test">
+       <tasks:replace from="@package_version@" to="version" type="package-info" />
+      </file>
+     </dir> <!-- /tests/Mobile/DoCoMoTestCase -->
      <file baseinstalldir="/" name="AllTests.php" role="test">
       <tasks:replace from="@package_version@" to="version" type="package-info" />
      </file>
@@ -97,40 +104,7 @@ Defect Fixes
       <tasks:replace from="@package_version@" to="version" type="package-info" />
      </file>
     </dir> <!-- /tests/Mobile -->
-    <file baseinstalldir="/" name="00-compile.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="01-request.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="02-docomo.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="03-jphone.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="04-ezweb.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="05-display.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="06-nonmobile.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="07-airhphone.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="08-display-xmlmap.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="09-fallback-on-nomatch.phpt" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
     <file baseinstalldir="/" name="AllTests.php" role="test">
-     <tasks:replace from="@package_version@" to="version" type="package-info" />
-    </file>
-    <file baseinstalldir="/" name="DoCoMoMap.xml" role="test">
      <tasks:replace from="@package_version@" to="version" type="package-info" />
     </file>
     <file baseinstalldir="/" name="MobileTestCase.php" role="test">
@@ -174,7 +148,7 @@ Defect Fixes
    <install as="Net/UserAgent/Mobile/Common.php" name="Mobile/Common.php" />
    <install as="Net/UserAgent/Mobile/Display.php" name="Mobile/Display.php" />
    <install as="Net/UserAgent/Mobile/DoCoMo.php" name="Mobile/DoCoMo.php" />
-   <install as="Net/UserAgent/Mobile/DoCoMoDisplayMap.php" name="Mobile/DoCoMoDisplayMap.php" />
+   <install as="Net/UserAgent/Mobile/DoCoMo/ScreenInfo.php" name="Mobile/DoCoMo/ScreenInfo.php" />
    <install as="Net/UserAgent/Mobile/EZweb.php" name="Mobile/EZweb.php" />
    <install as="Net/UserAgent/Mobile/NonMobile.php" name="Mobile/NonMobile.php" />
    <install as="Net/UserAgent/Mobile/SoftBank.php" name="Mobile/SoftBank.php" />
@@ -191,7 +165,7 @@ Defect Fixes
     <release>beta</release>
     <api>beta</api>
    </stability>
-   <date>2008-05-04</date>
+   <date>2008-05-10</date>
    <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
    <notes>A new release of Net_UserAgent_Mobile is now available.
 
