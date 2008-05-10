@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBankTestCase.php,v 1.6 2008/05/10 11:39:46 kuboa Exp $
+ * @version    CVS: $Id: SoftBankTestCase.php,v 1.7 2008/05/10 13:14:17 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -248,7 +248,7 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
             if (array_key_exists('Ext-Profile', $profile)) {
                 $this->assertEquals($profile['Ext-Profile'], $javaInfo['Ext-Profile']);
             } else {
-                if (!is_null($javaInfo['Ext-Profile'])) {
+                if (array_key_exists('Ext-Profile', $javaInfo)) {
                     $this->fail($agent->getModel());
                 }
             }

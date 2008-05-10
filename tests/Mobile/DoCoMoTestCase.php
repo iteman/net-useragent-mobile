@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.16 2008/05/10 11:39:46 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.17 2008/05/10 13:14:17 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1286,7 +1286,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
                           'DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)' => array('serialNumber' => '0123456789abcde'),
                           'DoCoMo/2.0 NM850iG(c100;TB;W22H10;ser123456789012345;icc)' => array('serialNumber' => '123456789012345')
                           );
-        while (list($userAgent, $profile) = each($this->_profiles)) {
+        while (list($userAgent, $profile) = each($profiles)) {
             $agent = new Net_UserAgent_Mobile_DoCoMo($userAgent);
 
             $this->assertEquals($profile['serialNumber'], $agent->getSerialNumber());

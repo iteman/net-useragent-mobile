@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: ScreenInfo.php,v 1.2 2008/05/10 11:39:46 kuboa Exp $
+ * @version    CVS: $Id: ScreenInfo.php,v 1.3 2008/05/10 13:14:17 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
  * @since      File available since Release 1.0.0RC1
  */
@@ -1707,7 +1707,7 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
      */
     function &singleton()
     {
-        if (is_null($GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'])) {
+        if (@is_null($GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'])) {
             $GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'] = &new Net_UserAgent_Mobile_DoCoMo_ScreenInfo();
         }
 
