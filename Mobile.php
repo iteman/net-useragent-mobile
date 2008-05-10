@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.38 2008/05/10 03:06:35 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.39 2008/05/10 12:23:26 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -37,9 +37,9 @@ define('NET_USERAGENT_MOBILE_ERROR_NOT_FOUND', -3);
 /**
  * globals for fallback on no match
  *
- * @global boolean $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH']
+ * @global boolean $GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch']
  */
-$GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] = false;
+$GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch'] = false;
 
 // }}}
 // {{{ Net_UserAgent_Mobile
@@ -122,9 +122,9 @@ class Net_UserAgent_Mobile
      * If no argument is supplied, $_SERVER{'HTTP_*'} is used.
      *
      * @param string $userAgent User-Agent string
-     * @return Net_UserAgent_Mobile_Common|Net_UserAgent_Mobile_Error a newly created
-     *     or an existing Net_UserAgent_Mobile_Common object, or a PEAR error object
-     *     on error
+     * @return Net_UserAgent_Mobile_Common a newly created or an existing
+     *     Net_UserAgent_Mobile_Common object
+     * @throws Net_UserAgent_Mobile_Error
      */
     function &factory($userAgent = null)
     {
@@ -162,7 +162,7 @@ class Net_UserAgent_Mobile
         $instance = &new $class($userAgent);
         $error = &$instance->isError();
         if (Net_UserAgent_Mobile::isError($error)) {
-            if ($GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH']
+            if ($GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch']
                 && $error->getCode() == NET_USERAGENT_MOBILE_ERROR_NOMATCH
                 ) {
                 $instance = &Net_UserAgent_Mobile::factory('Net_UserAgent_Mobile_Fallback_On_NoMatch');
@@ -183,10 +183,9 @@ class Net_UserAgent_Mobile
      * a instance from existent ones
      *
      * @param string $userAgent User-Agent string
-     * @return Net_UserAgent_Mobile_Common|Net_UserAgent_Mobile_Error a newly created
-     *     or an existing Net_UserAgent_Mobile_Common object, or a PEAR error object
-     *     on error
-     * @see Net_UserAgent_Mobile::factory()
+     * @return Net_UserAgent_Mobile_Common a newly created or an existing
+     *     Net_UserAgent_Mobile_Common object
+     * @throws Net_UserAgent_Mobile_Error
      */
     function &singleton($userAgent = null)
     {

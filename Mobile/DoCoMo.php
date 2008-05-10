@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.53 2008/05/10 11:39:46 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.54 2008/05/10 12:23:26 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @since      File available since Release 0.1
  */
@@ -28,9 +28,8 @@ require_once 'Net/UserAgent/Mobile/Display.php';
 /**
  * NTT DoCoMo implementation
  *
- * Net_UserAgent_Mobile_DoCoMo is a subclass of
- * {@link Net_UserAgent_Mobile_Common}, which implements NTT docomo i-mode
- * user agents.
+ * Net_UserAgent_Mobile_DoCoMo is a subclass of {@link Net_UserAgent_Mobile_Common},
+ * which implements NTT docomo i-mode user agents.
  *
  * SYNOPSIS:
  * <code>
@@ -223,7 +222,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * Parses HTTP_USER_AGENT string.
      *
      * @param string $userAgent User-Agent string
-     * @return mixed void, or a PEAR error object on error
+     * @throws Net_UserAgent_Mobile_Error
      */
     function parse($userAgent)
     {
@@ -259,10 +258,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     /**
      * create a new {@link Net_UserAgent_Mobile_Display} class instance
      *
-     * @return object a newly created {@link Net_UserAgent_Mobile_Display}
-     *     object
-     * @see Net_UserAgent_Mobile_Display
-     * @see Net_UserAgent_Mobile_DoCoMoDisplayMap::get()
+     * @return Net_UserAgent_Mobile_Display
      */
     function makeDisplay()
     {
@@ -506,7 +502,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * parse main part of HTTP_USER_AGENT string (not FOMA)
      *
      * @param string $main main part of HTTP_USER_AGENT string
-     * @return mixed void, or a PEAR error object on error
+     * @throws Net_UserAgent_Mobile_Error
      */ 
     function _parseMain($main)
     {
@@ -553,7 +549,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * parse main part of HTTP_USER_AGENT string (FOMA)
      *
      * @param string $foma main part of HTTP_USER_AGENT string
-     * @return mixed void, or a PEAR error object on error
+     * @throws Net_UserAgent_Mobile_Error
      */ 
     function _parseFOMA($foma)
     {

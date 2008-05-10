@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: MobileTestCase.php,v 1.5 2008/02/06 02:03:13 kuboa Exp $
+ * @version    CVS: $Id: MobileTestCase.php,v 1.6 2008/05/10 12:23:26 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -88,8 +88,6 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
         $this->assertType('Net_UserAgent_Mobile_DoCoMo',
                           Net_UserAgent_Mobile::factory()
                           );
-
-        unset($_SERVER['HTTP_USER_AGENT']);
     }
 
     public function testShouldReturnTheExistingObjectIfItExistsBySingletonMethod()
@@ -118,13 +116,11 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
                             $agent->getCode()
                             );
 
-        $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] = true;
+        $GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch'] = true;
 
         $this->assertType('Net_UserAgent_Mobile_NonMobile',
                           Net_UserAgent_Mobile::factory($ua)
                           );
-
-        unset($GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH']);
     }
 
     public function testShouldTellWhetherAUserAgentIsDocomo()
@@ -161,8 +157,6 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
         $_SERVER['HTTP_USER_AGENT'] = 'DoCoMo/2.0 P904i(c100;TB;W24H15)';
 
         $this->assertTrue(Net_UserAgent_Mobile::isDoCoMo());
-
-        unset($_SERVER['HTTP_USER_AGENT']);
     }
 
     public function testShouldTellWhetherAUserAgentIsEzwebByTheHttpHeaderInAnEnvironment()
@@ -170,8 +164,6 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
         $_SERVER['HTTP_USER_AGENT'] = 'KDDI-SA31 UP.Browser/6.2.0.7.3.129 (GUI) MMP/2.0';
 
         $this->assertTrue(Net_UserAgent_Mobile::isEZweb());
-
-        unset($_SERVER['HTTP_USER_AGENT']);
     }
 
     public function testShouldTellWhetherAUserAgentIsSoftbankByTheHttpHeaderInAnEnvironment()
@@ -179,8 +171,6 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
         $_SERVER['HTTP_USER_AGENT'] = 'SoftBank/1.0/706SC/SCJ001 Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1';
 
         $this->assertTrue(Net_UserAgent_Mobile::isSoftBank());
-
-        unset($_SERVER['HTTP_USER_AGENT']);
     }
 
     public function testShouldTellWhetherAUserAgentIsWillcomByTheHttpHeaderInAnEnvironment()
@@ -188,8 +178,6 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
         $_SERVER['HTTP_USER_AGENT'] = 'Mozilla/3.0(DDIPOCKET;JRC/AH-J3001V,AH-J3002V/1.0/0100/c50)CNF/2.0';
 
         $this->assertTrue(Net_UserAgent_Mobile::isWillcom());
-
-        unset($_SERVER['HTTP_USER_AGENT']);
     }
 
     public function testShouldTellWhetherAUserAgentIsMobileByTheHttpHeaderInAnEnvironment()
@@ -197,8 +185,6 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
         $_SERVER['HTTP_USER_AGENT'] = 'DoCoMo/2.0 P904i(c100;TB;W24H15)';
 
         $this->assertTrue(Net_UserAgent_Mobile::isMobile());
-
-        unset($_SERVER['HTTP_USER_AGENT']);
     }
 
     /**#@-*/

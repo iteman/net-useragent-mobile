@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Common.php,v 1.26 2008/05/10 11:39:46 kuboa Exp $
+ * @version    CVS: $Id: Common.php,v 1.27 2008/05/10 12:23:26 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -71,8 +71,7 @@ class Net_UserAgent_Mobile_Common extends PEAR
     var $_display;
 
     /**
-     * {@link Net_UserAgent_Mobile_Error} object for error handling in the
-     *     constructor
+     * {@link Net_UserAgent_Mobile_Error} object for error handling in the constructor
      * @var object
      **/
     var $_error;
@@ -132,9 +131,8 @@ class Net_UserAgent_Mobile_Common extends PEAR
     /**
      * Returns/set an error when the instance couldn't initialize properly
      *
-     * @param object {@link Net_UserAgent_Mobile_Error} object when setting
-     *     an error
-     * @return object {@link Net_UserAgent_Mobile_Error} object
+     * @param object {@link Net_UserAgent_Mobile_Error} object when setting an error
+     * @return Net_UserAgent_Mobile_Error
      */
     function &isError($error = null)
     {
@@ -149,22 +147,18 @@ class Net_UserAgent_Mobile_Common extends PEAR
     // {{{ raiseError()
 
     /**
-     * This method is used to communicate an error and invoke error
-     * callbacks etc. Basically a wrapper for PEAR::raiseError without
-     * the message string.
+     * This method is used to communicate an error and invoke error callbacks etc.
+     * Basically a wrapper for PEAR::raiseError without the message string.
      *
-     * @param mixed $code integer error code, or a PEAR error object (all
-     *     other parameters are ignored if this parameter is an object
-     * @param int $mode error mode, see PEAR_Error docs
-     * @param mixed $options If error mode is PEAR_ERROR_TRIGGER, this is the
-     *     error level (E_USER_NOTICE etc). If error mode is
-     *     PEAR_ERROR_CALLBACK, this is the callback function, either as a
-     *     function name, or as an array of an object and method name. For
-     *     other error modes this parameter is ignored.
-     * @param string $userinfo Extra debug information. Defaults to the last
-     *     query and native error code.
-     * @return object a PEAR error object
-     * @see PEAR_Error
+     * @param mixed    $code     integer error code, or a PEAR error object (all other
+     *     parameters are ignored if this parameter is an object
+     * @param intteger $mode     error mode, see PEAR_Error docs
+     * @param mixed    $options  If error mode is PEAR_ERROR_TRIGGER, this is
+     *     the error level (E_USER_NOTICE etc). If error mode is PEAR_ERROR_CALLBACK,
+     *     this is the callback function, either as a function name, or as an array of
+     *     an object and method name. For other error modes this parameter is ignored.
+     * @param string   $userinfo Extra debug information
+     * @throws Net_UserAgent_Mobile_Error
      */
     function &raiseError($code = NET_USERAGENT_MOBILE_ERROR, $mode = null,
                          $options = null, $userinfo = null
@@ -173,16 +167,12 @@ class Net_UserAgent_Mobile_Common extends PEAR
 
         // The error is yet a Net_UserAgent_Mobile error object
         if (is_object($code)) {
-            $error = &PEAR::raiseError($code, null, null, null, null, null,
-                                       true
-                                       );
-            return $error;
+            return PEAR::raiseError($code, null, null, null, null, null, true);
         }
 
-        $error = &PEAR::raiseError(null, $code, $mode, $options, $userinfo,
-                                   'Net_UserAgent_Mobile_Error', true
-                                   );
-        return $error;
+        return PEAR::raiseError(null, $code, $mode, $options, $userinfo,
+                                'Net_UserAgent_Mobile_Error', true
+                                );
     }
 
     // }}}
@@ -231,15 +221,14 @@ class Net_UserAgent_Mobile_Common extends PEAR
     /**
      * returns {@link Net_UserAgent_Mobile_Disply} object
      *
-     * @return object a {@link Net_UserAgent_Mobile_Display} object, or a
-     *     PEAR error object on error
-     * @see Net_UserAgent_Mobile_Display
+     * @return Net_UserAgent_Mobile_Display
      */
     function getDisplay()
     {
-        if (!is_object($this->_display)) {
+        if (is_null($this->_display)) {
             $this->_display = $this->makeDisplay();
         }
+
         return $this->_display;
     }
 
@@ -262,7 +251,7 @@ class Net_UserAgent_Mobile_Common extends PEAR
     /**
      * generates a warning message for new variants
      *
-     * @return object a PEAR error object
+     * @throws Net_UserAgent_Mobile_Error
      */
     function noMatch()
     {
@@ -290,12 +279,10 @@ class Net_UserAgent_Mobile_Common extends PEAR
      * create a new Net_UserAgent_Mobile_Display class instance (should be
      * implemented in subclasses)
      *
+     * @return Net_UserAgent_Mobile_Display
      * @abstract
      */
-    function makeDisplay()
-    {
-        die();
-    }
+    function makeDisplay() {}
 
     // }}}
     // {{{ isDoCoMo()

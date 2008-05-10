@@ -13,9 +13,9 @@
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Display.php,v 1.13 2008/02/12 14:36:25 kuboa Exp $
+ * @version    CVS: $Id: Display.php,v 1.14 2008/05/10 12:23:26 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -48,8 +48,8 @@
  * </code>
  *
  * USING EXTERNAL MAP FILE:
- * If the environment variable DOCOMO_MAP exists, the specified XML data will
- * be used for DoCoMo display information.
+ * If the environment variable DOCOMO_MAP exists, the specified XML data will be used
+ * for DoCoMo display information.
  *
  * ex) Please add the following code.
  * $_SERVER['DOCOMO_MAP'] = '/path/to/DoCoMoMap.xml';
@@ -57,7 +57,7 @@
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @since      Class available since Release 0.1
