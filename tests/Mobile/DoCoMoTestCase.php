@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.14 2008/05/10 11:14:27 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.15 2008/05/10 11:37:02 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -59,7 +59,8 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     /**
      * @link http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
      * @link http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
-     * @version Sat, 09 Feb 2008 18:15:25 +0900
+     * @link http://www.nttdocomo.co.jp/binary/pdf/service/imode/make/content/spec/imode_spec.pdf
+     * @version Sat, 10 May 2008 11:30:45 GMT
      */
     private $_profiles = array(
 
