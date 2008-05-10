@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.37 2008/02/18 03:02:39 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.38 2008/05/10 03:06:35 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -47,13 +47,10 @@ $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] = false;
 /**
  * HTTP mobile user agent string parser
  *
- * Net_UserAgent_Mobile parses HTTP_USER_AGENT strings of (mainly Japanese)
- * mobile HTTP user agents. It'll be useful in page dispatching by user
- * agents.
+ * Net_UserAgent_Mobile parses HTTP_USER_AGENT strings of (mainly Japanese) mobile
+ * HTTP user agents. It'll be useful in page dispatching by user agents.
  * This package was ported from Perl's HTTP::MobileAgent.
  * See {@link http://search.cpan.org/search?mode=module&query=HTTP-MobileAgent}
- * The author of the HTTP::MobileAgent module is Tatsuhiko Miyagawa
- * <miyagawa@bulknews.net>
  *
  * SYNOPSIS:
  * <code>
@@ -67,9 +64,9 @@ $GLOBALS['_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH'] = false;
  *     // or if (strtolower(get_class($agent)) == 'http_mobileagent_docomo')
  *     // it's NTT DoCoMo i-mode
  *     // see what's available in Net_UserAgent_Mobile_DoCoMo
- * } elseif ($agent->isVodafone()) {
- *     // it's Vodafone(J-PHONE)
- *     // see what's available in Net_UserAgent_Mobile_Vodafone
+ * } elseif ($agent->isSoftBank()) {
+ *     // it's SoftBank
+ *     // see what's available in Net_UserAgent_Mobile_SoftBank
  * } elseif ($agent->isEZweb()) {
  *     // it's KDDI/EZWeb
  *     // see what's available in Net_UserAgent_Mobile_EZweb
@@ -125,8 +122,9 @@ class Net_UserAgent_Mobile
      * If no argument is supplied, $_SERVER{'HTTP_*'} is used.
      *
      * @param string $userAgent User-Agent string
-     * @return mixed a newly created Net_UserAgent_Mobile object, or a PEAR
-     *     error object on error
+     * @return Net_UserAgent_Mobile_Common|Net_UserAgent_Mobile_Error a newly created
+     *     or an existing Net_UserAgent_Mobile_Common object, or a PEAR error object
+     *     on error
      */
     function &factory($userAgent = null)
     {
@@ -181,12 +179,13 @@ class Net_UserAgent_Mobile
     // {{{ singleton()
 
     /**
-     * creates a new {@link Net_UserAgent_Mobile_Common} subclass instance or
-     * returns a instance from existent ones
+     * creates a new {@link Net_UserAgent_Mobile_Common} subclass instance or returns
+     * a instance from existent ones
      *
      * @param string $userAgent User-Agent string
-     * @return mixed a newly created or a existent Net_UserAgent_Mobile
-     *     object, or a PEAR error object on error
+     * @return Net_UserAgent_Mobile_Common|Net_UserAgent_Mobile_Error a newly created
+     *     or an existing Net_UserAgent_Mobile_Common object, or a PEAR error object
+     *     on error
      * @see Net_UserAgent_Mobile::factory()
      */
     function &singleton($userAgent = null)
@@ -212,15 +211,16 @@ class Net_UserAgent_Mobile
     // {{{ isError()
 
     /**
-     * tell whether a result code from a Net_UserAgent_Mobile method
-     * is an error
+     * tell whether a result code from a Net_UserAgent_Mobile method is an error
      *
      * @param integer $value result code
      * @return boolean whether $value is an {@link Net_UserAgent_Mobile_Error}
      */
     function isError($value)
     {
-        return is_a($value, 'Net_UserAgent_Mobile_Error');
+        return is_object($value)
+            && (strtolower(get_class($value)) == strtolower('Net_UserAgent_Mobile_Error')
+                || is_subclass_of($value, 'Net_UserAgent_Mobile_Error'));
     }
 
     // }}}
@@ -230,8 +230,7 @@ class Net_UserAgent_Mobile
      * return a textual error message for a Net_UserAgent_Mobile error code
      *
      * @param integer $value error code
-     * @return string error message, or false if the error code was not
-     *     recognized
+     * @return string error message, or null if the error code was not recognized
      */
     function errorMessage($value)
     {
@@ -258,8 +257,7 @@ class Net_UserAgent_Mobile
     // {{{ isMobile()
 
     /**
-     * Checks whether or not the user agent is mobile by a given user agent
-     * string.
+     * Checks whether or not the user agent is mobile by a given user agent string.
      *
      * @param string $userAgent
      * @return boolean
@@ -284,8 +282,7 @@ class Net_UserAgent_Mobile
     // {{{ isDoCoMo()
 
     /**
-     * Checks whether or not the user agent is DoCoMo by a given user agent
-     * string.
+     * Checks whether or not the user agent is DoCoMo by a given user agent string.
      *
      * @param string $userAgent
      * @return boolean
@@ -308,8 +305,7 @@ class Net_UserAgent_Mobile
     // {{{ isEZweb()
 
     /**
-     * Checks whether or not the user agent is EZweb by a given user agent
-     * string.
+     * Checks whether or not the user agent is EZweb by a given user agent string.
      *
      * @param string $userAgent
      * @return boolean
@@ -334,8 +330,7 @@ class Net_UserAgent_Mobile
     // {{{ isSoftBank()
 
     /**
-     * Checks whether or not the user agent is SoftBank by a given user agent
-     * string.
+     * Checks whether or not the user agent is SoftBank by a given user agent string.
      *
      * @param string $userAgent
      * @return boolean
@@ -372,8 +367,7 @@ class Net_UserAgent_Mobile
     // {{{ isWillcom()
 
     /**
-     * Checks whether or not the user agent is Willcom by a given user agent
-     * string.
+     * Checks whether or not the user agent is Willcom by a given user agent string.
      *
      * @param string $userAgent
      * @return boolean
@@ -407,13 +401,13 @@ class Net_UserAgent_Mobile
 // {{{ Net_UserAgent_Mobile_Error
 
 /**
- * Net_UserAgent_Mobile_Error implements a class for reporting user
- * agent error messages
+ * Net_UserAgent_Mobile_Error implements a class for reporting user agent error
+ * messages
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2007 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @since      Class available since Release 0.1
@@ -445,13 +439,12 @@ class Net_UserAgent_Mobile_Error extends PEAR_Error
     /**
      * constructor
      *
-     * @param mixed   $code     Net_UserAgent_Mobile error code, or string
-     *     with error message.
+     * @param mixed   $code     Net_UserAgent_Mobile error code, or string with error
+     *     message.
      * @param integer $mode     what 'error mode' to operate in
      * @param integer $level    what error level to use for $mode and
      *     PEAR_ERROR_TRIGGER
      * @param mixed   $userinfo additional user/debug info
-     * @access public
      */
     function Net_UserAgent_Mobile_Error($code = NET_USERAGENT_MOBILE_ERROR,
                                         $mode = PEAR_ERROR_RETURN,
@@ -466,8 +459,7 @@ class Net_UserAgent_Mobile_Error extends PEAR_Error
                               );
         } else {
             $this->PEAR_Error("Net_UserAgent_Mobile Error: $code",
-                              NET_USERAGENT_MOBILE_ERROR, $mode, $level,
-                              $userinfo
+                              NET_USERAGENT_MOBILE_ERROR, $mode, $level, $userinfo
                               );
         }
     }
