@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: AllTests.php,v 1.4 2008/05/05 11:59:36 kuboa Exp $
+ * @version    CVS: $Id: AllTests.php,v 1.5 2008/05/10 11:17:58 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -25,7 +25,6 @@ if (!defined('PHPUnit_MAIN_METHOD')) {
 
 require_once 'PHPUnit/Framework/TestSuite.php';
 require_once 'PHPUnit/TextUI/TestRunner.php';
-require_once 'System.php';
 
 chdir(dirname(__FILE__) . '/..');
 
