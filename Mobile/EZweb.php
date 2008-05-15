@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: EZweb.php,v 1.26 2008/05/10 12:23:26 kuboa Exp $
+ * @version    CVS: $Id: EZweb.php,v 1.27 2008/05/15 10:30:09 kuboa Exp $
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/4_4.html
  * @link       http://www.au.kddi.com/ezfactory/tec/spec/new_win/ezkishu.html
  * @since      File available since Release 0.1.0
@@ -153,17 +153,17 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
 
             // KDDI-TS21 UP.Browser/6.0.2.276 (GUI) MMP/1.1
             $this->_xhtmlCompliant = true;
-            list($this->_rawModel, $browser, $opt, $this->_serverName) =
+            @list($this->_rawModel, $browser, $opt, $this->_serverName) =
                 explode(' ', $matches[1], 4);
-            list($this->name, $version) = explode('/', $browser);
+            @list($this->name, $version) = explode('/', $browser);
             $this->version = "$version $opt";
         } else {
 
             // UP.Browser/3.01-HI01 UP.Link/3.4.5.2
             @list($browser, $this->_serverName, $comment) =
                 explode(' ', $userAgent, 3);
-            list($this->name, $software) = explode('/', $browser);
-            list($this->version, $this->_rawModel) = explode('-', $software);
+            @list($this->name, $software) = explode('/', $browser);
+            @list($this->version, $this->_rawModel) = explode('-', $software);
             if ($comment) {
                 $this->_comment = preg_replace('/^\((.*)\)$/', '$1', $comment);
             }

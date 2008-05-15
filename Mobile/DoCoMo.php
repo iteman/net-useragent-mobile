@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMo.php,v 1.54 2008/05/10 12:23:26 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.55 2008/05/15 10:30:09 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @since      File available since Release 0.1
  */
@@ -239,7 +239,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
 
             // DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)
             $this->_isFOMA = true;
-            list($this->name, $this->version) = explode('/', $main);
+            @list($this->name, $this->version) = explode('/', $main);
             $result = $this->_parseFOMA($foma_or_comment);
         } else {
 
@@ -266,7 +266,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         $screenInfo = &Net_UserAgent_Mobile_DoCoMo_ScreenInfo::singleton();
         $display = $screenInfo->get($this->getModel());
         if (!is_null($this->_displayBytes)) {
-            list($widthBytes, $heightBytes) = explode('*', $this->_displayBytes);
+            @list($widthBytes, $heightBytes) = explode('*', $this->_displayBytes);
             $display['width_bytes']  = $widthBytes;
             $display['height_bytes'] = $heightBytes;
         }
