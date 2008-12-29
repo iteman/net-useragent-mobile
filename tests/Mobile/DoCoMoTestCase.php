@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.17 2008/05/10 13:14:17 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.18 2008/12/29 16:52:05 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1091,6 +1091,11 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     /**#@+
      * @access public
      */
+
+    public function setUp()
+    {
+        $GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'] = null;
+    }
 
     public function testShouldDetectUserAgentsAsDocomo()
     {
