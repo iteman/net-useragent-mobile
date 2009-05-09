@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.18 2008/12/29 16:52:05 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.19 2009/05/09 13:26:37 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1163,6 +1163,28 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
     }
 
     public function testShouldSupportDenaWebCrawler()
+    {
+        $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 N902iS(c100;TB;W24H12)(compatible; moba-crawler; http://crawler.dena.jp/)');
+
+        $this->assertTrue($agent->isDoCoMo());
+        $this->assertEquals('N902iS', $agent->getModel());
+        $this->assertEquals('TB', $agent->getStatus());
+        $this->assertNull($agent->getBandwidth());
+        $this->assertNull($agent->getSerialNumber());
+        $this->assertTrue($agent->isFOMA());
+        $this->assertNull($agent->getCardID());
+        $this->assertEquals('compatible; moba-crawler; http://crawler.dena.jp/',
+                            $agent->getComment()
+                            );
+        $this->assertEquals(100, $agent->getCacheSize());
+        $this->assertEquals('DoCoMo', $agent->getName());
+        $this->assertEquals('2.0', $agent->getVersion());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0RC2
+     */
+    public function testShouldSupportGoogleMobileWebCrawler()
     {
         $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 N902iS(c100;TB;W24H12)(compatible; moba-crawler; http://crawler.dena.jp/)');
 
