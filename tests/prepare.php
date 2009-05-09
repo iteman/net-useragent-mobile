@@ -15,17 +15,15 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: prepare.php,v 1.2 2008/05/15 10:14:28 kuboa Exp $
+ * @version    CVS: $Id: prepare.php,v 1.3 2009/05/09 13:27:08 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
 error_reporting(E_ALL);
 
-if (file_exists(dirname(__FILE__) . '/../Mobile.php')) {
-    set_include_path(realpath(dirname(__FILE__) . '/..') . PATH_SEPARATOR .
-                     get_include_path()
-                     );
-}
+set_include_path(realpath(dirname(__FILE__) . '/..') . PATH_SEPARATOR .
+                 get_include_path()
+                 );
 
 /*
  * Local Variables:
