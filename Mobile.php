@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.39 2008/05/10 12:23:26 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.40 2009/05/09 13:27:36 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -159,8 +159,8 @@ class Net_UserAgent_Mobile
             }
         }
 
-        $instance = &new $class($userAgent);
-        $error = &$instance->isError();
+        $instance = new $class($userAgent);
+        $error = &$instance->getError();
         if (Net_UserAgent_Mobile::isError($error)) {
             if ($GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch']
                 && $error->getCode() == NET_USERAGENT_MOBILE_ERROR_NOMATCH
