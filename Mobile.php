@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.40 2009/05/09 13:27:36 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.41 2009/05/09 23:52:59 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -159,7 +159,9 @@ class Net_UserAgent_Mobile
             }
         }
 
+        PEAR::staticPushErrorHandling(PEAR_ERROR_RETURN);
         $instance = new $class($userAgent);
+        PEAR::staticPopErrorHandling();
         $error = &$instance->getError();
         if (Net_UserAgent_Mobile::isError($error)) {
             if ($GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch']
@@ -169,7 +171,7 @@ class Net_UserAgent_Mobile
                 return $instance;
             }
 
-            $instance = &$error;
+            return $instance->raiseError($error);
         }
 
         return $instance;
@@ -411,68 +413,7 @@ class Net_UserAgent_Mobile
  * @version    Release: @package_version@
  * @since      Class available since Release 0.1
  */
-class Net_UserAgent_Mobile_Error extends PEAR_Error
-{
-
-    // {{{ properties
-
-    /**#@+
-     * @access public
-     */
-
-    /**#@-*/
-
-    /**#@+
-     * @access private
-     */
-
-    /**#@-*/
-
-    /**#@+
-     * @access public
-     */
-
-    // }}}
-    // {{{ constructor
-
-    /**
-     * constructor
-     *
-     * @param mixed   $code     Net_UserAgent_Mobile error code, or string with error
-     *     message.
-     * @param integer $mode     what 'error mode' to operate in
-     * @param integer $level    what error level to use for $mode and
-     *     PEAR_ERROR_TRIGGER
-     * @param mixed   $userinfo additional user/debug info
-     */
-    function Net_UserAgent_Mobile_Error($code = NET_USERAGENT_MOBILE_ERROR,
-                                        $mode = PEAR_ERROR_RETURN,
-                                        $level = E_USER_NOTICE,
-                                        $userinfo = null
-                                        )
-    {
-        if (is_int($code)) {
-            $this->PEAR_Error('Net_UserAgent_Mobile Error: ' .
-                              Net_UserAgent_Mobile::errorMessage($code),
-                              $code, $mode, $level, $userinfo
-                              );
-        } else {
-            $this->PEAR_Error("Net_UserAgent_Mobile Error: $code",
-                              NET_USERAGENT_MOBILE_ERROR, $mode, $level, $userinfo
-                              );
-        }
-    }
-
-    /**#@-*/
-
-    /**#@+
-     * @access private
-     */
-
-    /**#@-*/
-
-    // }}}
-}
+class Net_UserAgent_Mobile_Error extends PEAR_Error {}
 
 // }}}
 
