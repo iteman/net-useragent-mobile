@@ -15,11 +15,11 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: MobileTestCase.php,v 1.7 2009/05/09 23:52:59 kuboa Exp $
+ * @version    CVS: $Id: MobileTestCase.php,v 1.8 2009/05/09 23:53:42 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/Mobile/AbstractTestCase.php';
 require_once 'Net/UserAgent/Mobile.php';
 
 // {{{ Net_UserAgent_MobileTestCase
@@ -35,7 +35,7 @@ require_once 'Net/UserAgent/Mobile.php';
  * @version    Release: @package_version@
  * @since      Class available since Release 0.31.0
  */
-class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
+class Net_UserAgent_MobileTestCase extends Net_UserAgent_Mobile_AbstractTestCase
 {
 
     // {{{ properties
@@ -61,11 +61,6 @@ class Net_UserAgent_MobileTestCase extends PHPUnit_Framework_TestCase
     /**#@+
      * @access public
      */
-
-    public function setUp()
-    {
-        PEAR::staticPushErrorHandling(PEAR_ERROR_TRIGGER);
-    }
 
     public function testShouldCreateAnObjectByAGivenUserAgentString()
     {
