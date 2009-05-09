@@ -15,11 +15,11 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.19 2009/05/09 13:26:37 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.20 2009/05/09 23:54:10 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/AbstractTestCase.php';
 require_once 'Net/UserAgent/Mobile/DoCoMo.php';
 
 // {{{ Net_UserAgent_Mobile_DoCoMoTestCase
@@ -35,7 +35,7 @@ require_once 'Net/UserAgent/Mobile/DoCoMo.php';
  * @version    Release: @package_version@
  * @since      Class available since Release 0.31.0
  */
-class Net_UserAgent_Mobile_DoCoMoTestCase extends PHPUnit_Framework_TestCase
+class Net_UserAgent_Mobile_DoCoMoTestCase extends Net_UserAgent_Mobile_AbstractTestCase
 {
 
     // {{{ properties

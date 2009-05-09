@@ -15,11 +15,11 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: SoftBankTestCase.php,v 1.7 2008/05/10 13:14:17 kuboa Exp $
+ * @version    CVS: $Id: SoftBankTestCase.php,v 1.8 2009/05/09 23:54:11 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
-require_once 'PHPUnit/Framework/TestCase.php';
+require_once dirname(__FILE__) . '/AbstractTestCase.php';
 require_once 'Net/UserAgent/Mobile/SoftBank.php';
 
 // {{{ Net_UserAgent_Mobile_SoftBankTestCase
@@ -35,7 +35,7 @@ require_once 'Net/UserAgent/Mobile/SoftBank.php';
  * @version    Release: @package_version@
  * @since      Class available since Release 0.31.0
  */
-class Net_UserAgent_Mobile_SoftBankTestCase extends PHPUnit_Framework_TestCase
+class Net_UserAgent_Mobile_SoftBankTestCase extends Net_UserAgent_Mobile_AbstractTestCase
 {
 
     // {{{ properties
