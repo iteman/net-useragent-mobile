@@ -15,7 +15,7 @@
  * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Common.php,v 1.28 2009/05/09 13:27:36 kuboa Exp $
+ * @version    CVS: $Id: Common.php,v 1.29 2009/05/10 17:06:11 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -121,22 +121,8 @@ class Net_UserAgent_Mobile_Common extends PEAR
 
         $result = $this->parse($userAgent);
         if (Net_UserAgent_Mobile::isError($result)) {
-            $this->setError($result);
+            $this->_error = &$result;
         }
-    }
-
-    // }}}
-    // {{{ setError
-
-    /**
-     * Sets a Net_UserAgent_Mobile_Error object. This method is used only if parse error is raised in the constructor.
-     *
-     * @param Net_UserAgent_Mobile_Error
-     * @return Net_UserAgent_Mobile_Error
-     */
-    function setError(&$error)
-    {
-        $this->_error = &$error;
     }
 
     // }}}
@@ -147,6 +133,7 @@ class Net_UserAgent_Mobile_Common extends PEAR
      *
      * @param object {@link Net_UserAgent_Mobile_Error} object when setting an error
      * @return Net_UserAgent_Mobile_Error
+     * @since Method available since Release 1.0.0RC2
      */
     function &getError()
     {
