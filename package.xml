@@ -16,7 +16,7 @@ See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent</descri
   <active>yes</active>
  </lead>
  <date>2009-05-11</date>
- <time>01:50:42</time>
+ <time>02:30:57</time>
  <version>
   <release>1.0.0RC2</release>
   <api>0.30.0</api>
@@ -51,6 +51,11 @@ Defect Fixes
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
+   <dir name="docs">
+    <file baseinstalldir="/" name="LICENSE" role="doc">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+   </dir> <!-- /docs -->
    <dir name="Mobile">
     <dir name="DoCoMo">
      <file baseinstalldir="/" name="ScreenInfo.php" role="php">
