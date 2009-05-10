@@ -12,10 +12,10 @@
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @author     KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: AllTests.php,v 1.3 2008/05/05 11:59:40 kuboa Exp $
+ * @version    CVS: $Id: AllTests.php,v 1.4 2009/05/10 17:09:00 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 

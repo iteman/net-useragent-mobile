@@ -12,10 +12,10 @@
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @author     KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: package.php,v 1.7 2008/05/10 12:35:58 kuboa Exp $
+ * @version    CVS: $Id: package.php,v 1.8 2009/05/10 17:09:00 kuboa Exp $
  * @since      File available since Release 0.30.0
  */
 
@@ -80,7 +80,7 @@ $package->setPearinstallerDep('1.4.3');
 $package->addPackageDepWithChannel('required', 'PEAR', 'pear.php.net', '1.4.3');
 $package->addExtensionDep('required', 'pcre');
 $package->addExtensionDep('optional', 'xml');
-$package->addMaintainer('lead', 'kuboa', 'KUBO Atsuhiro', 'iteman@users.sourceforge.net');
+$package->addMaintainer('lead', 'kuboa', 'KUBO Atsuhiro', 'kubo@iteman.jp');
 $package->addIgnore(array('package.php', 'package.xml'));
 $package->addGlobalReplacement('package-info', '@package_version@', 'version');
 $package->addInstallAs('Mobile.php', 'Net/UserAgent/Mobile.php');

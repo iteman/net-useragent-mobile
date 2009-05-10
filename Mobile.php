@@ -12,10 +12,10 @@
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @author     KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: Mobile.php,v 1.41 2009/05/09 23:52:59 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.42 2009/05/10 17:09:00 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -83,8 +83,8 @@ $GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch'] = false;
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @author     KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @since      Class available since Release 0.1
@@ -407,8 +407,8 @@ class Net_UserAgent_Mobile
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2003-2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @author     KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @since      Class available since Release 0.1

@@ -12,10 +12,10 @@
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @author     KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.21 2009/05/10 17:07:50 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.22 2009/05/10 17:09:00 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -29,8 +29,8 @@ require_once 'Net/UserAgent/Mobile/DoCoMo.php';
  *
  * @category   Networking
  * @package    Net_UserAgent_Mobile
- * @author     KUBO Atsuhiro <iteman@users.sourceforge.net>
- * @copyright  2008 KUBO Atsuhiro <iteman@users.sourceforge.net>
+ * @author     KUBO Atsuhiro <kubo@iteman.jp>
+ * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    Release: @package_version@
  * @since      Class available since Release 0.31.0
@@ -60,7 +60,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends Net_UserAgent_Mobile_AbstractT
      * @link http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
      * @link http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
      * @link http://www.nttdocomo.co.jp/binary/pdf/service/imode/make/content/spec/imode_spec.pdf
-     * @version Sat, 10 May 2008 11:30:45 GMT
+     * @version Sun, 10 May 2009 14:10:38 GMT
      */
     private $_profiles = array(
 
