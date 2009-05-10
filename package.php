@@ -33,40 +33,40 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: package.php,v 1.9 2009/05/10 17:28:47 kuboa Exp $
+ * @version    CVS: $Id: package.php,v 1.10 2009/05/10 17:29:55 kuboa Exp $
  * @since      File available since Release 0.30.0
  */
 
 require_once 'PEAR/PackageFileManager2.php';
+require_once 'PEAR.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '1.0.0RC1';
+$releaseVersion = '1.0.0RC2';
 $releaseStability = 'beta';
 $apiVersion = '0.30.0';
 $apiStability = 'beta';
 $notes = 'A new release of Net_UserAgent_Mobile is now available.
 
-What\'s New in Net_UserAgent_Mobile 1.0.0RC1
+What\'s New in Net_UserAgent_Mobile 1.0.0RC2
 
- * UID support: Getting subscriber IDs (UIDs) by getUID() has been supported.
- * Updated DoCoMo Support: 14 new models since the release 0.31.0 have been supported. And also DeNA\'s Web Crawler has been supported.
- * Two defect fixes: Two minor defects (#13128 and #13129) have been fixed.
+ * Updated DoCoMo Support: A lot of new models since the release 1.0.0RC1 have been supported.
+ * A few defect fixes: A few defect (including #13905, #15776) have been fixed.
+ * License Change: The license has been changed from PHP License 3.0 to New BSD License (2-clause).
 
 See the following release notes for details.
 
 Enhancements
 ============
 
-- Added support for DeNA\'s Web Crawler. (Request #13130) (Net_UserAgent_Mobile_DoCoMo)
-- Added support for getting subscriber IDs (UIDs) by getUID().
-- Added support for NM705i, L705iX, F883iESS, SH705i, SH705i2, SO905iCS, F905iBiz, P905iTV, P705i, N705imyu, P705imyu, SO705i, P705iCL, F884i. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMo_ScreenInfo)
+- Added Support for the new models of docomo. (since the release 1.0.0RC1) Thanks to Sach Jobb <sach@77hz.jp> for the patch.
 
 Defect Fixes
 ============
 
-- Added error control operators to all $_SERVER[\'HTTP_USER_AGENT\'] to avoid PHP notices. (Bug #13128) (Net_UserAgent_Mobile)
-- Fixed a defect that the user agent string is not included in an error message raised from noMatch(). (Bug #13129) (Net_UserAgent_Mobile_Common)';
+- Added @ to all list() calls to avoid unwanted warnings for invalid user agent string. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_EZweb, Net_UserAgent_Mobile_SoftBank) (Bug #13905)
+- Fixed a defect that caused "Strict standards" errors to be raised. (Bug #15776)
+- Fixed a defect that caused a broken error object to be returned even though the specified error mode is not PEAR_ERROR_RETURN. (Net_UserAgent_Mobile)';
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'cvs',
@@ -75,7 +75,9 @@ $package->setOptions(array('filelistgenerator' => 'cvs',
                            'baseinstalldir'    => '/',
                            'packagefile'       => 'package.xml',
                            'packagedirectory'  => '.',
-                           'dir_roles'         => array('tests' => 'test'))
+                           'dir_roles'         => array('docs' => 'doc',
+                                                        'tests' => 'test'),
+                           'ignore'            => array('package.php'))
                      );
 
 $package->setPackage('Net_UserAgent_Mobile');
@@ -99,7 +101,6 @@ $package->addPackageDepWithChannel('required', 'PEAR', 'pear.php.net', '1.4.3');
 $package->addExtensionDep('required', 'pcre');
 $package->addExtensionDep('optional', 'xml');
 $package->addMaintainer('lead', 'kuboa', 'KUBO Atsuhiro', 'kubo@iteman.jp');
-$package->addIgnore(array('package.php', 'package.xml'));
 $package->addGlobalReplacement('package-info', '@package_version@', 'version');
 $package->addInstallAs('Mobile.php', 'Net/UserAgent/Mobile.php');
 $package->addInstallAs('Mobile/Common.php', 'Net/UserAgent/Mobile/Common.php');
@@ -110,7 +111,6 @@ $package->addInstallAs('Mobile/EZweb.php', 'Net/UserAgent/Mobile/EZweb.php');
 $package->addInstallAs('Mobile/NonMobile.php', 'Net/UserAgent/Mobile/NonMobile.php');
 $package->addInstallAs('Mobile/SoftBank.php', 'Net/UserAgent/Mobile/SoftBank.php');
 $package->addInstallAs('Mobile/Willcom.php', 'Net/UserAgent/Mobile/Willcom.php');
-
 $package->generateContents();
 
 if (array_key_exists(1, $_SERVER['argv']) && $_SERVER['argv'][1] == 'make') {

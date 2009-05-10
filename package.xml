@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.8.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -12,42 +12,43 @@ See http://search.cpan.org/search?mode=module&amp;query=HTTP-MobileAgent</descri
  <lead>
   <name>KUBO Atsuhiro</name>
   <user>kuboa</user>
-  <email>iteman@users.sourceforge.net</email>
+  <email>kubo@iteman.jp</email>
   <active>yes</active>
  </lead>
- <date>2008-05-10</date>
- <time>21:35:00</time>
+ <date>2009-05-11</date>
+ <time>01:50:42</time>
  <version>
-  <release>1.0.0RC1</release>
+  <release>1.0.0RC2</release>
   <api>0.30.0</api>
  </version>
  <stability>
   <release>beta</release>
   <api>beta</api>
  </stability>
- <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
- <notes>A new release of Net_UserAgent_Mobile is now available.
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+ <notes>
+A new release of Net_UserAgent_Mobile is now available.
 
-What&apos;s New in Net_UserAgent_Mobile 1.0.0RC1
+What&apos;s New in Net_UserAgent_Mobile 1.0.0RC2
 
- * UID support: Getting subscriber IDs (UIDs) by getUID() has been supported.
- * Updated DoCoMo Support: 14 new models since the release 0.31.0 have been supported. And also DeNA&apos;s Web Crawler has been supported.
- * Two defect fixes: Two minor defects (#13128 and #13129) have been fixed.
+ * Updated DoCoMo Support: A lot of new models since the release 1.0.0RC1 have been supported.
+ * A few defect fixes: A few defect (including #13905, #15776) have been fixed.
+ * License Change: The license has been changed from PHP License 3.0 to New BSD License (2-clause).
 
 See the following release notes for details.
 
 Enhancements
 ============
 
-- Added support for DeNA&apos;s Web Crawler. (Request #13130) (Net_UserAgent_Mobile_DoCoMo)
-- Added support for getting subscriber IDs (UIDs) by getUID().
-- Added support for NM705i, L705iX, F883iESS, SH705i, SH705i2, SO905iCS, F905iBiz, P905iTV, P705i, N705imyu, P705imyu, SO705i, P705iCL, F884i. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMo_ScreenInfo)
+- Added Support for the new models of docomo. (since the release 1.0.0RC1) Thanks to Sach Jobb &lt;sach@77hz.jp&gt; for the patch.
 
 Defect Fixes
 ============
 
-- Added error control operators to all $_SERVER[&apos;HTTP_USER_AGENT&apos;] to avoid PHP notices. (Bug #13128) (Net_UserAgent_Mobile)
-- Fixed a defect that the user agent string is not included in an error message raised from noMatch(). (Bug #13129) (Net_UserAgent_Mobile_Common)</notes>
+- Added @ to all list() calls to avoid unwanted warnings for invalid user agent string. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_EZweb, Net_UserAgent_Mobile_SoftBank) (Bug #13905)
+- Fixed a defect that caused &quot;Strict standards&quot; errors to be raised. (Bug #15776)
+- Fixed a defect that caused a broken error object to be returned even though the specified error mode is not PEAR_ERROR_RETURN. (Net_UserAgent_Mobile)
+ </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <dir name="Mobile">
@@ -85,6 +86,9 @@ Defect Fixes
        <tasks:replace from="@package_version@" to="version" type="package-info" />
       </file>
      </dir> <!-- /tests/Mobile/DoCoMoTestCase -->
+     <file baseinstalldir="/" name="AbstractTestCase.php" role="test">
+      <tasks:replace from="@package_version@" to="version" type="package-info" />
+     </file>
      <file baseinstalldir="/" name="AllTests.php" role="test">
       <tasks:replace from="@package_version@" to="version" type="package-info" />
      </file>
@@ -158,6 +162,41 @@ Defect Fixes
  <changelog>
   <release>
    <version>
+    <release>1.0.0RC2</release>
+    <api>0.30.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2009-05-11</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+   <notes>
+A new release of Net_UserAgent_Mobile is now available.
+
+What&apos;s New in Net_UserAgent_Mobile 1.0.0RC2
+
+ * Updated DoCoMo Support: A lot of new models since the release 1.0.0RC1 have been supported.
+ * A few defect fixes: A few defect (including #13905, #15776) have been fixed.
+ * License Change: The license has been changed from PHP License 3.0 to New BSD License (2-clause).
+
+See the following release notes for details.
+
+Enhancements
+============
+
+- Added Support for the new models of docomo. (since the release 1.0.0RC1) Thanks to Sach Jobb &lt;sach@77hz.jp&gt; for the patch.
+
+Defect Fixes
+============
+
+- Added @ to all list() calls to avoid unwanted warnings for invalid user agent string. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_EZweb, Net_UserAgent_Mobile_SoftBank) (Bug #13905)
+- Fixed a defect that caused &quot;Strict standards&quot; errors to be raised. (Bug #15776)
+- Fixed a defect that caused a broken error object to be returned even though the specified error mode is not PEAR_ERROR_RETURN. (Net_UserAgent_Mobile)
+   </notes>
+  </release>
+  <release>
+   <version>
     <release>1.0.0RC1</release>
     <api>0.30.0</api>
    </version>
@@ -167,7 +206,8 @@ Defect Fixes
    </stability>
    <date>2008-05-10</date>
    <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
-   <notes>A new release of Net_UserAgent_Mobile is now available.
+   <notes>
+A new release of Net_UserAgent_Mobile is now available.
 
 What&apos;s New in Net_UserAgent_Mobile 1.0.0RC1
 
@@ -188,7 +228,8 @@ Defect Fixes
 ============
 
 - Added error control operators to all $_SERVER[&apos;HTTP_USER_AGENT&apos;] to avoid PHP notices. (Bug #13128) (Net_UserAgent_Mobile)
-- Fixed a defect that the user agent string is not included in an error message raised from noMatch(). (Bug #13129) (Net_UserAgent_Mobile_Common)</notes>
+- Fixed a defect that the user agent string is not included in an error message raised from noMatch(). (Bug #13129) (Net_UserAgent_Mobile_Common)
+   </notes>
   </release>
   <release>
    <version>
@@ -201,7 +242,8 @@ Defect Fixes
    </stability>
    <date>2008-02-10</date>
    <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
-   <notes>A new release of Net_UserAgent_Mobile is now available.
+   <notes>
+A new release of Net_UserAgent_Mobile is now available.
 
 What&apos;s New in Net_UserAgent_Mobile 0.31.0
 
@@ -231,7 +273,8 @@ Defect Fixes
 
 - Fixed the model name from N506ISII to N506IS2. (Net_UserAgent_Mobile_DoCoMoDisplayMap)
 - Fixed a defect that caused supported HTML versions for some user agents that support HTML version 6.0 or greater to be detected as 5.0. (Net_UserAgent_Mobile_DoCoMo)
-- Fixed invalid width and height of some models. (Net_UserAgent_Mobile_DoCoMoDisplayMap)</notes>
+- Fixed invalid width and height of some models. (Net_UserAgent_Mobile_DoCoMoDisplayMap)
+   </notes>
   </release>
   <release>
    <version>
@@ -244,7 +287,8 @@ Defect Fixes
    </stability>
    <date>2007-02-20</date>
    <license uri="http://www.opensource.org/licenses/php.php">PHP License</license>
-   <notes>A new release of Net_UserAgent_Mobile is now available.
+   <notes>
+A new release of Net_UserAgent_Mobile is now available.
 
 This release includes a fix for the bug #9891 &quot;dirname(__FILE__) should not be used for include/require&quot;. This can be replaced a driver with a user enhancement driver in the normal way.
 
@@ -268,7 +312,8 @@ And also this release includes other fixes and supports many new models. See the
 
 ### Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_DoCoMoDisplayMap ###
 
-- Added support for L601i, M702iS, M702iG, N902iL, N601i, D800iDS, P703imyu, N903i, D903i, F903i, SO9603i, D903iTV, F903iX, P903iTV, N703iD, F703i, P703i, D703i, SH703i, N703imyu, SO703i.</notes>
+- Added support for L601i, M702iS, M702iG, N902iL, N601i, D800iDS, P703imyu, N903i, D903i, F903i, SO9603i, D903iTV, F903iX, P903iTV, N703iD, F703i, P703i, D703i, SH703i, N703imyu, SO703i.
+   </notes>
   </release>
   <release>
    <version>
@@ -281,7 +326,8 @@ And also this release includes other fixes and supports many new models. See the
    </stability>
    <date>2006-11-07</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>This release includes support for SoftBank 705P and DoCoMo 903i series. See the following release notes for details.
+   <notes>
+This release includes support for SoftBank 705P and DoCoMo 903i series. See the following release notes for details.
 
 ## Enhancements ##
 
@@ -292,7 +338,8 @@ And also this release includes other fixes and supports many new models. See the
 - Added support for 903i series. Thanks to Masaki Fujimoto &lt;fujimoto@php.net&gt; for the patch.
 
 ### Net_UserAgent_Mobile_DoCoMoDisplayMap ###
-- Added support for SH903i, P903i.</notes>
+- Added support for SH903i, P903i.
+   </notes>
   </release>
   <release>
    <version>
@@ -305,9 +352,11 @@ And also this release includes other fixes and supports many new models. See the
    </stability>
    <date>2006-09-25</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for SoftBank. Thanks to Kazunari Komoriya &lt;komoriya@livedoor.jp&gt; for the patches.
+   <notes>
+- Added support for SoftBank. Thanks to Kazunari Komoriya &lt;komoriya@livedoor.jp&gt; for the patches.
 - Added support for N902iX, SH702iS, N702iS, P702iD, D702iF, F882iES.
-- Fixed height of F902iS.</notes>
+- Fixed height of F902iS.
+   </notes>
   </release>
   <release>
    <version>
@@ -320,7 +369,8 @@ And also this release includes other fixes and supports many new models. See the
    </stability>
    <date>2006-07-13</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support a lot of agents as follows:
+   <notes>
+- Added support a lot of agents as follows:
 NM850iG
 P901iTV
 F881iES
@@ -344,7 +394,8 @@ SO702i
 D702iBCL
 D851iWM
 SH902iSL
-SA702i</notes>
+SA702i
+   </notes>
   </release>
   <release>
    <version>
@@ -357,9 +408,11 @@ SA702i</notes>
    </stability>
    <date>2006-02-01</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for &apos;WILLCOM&apos;.
+   <notes>
+- Added support for &apos;WILLCOM&apos;.
 - Added support for 701i and 902i in getHTMLVersion.
-- Added support for DoCoMo&apos;s SO213iWR, SA700iS, P851i, D701i, N701i, P701iD, D701iWM, F902i, D902i, N902i, P902i, SH902i.</notes>
+- Added support for DoCoMo&apos;s SO213iWR, SA700iS, P851i, D701i, N701i, P701iD, D701iWM, F902i, D902i, N902i, P902i, SH902i.
+   </notes>
   </release>
   <release>
    <version>
@@ -372,10 +425,12 @@ SA702i</notes>
    </stability>
    <date>2005-08-18</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Fixed &quot;Only variable references should be returned by reference&quot; notice with PHP 4.4.0 and 5.1.0.
+   <notes>
+- Fixed &quot;Only variable references should be returned by reference&quot; notice with PHP 4.4.0 and 5.1.0.
 - Added support for DoCoMo&apos;s SH851i, F700iS, SH700iS.
 - Added code to get the vendor code of &apos;V301SH&apos;, &apos;V301T&apos;, etc in Vodafone.php. (Bug #5124)
-- Fixed &apos;Undefined offset&apos; error in Vodafone.php.</notes>
+- Fixed &apos;Undefined offset&apos; error in Vodafone.php.
+   </notes>
   </release>
   <release>
    <version>
@@ -388,12 +443,14 @@ SA702i</notes>
    </stability>
    <date>2005-07-27</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added fallback mode on no match using $GLOBALS[&apos;_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH&apos;].
+   <notes>
+- Added fallback mode on no match using $GLOBALS[&apos;_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH&apos;].
 - Changed the EZweb regex pattern to be able to match au&apos;s A5511T.
 - Added support for DoCoMo&apos;s SO506iS, SH901iS, F901iS, D901iS, P901iS, N901iS.
 
 ** NOTE **
-If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH&apos;] before calling factory().</notes>
+If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;_NET_USERAGENT_MOBILE_FALLBACK_ON_NOMATCH&apos;] before calling factory().
+   </notes>
   </release>
   <release>
    <version>
@@ -406,8 +463,10 @@ If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;
    </stability>
    <date>2005-03-23</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo&apos;s N506iS, SO506i, P253iS.
-- Added support for DoCoMo&apos;s N901iC, D901i, P901i, F700i, SH700i, N700i, P700i. (by Christopher Kobayashi &lt;chriskk at gmail dot com&gt;)</notes>
+   <notes>
+- Added support for DoCoMo&apos;s N506iS, SO506i, P253iS.
+- Added support for DoCoMo&apos;s N901iC, D901i, P901i, F700i, SH700i, N700i, P700i. (by Christopher Kobayashi &lt;chriskk at gmail dot com&gt;)
+   </notes>
   </release>
   <release>
    <version>
@@ -420,11 +479,13 @@ If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;
    </stability>
    <date>2005-02-03</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>* Mobile/Vodafone.php
+   <notes>
+* Mobile/Vodafone.php
 - Added getMsname() method which returns the value of x-jphone-msname header, which is the name of the mobile phone.
 
 * Mobile/NonMobile.php
-- Added makeDisplay() method as a temporary measure since the script would die when the method is called. (Bug #3368)</notes>
+- Added makeDisplay() method as a temporary measure since the script would die when the method is called. (Bug #3368)
+   </notes>
   </release>
   <release>
    <version>
@@ -437,8 +498,10 @@ If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;
    </stability>
    <date>2005-02-01</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for Vodafone 3G mobile phones (3GC).
-- Added support for DoCoMo&apos;s SO213iS, D253i, N253i, P253i, D253iWM, P213i, N900iL, N900iG, SH901iC, F901iC.</notes>
+   <notes>
+- Added support for Vodafone 3G mobile phones (3GC).
+- Added support for DoCoMo&apos;s SO213iS, D253i, N253i, P253i, D253iWM, P213i, N900iL, N900iG, SH901iC, F901iC.
+   </notes>
   </release>
   <release>
    <version>
@@ -451,7 +514,8 @@ If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;
    </stability>
    <date>2004-09-25</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Fixed Bug #827 without BC break. This package currently works properly on PHP5.
+   <notes>
+- Fixed Bug #827 without BC break. This package currently works properly on PHP5.
 - Added getCarrierShortName() and getCarrierLongName() methods.
 - Added isVodafone() method.
 - Added isTUKa() method.
@@ -459,7 +523,8 @@ If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;
 - Added support for DoCoMo&apos;s P651ps, SO213i, N506i, P506iC, SH506iC, SO506iC, F900iT, P900iV, N900iS, D900i, F900iC, F880iES.
 - Changed treatment of the name of the model in EZweb.php. getModel() method currently returns the device ID.
 - Renamed from JPhone.php to Vodafone.php.
-- Added getModel() and getDeviceID() methods in NonMobile.php. These methods always return &apos;&apos;.</notes>
+- Added getModel() and getDeviceID() methods in NonMobile.php. These methods always return &apos;&apos;.
+   </notes>
   </release>
   <release>
    <version>
@@ -472,7 +537,8 @@ If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;
    </stability>
    <date>2004-05-27</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added a external map file support.
+   <notes>
+- Added a external map file support.
   the XML data which is generated by makexmldocomomap, which is included in
   Perl&apos;s HTTP::MobileAgent, is now available.
   Please see the API documentation of Net_UserAgent_Mobile_Display class.
@@ -481,7 +547,8 @@ If you want to use fallback mode on no match, please set true to $GLOBALS[&apos;
 
 ** NOTE **
 In the next release, BC will be broken for PHP5 compatibility reasons. Please
-see bug #827.</notes>
+see bug #827.
+   </notes>
   </release>
   <release>
    <version>
@@ -494,9 +561,11 @@ see bug #827.</notes>
    </stability>
    <date>2004-03-20</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo&apos;s N900i, P900i, SH900i.
+   <notes>
+- Added support for DoCoMo&apos;s N900i, P900i, SH900i.
 - Added support for EZweb&apos;s A5502K, A5405SA, A1402S.
-- Some fixes related to PHP5 issues.</notes>
+- Some fixes related to PHP5 issues.
+   </notes>
   </release>
   <release>
    <version>
@@ -509,9 +578,11 @@ see bug #827.</notes>
    </stability>
    <date>2004-02-08</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo&apos;s F505iGPS, F900i.
+   <notes>
+- Added support for DoCoMo&apos;s F505iGPS, F900i.
 - Added support for EZweb&apos;s A5502K, TS41.
-- EZweb.php: Fixed the model name for KCTD.</notes>
+- EZweb.php: Fixed the model name for KCTD.
+   </notes>
   </release>
   <release>
    <version>
@@ -524,9 +595,11 @@ see bug #827.</notes>
    </stability>
    <date>2003-12-15</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo&apos;s N505iS, SO505iS, SH505iS.
+   <notes>
+- Added support for DoCoMo&apos;s N505iS, SO505iS, SH505iS.
 - Added support for EZweb&apos;s W11K, W11H, A5503SA, A5404S, A5403CA, TS40, TT32
-  in getModel() method.</notes>
+  in getModel() method.
+   </notes>
   </release>
   <release>
    <version>
@@ -539,8 +612,10 @@ see bug #827.</notes>
    </stability>
    <date>2003-11-17</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo&apos;s D505iS, P505iS, P252i, N252i.
-- EZweb.php: Added getModel() method using a static table.</notes>
+   <notes>
+- Added support for DoCoMo&apos;s D505iS, P505iS, P252i, N252i.
+- EZweb.php: Added getModel() method using a static table.
+   </notes>
   </release>
   <release>
    <version>
@@ -553,7 +628,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-10-12</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- removed a print statement for debugging in Net_UserAgent_Mobile::singleton().</notes>
+   <notes>
+- removed a print statement for debugging in Net_UserAgent_Mobile::singleton().
+   </notes>
   </release>
   <release>
    <version>
@@ -566,8 +643,10 @@ see bug #827.</notes>
    </stability>
    <date>2003-10-12</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added singleton() method.
-- Added support for DoCoMo&apos;s D252i, SH252i.</notes>
+   <notes>
+- Added singleton() method.
+- Added support for DoCoMo&apos;s D252i, SH252i.
+   </notes>
   </release>
   <release>
    <version>
@@ -580,7 +659,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-09-04</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo&apos;s SH505i2, F672i.</notes>
+   <notes>
+- Added support for DoCoMo&apos;s SH505i2, F672i.
+   </notes>
   </release>
   <release>
    <version>
@@ -593,11 +674,13 @@ see bug #827.</notes>
    </stability>
    <date>2003-08-11</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Changed way to handle static variables from the PEAR::getStaticProperty
+   <notes>
+- Changed way to handle static variables from the PEAR::getStaticProperty
   method to the static statement.
 - AirHPhone.php: Added makeDisplay() method as a temporary measure since the
   script would die when the method is called.
-- Added display information for DoCoMo&apos;s N2102V, P505i.</notes>
+- Added display information for DoCoMo&apos;s N2102V, P505i.
+   </notes>
   </release>
   <release>
    <version>
@@ -610,7 +693,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-07-20</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added display information for DoCoMo&apos;s P2102V, F2102V, F505i.</notes>
+   <notes>
+- Added display information for DoCoMo&apos;s P2102V, F2102V, F505i.
+   </notes>
   </release>
   <release>
    <version>
@@ -623,9 +708,11 @@ see bug #827.</notes>
    </stability>
    <date>2003-07-07</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added display information for DoCoMo&apos;s N2701, SH505i, N505i.
+   <notes>
+- Added display information for DoCoMo&apos;s N2701, SH505i, N505i.
 - Added support for DoCoMo&apos;s FOMA 2701.
-- Changed license from PHP license 2.02 to PHP license 3.0.</notes>
+- Changed license from PHP license 2.02 to PHP license 3.0.
+   </notes>
   </release>
   <release>
    <version>
@@ -638,8 +725,10 @@ see bug #827.</notes>
    </stability>
    <date>2003-06-05</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added display information about DoCoMo&apos;s &apos;SO505i&apos;.
-- DoCoMo.php: Fixed the logic error which entered at the time of 505i support.</notes>
+   <notes>
+- Added display information about DoCoMo&apos;s &apos;SO505i&apos;.
+- DoCoMo.php: Fixed the logic error which entered at the time of 505i support.
+   </notes>
   </release>
   <release>
    <version>
@@ -652,8 +741,10 @@ see bug #827.</notes>
    </stability>
    <date>2003-05-23</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added isGPS() method in DoCoMo.
-- Added display information about DoCoMo&apos;s &apos;D505i&apos;.</notes>
+   <notes>
+- Added isGPS() method in DoCoMo.
+- Added display information about DoCoMo&apos;s &apos;D505i&apos;.
+   </notes>
   </release>
   <release>
    <version>
@@ -666,7 +757,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-05-12</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo 505i.</notes>
+   <notes>
+- Added support for DoCoMo 505i.
+   </notes>
   </release>
   <release>
    <version>
@@ -679,7 +772,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-04-22</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added support for DoCoMo&apos;s &apos;N251iS&apos;, &apos;F661i&apos;.</notes>
+   <notes>
+- Added support for DoCoMo&apos;s &apos;N251iS&apos;, &apos;F661i&apos;.
+   </notes>
   </release>
   <release>
    <version>
@@ -692,8 +787,10 @@ see bug #827.</notes>
    </stability>
    <date>2003-04-07</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added AirH&quot;PHONE support.
-- Added display information about DoCoMo&apos;s &apos;N211iS&apos;, &apos;P211iS&apos;.</notes>
+   <notes>
+- Added AirH&quot;PHONE support.
+- Added display information about DoCoMo&apos;s &apos;N211iS&apos;, &apos;P211iS&apos;.
+   </notes>
   </release>
   <release>
    <version>
@@ -706,11 +803,13 @@ see bug #827.</notes>
    </stability>
    <date>2003-03-27</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Changed way to get characteristics for new format of user agent which is
+   <notes>
+- Changed way to get characteristics for new format of user agent which is
   used by &apos;FOMA 2051/2102V&apos;.
 - Added display information about DoCoMo&apos;s &apos;P2102V&apos;.
 - Added PEAR error handling.
-- Updated documentation.</notes>
+- Updated documentation.
+   </notes>
   </release>
   <release>
    <version>
@@ -723,7 +822,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-02-24</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added isNonMobile() method.</notes>
+   <notes>
+- Added isNonMobile() method.
+   </notes>
   </release>
   <release>
    <version>
@@ -736,7 +837,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-02-20</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- Added code which had forgotten by the port.</notes>
+   <notes>
+- Added code which had forgotten by the port.
+   </notes>
   </release>
   <release>
    <version>
@@ -749,7 +852,9 @@ see bug #827.</notes>
    </stability>
    <date>2003-02-19</date>
    <license uri="http://www.php.net/license">PHP License</license>
-   <notes>- initial release</notes>
+   <notes>
+- initial release
+   </notes>
   </release>
  </changelog>
 </package>
