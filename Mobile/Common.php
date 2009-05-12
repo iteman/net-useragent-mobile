@@ -33,11 +33,11 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: Common.php,v 1.32 2009/05/12 17:47:21 kuboa Exp $
+ * @version    CVS: $Id: Common.php,v 1.33 2009/05/12 17:48:51 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
-require_once 'Net/UserAgent/Mobile.php';
+require_once 'Net/UserAgent/Mobile/Error.php';
 require_once 'PEAR.php';
 
 // {{{ Net_UserAgent_Mobile_Common
@@ -137,7 +137,7 @@ class Net_UserAgent_Mobile_Common
         $this->_userAgent = $userAgent;
 
         $result = $this->parse($userAgent);
-        if (Net_UserAgent_Mobile::isError($result)) {
+        if (PEAR::isError($result)) {
             $this->_error = &$result;
         }
     }
