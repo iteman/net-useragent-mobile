@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: Mobile.php,v 1.43 2009/05/10 17:28:47 kuboa Exp $
+ * @version    CVS: $Id: Mobile.php,v 1.44 2009/05/12 17:47:21 kuboa Exp $
  * @since      File available since Release 0.1
  */
 
@@ -189,7 +189,7 @@ class Net_UserAgent_Mobile
                 return $instance;
             }
 
-            return $instance->raiseError($error);
+            return PEAR::raiseError($error);
         }
 
         return $instance;
