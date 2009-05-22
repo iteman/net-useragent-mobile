@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.23 2009/05/10 17:28:47 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.24 2009/05/22 18:47:40 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -76,9 +76,10 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends Net_UserAgent_Mobile_AbstractT
 
     /**
      * @link http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
+     * @link http://www.nttdocomo.co.jp/service/imode/make/content/browser/browser2/useragent/index.html
      * @link http://www.nttdocomo.co.jp/service/imode/make/content/spec/screen_area/index.html
      * @link http://www.nttdocomo.co.jp/binary/pdf/service/imode/make/content/spec/imode_spec.pdf
-     * @version Sun, 10 May 2009 14:10:38 GMT
+     * @version Fri, 22 May 2009 18:21:50 GMT
      */
     private $_profiles = array(
 
@@ -1477,7 +1478,12 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends Net_UserAgent_Mobile_AbstractT
                                'DoCoMo/2.0 N04A(c100;SD)' => array('model' => 'N04A', 'htmlVersion' => '7.2', 'width' => 240, 'height' => 320, 'version' => '2.0', 'cacheSize' => 100, 'isFoma' => true, 'vendor' => 'N', 'series' => null, 'status' => 'SD'),
                                'DoCoMo/2.0 N04A(c100;TD)' => array('model' => 'N04A', 'htmlVersion' => '7.2', 'width' => 240, 'height' => 320, 'version' => '2.0', 'cacheSize' => 100, 'isFoma' => true, 'vendor' => 'N', 'series' => null, 'status' => 'TD'),
                                'DoCoMo/2.0 N04A(c100;SJ)' => array('model' => 'N04A', 'htmlVersion' => '7.2', 'width' => 240, 'height' => 320, 'version' => '2.0', 'cacheSize' => 100, 'isFoma' => true, 'vendor' => 'N', 'series' => null, 'status' => 'SJ'),
-                               'DoCoMo/2.0 N04A(c100;TJ)' => array('model' => 'N04A', 'htmlVersion' => '7.2', 'width' => 240, 'height' => 320, 'version' => '2.0', 'cacheSize' => 100, 'isFoma' => true, 'vendor' => 'N', 'series' => null, 'status' => 'TJ')
+                               'DoCoMo/2.0 N04A(c100;TJ)' => array('model' => 'N04A', 'htmlVersion' => '7.2', 'width' => 240, 'height' => 320, 'version' => '2.0', 'cacheSize' => 100, 'isFoma' => true, 'vendor' => 'N', 'series' => null, 'status' => 'TJ'),
+
+                               // i-mode browser 2.0
+                               'DoCoMo/2.0 P07A(c500;TB;W24H15)' => array('model' => 'P07A', 'htmlVersion' => null, 'width' => 480, 'height' => 662, 'version' => '2.0', 'cacheSize' => 500, 'isFoma' => true, 'vendor' => 'P', 'series' => null, 'status' => 'TB', 'isGPS' => true),
+                               'DoCoMo/2.0 N06A(c500;TB;W24H16)' => array('model' => 'N06A', 'htmlVersion' => null, 'width' => 480, 'height' => 640, 'version' => '2.0', 'cacheSize' => 500, 'isFoma' => true, 'vendor' => 'N', 'series' => null, 'status' => 'TB', 'isGPS' => true),
+                               'DoCoMo/2.0 N08A(c500;TB;W24H16)' => array('model' => 'N08A', 'htmlVersion' => null, 'width' => 480, 'height' => 640, 'version' => '2.0', 'cacheSize' => 500, 'isFoma' => true, 'vendor' => 'N', 'series' => null, 'status' => 'TB', 'isGPS' => true)
                                );
 
     /**#@-*/

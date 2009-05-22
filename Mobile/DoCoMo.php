@@ -33,8 +33,9 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: DoCoMo.php,v 1.58 2009/05/10 17:28:47 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.59 2009/05/22 18:47:40 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
+ * @link       http://www.nttdocomo.co.jp/service/imode/make/content/browser/browser2/useragent/index.html
  * @since      File available since Release 0.1
  */
 
@@ -93,6 +94,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
  * @version    Release: @package_version@
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
+ * @link       http://www.nttdocomo.co.jp/service/imode/make/content/browser/browser2/useragent/index.html
  * @since      Class available since Release 0.1
  */
 class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
@@ -214,7 +216,10 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                             'SH03A',
                             'SH04A',
                             'N01A',
-                            'N02A'
+                            'N02A',
+                            'P07A',
+                            'N06A',
+                            'N08A'
                             );
 
     /**
@@ -625,7 +630,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      */
     function getHTMLVersion()
     {
-        return $this->_htmlVersions[ $this->getModel() ];
+        return @$this->_htmlVersions[ $this->getModel() ];
     }
 
     // }}}
