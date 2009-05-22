@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.24 2009/05/22 18:47:40 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.25 2009/05/22 18:49:31 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1800,7 +1800,7 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends Net_UserAgent_Mobile_AbstractT
     /**
      * @since Method available since Release 1.0.0RC1
      */
-    public function testShouldUseAnExternalScreenInformationIfTheEnvironmentVariableIsGiven1()
+    public function testShouldUseAnExternalScreenInformationIfTheEnvironmentVariableIsGiven()
     {
         $_SERVER['DOCOMO_MAP'] = dirname(__FILE__) . '/' . basename(__FILE__, '.php') . '/docomo-screen.xml';
         $agent = new Net_UserAgent_Mobile_DoCoMo('DoCoMo/2.0 P705iCL(c100;TB;W16H10)');
