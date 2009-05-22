@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: DoCoMo.php,v 1.59 2009/05/22 18:47:40 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.60 2009/05/22 18:49:04 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/browser/browser2/useragent/index.html
  * @since      File available since Release 0.1
@@ -41,6 +41,7 @@
 
 require_once 'Net/UserAgent/Mobile/Common.php';
 require_once 'Net/UserAgent/Mobile/Display.php';
+require_once 'Net/UserAgent/Mobile.php';
 
 // {{{ Net_UserAgent_Mobile_DoCoMo
 
