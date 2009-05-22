@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: DoCoMo.php,v 1.60 2009/05/22 18:49:04 kuboa Exp $
+ * @version    CVS: $Id: DoCoMo.php,v 1.61 2009/05/22 18:49:49 kuboa Exp $
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/spec/useragent/index.html
  * @link       http://www.nttdocomo.co.jp/service/imode/make/content/browser/browser2/useragent/index.html
  * @since      File available since Release 0.1
@@ -830,6 +830,20 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
         if (array_key_exists('HTTP_X_DCMGUID', $_SERVER)) {
             return $_SERVER['HTTP_X_DCMGUID'];
         }
+    }
+
+    // }}}
+    // {{{ getBrowserVersion()
+
+    /**
+     * Gets the i-mode browser version.
+     *
+     * @return string
+     * @since Method available since Release 1.0.0RC3
+     */
+    function getBrowserVersion()
+    {
+        return $this->getCacheSize() == 500 ? '2.0' : '1.0';
     }
 
     /**#@-*/

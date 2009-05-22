@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.25 2009/05/22 18:49:31 kuboa Exp $
+ * @version    CVS: $Id: DoCoMoTestCase.php,v 1.26 2009/05/22 18:49:49 kuboa Exp $
  * @since      File available since Release 0.31.0
  */
 
@@ -1810,6 +1810,27 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends Net_UserAgent_Mobile_AbstractT
         $this->assertEquals(999, $display->getHeight());
         $this->assertFalse($display->isColor());
         $this->assertEquals(999, $display->getDepth());
+    }
+
+    /**
+     * @since Method available since Release 1.0.0RC3
+     */
+    public function testShouldProvideTheBrowserVersionOfAUserAgent()
+    {
+        reset($this->_profiles);
+        while (list($userAgent, $profile) = each($this->_profiles)) {
+            $agent = new Net_UserAgent_Mobile_DoCoMo($userAgent);
+
+            if ($agent->getCacheSize() == 500) {
+                $this->assertEquals('2.0', $agent->getBrowserVersion(),
+                                    $agent->getUserAgent()
+                                    );
+            } else {
+                $this->assertEquals('1.0', $agent->getBrowserVersion(),
+                                    $agent->getUserAgent()
+                                    );
+            }
+        }
     }
 
     /**#@-*/
