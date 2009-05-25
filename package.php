@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: package.php,v 1.10 2009/05/10 17:29:55 kuboa Exp $
+ * @version    CVS: $Id: package.php,v 1.11 2009/05/25 07:06:30 kuboa Exp $
  * @since      File available since Release 0.30.0
  */
 
@@ -42,31 +42,24 @@ require_once 'PEAR.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '1.0.0RC2';
+$releaseVersion = '1.0.0RC3';
 $releaseStability = 'beta';
 $apiVersion = '0.30.0';
 $apiStability = 'beta';
 $notes = 'A new release of Net_UserAgent_Mobile is now available.
 
-What\'s New in Net_UserAgent_Mobile 1.0.0RC2
+What\'s New in Net_UserAgent_Mobile 1.0.0RC3
 
- * Updated DoCoMo Support: A lot of new models since the release 1.0.0RC1 have been supported.
- * A few defect fixes: A few defect (including #13905, #15776) have been fixed.
- * License Change: The license has been changed from PHP License 3.0 to New BSD License (2-clause).
+ * Updated docomo Support: Three new models, P-07A, N-06A, and N-08A since the release 1.0.0RC2 have been supported. These models have the i-mode browser 2.0, can be distinguished by newly added getBrowserVersion().
 
 See the following release notes for details.
 
 Enhancements
 ============
 
-- Added Support for the new models of docomo. (since the release 1.0.0RC1) Thanks to Sach Jobb <sach@77hz.jp> for the patch.
-
-Defect Fixes
-============
-
-- Added @ to all list() calls to avoid unwanted warnings for invalid user agent string. (Net_UserAgent_Mobile_DoCoMo, Net_UserAgent_Mobile_EZweb, Net_UserAgent_Mobile_SoftBank) (Bug #13905)
-- Fixed a defect that caused "Strict standards" errors to be raised. (Bug #15776)
-- Fixed a defect that caused a broken error object to be returned even though the specified error mode is not PEAR_ERROR_RETURN. (Net_UserAgent_Mobile)';
+- Changed the class declaration so as not to inherit from PEAR. (Net_UserAgent_Mobile, Net_UserAgent_Mobile_Common)
+- Added support for the new models of docomo. (since the release 1.0.0RC2)
+- Added getBrowserVersion() to get the i-mode browser version.';
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'cvs',
@@ -108,6 +101,7 @@ $package->addInstallAs('Mobile/Display.php', 'Net/UserAgent/Mobile/Display.php')
 $package->addInstallAs('Mobile/DoCoMo.php', 'Net/UserAgent/Mobile/DoCoMo.php');
 $package->addInstallAs('Mobile/DoCoMo/ScreenInfo.php', 'Net/UserAgent/Mobile/DoCoMo/ScreenInfo.php');
 $package->addInstallAs('Mobile/EZweb.php', 'Net/UserAgent/Mobile/EZweb.php');
+$package->addInstallAs('Mobile/Error.php', 'Net/UserAgent/Mobile/Error.php');
 $package->addInstallAs('Mobile/NonMobile.php', 'Net/UserAgent/Mobile/NonMobile.php');
 $package->addInstallAs('Mobile/SoftBank.php', 'Net/UserAgent/Mobile/SoftBank.php');
 $package->addInstallAs('Mobile/Willcom.php', 'Net/UserAgent/Mobile/Willcom.php');
