@@ -68,7 +68,8 @@ $package->setOptions(array('filelistgenerator' => 'cvs',
                            'baseinstalldir'    => '/',
                            'packagefile'       => 'package.xml',
                            'packagedirectory'  => '.',
-                           'dir_roles'         => array('docs' => 'doc',
+                           'dir_roles'         => array('Net' => 'php',
+                                                        'docs' => 'doc',
                                                         'tests' => 'test'),
                            'ignore'            => array('package.php'))
                      );
@@ -95,16 +96,6 @@ $package->addExtensionDep('required', 'pcre');
 $package->addExtensionDep('optional', 'xml');
 $package->addMaintainer('lead', 'kuboa', 'KUBO Atsuhiro', 'kubo@iteman.jp');
 $package->addGlobalReplacement('package-info', '@package_version@', 'version');
-$package->addInstallAs('Mobile.php', 'Net/UserAgent/Mobile.php');
-$package->addInstallAs('Mobile/Common.php', 'Net/UserAgent/Mobile/Common.php');
-$package->addInstallAs('Mobile/Display.php', 'Net/UserAgent/Mobile/Display.php');
-$package->addInstallAs('Mobile/DoCoMo.php', 'Net/UserAgent/Mobile/DoCoMo.php');
-$package->addInstallAs('Mobile/DoCoMo/ScreenInfo.php', 'Net/UserAgent/Mobile/DoCoMo/ScreenInfo.php');
-$package->addInstallAs('Mobile/EZweb.php', 'Net/UserAgent/Mobile/EZweb.php');
-$package->addInstallAs('Mobile/Error.php', 'Net/UserAgent/Mobile/Error.php');
-$package->addInstallAs('Mobile/NonMobile.php', 'Net/UserAgent/Mobile/NonMobile.php');
-$package->addInstallAs('Mobile/SoftBank.php', 'Net/UserAgent/Mobile/SoftBank.php');
-$package->addInstallAs('Mobile/Willcom.php', 'Net/UserAgent/Mobile/Willcom.php');
 $package->generateContents();
 
 if (array_key_exists(1, $_SERVER['argv']) && $_SERVER['argv'][1] == 'make') {
