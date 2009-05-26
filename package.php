@@ -62,7 +62,7 @@ Enhancements
 - Added getBrowserVersion() to get the i-mode browser version.';
 
 $package = new PEAR_PackageFileManager2();
-$package->setOptions(array('filelistgenerator' => 'cvs',
+$package->setOptions(array('filelistgenerator' => 'file',
                            'changelogoldtonew' => false,
                            'simpleoutput'      => true,
                            'baseinstalldir'    => '/',
