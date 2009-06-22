@@ -1776,7 +1776,9 @@ class Net_UserAgent_Mobile_DoCoMoTestCase extends Net_UserAgent_Mobile_AbstractT
                     $this->fail($agent->getUserAgent());
                 }
             } else {
-                $this->assertTrue($agent->isGPS(), $agent->getUserAgent());
+                $this->assertEquals($profile['isGPS'], $agent->isGPS(),
+                                    $agent->getUserAgent()
+                                    );
             }
         }
     }
