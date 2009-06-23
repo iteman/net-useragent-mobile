@@ -1947,6 +1947,12 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
                                        'depth'  => 262144,
                                        'color'  => 1
                                        ),
+                       'P10A' => array(
+                                       'width'  => 240,
+                                       'height' => 350,
+                                       'depth'  => 262144,
+                                       'color'  => 1
+                                       ),
                        'SH01A' => array(
                                         'width'  => 240,
                                         'height' => 320,
@@ -1991,24 +1997,72 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
                                        ),
 
                        // i-mode browser 2.0
-                       'P07A' => array(
-                                       'width'  => 480,
-                                       'height' => 662,
-                                       'depth'  => 262144,
-                                       'color'  => 1
-                                       ),
-                       'N06A' => array(
-                                       'width'  => 480,
-                                       'height' => 640,
-                                       'depth'  => 262144,
-                                       'color'  => 1
-                                       ),
-                       'N08A' => array(
-                                       'width'  => 480,
-                                       'height' => 640,
-                                       'depth'  => 262144,
-                                       'color'  => 1
-                                       )
+                       'P07A3' => array(
+                                        'width'  => 480,
+                                        'height' => 662,
+                                        'depth'  => 262144,
+                                        'color'  => 1
+                                        ),
+                       'P08A3' => array(
+                                        'width'  => 480,
+                                        'height' => 662,
+                                        'depth'  => 262144,
+                                        'color'  => 1
+                                        ),
+                       'P09A3' => array(
+                                        'width'  => 480,
+                                        'height' => 662,
+                                        'depth'  => 262144,
+                                        'color'  => 1
+                                        ),
+                       'N06A3' => array(
+                                        'width'  => 480,
+                                        'height' => 640,
+                                        'depth'  => 262144,
+                                        'color'  => 1
+                                        ),
+                       'N08A3' => array(
+                                        'width'  => 480,
+                                        'height' => 640,
+                                        'depth'  => 262144,
+                                        'color'  => 1
+                                        ),
+                       'N09A3' => array(
+                                        'width'  => 480,
+                                        'height' => 640,
+                                        'depth'  => 262144,
+                                        'color'  => 1
+                                        ),
+                       'F08A3' => array(
+                                        'width'  => 480,
+                                        'height' => 648,
+                                        'depth'  => 262144,
+                                        'color'  => 1
+                                        ),
+                       'F09A3' => array(
+                                        'width'  => 480,
+                                        'height' => 648,
+                                        'depth'  => 16777216,
+                                        'color'  => 1
+                                        ),
+                       'SH05A3' => array(
+                                         'width'  => 480,
+                                         'height' => 592,
+                                         'depth'  => 16777216,
+                                         'color'  => 1
+                                         ),
+                       'SH06A3' => array(
+                                         'width'  => 480,
+                                         'height' => 592,
+                                         'depth'  => 16777216,
+                                         'color'  => 1
+                                         ),
+                       'SH07A3' => array(
+                                         'width'  => 480,
+                                         'height' => 592,
+                                         'depth'  => 16777216,
+                                         'color'  => 1
+                                         )
                        );
 
     /**#@-*/
