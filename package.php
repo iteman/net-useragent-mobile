@@ -42,24 +42,13 @@ require_once 'PEAR.php';
 
 PEAR::staticPushErrorHandling(PEAR_ERROR_CALLBACK, create_function('$error', 'var_dump($error); exit();'));
 
-$releaseVersion = '1.0.0RC3';
-$releaseStability = 'beta';
+$releaseVersion = '1.0.0';
+$releaseStability = 'stable';
 $apiVersion = '0.30.0';
-$apiStability = 'beta';
-$notes = 'A new release of Net_UserAgent_Mobile is now available.
+$apiStability = 'stable';
+$notes = 'What\'s New in Net_UserAgent_Mobile 1.0.0
 
-What\'s New in Net_UserAgent_Mobile 1.0.0RC3
-
- * Updated docomo Support: Three new models, P-07A, N-06A, and N-08A since the release 1.0.0RC2 have been supported. These models have the i-mode browser 2.0, can be distinguished by newly added getBrowserVersion().
-
-See the following release notes for details.
-
-Enhancements
-============
-
-- Changed the class declaration so as not to inherit from PEAR. (Net_UserAgent_Mobile, Net_UserAgent_Mobile_Common)
-- Added support for the new models of docomo. (since the release 1.0.0RC2)
-- Added getBrowserVersion() to get the i-mode browser version.';
+ * Updated docomo Support: Nine new models P-10A, P-08A, P-09A, N-09A, F-08A, F-09A, SH-05A, SH-06A, and SH-07A since the release 1.0.0RC3 have been supported. Also the model name of P-07A, N-06A, and N-08A have been adjusted to their fixed user-agent string like P07A => P07A3.';
 
 $package = new PEAR_PackageFileManager2();
 $package->setOptions(array('filelistgenerator' => 'file',
