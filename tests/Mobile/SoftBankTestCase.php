@@ -360,6 +360,44 @@ class Net_UserAgent_Mobile_SoftBankTestCase extends Net_UserAgent_Mobile_Abstrac
         unset($_SERVER['HTTP_X_JPHONE_DISPLAY']);
     }
 
+    /**
+     * @since Method available since Release 2.0.0dev1
+     */
+    public function testShouldSupportYahooWebCrawler()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('Vodafone/1.0/V705SH (compatible; Y!J-SRD/1.0; http://help.yahoo.co.jp/help/jp/search/indexing/indexing-27.html)');
+
+        $this->assertTrue($agent->isSoftBank());
+        $this->assertEquals('V705SH', $agent->getModel());
+        $this->assertTrue($agent->isPacketCompliant());
+        $this->assertNull($agent->getSerialNumber());
+        $this->assertNull($agent->getVendorVersion());
+        $this->assertEquals(0, count($agent->getJavaInfo()));
+        $this->assertTrue($agent->isType3GC());
+        $this->assertEquals('Vodafone', $agent->getName());
+        $this->assertEquals('1.0', $agent->getVersion());
+        $this->assertEquals('', $agent->getVendor());
+    }
+
+    /**
+     * @since Method available since Release 2.0.0dev1
+     */
+    public function testShouldSupportYahooWebCrawlerForInterestMatch()
+    {
+        $agent = new Net_UserAgent_Mobile_SoftBank('Vodafone/1.0/V705SH (compatible; Y!J-BRL/YATSS crawler; http://ov.yahoo.co.jp/support/faq/int/other/other_001.html)');
+
+        $this->assertTrue($agent->isSoftBank());
+        $this->assertEquals('V705SH', $agent->getModel());
+        $this->assertTrue($agent->isPacketCompliant());
+        $this->assertNull($agent->getSerialNumber());
+        $this->assertNull($agent->getVendorVersion());
+        $this->assertEquals(0, count($agent->getJavaInfo()));
+        $this->assertTrue($agent->isType3GC());
+        $this->assertEquals('Vodafone', $agent->getName());
+        $this->assertEquals('1.0', $agent->getVersion());
+        $this->assertEquals('', $agent->getVendor());
+    }
+
     /**#@-*/
 
     /**#@+

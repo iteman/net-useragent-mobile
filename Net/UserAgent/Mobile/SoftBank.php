@@ -473,6 +473,14 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
         // Vodafone/1.0/V802SE/SEJ001/SN123456789012345 Browser/SEMC-Browser/4.1 Profile/MIDP-2.0 Configuration/CLDC-1.1
         @list($this->name, $this->version, $this->_rawModel, $modelVersion,
               $serialNumber) = explode('/', $agent[0]);
+        if (!$modelVersion) {
+            if (!preg_match('/^.+\((.+)\)$/', $this->_userAgent, $matches)) {
+                return $this->noMatch();
+            }
+
+            return;
+        }
+
         if ($serialNumber) {
             if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
                 return $this->noMatch();
