@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: Willcom.php,v 1.9 2009/05/10 17:28:47 kuboa Exp $
+ * @version    Release: @package_version@
  * @link       http://www.willcom-inc.com/ja/service/contents_service/club_air_edge/for_phone/homepage/index.html
  * @since      File available since Release 0.5
  */

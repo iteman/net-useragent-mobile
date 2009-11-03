@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: package.php,v 1.11 2009/05/25 07:06:30 kuboa Exp $
+ * @version    Release: @package_version@
  * @since      File available since Release 0.30.0
  */
 

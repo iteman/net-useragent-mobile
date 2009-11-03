@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2003-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: SoftBank.php,v 1.16 2009/05/22 18:49:04 kuboa Exp $
+ * @version    Release: @package_version@
  * @link       http://creation.mb.softbank.jp/
  * @since      File available since Release 0.20.0
  */

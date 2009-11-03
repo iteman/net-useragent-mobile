@@ -33,7 +33,7 @@
  * @author     KUBO Atsuhiro <kubo@iteman.jp>
  * @copyright  2008-2009 KUBO Atsuhiro <kubo@iteman.jp>
  * @license    http://www.opensource.org/licenses/bsd-license.php  New BSD License
- * @version    CVS: $Id: DoCoMoTestCase.php,v 1.26 2009/05/22 18:49:49 kuboa Exp $
+ * @version    Release: @package_version@
  * @since      File available since Release 0.31.0
  */
 
