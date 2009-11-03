@@ -38,22 +38,21 @@
  */
 
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Mobile_AllTests::main');
+    define('PHPUnit_MAIN_METHOD', 'Net_UserAgent_Mobile_AllTests::main');
 }
 
 require_once 'PHPUnit/Framework/TestSuite.php';
 require_once 'PHPUnit/TextUI/TestRunner.php';
 require_once 'System.php';
 
-chdir(dirname(__FILE__) . '/../..');
+require_once 'Net/UserAgent/MobileTestCase.php';
+require_once 'Net/UserAgent/Mobile/DoCoMoTestCase.php';
+require_once 'Net/UserAgent/Mobile/EZwebTestCase.php';
+require_once 'Net/UserAgent/Mobile/SoftBankTestCase.php';
+require_once 'Net/UserAgent/Mobile/WillcomTestCase.php';
+require_once 'Net/UserAgent/Mobile/NonMobileTestCase.php';
 
-require_once dirname(__FILE__) . '/DoCoMoTestCase.php';
-require_once dirname(__FILE__) . '/EZwebTestCase.php';
-require_once dirname(__FILE__) . '/SoftBankTestCase.php';
-require_once dirname(__FILE__) . '/WillcomTestCase.php';
-require_once dirname(__FILE__) . '/NonMobileTestCase.php';
-
-class Mobile_AllTests
+class Net_UserAgent_Mobile_AllTests
 {
     public static function main()
     {
@@ -62,6 +61,7 @@ class Mobile_AllTests
     public static function suite()
     {
         $suite = new PHPUnit_Framework_TestSuite('Net_UserAgent_Mobile package');
+        $suite->addTestSuite('Net_UserAgent_MobileTestCase');
         $suite->addTestSuite('Net_UserAgent_Mobile_DoCoMoTestCase');
         $suite->addTestSuite('Net_UserAgent_Mobile_EZwebTestCase');
         $suite->addTestSuite('Net_UserAgent_Mobile_SoftBankTestCase');
@@ -71,8 +71,8 @@ class Mobile_AllTests
     }
 }
 
-if (PHPUnit_MAIN_METHOD == 'Mobile_AllTests::main') {
-    Mobile_AllTests::main();
+if (PHPUnit_MAIN_METHOD == 'Net_UserAgent_Mobile_AllTests::main') {
+    Net_UserAgent_Mobile_AllTests::main();
 }
 
 /*
