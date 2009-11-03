@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2008-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -69,10 +69,16 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
     /**#@-*/
 
     /**#@+
+     * @access protected
+     */
+
+    /**#@-*/
+
+    /**#@+
      * @access private
      */
 
-    var $_data = array(
+    private $_data = array(
 
                        // i-mode compliant HTML 1.0
                        'D501I' => array(
@@ -2080,12 +2086,11 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
      * created and returned.
      *
      * @return Net_UserAgent_Mobile_DoCoMo_ScreenInfo
-     * @static
      */
-    function &singleton()
+    public static function singleton()
     {
         if (@is_null($GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'])) {
-            $GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'] = &new Net_UserAgent_Mobile_DoCoMo_ScreenInfo();
+            $GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'] = new self();
         }
 
         return $GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'];
@@ -2100,10 +2105,16 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
      * @param string $model
      * @return array
      */
-    function get($model)
+    public function get($model)
     {
         return $this->_data[ strtoupper($model) ];
     }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 
@@ -2118,7 +2129,7 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
      * Creates the screen information by a given XML file if DOCOMO_MAP environment
      * variable exists.
      */
-    function Net_UserAgent_Mobile_DoCoMo_ScreenInfo()
+    private function __construct()
     {
         if (!array_key_exists('DOCOMO_MAP', $_SERVER)) {
             return;

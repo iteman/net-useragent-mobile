@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2003-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -55,7 +55,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * require_once 'Net/UserAgent/Mobile.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] = 'UP.Browser/3.01-HI02 UP.Link/3.2.1.2';
- * $agent = &Net_UserAgent_Mobile::factory();
+ * $agent = Net_UserAgent_Mobile::factory();
  *
  * printf("Name: %s\n", $agent->getName()); // 'UP.Browser'
  * printf("Version: %s\n", $agent->getVersion()); // 3.01
@@ -93,6 +93,12 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
     /**#@-*/
 
     /**#@+
+     * @access protected
+     */
+
+    /**#@-*/
+
+    /**#@+
      * @access private
      */
 
@@ -100,19 +106,19 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * server string like 'UP.Link/3.2.1.2'
      * @var string
      */
-    var $_serverName = '';
+    private $_serverName = '';
 
     /**
      * comment like 'Google WAP Proxy/1.0'
      * @var string
      */
-    var $_comment = null;
+    private $_comment = null;
 
     /**
      * whether it's XHTML compliant or not
      * @var boolean
      */
-    var $_xhtmlCompliant = false;
+    private $_xhtmlCompliant = false;
 
     /**#@-*/
 
@@ -128,7 +134,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isEZweb()
+    public function isEZweb()
     {
         return true;
     }
@@ -141,7 +147,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isTUKa()
+    public function isTUKa()
     {
         $tuka = substr($this->_rawModel, 2, 1);
         if ($this->isWAP2()) {
@@ -165,7 +171,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @param string $userAgent User-Agent string
      */
-    function parse($userAgent)
+    public function parse($userAgent)
     {
         if (preg_match('/^KDDI-(.*)/', $userAgent, $matches)) {
 
@@ -196,7 +202,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return Net_UserAgent_Mobile_Display
      */
-    function makeDisplay()
+    public function makeDisplay()
     {
         @list($width, $height) =
             explode(',', $this->getHeader('X-UP-DEVCAP-SCREENPIXELS'));
@@ -218,7 +224,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getDeviceID()
+    public function getDeviceID()
     {
         return $this->_rawModel;
     }
@@ -231,7 +237,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getServer()
+    public function getServer()
     {
         return $this->_serverName;
     }
@@ -244,7 +250,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function getComment()
+    public function getComment()
     {
         return $this->_comment;
     }
@@ -257,7 +263,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isXHTMLCompliant()
+    public function isXHTMLCompliant()
     {
         return $this->_xhtmlCompliant;
     }
@@ -270,7 +276,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierShortName()
+    public function getCarrierShortName()
     {
         return 'E';
     }
@@ -283,7 +289,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierLongName()
+    public function getCarrierLongName()
     {
         return 'EZweb';
     }
@@ -296,7 +302,7 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isWIN()
+    public function isWIN()
     {
         return substr($this->_rawModel, 2, 1) == 3 ? true : false;
     }
@@ -310,12 +316,18 @@ class Net_UserAgent_Mobile_EZweb extends Net_UserAgent_Mobile_Common
      * @return string
      * @since Method available since Release 1.0.0RC1
      */
-    function getUID()
+    public function getUID()
     {
         if (array_key_exists('HTTP_X_UP_SUBNO', $_SERVER)) {
             return $_SERVER['HTTP_X_UP_SUBNO'];
         }
     }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 

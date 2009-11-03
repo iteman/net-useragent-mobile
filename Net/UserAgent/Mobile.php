@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2003-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -64,8 +64,8 @@ $GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch'] = false;
  * <code>
  * require_once 'Net/UserAgent/Mobile.php';
  *
- * $agent = &Net_UserAgent_Mobile::factory($agent_string);
- * // or $agent = &Net_UserAgent_Mobile::factory(); // to get from $_SERVER
+ * $agent = Net_UserAgent_Mobile::factory($agent_string);
+ * // or $agent = Net_UserAgent_Mobile::factory(); // to get from $_SERVER
  *
  * if ($agent->isDoCoMo()) {
  *     // or if ($agent->getName() == 'DoCoMo')
@@ -109,6 +109,12 @@ class Net_UserAgent_Mobile
     /**#@-*/
 
     /**#@+
+     * @access protected
+     */
+
+    /**#@-*/
+
+    /**#@+
      * @access private
      */
 
@@ -116,7 +122,6 @@ class Net_UserAgent_Mobile
 
     /**#@+
      * @access public
-     * @static
      */
 
     // }}}
@@ -134,20 +139,20 @@ class Net_UserAgent_Mobile
      *     Net_UserAgent_Mobile_Common object
      * @throws Net_UserAgent_Mobile_Error
      */
-    function &factory($userAgent = null)
+    public static function factory($userAgent = null)
     {
         if (is_null($userAgent)) {
             $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
         // parse User-Agent string
-        if (Net_UserAgent_Mobile::isDoCoMo($userAgent)) {
+        if (self::isDoCoMo($userAgent)) {
             $driver = 'DoCoMo';
-        } elseif (Net_UserAgent_Mobile::isEZweb($userAgent)) {
+        } elseif (self::isEZweb($userAgent)) {
             $driver = 'EZweb';
-        } elseif (Net_UserAgent_Mobile::isSoftBank($userAgent)) {
+        } elseif (self::isSoftBank($userAgent)) {
             $driver = 'SoftBank';
-        } elseif (Net_UserAgent_Mobile::isWillcom($userAgent)) {
+        } elseif (self::isWillcom($userAgent)) {
             $driver = 'Willcom';
         } else {
             $driver = 'NonMobile';
@@ -159,7 +164,7 @@ class Net_UserAgent_Mobile
             $file = str_replace('_', '/', $class) . '.php';
             if (!include_once $file) {
                 return PEAR::raiseError(null,
-                                        NET_USERAGENT_MOBILE_ERROR_NOT_FOUND,
+                                        self_ERROR_NOT_FOUND,
                                         null, null,
                                         "Unable to include the $file file",
                                         'Net_UserAgent_Mobile_Error', true
@@ -170,12 +175,12 @@ class Net_UserAgent_Mobile
         PEAR::staticPushErrorHandling(PEAR_ERROR_RETURN);
         $instance = new $class($userAgent);
         PEAR::staticPopErrorHandling();
-        $error = &$instance->getError();
-        if (Net_UserAgent_Mobile::isError($error)) {
+        $error = $instance->getError();
+        if (self::isError($error)) {
             if ($GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch']
                 && $error->getCode() == NET_USERAGENT_MOBILE_ERROR_NOMATCH
                 ) {
-                $instance = &Net_UserAgent_Mobile::factory('Net_UserAgent_Mobile_Fallback_On_NoMatch');
+                $instance = self::factory('Net_UserAgent_Mobile_Fallback_On_NoMatch');
                 return $instance;
             }
 
@@ -197,7 +202,7 @@ class Net_UserAgent_Mobile
      *     Net_UserAgent_Mobile_Common object
      * @throws Net_UserAgent_Mobile_Error
      */
-    function &singleton($userAgent = null)
+    public static function singleton($userAgent = null)
     {
         static $instances;
 
@@ -210,7 +215,7 @@ class Net_UserAgent_Mobile
         }
 
         if (!array_key_exists($userAgent, $instances)) {
-            $instances[$userAgent] = Net_UserAgent_Mobile::factory($userAgent);
+            $instances[$userAgent] = self::factory($userAgent);
         }
 
         return $instances[$userAgent];
@@ -225,7 +230,7 @@ class Net_UserAgent_Mobile
      * @param integer $value result code
      * @return boolean whether $value is an {@link Net_UserAgent_Mobile_Error}
      */
-    function isError($value)
+    public static function isError($value)
     {
         return is_object($value)
             && (strtolower(get_class($value)) == strtolower('Net_UserAgent_Mobile_Error')
@@ -241,7 +246,7 @@ class Net_UserAgent_Mobile
      * @param integer $value error code
      * @return string error message, or null if the error code was not recognized
      */
-    function errorMessage($value)
+    public static function errorMessage($value)
     {
         static $errorMessages;
         if (!isset($errorMessages)) {
@@ -253,7 +258,7 @@ class Net_UserAgent_Mobile
                                    );
         }
 
-        if (Net_UserAgent_Mobile::isError($value)) {
+        if (self::isError($value)) {
             $value = $value->getCode();
         }
 
@@ -272,15 +277,15 @@ class Net_UserAgent_Mobile
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isMobile($userAgent = null)
+    public static function isMobile($userAgent = null)
     {
-        if (Net_UserAgent_Mobile::isDoCoMo($userAgent)) {
+        if (self::isDoCoMo($userAgent)) {
             return true;
-        } elseif (Net_UserAgent_Mobile::isEZweb($userAgent)) {
+        } elseif (self::isEZweb($userAgent)) {
             return true;
-        } elseif (Net_UserAgent_Mobile::isSoftBank($userAgent)) {
+        } elseif (self::isSoftBank($userAgent)) {
             return true;
-        } elseif (Net_UserAgent_Mobile::isWillcom($userAgent)) {
+        } elseif (self::isWillcom($userAgent)) {
             return true;
         }
 
@@ -297,7 +302,7 @@ class Net_UserAgent_Mobile
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isDoCoMo($userAgent = null)
+    public static function isDoCoMo($userAgent = null)
     {
         if (is_null($userAgent)) {
             $userAgent = @$_SERVER['HTTP_USER_AGENT'];
@@ -320,7 +325,7 @@ class Net_UserAgent_Mobile
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isEZweb($userAgent = null)
+    public static function isEZweb($userAgent = null)
     {
         if (is_null($userAgent)) {
             $userAgent = @$_SERVER['HTTP_USER_AGENT'];
@@ -345,7 +350,7 @@ class Net_UserAgent_Mobile
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isSoftBank($userAgent = null)
+    public static function isSoftBank($userAgent = null)
     {
         if (is_null($userAgent)) {
             $userAgent = @$_SERVER['HTTP_USER_AGENT'];
@@ -382,7 +387,7 @@ class Net_UserAgent_Mobile
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isWillcom($userAgent = null)
+    public static function isWillcom($userAgent = null)
     {
         if (is_null($userAgent)) {
             $userAgent = @$_SERVER['HTTP_USER_AGENT'];
@@ -394,6 +399,12 @@ class Net_UserAgent_Mobile
 
         return false;
     }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 

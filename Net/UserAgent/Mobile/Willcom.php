@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2003-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -55,7 +55,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] =
  *     'Mozilla/3.0(DDIPOCKET;JRC/AH-J3001V,AH-J3002V/1.0/0100/c50)CNF/2.0';
- * $agent = &Net_UserAgent_Mobile::factory();
+ * $agent = Net_UserAgent_Mobile::factory();
  *
  * printf("Name: %s\n", $agent->getName()); // 'DDIPOCKET'
  * printf("Verdor: %s\n", $agent->getVendor()); // 'JRC'
@@ -87,7 +87,13 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      * User-Agent name
      * @var string
      */
-    var $name = 'WILLCOM';
+    public $name = 'WILLCOM';
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 
@@ -99,25 +105,25 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      * vendor name
      * @var string
      */
-    var $_vendor;
+    private $_vendor;
 
     /**
      * version number of the model
      * @var string
      */
-    var $_modelVersion;
+    private $_modelVersion;
 
     /**
      * version number of the browser
      * @var string
      */
-    var $_browserVersion;
+    private $_browserVersion;
 
     /**
      * cache size as killobytes unit
      * @var integer
      */
-    var $_cacheSize;
+    private $_cacheSize;
 
     /**#@-*/
 
@@ -133,7 +139,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isAirHPhone()
+    public function isAirHPhone()
     {
         return $this->isWillcom();
     }
@@ -146,7 +152,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @param string $userAgent User-Agent string
      */
-    function parse($userAgent)
+    public function parse($userAgent)
     {
         if (preg_match('!^Mozilla/3\.0\((?:DDIPOCKET|WILLCOM);(.*)\)!',
                        $userAgent, $matches)
@@ -171,7 +177,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return Net_UserAgent_Mobile_Display
      */
-    function makeDisplay()
+    public function makeDisplay()
     {
         return new Net_UserAgent_Mobile_Display(null);
     }
@@ -184,7 +190,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getVendor()
+    public function getVendor()
     {
         return $this->_vendor;
     }
@@ -197,7 +203,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getModelVersion()
+    public function getModelVersion()
     {
         return $this->_modelVersion;
     }
@@ -210,7 +216,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getBrowserVersion()
+    public function getBrowserVersion()
     {
         return $this->_browserVersion;
     }
@@ -223,7 +229,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return integer
      */
-    function getCacheSize()
+    public function getCacheSize()
     {
         return $this->_cacheSize;
     }
@@ -236,7 +242,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierShortName()
+    public function getCarrierShortName()
     {
         return 'W';
     }
@@ -249,7 +255,7 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierLongName()
+    public function getCarrierLongName()
     {
         return 'WILLCOM';
     }
@@ -263,10 +269,16 @@ class Net_UserAgent_Mobile_Willcom extends Net_UserAgent_Mobile_Common
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isWillcom()
+    public function isWillcom()
     {
         return true;
     }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 

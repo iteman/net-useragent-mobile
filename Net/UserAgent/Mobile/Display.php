@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2003-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -49,7 +49,7 @@
  * <code>
  * require_once 'Net/UserAgent/Mobile.php';
  *
- * $agent = &Net_UserAgent_Mobile::factory();
+ * $agent = Net_UserAgent_Mobile::factory();
  * $display = $agent->getDisplay();
  *
  * $width  = $display->getWidth();
@@ -92,6 +92,12 @@ class Net_UserAgent_Mobile_Display
     /**#@-*/
 
     /**#@+
+     * @access protected
+     */
+
+    /**#@-*/
+
+    /**#@+
      * @access private
      */
 
@@ -99,37 +105,37 @@ class Net_UserAgent_Mobile_Display
      * width of the display
      * @var integer
      */
-    var $_width;
+    private $_width;
 
     /**
      * height of the display
      * @var integer
      */
-    var $_height;
+    private $_height;
 
     /**
      * depth of the display
      * @var integer
      */
-    var $_depth;
+    private $_depth;
 
     /**
      * color capability of the display
      * @var boolean
      */
-    var $_color;
+    private $_color;
 
     /**
      * width (bytes) of the display
      * @var integer
      */
-    var $_widthBytes;
+    private $_widthBytes;
 
     /**
      * height (bytes) of the display
      * @var integer
      */
-    var $_heightBytes;
+    private $_heightBytes;
 
     /**#@-*/
 
@@ -145,7 +151,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @param array $data display infomation
      */
-    function Net_UserAgent_Mobile_Display($data)
+    public function __construct($data)
     {
         $this->_width  = (integer)@$data['width'];
         $this->_height = (integer)@$data['height'];
@@ -164,7 +170,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    function calcSize()
+    public function calcSize()
     {
         return $this->_width * $this->_height;
     }
@@ -177,7 +183,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return array
      */
-    function getSize()
+    public function getSize()
     {
         return array($this->_width, $this->_height);
     }
@@ -190,7 +196,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    function getWidth()
+    public function getWidth()
     {
         return $this->_width;
     }
@@ -203,7 +209,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    function getHeight()
+    public function getHeight()
     {
         return $this->_height;
     }
@@ -216,7 +222,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    function getDepth()
+    public function getDepth()
     {
         return $this->_depth;
     }
@@ -229,7 +235,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return boolean
      */
-    function isColor()
+    public function isColor()
     {
         return $this->_color;
     }
@@ -242,7 +248,7 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    function getWidthBytes()
+    public function getWidthBytes()
     {
         return $this->_widthBytes;
     }
@@ -255,10 +261,16 @@ class Net_UserAgent_Mobile_Display
      *
      * @return integer
      */
-    function getHeightBytes()
+    public function getHeightBytes()
     {
         return $this->_heightBytes;
     }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 

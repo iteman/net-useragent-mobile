@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2003-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -54,7 +54,7 @@ require_once 'Net/UserAgent/Mobile/Display.php';
  * require_once 'Net/UserAgent/Mobile.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] = 'Mozilla/4.0';
- * $agent = &Net_UserAgent_Mobile::factory();
+ * $agent = Net_UserAgent_Mobile::factory();
  * </code>
  *
  * @category   Networking
@@ -77,6 +77,12 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
     /**#@-*/
 
     /**#@+
+     * @access protected
+     */
+
+    /**#@-*/
+
+    /**#@+
      * @access private
      */
 
@@ -94,7 +100,7 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isNonMobile()
+    public function isNonMobile()
     {
         return true;
     }
@@ -107,7 +113,7 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @param string $userAgent User-Agent string
      */
-    function parse($userAgent)
+    public function parse($userAgent)
     {
         @list($this->name, $this->version) = explode('/', $userAgent);
     }
@@ -120,7 +126,7 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @return Net_UserAgent_Mobile_Display
      */
-    function makeDisplay()
+    public function makeDisplay()
     {
         return new Net_UserAgent_Mobile_Display(null);
     }
@@ -133,7 +139,7 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierShortName()
+    public function getCarrierShortName()
     {
         return 'N';
     }
@@ -146,10 +152,16 @@ class Net_UserAgent_Mobile_NonMobile extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierLongName()
+    public function getCarrierLongName()
     {
         return 'NonMobile';
     }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 

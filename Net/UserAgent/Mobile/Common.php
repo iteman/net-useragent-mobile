@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2003-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -56,7 +56,7 @@ require_once 'PEAR.php';
  * @version    Release: @package_version@
  * @since      Class available since Release 0.1
  */
-class Net_UserAgent_Mobile_Common
+abstract class Net_UserAgent_Mobile_Common
 {
 
     // {{{ properties
@@ -69,38 +69,38 @@ class Net_UserAgent_Mobile_Common
      * User-Agent name like 'DoCoMo'
      * @var string
      */
-    var $name;
+    public $name;
 
     /**
      * User-Agent version number like '1.0'
      * @var string
      */
-    var $version;
+    public $version;
 
     /**#@-*/
 
     /**#@+
-     * @access private
+     * @access protected
      */
 
     /**
      * {@link Net_UserAgent_Mobile_Display} object
      * @var object {@link Net_UserAgent_Mobile_Display}
      */
-    var $_display;
+    protected $_display;
 
     /**
      * {@link Net_UserAgent_Mobile_Error} object for error handling in the constructor
      * @var object
      **/
-    var $_error;
+    protected $_error;
 
     /**
      * The User-Agent string.
      * @var string
      * @since Property available since Release 0.31.0
      **/
-    var $_userAgent;
+    protected $_userAgent;
 
     /**
      * The model name of the user agent.
@@ -108,7 +108,7 @@ class Net_UserAgent_Mobile_Common
      * @var string
      * @since Property available since Release 0.31.0
      */
-    var $_model;
+    protected $_model;
 
     /**
      * The raw model name of the user agent.
@@ -116,7 +116,13 @@ class Net_UserAgent_Mobile_Common
      * @var string
      * @since Property available since Release 0.31.0
      */
-    var $_rawModel;
+    protected $_rawModel;
+
+    /**#@-*/
+
+    /**#@+
+     * @access private
+     */
 
     /**#@-*/
 
@@ -132,13 +138,13 @@ class Net_UserAgent_Mobile_Common
      *
      * @param string $userAgent User-Agent string
      */
-    function Net_UserAgent_Mobile_Common($userAgent)
+    public function __construct($userAgent)
     {
         $this->_userAgent = $userAgent;
 
         $result = $this->parse($userAgent);
         if (PEAR::isError($result)) {
-            $this->_error = &$result;
+            $this->_error = $result;
         }
     }
 
@@ -152,11 +158,10 @@ class Net_UserAgent_Mobile_Common
      * @return Net_UserAgent_Mobile_Error
      * @since Method available since Release 1.0.0RC2
      */
-    function &getError()
+    public function getError()
     {
         if (is_null($this->_error)) {
-            $return = null;
-            return $return;
+            return;
         }
 
         return $this->_error;
@@ -170,7 +175,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getUserAgent()
+    public function getUserAgent()
     {
         return $this->_userAgent;
     }
@@ -184,7 +189,7 @@ class Net_UserAgent_Mobile_Common
      * @param string $header
      * @return string
      */
-    function getHeader($header)
+    public function getHeader($header)
     {
         return @$_SERVER[ 'HTTP_' . str_replace('-', '_', $header) ];
     }
@@ -197,7 +202,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getName()
+    public function getName()
     {
         return $this->name;
     }
@@ -210,7 +215,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return Net_UserAgent_Mobile_Display
      */
-    function getDisplay()
+    public function getDisplay()
     {
         if (is_null($this->_display)) {
             $this->_display = $this->makeDisplay();
@@ -227,7 +232,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getVersion()
+    public function getVersion()
     {
         return $this->version;
     }
@@ -240,7 +245,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @throws Net_UserAgent_Mobile_Error
      */
-    function noMatch()
+    public function noMatch()
     {
         return PEAR::raiseError($this->getUserAgent() . ': might be new variants. Please contact the author of Net_UserAgent_Mobile!',
                                 NET_USERAGENT_MOBILE_ERROR_NOMATCH,
@@ -258,9 +263,8 @@ class Net_UserAgent_Mobile_Common
      * Parses HTTP_USER_AGENT string.
      *
      * @param string $userAgent User-Agent string
-     * @abstract
      */
-    function parse($userAgent) {}
+    abstract public function parse($userAgent);
 
     // }}}
     // {{{ makeDisplay()
@@ -270,9 +274,8 @@ class Net_UserAgent_Mobile_Common
      * implemented in subclasses)
      *
      * @return Net_UserAgent_Mobile_Display
-     * @abstract
      */
-    function makeDisplay() {}
+    abstract public function makeDisplay();
 
     // }}}
     // {{{ isDoCoMo()
@@ -282,7 +285,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isDoCoMo()
+    public function isDoCoMo()
     {
         return false;
     }
@@ -295,7 +298,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isJPhone()
+    public function isJPhone()
     {
         return false;
     }
@@ -308,7 +311,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isVodafone()
+    public function isVodafone()
     {
         return false;
     }
@@ -321,7 +324,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isEZweb()
+    public function isEZweb()
     {
         return false;
     }
@@ -334,7 +337,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isAirHPhone()
+    public function isAirHPhone()
     {
         return false;
     }
@@ -347,7 +350,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isNonMobile()
+    public function isNonMobile()
     {
         return false;
     }
@@ -360,7 +363,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isTUKa()
+    public function isTUKa()
     {
         return false;
     }
@@ -373,7 +376,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isWAP1()
+    public function isWAP1()
     {
         return $this->isEZweb() && !$this->isWAP2();
     }
@@ -386,7 +389,7 @@ class Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isWAP2()
+    public function isWAP2()
     {
         return $this->isEZweb() && $this->isXHTMLCompliant();
     }
@@ -396,26 +399,16 @@ class Net_UserAgent_Mobile_Common
 
     /**
      * returns the short name of the carrier
-     *
-     * @abstract
      */
-    function getCarrierShortName()
-    {
-        die();
-    }
+    abstract public function getCarrierShortName();
 
     // }}}
     // {{{ getCarrierLongName()
 
     /**
      * returns the long name of the carrier
-     *
-     * @abstract
      */
-    function getCarrierLongName()
-    {
-        die();
-    }
+    abstract public function getCarrierLongName();
 
     // }}}
     // {{{ isSoftBank()
@@ -426,7 +419,7 @@ class Net_UserAgent_Mobile_Common
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isSoftBank()
+    public function isSoftBank()
     {
         return false;
     }
@@ -440,7 +433,7 @@ class Net_UserAgent_Mobile_Common
      * @return boolean
      * @since Method available since Release 0.31.0
      */
-    function isWillcom()
+    public function isWillcom()
     {
         return false;
     }
@@ -454,7 +447,7 @@ class Net_UserAgent_Mobile_Common
      * @return string
      * @since Method available since Release 0.31.0
      */
-    function getModel()
+    public function getModel()
     {
         if (is_null($this->_model)) {
             return $this->_rawModel;
@@ -472,7 +465,7 @@ class Net_UserAgent_Mobile_Common
      * @return string
      * @since Method available since Release 0.31.0
      */
-    function getRawModel()
+    public function getRawModel()
     {
         return $this->_rawModel;
     }
@@ -486,7 +479,13 @@ class Net_UserAgent_Mobile_Common
      * @return string
      * @since Method available since Release 1.0.0RC1
      */
-    function getUID() {}
+    public function getUID() {}
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 

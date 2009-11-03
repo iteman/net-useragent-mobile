@@ -2,7 +2,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 
 /**
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * Copyright (c) 2003-2009 KUBO Atsuhiro <kubo@iteman.jp>,
  * All rights reserved.
@@ -55,7 +55,7 @@ require_once 'Net/UserAgent/Mobile.php';
  * require_once 'Net/UserAgent/Mobile.php';
  *
  * $_SERVER['HTTP_USER_AGENT'] = 'J-PHONE/2.0/J-DN02';
- * $agent = &Net_UserAgent_Mobile::factory();
+ * $agent = Net_UserAgent_Mobile::factory();
  *
  * printf("Name: %s\n", $agent->getName()); // 'J-PHONE'
  * printf("Version: %s\n", $agent->getVersion()); // 2.0
@@ -97,6 +97,12 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
     /**#@-*/
 
     /**#@+
+     * @access protected
+     */
+
+    /**#@-*/
+
+    /**#@+
      * @access private
      */
 
@@ -104,43 +110,43 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * whether the agent is packet connection complicant or not
      * @var boolean
      */
-    var $_packetCompliant = false;
+    private $_packetCompliant = false;
 
     /**
      * terminal unique serial number
      * @var string
      */
-    var $_serialNumber;
+    private $_serialNumber;
 
     /**
      * vendor code like 'SH'
      * @var string
      */
-    var $_vendor = '';
+    private $_vendor = '';
 
     /**
      * vendor version like '0001a'
      * @var string
      */
-    var $_vendorVersion;
+    private $_vendorVersion;
 
     /**
      * Java profiles
      * @var array
      */
-    var $_javaInfo = array();
+    private $_javaInfo = array();
 
     /**
      * whether the agent is 3G
      * @var boolean
      */
-    var $_is3G = true;
+    private $_is3G = true;
 
     /**
      * the name of the mobile phone
      * @var string
      */
-    var $_msname = '';
+    private $_msname = '';
 
     /**#@-*/
 
@@ -156,7 +162,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isJPhone()
+    public function isJPhone()
     {
         return $this->isSoftBank();
     }
@@ -169,7 +175,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isVodafone()
+    public function isVodafone()
     {
         return $this->isSoftBank();
     }
@@ -183,7 +189,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * @param string $userAgent User-Agent string
      * @throws Net_UserAgent_Mobile_Error
      */
-    function parse($userAgent)
+    public function parse($userAgent)
     {
         $agent = explode(' ', $userAgent);
         preg_match('!^(?:(SoftBank|Semulator|Vodafone|Vemulator|J-PHONE|J-EMULATOR)/\d\.\d|MOT-|MOTEMULATOR)!',
@@ -227,7 +233,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return Net_UserAgent_Mobile_Display
      */
-    function makeDisplay() 
+    public function makeDisplay()
     {
         @list($width, $height) = explode('*', $this->getHeader('X-JPHONE-DISPLAY'));
         $color = false;
@@ -253,7 +259,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isPacketCompliant()
+    public function isPacketCompliant()
     {
         return $this->_packetCompliant;
     }
@@ -267,7 +273,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getSerialNumber()
+    public function getSerialNumber()
     {
         return $this->_serialNumber;
     }
@@ -280,7 +286,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getVendor()
+    public function getVendor()
     {
         return $this->_vendor;
     }
@@ -293,7 +299,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getVendorVersion()
+    public function getVendorVersion()
     {
         return $this->_vendorVersion;
     }
@@ -312,7 +318,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return array
      */
-    function getJavaInfo()
+    public function getJavaInfo()
     {
         return $this->_javaInfo;
     }
@@ -325,7 +331,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierShortName()
+    public function getCarrierShortName()
     {
         return 'S';
     }
@@ -338,7 +344,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return string
      */
-    function getCarrierLongName()
+    public function getCarrierLongName()
     {
         return 'SoftBank';
     }
@@ -351,7 +357,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isTypeC()
+    public function isTypeC()
     {
         if ($this->_is3G || !preg_match('!^[32]\.!', $this->version)) {
             return false;
@@ -368,7 +374,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isTypeP()
+    public function isTypeP()
     {
         if ($this->_is3G || !preg_match('!^4\.!', $this->version)) {
             return false;
@@ -385,7 +391,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isTypeW()
+    public function isTypeW()
     {
         if ($this->_is3G || !preg_match('!^5\.!', $this->version)) {
             return false;
@@ -402,7 +408,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isType3GC()
+    public function isType3GC()
     {
         return $this->_is3G;
     }
@@ -415,7 +421,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return string the name of the mobile phone
      */
-    function getMsname()
+    public function getMsname()
     {
         return $this->_msname;
     }
@@ -428,7 +434,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @return boolean
      */
-    function isSoftBank()
+    public function isSoftBank()
     {
         return true;
     }
@@ -442,12 +448,18 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * @return string
      * @since Method available since Release 1.0.0RC1
      */
-    function getUID()
+    public function getUID()
     {
         if (array_key_exists('HTTP_X_JPHONE_UID', $_SERVER)) {
             return $_SERVER['HTTP_X_JPHONE_UID'];
         }
     }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
 
     /**#@-*/
 
@@ -464,7 +476,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * @param array $agent parts of the User-Agent string
      * @throws Net_UserAgent_Mobile_Error
      */
-    function _parseVodafone($agent)
+    private function _parseVodafone($agent)
     {
         $this->_packetCompliant = true;
 
@@ -511,7 +523,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * @param array $agent parts of the User-Agent string
      * @throws Net_UserAgent_Mobile_Error
      */
-    function _parseJphone($agent)
+    private function _parseJphone($agent)
     {
         $count = count($agent);
         $this->_is3G = false;
@@ -566,7 +578,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      *
      * @param array $agent parts of the User-Agent string
      */
-    function _parseMotorola($agent)
+    private function _parseMotorola($agent)
     {
         $this->_packetCompliant = true;
         $this->_vendor = 'MOT';
