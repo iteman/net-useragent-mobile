@@ -136,7 +136,7 @@ class Net_UserAgent_MobileTestCase extends Net_UserAgent_Mobile_AbstractTestCase
                             $agent->getCode()
                             );
 
-        $GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch'] = true;
+        Net_UserAgent_Mobile::$fallbackOnNomatch = true;
 
         $this->assertType('Net_UserAgent_Mobile_NonMobile',
                           Net_UserAgent_Mobile::factory($ua)

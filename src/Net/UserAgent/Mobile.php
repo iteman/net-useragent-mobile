@@ -40,16 +40,6 @@
 require_once 'Net/UserAgent/Mobile/Error.php';
 require_once 'PEAR.php';
 
-// {{{ GLOBALS
-
-/**
- * globals for fallback on no match
- *
- * @global boolean $GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch']
- */
-$GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch'] = false;
-
-// }}}
 // {{{ Net_UserAgent_Mobile
 
 /**
@@ -105,6 +95,8 @@ class Net_UserAgent_Mobile
     /**#@+
      * @access public
      */
+
+    public static $fallbackOnNomatch = false;
 
     /**#@-*/
 
@@ -177,7 +169,7 @@ class Net_UserAgent_Mobile
         PEAR::staticPopErrorHandling();
         $error = $instance->getError();
         if (self::isError($error)) {
-            if ($GLOBALS['NET_USERAGENT_MOBILE_FallbackOnNomatch']
+            if (self::$fallbackOnNomatch
                 && $error->getCode() == NET_USERAGENT_MOBILE_ERROR_NOMATCH
                 ) {
                 $instance = self::factory('Net_UserAgent_Mobile_Fallback_On_NoMatch');
