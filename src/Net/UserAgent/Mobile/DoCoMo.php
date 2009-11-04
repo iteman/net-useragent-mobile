@@ -113,6 +113,8 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * @access protected
      */
 
+    protected $screenInfo;
+
     /**#@-*/
 
     /**#@+
@@ -620,8 +622,8 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
     public function makeDisplay()
     {
         include_once 'Net/UserAgent/Mobile/DoCoMo/ScreenInfo.php';
-        $screenInfo = Net_UserAgent_Mobile_DoCoMo_ScreenInfo::singleton();
-        $display = $screenInfo->get($this->getModel());
+        $this->screenInfo = new Net_UserAgent_Mobile_DoCoMo_ScreenInfo();
+        $display = $this->screenInfo->get($this->getModel());
         if (!is_null($this->_displayBytes)) {
             @list($widthBytes, $heightBytes) = explode('*', $this->_displayBytes);
             $display['width_bytes']  = $widthBytes;

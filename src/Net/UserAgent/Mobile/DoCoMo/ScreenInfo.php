@@ -38,11 +38,6 @@
  * @since      File available since Release 1.0.0RC1
  */
 
-// {{{ GLOBALS
-
-$GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'] = null;
-
-// }}}
 // {{{ Net_UserAgent_Mobile_DoCoMo_ScreenInfo
 
 /**
@@ -2078,58 +2073,13 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
      */
 
     // }}}
-    // {{{ singleton()
-
-    /**
-     * Returns the Net_UserAgent_Mobile_DoCoMo_Screen instance if it exists. If it
-     * not exists, a new instance of Net_UserAgent_Mobile_DoCoMo_Screen will be
-     * created and returned.
-     *
-     * @return Net_UserAgent_Mobile_DoCoMo_ScreenInfo
-     */
-    public static function singleton()
-    {
-        if (@is_null($GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'])) {
-            $GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'] = new self();
-        }
-
-        return $GLOBALS['NET_USERAGENT_MOBILE_DoCoMo_ScreenInfo_Instance'];
-    }
-
-    // }}}
-    // {{{ get()
-
-    /**
-     * Gets the screen information of a given model.
-     *
-     * @param string $model
-     * @return array
-     */
-    public function get($model)
-    {
-        return $this->_data[ strtoupper($model) ];
-    }
-
-    /**#@-*/
-
-    /**#@+
-     * @access protected
-     */
-
-    /**#@-*/
-
-    /**#@+
-     * @access private
-     */
-
-    // }}}
-    // {{{ constructor
+    // {{{ __construct()
 
     /**
      * Creates the screen information by a given XML file if DOCOMO_MAP environment
      * variable exists.
      */
-    private function __construct()
+    public function __construct()
     {
         if (!array_key_exists('DOCOMO_MAP', $_SERVER)) {
             return;
@@ -2175,6 +2125,32 @@ class Net_UserAgent_Mobile_DoCoMo_ScreenInfo
             $this->_data = $data;
         } while (false);
     }
+
+    // }}}
+    // {{{ get()
+
+    /**
+     * Gets the screen information of a given model.
+     *
+     * @param string $model
+     * @return array
+     */
+    public function get($model)
+    {
+        return $this->_data[ strtoupper($model) ];
+    }
+
+    /**#@-*/
+
+    /**#@+
+     * @access protected
+     */
+
+    /**#@-*/
+
+    /**#@+
+     * @access private
+     */
 
     /**#@-*/
 
