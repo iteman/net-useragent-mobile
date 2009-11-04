@@ -127,20 +127,23 @@ class Net_UserAgent_MobileTestCase extends Net_UserAgent_Mobile_AbstractTestCase
     public function testShouldSupportFallbackOnNoMatch()
     {
         $ua = 'DoCoMo/1.0/SO504i/abc/TB';
-        PEAR::staticPushErrorHandling(PEAR_ERROR_RETURN);
-        $agent = Net_UserAgent_Mobile::factory($ua);
-        PEAR::staticPopErrorHandling();
 
-        $this->assertTrue(Net_UserAgent_Mobile::isError($agent));
-        $this->assertEquals(NET_USERAGENT_MOBILE_ERROR_NOMATCH,
-                            $agent->getCode()
-                            );
+        try {
+            Net_UserAgent_Mobile::factory($ua);
+
+            $this->fail('An expected exception has not been raised');
+        } catch (Net_UserAgent_Mobile_Exception $e) {
+        }
 
         Net_UserAgent_Mobile::$fallbackOnNomatch = true;
 
-        $this->assertType('Net_UserAgent_Mobile_NonMobile',
-                          Net_UserAgent_Mobile::factory($ua)
-                          );
+        try {
+            $agent = Net_UserAgent_Mobile::factory($ua);
+
+            $this->assertType('Net_UserAgent_Mobile_NonMobile', $agent);
+        } catch (Net_UserAgent_Mobile_Exception $e) {
+            $this->fail('An unexpected exception has been raised');
+        }
     }
 
     public function testShouldTellWhetherAUserAgentIsDocomo()

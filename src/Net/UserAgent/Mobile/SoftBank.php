@@ -187,7 +187,6 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * Parses HTTP_USER_AGENT string.
      *
      * @param string $userAgent User-Agent string
-     * @throws Net_UserAgent_Mobile_Error
      */
     public function parse($userAgent)
     {
@@ -206,20 +205,16 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
         case 'Semulator':
         case 'Vodafone':
         case 'Vemulator':
-            $result = $this->_parseVodafone($agent);
+            $this->_parseVodafone($agent);
             break;
         case 'J-PHONE':
         case 'J-EMULATOR':
-            $result = $this->_parseJphone($agent);
+            $this->_parseJphone($agent);
             break;
         case 'Motorola':
         case 'MOTEMULATOR':
-            $result = $this->_parseMotorola($agent);
+            $this->_parseMotorola($agent);
             break;
-        }
-
-        if (Net_UserAgent_Mobile::isError($result)) {
-            return $result;
         }
 
         $this->_msname = $this->getHeader('X-JPHONE-MSNAME');
@@ -474,7 +469,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * parse HTTP_USER_AGENT string for the Vodafone 3G aegnt
      *
      * @param array $agent parts of the User-Agent string
-     * @throws Net_UserAgent_Mobile_Error
+     * @throws Net_UserAgent_Mobile_Exception
      */
     private function _parseVodafone($agent)
     {
@@ -487,7 +482,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
               $serialNumber) = explode('/', $agent[0]);
         if (!$modelVersion) {
             if (!preg_match('/^.+\((.+)\)$/', $this->_userAgent, $matches)) {
-                return $this->noMatch();
+                $this->noMatch();
             }
 
             return;
@@ -495,14 +490,14 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
 
         if ($serialNumber) {
             if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
-                return $this->noMatch();
+                $this->noMatch();
             }
 
             $this->_serialNumber = $matches[1];
         }
 
         if (!preg_match('!^([a-z]+)((?:[a-z]|\d){4})$!i', $modelVersion, $matches)) {
-            return $this->noMatch();
+            $this->noMatch();
         }
 
         $this->_vendor = $matches[1];
@@ -521,7 +516,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
      * parse HTTP_USER_AGENT string for the ancient agent
      *
      * @param array $agent parts of the User-Agent string
-     * @throws Net_UserAgent_Mobile_Error
+     * @throws Net_UserAgent_Mobile_Exception
      */
     private function _parseJphone($agent)
     {
@@ -536,7 +531,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
                 explode('/', $agent[0]);
             if ($serialNumber) {
                 if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
-                    return $this->noMatch();
+                    $this->noMatch();
                 }
 
                 $this->_serialNumber = $matches[1];
@@ -554,7 +549,7 @@ class Net_UserAgent_Mobile_SoftBank extends Net_UserAgent_Mobile_Common
                 explode('/', $agent[0]);
             if ($serialNumber) {
                 if (!preg_match('!^SN(.+)!', $serialNumber, $matches)) {
-                    return $this->noMatch();
+                    $this->noMatch();
                 }
 
                 $this->_serialNumber = $matches[1];

@@ -37,8 +37,7 @@
  * @since      File available since Release 0.1
  */
 
-require_once 'Net/UserAgent/Mobile/Error.php';
-require_once 'PEAR.php';
+require_once 'Net/UserAgent/Mobile/Exception.php';
 
 // {{{ Net_UserAgent_Mobile
 
@@ -129,7 +128,7 @@ class Net_UserAgent_Mobile
      * @param string $userAgent User-Agent string
      * @return Net_UserAgent_Mobile_Common a newly created or an existing
      *     Net_UserAgent_Mobile_Common object
-     * @throws Net_UserAgent_Mobile_Error
+     * @throws Net_UserAgent_Mobile_Exception
      */
     public static function factory($userAgent = null)
     {
@@ -155,31 +154,19 @@ class Net_UserAgent_Mobile
         if (!class_exists($class)) {
             $file = str_replace('_', '/', $class) . '.php';
             if (!include_once $file) {
-                return PEAR::raiseError(null,
-                                        self_ERROR_NOT_FOUND,
-                                        null, null,
-                                        "Unable to include the $file file",
-                                        'Net_UserAgent_Mobile_Error', true
-                                        );
+                throw new Net_UserAgent_Mobile_Exception("Unable to include the $file file");
             }
         }
 
-        PEAR::staticPushErrorHandling(PEAR_ERROR_RETURN);
-        $instance = new $class($userAgent);
-        PEAR::staticPopErrorHandling();
-        $error = $instance->getError();
-        if (self::isError($error)) {
-            if (self::$fallbackOnNomatch
-                && $error->getCode() == NET_USERAGENT_MOBILE_ERROR_NOMATCH
-                ) {
-                $instance = self::factory('Net_UserAgent_Mobile_Fallback_On_NoMatch');
-                return $instance;
+        try {
+            return new $class($userAgent);
+        } catch (Net_UserAgent_Mobile_Exception $e) {
+            if (self::$fallbackOnNomatch) {
+                return self::factory('Net_UserAgent_Mobile_Fallback_On_NoMatch');
             }
 
-            return PEAR::raiseError($error);
+            throw $e;
         }
-
-        return $instance;
     }
 
     // }}}
@@ -192,7 +179,6 @@ class Net_UserAgent_Mobile
      * @param string $userAgent User-Agent string
      * @return Net_UserAgent_Mobile_Common a newly created or an existing
      *     Net_UserAgent_Mobile_Common object
-     * @throws Net_UserAgent_Mobile_Error
      */
     public static function singleton($userAgent = null)
     {
@@ -211,52 +197,6 @@ class Net_UserAgent_Mobile
         }
 
         return $instances[$userAgent];
-    }
-
-    // }}}
-    // {{{ isError()
-
-    /**
-     * tell whether a result code from a Net_UserAgent_Mobile method is an error
-     *
-     * @param integer $value result code
-     * @return boolean whether $value is an {@link Net_UserAgent_Mobile_Error}
-     */
-    public static function isError($value)
-    {
-        return is_object($value)
-            && (strtolower(get_class($value)) == strtolower('Net_UserAgent_Mobile_Error')
-                || is_subclass_of($value, 'Net_UserAgent_Mobile_Error'));
-    }
-
-    // }}}
-    // {{{ errorMessage()
-
-    /**
-     * return a textual error message for a Net_UserAgent_Mobile error code
-     *
-     * @param integer $value error code
-     * @return string error message, or null if the error code was not recognized
-     */
-    public static function errorMessage($value)
-    {
-        static $errorMessages;
-        if (!isset($errorMessages)) {
-            $errorMessages = array(
-                                   NET_USERAGENT_MOBILE_ERROR           => 'unknown error',
-                                   NET_USERAGENT_MOBILE_ERROR_NOMATCH   => 'no match',
-                                   NET_USERAGENT_MOBILE_ERROR_NOT_FOUND => 'not found',
-                                   NET_USERAGENT_MOBILE_OK              => 'no error'
-                                   );
-        }
-
-        if (self::isError($value)) {
-            $value = $value->getCode();
-        }
-
-        return isset($errorMessages[$value]) ?
-            $errorMessages[$value] :
-            $errorMessages[NET_USERAGENT_MOBILE_ERROR];
     }
 
     // }}}

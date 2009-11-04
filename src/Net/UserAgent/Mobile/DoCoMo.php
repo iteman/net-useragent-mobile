@@ -583,7 +583,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * Parses HTTP_USER_AGENT string.
      *
      * @param string $userAgent User-Agent string
-     * @throws Net_UserAgent_Mobile_Error
+     * @throws Net_UserAgent_Mobile_Exception
      */
     public function parse($userAgent)
     {
@@ -595,21 +595,17 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
 
             // DoCoMo/1.0/P209is (Google CHTML Proxy/1.0)
             $this->_comment = $matches[1];
-            $result = $this->_parseMain($main);
+            $this->_parseMain($main);
         } elseif ($foma_or_comment) {
 
             // DoCoMo/2.0 N2001(c10;ser0123456789abcde;icc01234567890123456789)
             $this->_isFOMA = true;
             @list($this->name, $this->version) = explode('/', $main);
-            $result = $this->_parseFOMA($foma_or_comment);
+            $this->_parseFOMA($foma_or_comment);
         } else {
 
             // DoCoMo/1.0/R692i/c10
-            $result = $this->_parseMain($main);
-        }
-
-        if (Net_UserAgent_Mobile::isError($result)) {
-            return $result;
+            $this->_parseMain($main);
         }
     }
 
@@ -879,7 +875,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * parse main part of HTTP_USER_AGENT string (not FOMA)
      *
      * @param string $main main part of HTTP_USER_AGENT string
-     * @throws Net_UserAgent_Mobile_Error
+     * @throws Net_UserAgent_Mobile_Exception
      */ 
     private function _parseMain($main)
     {
@@ -891,7 +887,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
 
         if ($cache) {
             if (!preg_match('/^c(\d+)$/', $cache, $matches)) {
-                return $this->noMatch();
+                $this->noMatch();
             }
             $this->_cacheSize = (integer)$matches[1];
         }
@@ -926,12 +922,12 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
      * parse main part of HTTP_USER_AGENT string (FOMA)
      *
      * @param string $foma main part of HTTP_USER_AGENT string
-     * @throws Net_UserAgent_Mobile_Error
+     * @throws Net_UserAgent_Mobile_Exception
      */ 
     private function _parseFOMA($foma)
     {
         if (!preg_match('/^([^(\s]+)/', $foma, $matches)) {
-            return $this->noMatch();
+            $this->noMatch();
         }
 
         $this->_rawModel = $matches[1];
@@ -975,7 +971,7 @@ class Net_UserAgent_Mobile_DoCoMo extends Net_UserAgent_Mobile_Common
                     $this->_displayBytes = "{$matches[1]}*{$matches[2]}";
                     continue;
                 }
-                return $this->noMatch();
+                $this->noMatch();
             }
         }
     }

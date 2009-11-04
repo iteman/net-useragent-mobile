@@ -37,8 +37,7 @@
  * @since      File available since Release 0.1
  */
 
-require_once 'Net/UserAgent/Mobile/Error.php';
-require_once 'PEAR.php';
+require_once 'Net/UserAgent/Mobile/Exception.php';
 
 // {{{ Net_UserAgent_Mobile_Common
 
@@ -90,12 +89,6 @@ abstract class Net_UserAgent_Mobile_Common
     protected $_display;
 
     /**
-     * {@link Net_UserAgent_Mobile_Error} object for error handling in the constructor
-     * @var object
-     **/
-    protected $_error;
-
-    /**
      * The User-Agent string.
      * @var string
      * @since Property available since Release 0.31.0
@@ -141,30 +134,7 @@ abstract class Net_UserAgent_Mobile_Common
     public function __construct($userAgent)
     {
         $this->_userAgent = $userAgent;
-
-        $result = $this->parse($userAgent);
-        if (PEAR::isError($result)) {
-            $this->_error = $result;
-        }
-    }
-
-    // }}}
-    // {{{ getError
-
-    /**
-     * Gets a Net_UserAgent_Mobile_Error object.
-     *
-     * @param object {@link Net_UserAgent_Mobile_Error} object when setting an error
-     * @return Net_UserAgent_Mobile_Error
-     * @since Method available since Release 1.0.0RC2
-     */
-    public function getError()
-    {
-        if (is_null($this->_error)) {
-            return;
-        }
-
-        return $this->_error;
+        $this->parse($userAgent);
     }
 
     // }}}
@@ -241,19 +211,16 @@ abstract class Net_UserAgent_Mobile_Common
     // {{{ noMatch()
 
     /**
-     * generates a warning message for new variants
+     * generates an exception for new variants
      *
-     * @throws Net_UserAgent_Mobile_Error
+     * @throws Net_UserAgent_Mobile_Exception
      */
     public function noMatch()
     {
-        return PEAR::raiseError($this->getUserAgent() . ': might be new variants. Please contact the author of Net_UserAgent_Mobile!',
-                                NET_USERAGENT_MOBILE_ERROR_NOMATCH,
-                                null,
-                                null,
-                                null,
-                                'Net_UserAgent_Mobile_Error'
-                                );
+        throw new Net_UserAgent_Mobile_Exception(
+            $this->getUserAgent() .
+            ': might be new variants. Please contact the author of Net_UserAgent_Mobile!'
+            );
     }
 
     // }}}
