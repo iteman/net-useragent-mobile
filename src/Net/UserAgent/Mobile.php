@@ -109,6 +109,8 @@ class Net_UserAgent_Mobile
      * @access private
      */
 
+    private static $instanceCache = array();
+
     /**#@-*/
 
     /**#@+
@@ -182,21 +184,15 @@ class Net_UserAgent_Mobile
      */
     public static function singleton($userAgent = null)
     {
-        static $instances;
-
-        if (!isset($instances)) {
-            $instances = array();
-        }
-
         if (is_null($userAgent)) {
             $userAgent = @$_SERVER['HTTP_USER_AGENT'];
         }
 
-        if (!array_key_exists($userAgent, $instances)) {
-            $instances[$userAgent] = self::factory($userAgent);
+        if (!array_key_exists($userAgent, self::$instanceCache)) {
+            self::$instanceCache[$userAgent] = self::factory($userAgent);
         }
 
-        return $instances[$userAgent];
+        return self::$instanceCache[$userAgent];
     }
 
     // }}}
